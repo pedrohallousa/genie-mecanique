@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حركية الجسم الصلب: الحركة المستوية وطريقة CIV والإسقاط المتساوي | المنصة الأكاديمية Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: { matchFontHeight: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      font-size: clamp(14.5px, 0.92rem + 0.35vw, 16.8px);
+    }
+    body, h1, h2, h3, h4, p, span, button, a, nav, footer, div:not(.mjx-chtml):not(.MathJax) {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0c1210;
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+    }
+    .math-block, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      color: #34d399 !important;
+    }
+    .bento-card, .card, .section-card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .problem-box, .highlight-box, .rule-box {
+      background-color: #0d1612 !important;
+      border-right: 4px solid #10b981 !important;
+      border-left: none !important;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    h2, .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      border-bottom: 1px solid #23382f;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #34d399;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: #101814;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th {
+      background-color: #172820 !important;
+      color: #34d399 !important;
+      font-weight: 700;
+      padding: 12px;
+      text-align: right;
+      border-bottom: 1px solid #23382f;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #1c2c24;
+      color: #cbd5e1;
+    }
+    tr:nth-child(even) {
+      background-color: #0b1410;
+    }
+    .diagram-container, .diagram-box {
+      background: #0a110e !important;
+      border: 1px solid #23382f !important;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    /* إصلاح محاذاة الرياضيات ومنع انكسار السطور نهائياً */
+    mjx-container[jax="SVG"] {
+      direction: ltr !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) {
+      display: inline-block !important;
+      line-height: normal !important;
+      margin: 0 0.25em !important;
+      vertical-align: -0.15em !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) > svg {
+      display: inline !important;
+      margin: 0 !important;
+      vertical-align: baseline !important;
+      max-width: none !important;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1em auto !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+    }
+    mjx-container svg {
+      display: inline !important;
+    }
+
+    /* ضمان مظهر البطاقات الموحد الفخم لجميع الأقسام */
+    section, article, .bento-card, .card, .section-card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    .math-block, .math-box, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      color: #34d399 !important;
+    }
+
+  </style>
+</head>
+<body class="selection:bg-[#10b981] selection:text-black">
+
+  <!-- شريط التحكم العلوي -->
+  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-[#23382f]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <a href="../modules/mecanique-analytique.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emeraldTag hover:text-white transition-colors bg-emeraldPrimary/15 border border-emeraldPrimary/30 px-3 py-1.5 rounded-lg">
+          <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+          <span>العودة إلى (الميكانيك التحليلي)</span>
+        </a>
+        <a href="../index.html" class="hidden sm:inline-block text-xs text-textMuted hover:text-white transition-colors" title="المنصة الرئيسية">
+          الرئيسية
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-2 text-xs text-[#cbd5e1]">
+        <span class="px-2.5 py-0.5 rounded bg-[#10b981]/15 text-[#34d399] font-bold">Mécanique Analytique</span>
+        <span>Dr. Mohamed Masmoudi • Licence 3 CM</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-[#131b17] hover:bg-[#23382f] text-xs sm:text-sm font-semibold text-[#f8fafc] border border-[#23382f] transition-colors flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span class="hidden sm:inline">طباعة</span>
+        </button>
+
+        <a href="../lessons/mecanique-analytique-mouvement-plan.pdf" download class="px-4 py-1.5 rounded-lg bg-[#10b981] hover:bg-[#059669] text-black text-xs sm:text-sm font-bold transition-colors flex items-center gap-1.5 shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>تحميل PDF</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+
+    <!-- بطاقة الترويسة الأكاديمية التفاعلية -->
+    <header class="bento-card rounded-2xl p-6 sm:p-10 relative overflow-hidden mb-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#23382f] pb-6 mb-6">
+        <div>
+          <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Université Batna 2 • Mostapha Benboulaid</div>
+          <div class="text-xs sm:text-sm text-[#cbd5e1] font-semibold">كلية التكنولوجيا • قسم الهندسة الميكانيكية • Licence 3 CM</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#10b981]/15 text-[#34d399] border border-[#10b981]/30">Mécanique Analytique</span>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-3">
+          حركية الجسم الصلب: الحركة المستوية وطريقة CIV والإسقاط المتساوي
+        </h1>
+        <h2 class="text-sm sm:text-base text-[#cbd5e1] font-medium leading-relaxed" dir="ltr" style="text-align: right;">
+          Cinématique du Solide : Mouvement Plan (Équiprojectivité & CIR / CIV)
+        </h2>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-[#23382f] flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-[#cbd5e1]">
+        <div class="flex items-center gap-3">
+          <span><strong class="text-white">الإشراف:</strong> Dr. Mohamed Masmoudi • Licence 3 CM</span>
+        </div>
+        <div class="flex items-center gap-2 text-[#34d399] font-semibold text-xs sm:text-sm">
+          <span>✓ محتوى تدريسي معتمد</span>
+          <span>•</span>
+          <span>✓ صياغة رياضية متجهة SVG كاملة</span>
+        </div>
+      </div>
+    </header>
+
+<!-- المعطيات والرسم البياني -->
+    <section class="card">
+      <h2 class="card-title">المعطيات والرسم التخطيطي الكامل للسبورة</h2>
+      <p>لدينا ساق صلبة $AB$ غير قابلة للتشوه تنزلق في مستوٍ متعامد، حيث يبقى الطرف العلوي $A$ ملامساً للجدار الشاقولي والطرف السفلي $B$ ملامساً للأرضية الأفقية:</p>
+
+      <div class="badge-grid">
+        <div class="badge"><span>طول الساق:</span> <strong>AB = 3 m</strong></div>
+        <div class="badge"><span>زاوية الميل:</span> <strong>&theta; = 60&deg;</strong></div>
+        <div class="badge"><span>سرعة النقطة A:</span> <strong>V_A = 0.5 m/s (نحو الأسفل)</strong></div>
+        <div class="badge"><span>مركز الساق:</span> <strong>G (نقطة المنتصف)</strong></div>
+      </div>
+
+      <!-- SVG مطابق تماماً لرسم الأستاذ على السبورة -->
+      <div class="diagram-wrapper">
+        <svg viewBox="0 0 620 480" width="100%">
+          <defs>
+            <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
+            </marker>
+            <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+            </marker>
+            <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#06b6d4" />
+            </marker>
+            <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#a855f7" />
+            </marker>
+          </defs>
+
+          <!-- الجدار الشاقولي والأرضية الأفقية -->
+          <line x1="100" y1="40" x2="100" y2="400" stroke="#64748b" stroke-width="4" />
+          <line x1="100" y1="400" x2="550" y2="400" stroke="#64748b" stroke-width="4" />
+
+          <!-- تهشير الجدار والأرضية -->
+          <g stroke="#334155" stroke-width="2">
+            <!-- جدار -->
+            <line x1="75" y1="80" x2="100" y2="55" />
+            <line x1="75" y1="140" x2="100" y2="115" />
+            <line x1="75" y1="200" x2="100" y2="175" />
+            <line x1="75" y1="260" x2="100" y2="235" />
+            <line x1="75" y1="320" x2="100" y2="295" />
+            <line x1="75" y1="380" x2="100" y2="355" />
+            <!-- أرضية -->
+            <line x1="140" y1="400" x2="115" y2="425" />
+            <line x1="200" y1="400" x2="175" y2="425" />
+            <line x1="260" y1="400" x2="235" y2="425" />
+            <line x1="320" y1="400" x2="295" y2="425" />
+            <line x1="380" y1="400" x2="355" y2="425" />
+            <line x1="440" y1="400" x2="415" y2="425" />
+          </g>
+
+          <!-- مستطيل CIV: الخطوط المتعامدة مع السرعات المنطلقة نحو I -->
+          <line x1="100" y1="110" x2="280" y2="110" stroke="#a855f7" stroke-width="2.5" stroke-dasharray="5,5" />
+          <line x1="280" y1="400" x2="280" y2="110" stroke="#a855f7" stroke-width="2.5" stroke-dasharray="5,5" />
+
+          <!-- زوايا قائمة في A و B للمستطيل OAIB -->
+          <rect x="100" y="110" width="16" height="16" fill="none" stroke="#a855f7" stroke-width="1.8" />
+          <rect x="264" y="384" width="16" height="16" fill="none" stroke="#a855f7" stroke-width="1.8" />
+          <rect x="100" y="384" width="16" height="16" fill="none" stroke="#64748b" stroke-width="1.8" />
+
+          <!-- الساق الصلبة AB -->
+          <line x1="100" y1="110" x2="280" y2="400" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+
+          <!-- النقطة G والخط IG -->
+          <line x1="280" y1="110" x2="190" y2="255" stroke="#ec4899" stroke-width="2" stroke-dasharray="4,4" />
+
+          <!-- شعاع السرعة V_G في G: عمودي على القطعة IG -->
+          <line x1="190" y1="255" x2="258" y2="297" stroke="#06b6d4" stroke-width="3.5" marker-end="url(#arrow-cyan)" />
+          
+          <!-- رمز التعامد بين IG و V_G -->
+          <path d="M 197 244 L 208 251 L 201 262" fill="none" stroke="#ec4899" stroke-width="1.5" />
+
+          <!-- شعاع سرعة A: شاقولي نحو الأسفل -->
+          <line x1="100" y1="110" x2="100" y2="195" stroke="#ef4444" stroke-width="3.5" marker-end="url(#arrow-red)" />
+          <line x1="100" y1="195" x2="140" y2="175" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
+
+          <!-- شعاع سرعة B: أفقي نحو اليمين -->
+          <line x1="280" y1="400" x2="385" y2="400" stroke="#10b981" stroke-width="3.5" marker-end="url(#arrow-green)" />
+          <line x1="385" y1="400" x2="335" y2="488" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+
+          <!-- زاوية الدوران أوميغا حول I -->
+          <path d="M 295 100 A 20 20 0 0 1 295 125" fill="none" stroke="#a855f7" stroke-width="2.5" marker-end="url(#arrow-purple)" />
+          <text x="310" y="118" fill="#c084fc" font-size="16" font-weight="bold">&omega;</text>
+
+          <!-- النقاط الرئيسية -->
+          <circle cx="100" cy="110" r="5" fill="#fff" />
+          <text x="75" y="105" fill="#fff" font-size="17" font-weight="bold">A</text>
+
+          <circle cx="280" cy="400" r="5" fill="#fff" />
+          <text x="270" y="425" fill="#fff" font-size="17" font-weight="bold">B</text>
+
+          <circle cx="190" cy="255" r="5.5" fill="#06b6d4" />
+          <text x="165" y="260" fill="#06b6d4" font-size="16" font-weight="bold">G</text>
+
+          <!-- نقطة CIV = I -->
+          <circle cx="280" cy="110" r="6" fill="#a855f7" />
+          <text x="245" y="95" fill="#c084fc" font-size="17" font-weight="bold">CIV &equiv; I</text>
+
+          <text x="80" y="420" fill="#94a3b8" font-size="16" font-weight="bold">O</text>
+
+          <!-- الزاوية ثيتا عند B -->
+          <path d="M 240 400 A 40 40 0 0 1 257 363" fill="none" stroke="#f59e0b" stroke-width="2.5" />
+          <text x="230" y="385" fill="#f59e0b" font-size="16" font-weight="bold">&theta;</text>
+
+          <!-- الزاوية ثيتا بالتبادل الداخلي عند A -->
+          <path d="M 140 110 A 40 40 0 0 1 123 147" fill="none" stroke="#f59e0b" stroke-width="2" />
+          <text x="135" y="135" fill="#f59e0b" font-size="14" font-weight="bold">&theta;</text>
+
+          <!-- تسمية المتجهات والسرعات -->
+          <text x="40" y="170" fill="#ef4444" font-size="15" font-weight="bold">V_A</text>
+          <text x="365" y="385" fill="#10b981" font-size="15" font-weight="bold">V_B</text>
+          <text x="260" y="285" fill="#06b6d4" font-size="15" font-weight="bold">V_G</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- الطريقة الأولى: تساوي الإسقاط -->
+    <section class="card">
+      <h2 class="card-title"><span class="step-badge">1</span> طريقة تساوي الإسقاط (Équiprojectivité des vitesses)</h2>
+      
+      <p>بما أن الساق $AB$ هي <strong>جسم صلب غير قابل للتشوه (Solide indéformable)</strong>، فإن المسافة بين النقطتين $A$ و $B$ ثابتة دوماً. بالتالي، فإن المسقط الجبري لسرعة النقطة $A$ على المستقيم الحامل للقطعة $[AB]$ يساوي تماماً المسقط الجبري لسرعة النقطة $B$ على نفس المستقيم:</p>
+
+      <div class="math-block">
+        $$\vec{V}_A \cdot \vec{AB} = \vec{V}_B \cdot \vec{AB}$$
+      </div>
+
+      <p>بالنظر إلى الزوايا الهندسية بين متجهات السرعة ومحور الساق $[AB]$ كما هو موضح في السبورة:</p>
+      <ul>
+        <li><strong>مسقط شعاع السرعة $\vec{V}_A$:</strong> بما أن $\vec{V}_A$ شاقولي للأسفل، ومحور الساق يصنع زاوية $\theta$ مع الأفقي، فإن الزاوية بين $\vec{V}_A$ ومحور الساق هي $(90^\circ - \theta)$. إذن المسقط هو:
+          $$V_A \cos(90^\circ - \theta) = V_A \sin\theta$$
+        </li>
+        <li><strong>مسقط شعاع السرعة $\vec{V}_B$:</strong> بما أن $\vec{V}_B$ أفقي على الأرضية، ومحور الساق يصنع معه زاوية $\theta$ مباشرة، فإن المسقط هو:
+          $$V_B \cos\theta$$
+        </li>
+      </ul>
+
+      <p>بمساواة الإسقاطين (كما كُتب على السبورة تماماً):</p>
+      <div class="math-block">
+        $$V_A \sin\theta = V_B \cos\theta \implies V_B = V_A \cdot \frac{\sin\theta}{\cos\theta} = V_A \tan\theta$$
+      </div>
+
+      <p><strong>التطبيق العددي:</strong></p>
+      <div class="math-block success">
+        $$V_B = 0.5 \times \frac{\frac{\sqrt{3}}{2}}{\frac{1}{2}} = 0.5 \times \sqrt{3} = \frac{\sqrt{3}}{2}\text{ m/s} \approx 0.866\text{ m/s}$$
+      </div>
+    </section>
+
+    <!-- الطريقة الثانية: CIV وحساب أوميغا و VG -->
+    <section class="card">
+      <h2 class="card-title purple"><span class="step-badge purple">2</span> طريقة مركز السرعة اللحظي (C.I.V &equiv; I)</h2>
+      
+      <p>في كل لحظة من الحركة المستوية، توجد نقطة $I$ ساكنة لحظياً تُدعى <strong>مركز السرعة اللحظي (Centre Instantané de Vitesse)</strong> وتتحرك الساق حولها كأنها في دوران نقي:</p>
+      
+      <ul class="purple-bullets">
+        <li><strong>تحديد موضع النقطة $I$:</strong>
+          ننشئ العمود على حامل السرعة $\vec{V}_A$ في $A$ (وهو مستقيم أفقي)، والعمود على حامل السرعة $\vec{V}_B$ في $B$ (وهو مستقيم شاقولي). نقطة تقاطعهما هي المركز اللحظي $I$.
+        </li>
+        <li><strong>طبيعة الشكل الهندسي $OAIB$:</strong>
+          بما أن زوايا الرؤوس في $O$ و $A$ و $B$ كلها قائمة ($90^\circ$)، فإن الرباعي $OAIB$ هو <strong>مستطيل</strong>.
+        </li>
+      </ul>
+
+      <div class="note-box">
+        <strong>خصائص المستطيل $OAIB$:</strong>
+        <br>• $IA = OB = AB \cos\theta = 3 \times \cos(60^\circ) = 3 \times \frac{1}{2} = 1.5\text{ m}$
+        <br>• $IB = OA = AB \sin\theta = 3 \times \sin(60^\circ) = 3 \times \frac{\sqrt{3}}{2} = \frac{3\sqrt{3}}{2}\text{ m}$
+      </div>
+
+      <h3 style="color:#c084fc; margin: 1.25rem 0 0.5rem 0; font-size:1.15rem;">أ) حساب السرعة الزاوية للساق ($\omega$):</h3>
+      <p>العلاقة العامة الأساسية للمركز اللحظي للدوران (المكتوبة بالسبورة):</p>
+      <div class="math-block purple">
+        $$\begin{cases} V_A = \omega \cdot IA \\ V_B = \omega \cdot IB \end{cases} \implies \omega = \frac{V_A}{IA} = \frac{V_B}{IB} = \frac{V_G}{IG}$$
+      </div>
+
+      <p>بالحساب انطلاقاً من النقطة $A$:</p>
+      <div class="math-block purple">
+        $$\omega = \frac{V_A}{IA} = \frac{V_A}{AB \cos\theta} = \frac{0.5}{3 \times \frac{1}{2}} = \frac{0.5}{1.5} = \frac{1}{3}\text{ s}^{-1} \text{ (أو rad/s)}$$
+      </div>
+
+      <p>ويمكن التأكد كذلك انطلاقاً من النقطة $B$:</p>
+      <div class="math-block purple">
+        $$\omega = \frac{V_B}{IB} = \frac{V_A \tan\theta}{AB \sin\theta} = \frac{\frac{\sqrt{3}}{2}}{3 \times \frac{\sqrt{3}}{2}} = \frac{1}{3}\text{ s}^{-1}$$
+      </div>
+
+      <h3 style="color:#c084fc; margin: 1.25rem 0 0.5rem 0; font-size:1.15rem;">ب) استنتاج سرعة الطرف $B$ ($V_B$):</h3>
+      <div class="math-block success">
+        $$V_B = \omega \cdot IB = \frac{1}{3} \times \left(3 \sin 60^\circ\right) = \sin 60^\circ = \frac{\sqrt{3}}{2}\text{ m/s} \approx 0.866\text{ m/s}$$
+      </div>
+
+      <h3 style="color:#06b6d4; margin: 1.25rem 0 0.5rem 0; font-size:1.15rem;">جـ) حساب سرعة منتصف الساق $G$ ($V_G$ - المكتوبة باللون الأحمر على السبورة):</h3>
+      <p>النقطة $G$ تمثل مركز الساق الصلبة (منتصف القطعة $[AB]$). بما أن $OAIB$ مستطيل، فإن قطريه $[AB]$ و $[OI]$ متساويان ويتقاطعان في منتصفيهما (أي عند النقطة $G$). بالتالي المسافة من مركز الدوران $I$ إلى النقطة $G$ هي نصف طول القطر:</p>
+      
+      <div class="math-block">
+        $$IG = \frac{AB}{2} = \frac{3}{2}\text{ m}$$
+      </div>
+
+      <p>وعليه تكون سرعة النقطة $G$ هي:</p>
+      <div class="math-block success">
+        $$V_G = \omega \cdot IG = \omega \cdot \frac{AB}{2} = \frac{1}{3} \times \frac{3}{2} = \frac{1}{2} = 0.5\text{ m/s}$$
+      </div>
+      <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem;">(ويتجه شعاع السرعة $\vec{V}_G$ عمودياً على القطعة الموجهة $[IG]$)</p>
+    </section>
+
+    <!-- ملخص النتائج -->
+    <section class="card">
+      <h2 class="card-title green">خلاصة النتائج النهائية للدرس</h2>
+      <div class="grid-2">
+        <div class="stat-card green">
+          <div class="label">سرعة الطرف السفلي B</div>
+          <div class="val">V_B = &radic;3 / 2 &asymp; 0.866 m/s</div>
+        </div>
+        <div class="stat-card purple">
+          <div class="label">السرعة الزاوية للساق &omega;</div>
+          <div class="val">&omega; = 1/3 rad/s (s&supmin;&sup1;)</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="label">سرعة مركز الساق G</div>
+          <div class="val">V_G = 1/2 = 0.5 m/s</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

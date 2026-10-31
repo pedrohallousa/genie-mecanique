@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Corrigé Devoir Cinématique du Solide - L3 CM Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ffffff !important;
+      color: #111827 !important;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 12.5px;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* عزل تام لمحرك الرياضيات */
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+      color: #000000 !important;
+    }
+
+    /* ترويسة الورقة الأكاديمية الرسمية */
+    .univ-header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .univ-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+    .univ-header-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+
+    .main-title {
+      text-align: center;
+      margin: 14px 0 20px;
+    }
+    .main-title h1 {
+      font-size: 17px;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: #111827;
+    }
+    .main-title h2 {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #4b5563;
+      margin: 0;
+      direction: ltr;
+    }
+
+    .ex-block {
+      margin-bottom: 22px;
+      page-break-inside: auto;
+    }
+
+    .ex-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111827;
+      border-bottom: 1.5px solid #1f2937;
+      padding-bottom: 4px;
+      margin: 16px 0 8px;
+      page-break-after: avoid;
+    }
+    .ex-title span {
+      color: #047857;
+      font-weight: 900;
+    }
+
+    .problem-text {
+      direction: ltr;
+      text-align: left;
+      background-color: #f8fafc;
+      border-left: 3.5px solid #334155;
+      padding: 8px 12px;
+      margin: 8px 0 12px;
+      font-size: 12px;
+      color: #1e293b;
+      page-break-inside: avoid;
+      line-height: 1.6;
+    }
+
+    .solution-content {
+      padding-right: 4px;
+    }
+
+    .math-block {
+      direction: ltr !important;
+      text-align: center;
+      background: #fbfcfe;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 12.5px;
+      color: #000000 !important;
+      page-break-inside: avoid;
+    }
+
+    .diagram-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 10px auto;
+      text-align: center;
+      max-width: 520px;
+      page-break-inside: avoid;
+    }
+    .diagram-box svg {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+
+    .text-bold {
+      font-weight: 700;
+      color: #111827;
+    }
+    .text-accent {
+      font-weight: 700;
+      color: #065f46;
+    }
+    .text-muted {
+      color: #4b5563;
+    }
+    .card-inner, .sub-item {
+      margin-bottom: 10px;
+    }
+    .grid {
+      display: grid;
+    }
+    .grid-cols-2 {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .grid-cols-1 {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ترويسة أكاديمية رسمية نظيفة -->
+  <header class="univ-header">
+    <div class="univ-header-top">
+      <span>RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE</span>
+      <span>جامعة باتنة 2 - مصطفى بن بولعيد</span>
+    </div>
+    <div class="univ-header-sub">
+      <span>Faculté de Technologie • Département de Génie Mécanique</span>
+      <span>كلية التكنولوجيا • قسم الهندسة الميكانيكية</span>
+    </div>
+    <div class="univ-header-sub">
+      <span>Licence 3 & Ingénieurs 3 • Mécanique Analytique</span>
+      <span>الأستاذ المشرف: Dr. M. Masmoudi</span>
+    </div>
+  </header>
+
+  <!-- العنوان الرئيسي للمستند -->
+  <div class="main-title">
+    <h1>حل الواجب المنزلي: حركية الجسم الصلب — الحركة المستوية</h1>
+    <h2>Corrigé détaillé du Devoir à domicile : Cinématique du Solide (16 Exercices Résolus)</h2>
+  </div>
+
+  <!-- المحتوى الكامل للتمارين الستة عشر -->
+  <main class="solution-content">
+<div class="ex-block" id="ex1">
+
+      <div class="ex-title"><span>EX 01 : </span>معادلات المسارات الديكارتية واتجاه الحركة (Trajectoires)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong class="text-bold">Énoncé :</strong> Étant données les équations de mouvement d'un point, trouver l'équation de sa trajectoire et indiquer le sens du mouvement :
+        <div class="text-accent">
+          <div><strong>a)</strong> $x = 3t - 5, \quad y = 4 - 2t$</div>
+          <div><strong>b)</strong> $x = 2t, \quad y = 8t^2$</div>
+          <div><strong>c)</strong> $x = 5\sin(10t), \quad y = 3\cos(10t)$</div>
+          <div><strong>d)</strong> $x = 2 - 3\cos(5t), \quad y = 4\sin(5t) - 1$</div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- a -->
+        <div class="solution-step">
+          <h4 class="text-accent">أ) الحالة الأولى : المستقيم</h4>
+          <p class="doc-p">نعزل الزمن $t$ من معادلة $x$ : $t = \frac{x+5}{3}$. نعوض في معادلة $y$ :</p>
+          <div class="math-block">
+            \[ y = 4 - 2\left(\frac{x+5}{3}\right) = -\frac{2}{3}x + \frac{2}{3} \iff 2x + 3y - 2 = 0 \]
+          </div>
+          <div class="result-badge">
+            المسار : خط مستقيم بميل سالب $m = -2/3$. شعاع السرعة $\vec{v} = 3\vec{i} - 2\vec{j}$، وبما أن $\dot{x} = 3 > 0$ فإن الحركة تتم في اتجاه تزايد $x$ وتناقص $y$.
+          </div>
+        </div>
+
+        <!-- b -->
+        <div class="solution-step">
+          <h4 class="text-accent">ب) الحالة الثانية : القطع المكافئ (Parabole)</h4>
+          <p class="doc-p">نعزل $t = \frac{x}{2}$، ثم نعوض في $y = 8t^2$ :</p>
+          <div class="math-block">
+            \[ y = 8\left(\frac{x}{2}\right)^2 = 8\left(\frac{x^2}{4}\right) = 2x^2 \]
+          </div>
+          <div class="result-badge">
+            المسار : قطع مكافئ محوره الشاقولي $(Oy)$ ورأسه المبدأ $(0,0)$. بما أن $\dot{x} = 2 > 0$ للزمن $t \ge 0$، فإن النقطة تنطلق من المبدأ وتصعد على الفرع الأيمن للمنحنى.
+          </div>
+        </div>
+
+        <!-- c -->
+        <div class="solution-step">
+          <h4 class="text-accent">ج) الحالة الثالثة : القطع الناقص الممركز (Ellipse)</h4>
+          <p class="doc-p">لدينا $\frac{x}{5} = \sin(10t)$ و $\frac{y}{3} = \cos(10t)$. باستعمال $\cos^2\theta + \sin^2\theta = 1$ :</p>
+          <div class="math-block">
+            \[ \left(\frac{x}{5}\right)^2 + \left(\frac{y}{3}\right)^2 = 1 \iff \frac{x^2}{25} + \frac{y^2}{9} = 1 \]
+          </div>
+          <div class="result-badge">
+            المسار : قطع ناقص مركزه المبدأ $(0,0)$، نصف قطره الكبير $a = 5$ على $(Ox)$ ونصف قطره الصغير $b = 3$ على $(Oy)$. عند $t=0$ النقطة عند $(0,3)$ وسرعتها $\dot{x}(0) = 50 > 0$، فالحركة تتم في اتجاه عقارب الساعة (Sens horaire).
+          </div>
+        </div>
+
+        <!-- d -->
+        <div class="solution-step">
+          <h4 class="text-accent">د) الحالة الرابعة : القطع الناقص المزاح</h4>
+          <p class="doc-p">نكتب $\cos(5t) = \frac{2-x}{3}$ و $\sin(5t) = \frac{y+1}{4}$. نربع ونجمع :</p>
+          <div class="math-block">
+            \[ \frac{(x-2)^2}{9} + \frac{(y+1)^2}{16} = 1 \]
+          </div>
+          <div class="result-badge">
+            المسار : قطع ناقص مركزه $\Omega(2, -1)$، نصف قطره الأفقي $a = 3$ ونصف قطره الشاقولي $b = 4$. عند $t=0$ النقطة عند $(-1, -1)$ وسرعتها $\dot{y}(0) = 20 > 0$، فالحركة تدور في الاتجاه الموجب عكس عقارب الساعة (Sens trigonométrique).
+          </div>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex2">
+
+      <div class="ex-title"><span>EX 02 : </span>أسئلة الخيارات المتعددة حول شعاع التسارع (QCM sur l'accélération)</div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="solution-step">
+          <h4 class="text-accent">السؤال $\alpha$ : خصائص شعاع التسارع لنقطة M</h4>
+          <p class="doc-p">الخيارات الصحيحة هي : <strong class="text-accent">a و b و c (كلها صحيحة)</strong></p>
+          <ul class="list-disc list-inside space-y-1 doc-sub text-sm">
+            <li><strong>a صحيحة :</strong> التسارع فيزيائياً هو معدل تغير السرعة بالنسبة للزمن $\Delta\vec{v}/\Delta t$.</li>
+            <li><strong>b صحيحة :</strong> رياضياً $\vec{\gamma}(t) = \frac{d\vec{v}}{dt}$ هو مشتق شعاع السرعة اللحظية.</li>
+            <li><strong>c صحيحة :</strong> في معلم ديكارتي ثابت، مركبات التسارع هي مشتقات مركبات السرعة $\gamma_x = \dot{v}_x, \gamma_y = \dot{v}_y$.</li>
+          </ul>
+        </div>
+
+        <div class="solution-step">
+          <h4 class="text-accent">السؤال $\beta$ : حركة مستقيمة متسارعة (Rectiligne accéléré)</h4>
+          <p class="doc-p">الخيارات الصحيحة هي : <strong class="text-accent">a و b</strong></p>
+          <ul class="list-disc list-inside space-y-1 doc-sub text-sm">
+            <li><strong>a صحيحة :</strong> في الحركة المستقيمة، شعاع التسارع محمول دوماً على مستقيم المسار.</li>
+            <li><strong>b صحيحة :</strong> الحركة "متسارعة" تعني أن الجداء السلمي $\vec{a}\cdot\vec{v} > 0$، ولهما نفس الاتجاه.</li>
+            <li><strong>c خاطئة :</strong> التسارع لا يشترط أن يكون ثابتاً، فالتسارع المتغير $a(t)$ يمكن أن يصف حركة متسارعة.</li>
+          </ul>
+        </div>
+
+        <div class="solution-step">
+          <h4 class="text-accent">السؤال $\gamma$ : مسار منحنٍ (Trajectoire curviligne)</h4>
+          <p class="doc-p">الخيار الصحيح الوحيد هو : <strong class="text-accent">b (موجه نحو تقعر المسار)</strong></p>
+          <ul class="list-disc list-inside space-y-1 doc-sub text-sm">
+            <li><strong>a خاطئة :</strong> شعاع التسارع ليس مماساً خالصاً لأن لديه مركبة ناظمية $a_n = v^2/\rho \ne 0$.</li>
+            <li><strong>b صحيحة :</strong> المركبة الناظمية $a_n > 0$ تجعل شعاع التسارع مائلاً دوماً نحو تقعر (داخل) المسار.</li>
+            <li><strong>c خاطئة :</strong> إذا كانت السرعة ثابتة فالمركبة المماسية تنعدم، لكن التسارع الناظمي يبقى موجوداً لتغيير اتجاه الحركة.</li>
+          </ul>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex3">
+
+      <div class="ex-title"><span>EX 03 : </span>سيارة سباق فورمولا 1 (Formule 1)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Une voiture de formule 1 effectue la distance $d = 1000\text{ m}$, départ arrêté, en $t = 19\text{ s}$. Si le mouvement est supposé rectiligne et uniformément accéléré, déterminer l'accélération du véhicule et sa vitesse au bout de $1000\text{ m}$.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">انطلاقاً من السكون ($v_0 = 0, x_0 = 0$) وحركة مستقيمة متسارعة بانتظام :</p>
+        <div class="math-block">
+          \[ x(t) = \frac{1}{2} a t^2 \implies a = \frac{2d}{t^2} = \frac{2 \times 1000}{19^2} = \frac{2000}{361} \approx 5.540\text{ m/s}^2 \]
+        </div>
+        <p class="doc-p">حساب السرعة النهائية عند $1000\text{ m}$ :</p>
+        <div class="math-block">
+          \[ v = a t = \frac{2000}{19} \approx 105.263\text{ m/s} \]
+          \[ v = 105.263 \times 3.6 \approx 378.95\text{ km/h} \]
+        </div>
+        <div class="result-badge text-center">
+          التسارع : $a = 5.54\text{ m/s}^2$ • السرعة النهائية : $v = 105.26\text{ m/s} = 378.95\text{ km/h}$
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex4">
+
+      <div class="ex-title"><span>EX 04 : </span>هبوط طائرة (Atterrissage)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Pour atterrir, un avion arrive en bout de piste à la vitesse de $300\text{ km/h}$. La longueur d'atterrissage est de $d = 1200\text{ m}$ et le mouvement est supposé uniformément décéléré. Déterminer la décélération de l'appareil et la durée totale de l'atterrissage.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">تحويل السرعة الابتدائية إلى الوحدات الدولية : $v_0 = \frac{300}{3.6} = \frac{250}{3} \approx 83.333\text{ m/s}$ والسرعة النهائية $v_f = 0$.</p>
+        <p class="doc-p">باستعمال العلاقة المستقلة عن الزمن : $v_f^2 - v_0^2 = 2 a d$ :</p>
+        <div class="math-block">
+          \[ 0 - v_0^2 = 2 a d \implies a = -\frac{v_0^2}{2d} = -\frac{(83.333)^2}{2 \times 1200} = -\frac{6944.44}{2400} \approx -2.894\text{ m/s}^2 \]
+        </div>
+        <p class="doc-p">المدة الزمنية للتوقف التام :</p>
+        <div class="math-block">
+          \[ v_f = v_0 + a t \implies t = \frac{v_0}{|a|} = \frac{2d}{v_0} = \frac{2 \times 1200}{83.333} = 28.80\text{ s} \]
+        </div>
+        <div class="result-badge text-center">
+          التباطؤ : $\gamma = 2.89\text{ m/s}^2$ • زمن الهبوط : $t = 28.8\text{ s}$
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex5">
+
+      <div class="ex-title"><span>EX 05 : </span>إطلاق رصاصة مسدس شاقولياً (Pistolet)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Tir vertical vers le haut, $v_0 = 600\text{ m/s}$, $g = 9.81\text{ m/s}^2$.<br>
+        a) Déterminer les équations de mouvement (a, v, z).<br>
+        b) En déduire la hauteur maximale d'ascension.<br>
+        c) Quelle est la vitesse du projectile à $6000\text{ m}$ d'altitude ?<br>
+        d) Au bout de combien de temps retombe-t-il au sol et à quelle vitesse ?
+      </div>
+
+      <div class="solution-step space-y-4">
+        <div>
+          <h4 class="text-accent">أ) معادلات الحركة مع توجيه المحور الشاقولي نحو الأعلى :</h4>
+          <div class="math-block">
+            \[ a(t) = -g = -9.81\text{ m/s}^2 \]
+            \[ v(t) = v_0 - gt = 600 - 9.81t\text{ (m/s)} \]
+            \[ z(t) = v_0 t - \frac{1}{2}gt^2 = 600t - 4.905t^2\text{ (m)} \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ب) أقصى ارتفاع تبلغه الرصاصة ($v = 0$) :</h4>
+          <div class="math-block">
+            \[ v^2 - v_0^2 = -2g h_{\max} \implies h_{\max} = \frac{v_0^2}{2g} = \frac{600^2}{2 \times 9.81} = \frac{360000}{19.62} \approx 18348.62\text{ m} \approx 18.35\text{ km} \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ج) السرعة عند الارتفاع $z = 6000\text{ m}$ :</h4>
+          <div class="math-block">
+            \[ v = \sqrt{v_0^2 - 2gz} = \sqrt{600^2 - 2(9.81)(6000)} = \sqrt{360000 - 117720} = \sqrt{242280} \approx 492.22\text{ m/s} \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">د) زمن وسرعة الارتطام بالأرض ($z = 0$) :</h4>
+          <div class="math-block">
+            \[ z(t) = 0 \implies t(600 - 4.905t) = 0 \implies t_{\text{sol}} = \frac{600}{4.905} \approx 122.32\text{ s} \approx 2\text{ min } 2.3\text{ s} \]
+            \[ v_{\text{sol}} = 600 - 9.81(122.32) = -600\text{ m/s} \implies \|v\| = 600\text{ m/s} \]
+          </div>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex6">
+
+      <div class="ex-title"><span>EX 06 : </span>إقلاع محرك كهربائي (Moteur électrique)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Un moteur électrique met $t = 2\text{ s}$ pour atteindre sa vitesse de régime $N = 1500\text{ tr/min}$. Si l'accélération angulaire est supposée constante, déterminer les équations du mouvement ($\alpha, \omega, \theta$) et le nombre de tours effectués pendant le démarrage.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">حساب السرعة الزاوية النهائية : $\omega_1 = \frac{2\pi N}{60} = \frac{2\pi(1500)}{60} = 50\pi \approx 157.08\text{ rad/s}$.</p>
+        <p class="doc-p">التسارع الزاوي الثابت $\alpha$ :</p>
+        <div class="math-block">
+          \[ \alpha = \frac{\omega_1}{t_1} = \frac{50\pi}{2} = 25\pi \approx 78.54\text{ rad/s}^2 \]
+        </div>
+        <p class="text-accent">معادلات الحركة الدورانية :</p>
+        <div class="math-block">
+          \[ \alpha(t) = 25\pi\text{ rad/s}^2, \quad \omega(t) = 25\pi t\text{ (rad/s)}, \quad \theta(t) = 12.5\pi t^2\text{ (rad)} \]
+        </div>
+        <p class="doc-p">الزاوية الكلية وعدد الدورات خلال ثانيتين :</p>
+        <div class="math-block">
+          \[ \theta(2) = 12.5\pi(2)^2 = 50\pi\text{ rad} \implies n = \frac{\theta}{2\pi} = \frac{50\pi}{2\pi} = 25\text{ دورة (tours)} \]
+        </div>
+        <div class="result-badge text-center">
+          التسارع الزاوي : $\alpha = 78.54\text{ rad/s}^2$ • عدد الدورات : $n = 25\text{ دورة}$
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex7">
+
+      <div class="ex-title"><span>EX 07 : </span>سرعة القطع في الخراطة الميكانيكية (Tournage)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Sur un tour, on usine un cylindre de $100\text{ mm}$ de diamètre. La vitesse de rotation de la pièce est de $300\text{ tr/min}$. Le mouvement d'avance est négligé. Déterminer la vitesse de coupe $V_c$.
+      </div>
+
+      <!-- رسم هندسي توضيحي لعملية الخراطة الميكانيكية -->
+      <div class="diagram-box">
+        <svg width="280" height="150" viewBox="0 0 280 150">
+          <circle cx="100" cy="75" r="50" fill="#f8fafc" stroke="#10b981" stroke-width="2.5" />
+          <circle cx="100" cy="75" r="4" fill="#34d399" />
+          <text x="100" y="70" fill="#9ca3af" font-size="12" text-anchor="middle">O</text>
+          <!-- سهم الدوران -->
+          <path d="M 100 15 A 60 60 0 0 1 155 55" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrow)" />
+          <text x="160" y="45" fill="#34d399" font-size="12" font-weight="bold">ω</text>
+          <!-- أداة القطع -->
+          <polygon points="150,75 180,65 180,85" fill="#059669" stroke="#34d399" stroke-width="1.5" />
+          <line x1="180" y1="75" x2="230" y2="75" stroke="#9ca3af" stroke-width="3" />
+          <!-- سهم سرعة القطع Vc -->
+          <line x1="150" y1="75" x2="150" y2="125" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow-blue)" />
+          <text x="158" y="115" fill="#38bdf8" font-size="12" font-weight="bold">Vc</text>
+          <text x="100" y="142" fill="#e2e8f0" font-size="11" text-anchor="middle">الأسطوانة المشغلة (D = 100 mm)</text>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+            </marker>
+            <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">القطر $D = 100\text{ mm} = 0.1\text{ m} \implies R = 0.05\text{ m}$. السرعة الزاوية :</p>
+        <div class="math-block">
+          \[ \omega = \frac{2\pi N}{60} = \frac{2\pi(300)}{60} = 10\pi \approx 31.416\text{ rad/s} \]
+        </div>
+        <p class="doc-p">سرعة القطع الخطية $V_c$ (السرعة المماسية لرأس الأداة بالنسبة لسطح القطعة) :</p>
+        <div class="math-block">
+          \[ V_c = \omega \cdot R = 10\pi \times 0.05 = 0.5\pi \approx 1.571\text{ m/s} \]
+          \[ V_c = \frac{\pi \cdot D \cdot N}{1000} = \frac{\pi \times 100 \times 300}{1000} \approx 94.25\text{ m/min} \]
+        </div>
+        <div class="result-badge text-center">
+          سرعة القطع : $V_c = 1.57\text{ m/s} = 94.25\text{ m/min}$
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex8">
+
+      <div class="ex-title"><span>EX 08 : </span>تسارع سيارة في منعطف دائرى (Virage)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Une voiture aborde un virage de rayon $R = 150\text{ m}$ à la vitesse de $90\text{ km/h}$. Si l'accélération tangentielle est de $a_t = 1.5\text{ m/s}^2$, déterminer l'accélération totale supportée par les passagers.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">تحويل السرعة : $v = \frac{90}{3.6} = 25\text{ m/s}$.</p>
+        <p class="doc-p">التسارع الناظمي (Centripète) الناتج عن انحناء المسار :</p>
+        <div class="math-block">
+          \[ a_n = \frac{v^2}{R} = \frac{25^2}{150} = \frac{625}{150} = \frac{25}{6} \approx 4.167\text{ m/s}^2 \]
+        </div>
+        <p class="doc-p">التسارع الكلي الموجه بتركيب المركبتين المتعامدتين في معلم فرينيه :</p>
+        <div class="math-block">
+          \[ a = \sqrt{a_t^2 + a_n^2} = \sqrt{(1.5)^2 + (4.167)^2} = \sqrt{2.25 + 17.361} = \sqrt{19.611} \approx 4.428\text{ m/s}^2 \]
+        </div>
+        <div class="result-badge text-center">
+          التسارع المحسوس : $a = 4.43\text{ m/s}^2$ (المركبة الناظمية $a_n = 4.17\text{ m/s}^2$ + المماسية $a_t = 1.5\text{ m/s}^2$)
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex9">
+
+      <div class="ex-title"><span>EX 09 : </span>جهاز الطرد المركزي لتدريب رواد الفضاء (Astronautes)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Centrifugeuse avec bras $R = 8\text{ m}$. Accélération maximale $a_{\max} = 12g$ ($g = 9.81\text{ m/s}^2$).<br>
+        En déduire la vitesse de rotation maximale $\omega_{\max}$ et la vitesse $V_A$. Le moteur est coupé, le dispositif met 10 tours pour s'arrêter. Si la décélération est constante, déterminer le temps mis jusqu'à l'arrêt.
+      </div>
+
+      <!-- رسم هندسي توضيحي لجهاز الطرد المركزي -->
+      <div class="diagram-box">
+        <svg width="260" height="140" viewBox="0 0 260 140">
+          <circle cx="50" cy="70" r="10" fill="#f8fafc" stroke="#10b981" stroke-width="2" />
+          <circle cx="50" cy="70" r="3" fill="#34d399" />
+          <text x="45" y="65" fill="#9ca3af" font-size="11">O (Pivot)</text>
+          <line x1="50" y1="70" x2="200" y2="70" stroke="#10b981" stroke-width="4" />
+          <text x="125" y="60" fill="#e2e8f0" font-size="11" text-anchor="middle">الذراع R = 8 m</text>
+          <!-- كبسولة رائد الفضاء -->
+          <rect x="195" y="52" width="36" height="36" rx="6" fill="#0e1612" stroke="#38bdf8" stroke-width="2" />
+          <text x="213" y="74" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">A</text>
+          <line x1="213" y1="52" x2="213" y2="15" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrow)" />
+          <text x="220" y="30" fill="#34d399" font-size="11" font-weight="bold">VA</text>
+          <line x1="200" y1="70" x2="120" y2="70" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrow-red)" />
+          <text x="160" y="88" fill="#f43f5e" font-size="10" font-weight="bold">a = 12g</text>
+          <defs>
+            <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="solution-step space-y-4">
+        <div>
+          <h4 class="text-accent">أ) السرعة الزاوية القصوى والسرعة الخطية :</h4>
+          <p class="doc-p">التسارع المطبق هو تسارع ناظمي مركزي $a_n = \omega^2 R = \frac{V_A^2}{R} = 12 \times 9.81 = 117.72\text{ m/s}^2$ :</p>
+          <div class="math-block">
+            \[ \omega_{\max} = \sqrt{\frac{a_n}{R}} = \sqrt{\frac{117.72}{8}} = \sqrt{14.715} \approx 3.836\text{ rad/s} \quad (N \approx 36.63\text{ tr/min}) \]
+            \[ V_A = \omega_{\max} \cdot R = 3.836 \times 8 \approx 30.69\text{ m/s} = 110.48\text{ km/h} \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ب) زمن التوقف بعد 10 دورات ($\Delta\theta = 20\pi\text{ rad}$) :</h4>
+          <div class="math-block">
+            \[ \omega_f^2 - \omega_0^2 = 2 \alpha_d \Delta\theta \implies 0 - (14.715) = 2 \alpha_d (20\pi) \implies \alpha_d \approx -0.1171\text{ rad/s}^2 \]
+            \[ t_{\text{arrêt}} = \frac{\omega_0}{|\alpha_d|} = \frac{2\Delta\theta}{\omega_0} = \frac{40\pi}{3.836} \approx 32.76\text{ s} \]
+          </div>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex10">
+
+      <div class="ex-title"><span>EX 10 : </span>توقف مروحة طائرة (Hélice d'avion)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Dès la coupure du moteur, une hélice d'avion qui tournait à $1200\text{ tr/min}$ effectue $80\text{ tours}$ jusqu'à l'arrêt complet. Si la décélération est constante, déterminer les équations du mouvement et le temps mis pour s'arrêter.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">السرعة الزاوية الابتدائية : $\omega_0 = \frac{2\pi(1200)}{60} = 40\pi \approx 125.66\text{ rad/s}$. الزاوية المقطوعة : $\Delta\theta = 80 \times 2\pi = 160\pi\text{ rad}$.</p>
+        <p class="doc-p">التباطؤ الزاوي الثابت $\alpha$ :</p>
+        <div class="math-block">
+          \[ \omega_f^2 - \omega_0^2 = 2 \alpha \Delta\theta \implies 0 - (40\pi)^2 = 2 \alpha (160\pi) \implies \alpha = -\frac{1600\pi^2}{320\pi} = -5\pi \approx -15.71\text{ rad/s}^2 \]
+        </div>
+        <p class="text-accent">معادلات الحركة :</p>
+        <div class="math-block">
+          \[ \alpha(t) = -5\pi\text{ rad/s}^2, \quad \omega(t) = 40\pi - 5\pi t\text{ (rad/s)}, \quad \theta(t) = 40\pi t - 2.5\pi t^2\text{ (rad)} \]
+        </div>
+        <p class="doc-p">زمن التوقف : $\omega(t) = 0 \implies 40\pi - 5\pi t = 0 \implies t_{\text{arrêt}} = 8\text{ ثوانٍ (secondes)}$.</p>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex11">
+
+      <div class="ex-title"><span>EX 11 : </span>بهلوانية طائرة في مسار دائري (Voltige)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Trajectoire circulaire $(A, B, C)$ de rayon $R = 250\text{ m}$ ($\alpha = 30^\circ$). Vitesse en A : $v_A = 450\text{ km/h}$, accélération tangentielle constante $a_t = 10\text{ m/s}^2$. Déterminer l'accélération en A et la vitesse de passage en B.
+      </div>
+
+      <div class="solution-step space-y-4">
+        <div>
+          <h4 class="text-accent">أ) التسارع الكلي عند النقطة A :</h4>
+          <p class="doc-p">السرعة عند A : $v_A = \frac{450}{3.6} = 125\text{ m/s}$. المركبة الناظمية :</p>
+          <div class="math-block">
+            \[ a_{n,A} = \frac{v_A^2}{R} = \frac{125^2}{250} = \frac{15625}{250} = 62.5\text{ m/s}^2 \]
+            \[ a_A = \sqrt{a_t^2 + a_{n,A}^2} = \sqrt{10^2 + (62.5)^2} = \sqrt{4006.25} \approx 63.29\text{ m/s}^2 \quad (\approx 6.45g) \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ب) سرعة المرور بالنقطة B :</h4>
+          <p class="doc-p">الزاوية $\alpha = 30^\circ = \frac{\pi}{6}\text{ rad}$. طول القوس المقطوع : $s = R \alpha = 250 \times \frac{\pi}{6} \approx 130.90\text{ m}$ :</p>
+          <div class="math-block">
+            \[ v_B^2 - v_A^2 = 2 a_t s \implies v_B = \sqrt{125^2 + 2(10)(130.90)} = \sqrt{15625 + 2617.99} \approx 135.07\text{ m/s} \]
+            \[ v_B = 135.07 \times 3.6 \approx 486.24\text{ km/h} \]
+          </div>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex12">
+
+      <div class="ex-title"><span>EX 12 : </span>حركة عقرب الدقائق في الساعة (Horloge)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Grande aiguille de longueur $L = 25\text{ cm} = 0.25\text{ m}$.<br>
+        a) Durée d'un tour en secondes.<br>
+        b) Distance parcourue par son extrémité en un tour.<br>
+        c) Nature du mouvement et norme de la vitesse instantanée.<br>
+        d) Tracer le vecteur vitesse à 8h, 8h15min, 8h50min.
+      </div>
+
+      <div class="solution-step space-y-4">
+        <div>
+          <h4 class="text-accent">أ و ب و ج) الدور، المسافة، وطبيعة الحركة :</h4>
+          <p class="doc-p">
+            • <strong>الدور :</strong> عقرب الدقائق يدور دورة كاملة في ساعة واحدة : $T = 3600\text{ s}$.<br>
+            • <strong>المسافة :</strong> محيط الدائرة $d = 2\pi L = 2\pi(0.25) = 0.5\pi \approx 1.571\text{ m} = 157.08\text{ cm}$.<br>
+            • <strong>طبيعة الحركة :</strong> حركة دائرية منتظمة (MCU) لأن السرعة الزاوية ثابتة $\omega = \frac{2\pi}{3600} = \frac{\pi}{1800}\text{ rad/s}$.<br>
+            • <strong>السرعة الخطية :</strong> $v = \omega L = \frac{0.25\pi}{1800} \approx 4.363 \times 10^{-4}\text{ m/s} = 0.436\text{ mm/s} = 2.618\text{ cm/min}$.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-accent">د) اتجاه شعاع السرعة في الأوقات المحددة :</h4>
+          <p class="doc-p">شعاع السرعة مماس للمسار الدائري وموجه دوماً في اتجاه عقارب الساعة :</p>
+          <ul class="list-disc list-inside space-y-1 doc-sub text-sm">
+            <li><strong>عند الساعة 8:00 :</strong> العقرب يشير شاقولياً للأعلى (عند الرقم 12)، فشعاع السرعة أفقي نحو اليمين : $\vec{v} = v\vec{i}$.</li>
+            <li><strong>عند الساعة 8:15 :</strong> العقرب يشير أفقياً لليمين (عند الرقم 3)، فشعاع السرعة شاقولي نحو الأسفل : $\vec{v} = -v\vec{j}$.</li>
+            <li><strong>عند الساعة 8:50 :</strong> العقرب يشير للرقم 10 (زاوية $150^\circ$)، فشعاع السرعة يصنع زاوية $-30^\circ$ مع الأفقي : $\vec{v} = v\left(\frac{\sqrt{3}}{2}\vec{i} - \frac{1}{2}\vec{j}\right)$.</li>
+          </ul>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex13">
+
+      <div class="ex-title"><span>EX 13 : </span>سباق المطاردة بين دراجين (Cyclistes)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Piste circulaire de rayon $R = 63.6\text{ m}$, longueur $l = 5\text{ km} = 5000\text{ m}$. Vitesse de $C_2$ : $V_2 = 14.0\text{ m/s}$. À chaque tour $C_2$ prend une avance de $5.0\text{ m}$ sur $C_1$. Déterminer les durées, distances et vitesses respectives.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">محيط دورة المضمار : $P = 2\pi R = 2\pi(63.6) \approx 399.61\text{ m} \approx 400\text{ m}$.</p>
+        <p class="doc-p">زمن دورة واحدة للدراج $C_2$ : $T_2 = \frac{P}{V_2} = \frac{400}{14} = 28.57\text{ s}$.</p>
+        <p class="doc-p">خلال هذا الزمن يقطع الدراج $C_1$ مسافة أقل بـ $5\text{ m}$ أي $395\text{ m}$، فتكون سرعته :</p>
+        <div class="math-block">
+          \[ V_1 = \frac{395}{T_2} = 14.0 \times \frac{395}{400} = 13.825\text{ m/s} \]
+        </div>
+        <p class="doc-p">زمن دورة كاملة للدراج $C_1$ : $T_1 = \frac{400}{13.825} \approx 28.93\text{ s}$.</p>
+        <div class="result-badge text-center">
+          سرعة $C_1$ : $V_1 = 13.825\text{ m/s}$ • زمن دورة $C_1$ : $T_1 = 28.93\text{ s}$ • فارق الزمن في الدورة : $\Delta T = 0.36\text{ s}$
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex14">
+
+      <div class="ex-title"><span>EX 14 : </span>معادلة السرعة والموضع غير الخطية (Relation vitesse-position)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Un mobile décrit la partie positive de l'axe $(Ox)$ avec une loi $x = c v^2$ ($c > 0$). Le point part de l'origine à $t = 0$. Déterminer la loi horaire $x(t)$.
+      </div>
+
+      <div class="solution-step">
+        <p class="doc-p">بما أن $x(t)$ دالة متزايدة مع الزمن، فإن السرعة موجبة $v > 0$ :</p>
+        <div class="math-block">
+          \[ v = \frac{dx}{dt} = \sqrt{\frac{x}{c}} = \frac{1}{\sqrt{c}} x^{1/2} \implies \frac{dx}{x^{1/2}} = \frac{1}{\sqrt{c}} dt \]
+        </div>
+        <p class="doc-p">بالمكاملة المباشرة بين $0$ و $t$ مع الشروط الابتدائية $x(0) = 0$ :</p>
+        <div class="math-block">
+          \[ \int_0^x x^{-1/2} dx = \int_0^t \frac{1}{\sqrt{c}} dt \implies 2\sqrt{x} = \frac{t}{\sqrt{c}} \implies \sqrt{x} = \frac{t}{2\sqrt{c}} \]
+        </div>
+        <div class="result-badge text-center">
+          \[ x(t) = \frac{t^2}{4c} \quad \text{حركة مستقيمة متسارعة بانتظام بتسارع ثابت } a = \frac{1}{2c} \]
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex15">
+
+      <div class="ex-title"><span>EX 15 : </span>مطاردة بحرية بين سفينتين (Poursuite en mer)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Deux navires A et B sur le même méridien, A au nord de B à distance $d_0$. A navigue vers l'est à vitesse $V_A$, B vers le nord à vitesse $V_B$.<br>
+        a) Distance minimale entre A et B.<br>
+        b) Direction que B doit prendre pour intercepter A en MRU.<br>
+        c) Durée de la poursuite.
+      </div>
+
+      <div class="solution-step space-y-4">
+        <div>
+          <h4 class="text-accent">أ) المسافة الدنيا بين السفينتين في حركتيهما الابتدائيتين :</h4>
+          <p class="doc-p">في معلم متعامد مبدؤه الموضع الابتدائي لـ B : $x_B = 0, y_B = V_B t$ و $x_A = V_A t, y_A = d_0$. مربع المسافة النسبية :</p>
+          <div class="math-block">
+            \[ D^2(t) = (V_A t)^2 + (d_0 - V_B t)^2 = (V_A^2 + V_B^2)t^2 - 2d_0 V_B t + d_0^2 \]
+            \[ \frac{d(D^2)}{dt} = 0 \implies t_{\min} = \frac{d_0 V_B}{V_A^2 + V_B^2} \implies D_{\min} = d_0 \frac{V_A}{\sqrt{V_A^2 + V_B^2}} \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ب و ج) زاوية وزمن المطاردة لاعتراض السفينة A :</h4>
+          <p class="doc-p">إذا وجهت السفينة B مسارها بزاوية $\theta$ نحو الشرق بالنسبة للشمال : شرط الالتقاء عند الزمن $T$ هو تطابق الإحداثيات :</p>
+          <div class="math-block">
+            \[ x_B(T) = x_A(T) \implies V_B \sin\theta \cdot T = V_A T \implies \sin\theta = \frac{V_A}{V_B} \quad (\text{شرط } V_B > V_A) \]
+            \[ y_B(T) = y_A(T) \implies V_B \cos\theta \cdot T = d_0 \implies T = \frac{d_0}{\sqrt{V_B^2 - V_A^2}} \]
+          </div>
+        </div>
+      </div>
+    
+</div>
+<div class="ex-block" id="ex16">
+
+      <div class="ex-title"><span>EX 16 : </span>نظام ذراع التوصيل والمرفق (Système Bielle-Manivelle)</div>
+      </div>
+
+      <div class="problem-text">
+        <strong>Énoncé :</strong> Manivelle $OA$ tourne à $\omega = 10\text{ s}^{-1}$ constante. $OA = AB = L = 80\text{ cm} = 0.8\text{ m}$. Initialement le coulisseau B est à l'extrême droite.<br>
+        Trouver l'équation du mouvement et la trajectoire du point médian M de la bielle, l'équation du coulisseau B, ainsi que leurs vitesses en fonction du temps.
+      </div>
+
+      <!-- رسم هندسي توضيحي متطور لنظام ذراع التوصيل والكرنك -->
+      <div class="diagram-box">
+        <svg width="340" height="150" viewBox="0 0 340 150">
+          <!-- محور الانزلاق -->
+          <line x1="20" y1="110" x2="320" y2="110" stroke="#374151" stroke-width="2" stroke-dasharray="5,5" />
+          <!-- المبدأ O -->
+          <circle cx="50" cy="110" r="6" fill="#10b981" />
+          <text x="45" y="130" fill="#9ca3af" font-size="12">O</text>
+          <!-- الكرنك OA -->
+          <line x1="50" y1="110" x2="120" y2="40" stroke="#10b981" stroke-width="4" />
+          <circle cx="120" cy="40" r="5" fill="#34d399" />
+          <text x="115" y="30" fill="#34d399" font-size="12" font-weight="bold">A</text>
+          <!-- ذراع التوصيل AB -->
+          <line x1="120" y1="40" x2="260" y2="110" stroke="#38bdf8" stroke-width="4" />
+          <!-- النقطة M في المنتصف -->
+          <circle cx="190" cy="75" r="5" fill="#f59e0b" />
+          <text x="195" y="70" fill="#f59e0b" font-size="12" font-weight="bold">M (Milieu)</text>
+          <!-- المزلقة B -->
+          <rect x="245" y="98" width="30" height="24" rx="3" fill="#f8fafc" stroke="#38bdf8" stroke-width="2" />
+          <circle cx="260" cy="110" r="4" fill="#ffffff" />
+          <text x="260" y="135" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">B</text>
+          <!-- زاوية الدوران theta -->
+          <path d="M 80 110 A 30 30 0 0 0 71 89" fill="none" stroke="#10b981" stroke-width="2" />
+          <text x="85" y="95" fill="#10b981" font-size="11">θ=ωt</text>
+        </svg>
+      </div>
+
+      <div class="solution-step space-y-4">
+        <div>
+          <h4 class="text-accent">أ) معادلة حركة وسرعة المزلقة B (Coulisseau) :</h4>
+          <p class="doc-p">بما أن $OA = AB = L = 0.8\text{ m}$، والمثلث متساوي الساقين، وإحداثيات A هي $(L\cos\omega t, L\sin\omega t)$، فإن موضع B على المحور الأفقي هو :</p>
+          <div class="math-block">
+            \[ x_B(t) = 2L \cos(\omega t) = 1.6 \cos(10t)\text{ (m)} \]
+            \[ v_B(t) = \dot{x}_B(t) = -2L\omega \sin(\omega t) = -16 \sin(10t)\text{ (m/s)} \]
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ب) إحداثيات ومسار النقطة الوسطى M للذراع AB :</h4>
+          <p class="doc-p">إحداثيات منتصف القطعة المستقيمة AB :</p>
+          <div class="math-block">
+            \[ x_M = \frac{x_A + x_B}{2} = \frac{3}{2}L \cos(10t) = 1.2 \cos(10t)\text{ (m)} \]
+            \[ y_M = \frac{y_A + y_B}{2} = \frac{1}{2}L \sin(10t) = 0.4 \sin(10t)\text{ (m)} \]
+          </div>
+          <p class="doc-p">بحذف الزمن بواسطة $\cos^2(10t) + \sin^2(10t) = 1$ ينتج مسار النقطة M :</p>
+          <div class="result-badge text-center">
+            \[ \frac{x_M^2}{(1.2)^2} + \frac{y_M^2}{(0.4)^2} = 1 \iff \frac{x_M^2}{1.44} + \frac{y_M^2}{0.16} = 1 \]
+            مسار النقطة M هو <strong>قطع ناقص (Ellipse)</strong> نصف قطره الكبير $a = 1.2\text{ m}$ ونصف قطره الصغير $b = 0.4\text{ m}$.
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-accent">ج) سرعة النقطة M كدالة للزمن :</h4>
+          <div class="math-block">
+            \[ \vec{v}_M(t) = \dot{x}_M \vec{i} + \dot{y}_M \vec{j} = -12 \sin(10t)\vec{i} + 4 \cos(10t)\vec{j}\text{ (m/s)} \]
+            \[ \|\vec{v}_M(t)\| = \sqrt{144\sin^2(10t) + 16\cos^2(10t)} = 4\sqrt{9\sin^2(10t) + \cos^2(10t)}\text{ (m/s)} \]
+          </div>
+        </div>
+      </div>
+    
+</div>
+  </main>
+</body>
+</html>

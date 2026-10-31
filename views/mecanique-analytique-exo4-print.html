@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>حل شامل: تمرين 4 - هبوط الطائرة (حركية الجسم الصلب) - Université Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 12mm 12mm 12mm;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    }
+    body {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      font-size: 11.5px;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    
+    mjx-container {
+      direction: ltr !important;
+      color: #000000 !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) {
+      display: inline-block !important;
+      vertical-align: -0.2em !important;
+      margin: 0 2px !important;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 0.5rem 0 !important;
+    }
+    mjx-container svg {
+      display: inline !important;
+    }
+
+    .header-box {
+      border: 1.5px solid #0f172a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      background: #f8fafc;
+    }
+    .header-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .header-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #334155;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 4px;
+      margin-top: 4px;
+    }
+
+    .section-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0f172a;
+      background: #f1f5f9;
+      border-right: 4px solid #0f172a;
+      padding: 4px 8px;
+      margin: 10px 0 6px 0;
+    }
+
+    .math-box {
+      direction: ltr !important;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 6px 0;
+      font-size: 12px;
+      page-break-inside: avoid;
+    }
+    .boxed {
+      display: inline-block;
+      border: 1.5px solid #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      margin: 6px 0;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 8px;
+      text-align: right;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+      page-break-inside: avoid;
+    }
+    .card-sm {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+    .card-sm-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 3px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 3px 0;
+    }
+    ul {
+      margin: 3px 0;
+      padding-right: 18px;
+    }
+    li {
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-box">
+    <div class="header-title">حل نموذجي: تمرين 4 - هبوط الطائرة وحركية الجسم الصلب (Cinématique du solide)</div>
+    <div class="header-sub">
+      <span>جامعة باتنة 2 • كلية التكنولوجيا • قسم الهندسة الميكانيكية</span>
+      <span>مقياس: الميكانيك التحليلي • السنة الثالثة لسانس (L3 CM)</span>
+    </div>
+  </div>
+
+  <!-- 1. المعطيات -->
+  <div class="section-title">1. نص التمرين والمعطيات الرسمية (Énoncé et Données)</div>
+  <p>« Un avion atterrit avec une vitesse de $300\text{ km/h}$ sur une piste de longueur $1200\text{ m}$. Le mouvement est supposé rectiligne uniformément décéléré. Déterminer la décélération de l'appareil et la durée totale de l'atterrissage. »</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>المقدار الفيزيائي</th>
+        <th>الرمز</th>
+        <th>القيمة المعطاة</th>
+        <th>التحويل للنظام الدولي ($SI$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>السرعة الابتدائية (عند بداية المدرج)</td>
+        <td>$V_0$ أو $V_1$</td>
+        <td>$300\text{ km/h}$</td>
+        <td><strong>$V_0 = \frac{300}{3.6} = \frac{250}{3} \approx 83.33\text{ m/s}$</strong></td>
+      </tr>
+      <tr>
+        <td>السرعة النهائية (عند التوقف التام)</td>
+        <td>$V_f$ أو $V_2$</td>
+        <td>توقف تام</td>
+        <td><strong>$V_f = 0\text{ m/s}$</strong></td>
+      </tr>
+      <tr>
+        <td>مسافة الهبوط المقطوعة</td>
+        <td>$x$ أو $x_B$</td>
+        <td>$1200\text{ m}$</td>
+        <td><strong>$x = 1200\text{ m} = 1.2\text{ km}$</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 2. جدول المقارنة -->
+  <div class="section-title">2. ملخص القوانين الحركية (جدول السبورة المقارن)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>نوع الحركة</th>
+        <th>الحركة الانسحابية المستقيمة</th>
+        <th>الحركة الدورانية</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>حركة منتظمة</strong></td>
+        <td>$a = 0$ ، $V = \text{cte}$ ، $x(t) = V \cdot t + x_0$</td>
+        <td>$\varepsilon = 0$ ، $\omega = \text{cte}$ ، $\theta(t) = \omega \cdot t + \theta_0$</td>
+      </tr>
+      <tr>
+        <td><strong>حركة متغيرة بانتظام</strong></td>
+        <td>
+          $a = \text{cte}$ ، $V(t) = a \cdot t + V_0$ ، $x(t) = \frac{1}{2} a t^2 + V_0 t + x_0$<br>
+          <strong>العلاقة المستقلة عن الزمن:</strong> $2 a (x - x_0) = V^2 - V_0^2$
+        </td>
+        <td>
+          $\varepsilon = \text{cte}$ ، $\omega(t) = \varepsilon \cdot t + \omega_0$ ، $\theta(t) = \frac{1}{2} \varepsilon t^2 + \omega_0 t + \theta_0$<br>
+          <strong>العلاقة المستقلة عن الزمن:</strong> $2 \varepsilon (\theta - \theta_0) = \omega^2 - \omega_0^2$
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 3. طرق البرهان -->
+  <div class="section-title">3. طرق برهان العلاقة المستقلة عن الزمن واستنتاج عبارة التسارع ($a$)</div>
+  
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">الطريقة 1: استخراج الزمن $t$ (طريقة السبورة 1)</div>
+      <p>من معادلة السرعة عند التوقف ($V_B = 0$):</p>
+      <div class="math-box">$$V_B = a \cdot t + V_0 = 0 \implies t = -\frac{V_0}{a}$$</div>
+      <p>نعوض في معادلة الفاصلة $x_B = \frac{1}{2} a t^2 + V_0 t$:</p>
+      <div class="math-box">$$x_B = \frac{a}{2}\left(-\frac{V_0}{a}\right)^2 + V_0\left(-\frac{V_0}{a}\right) = -\frac{V_0^2}{2a}$$</div>
+      <div class="math-box"><span class="boxed">$$a = -\frac{V_0^2}{2x_B}$$</span></div>
+    </div>
+
+    <div class="card-sm">
+      <div class="card-sm-title">الطريقة 2: الفرق بين موضعين (طريقة السبورة 2)</div>
+      <p>باعتبار $x = \frac{a}{2} t^2$ مع $t = \frac{V}{a}$:</p>
+      <div class="math-box">$$x_1 = \frac{V_1^2}{2a} \quad , \quad x_2 = \frac{V_2^2}{2a}$$</div>
+      <p>بطرح المعادلتين ($x_2 - x_1$) وضرب الطرفين في $2a$:</p>
+      <div class="math-box"><span class="boxed">$$2 \cdot a \cdot x = V_2^2 - V_1^2$$</span></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">الطريقة 3: استخراج السرعة الابتدائية $V_0$</div>
+      <p>من $V_f = 0 \implies V_0 = -a \cdot t$، نعوض في الفاصلة:</p>
+      <div class="math-box">$$x = \frac{1}{2} a t^2 + (-a t) t = -\frac{1}{2} a t^2$$</div>
+      <p>نضرب في $2a$: $2ax = -(at)^2 = -V_0^2 \implies a = -\frac{V_0^2}{2x}$</p>
+    </div>
+
+    <div class="card-sm">
+      <div class="card-sm-title">الطريقة 4: السرعة المتوسطة $V_{\text{moy}}$</div>
+      <p>المسافة = السرعة المتوسطة $\times$ الزمن:</p>
+      <div class="math-box">$$x = \left(\frac{V_2 + V_1}{2}\right) \times \left(\frac{V_2 - V_1}{a}\right) = \frac{V_2^2 - V_1^2}{2a}$$</div>
+      <div class="math-box"><span class="boxed">$$2 \cdot a \cdot x = V_2^2 - V_1^2$$</span></div>
+    </div>
+  </div>
+
+  <div class="card-sm" style="margin-top: 6px;">
+    <div class="card-sm-title">الطريقة 5: البرهان التحليلي بالتكامل المباشر (طريقة الميكانيك التحليلي)</div>
+    <p>باستخدام قاعدة السلسلة: $a = \frac{\mathrm{d}V}{\mathrm{d}t} = \frac{\mathrm{d}V}{\mathrm{d}x} \cdot \frac{\mathrm{d}x}{\mathrm{d}t} = V \cdot \frac{\mathrm{d}V}{\mathrm{d}x} \implies a\,\mathrm{d}x = V\,\mathrm{d}V$</p>
+    <div class="math-box">$$\int_{x_1}^{x_2} a\,\mathrm{d}x = \int_{V_1}^{V_2} V\,\mathrm{d}V \implies a(x_2 - x_1) = \frac{1}{2}(V_2^2 - V_1^2) \implies 2 \cdot a \cdot x = V_2^2 - V_1^2$$</div>
+  </div>
+
+  <!-- 4. التطبيق العددي للتسارع -->
+  <div class="section-title">4. الشطر الأول: التطبيق العددي لحساب تباطؤ الطائرة ($a$)</div>
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">الحساب بالنظام الدولي ($SI$)</div>
+      <p>$V_0 = \frac{250}{3} \approx 83.333\text{ m/s}$ ، $V_2 = 0$ ، $x = 1200\text{ m}$</p>
+      <div class="math-box">$$a = -\frac{(83.333)^2}{2 \times 1200} = -\frac{6944.44}{2400} \approx -2.8935\text{ m/s}^2$$</div>
+      <p><strong>التسارع الجبري:</strong> $a = -2.89\text{ m/s}^2$ | <strong>التباطؤ:</strong> $|a| = 2.89\text{ m/s}^2$</p>
+    </div>
+
+    <div class="card-sm">
+      <div class="card-sm-title">الحساب بوحدات السبورة ($\text{km/h}^2$)</div>
+      <p>$V_1 = 300\text{ km/h}$ ، $V_2 = 0$ ، $x_B = 1.2\text{ km}$</p>
+      <div class="math-box">$$a = -\frac{300^2}{2 \times 1.2} = -\frac{90000}{2.4} = -37500\text{ km/h}^2$$</div>
+      <p><strong>التحويل:</strong> $-37500 \times \frac{1000}{3600^2} = -2.8935\text{ m/s}^2$</p>
+    </div>
+  </div>
+
+  <!-- 5. حساب الزمن -->
+  <div class="section-title">5. الشطر الثاني: حساب المدة الزمنية الكلية للهبوط ($t$)</div>
+  <p>من معادلة السرعة: $V(t) = a \cdot t + V_0 = 0 \implies t = -\frac{V_0}{a} = \frac{2x}{V_0}$</p>
+  <table>
+    <thead>
+      <tr>
+        <th>الوحدة الزمنية</th>
+        <th>طريقة الحساب</th>
+        <th>النتيجة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>بالثواني ($s$)</strong> (النظام الدولي)</td>
+        <td>$t = \frac{83.333}{2.8935} = \frac{2 \times 1200}{250/3}$</td>
+        <td><strong>$t = 28.80\text{ s}$</strong></td>
+      </tr>
+      <tr>
+        <td><strong>بالساعات ($h$)</strong> (حساب السبورة)</td>
+        <td>$t = \frac{300}{37500} = \frac{2 \times 1.2}{300}$</td>
+        <td><strong>$t = 0.008\text{ h}$</strong></td>
+      </tr>
+      <tr>
+        <td><strong>بالدقائق ($min$)</strong></td>
+        <td>$t = 0.008 \times 60$</td>
+        <td><strong>$t = 0.48\text{ min}$</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 6. الصياغة بالفرنسية -->
+  <div class="section-title">6. الصياغة النموذجية باللغة الفرنسية (Solution de l'exercice 4)</div>
+  <div style="direction: ltr; text-align: left; font-size: 10.5px; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 4px; background: #fafafa;">
+    <p><strong>1. Données :</strong> $V_0 = 300\text{ km/h} = \frac{250}{3} \approx 83.33\text{ m/s}$, $V_f = 0$, $x = 1200\text{ m}$.</p>
+    <p><strong>2. Décélération ($a$) :</strong> Relation indépendante du temps : $V_f^2 - V_0^2 = 2 a x \implies a = -\frac{V_0^2}{2x}$.</p>
+    <p>&bull; $a = -\frac{(83.33)^2}{2 \times 1200} \approx -2.89\text{ m/s}^2$ (décélération de $2.89\text{ m/s}^2$). En unités usuelles : $a = -37500\text{ km/h}^2$.</p>
+    <p><strong>3. Durée de l'atterrissage ($t$) :</strong> $t = -\frac{V_0}{a} = \frac{2x}{V_0} = \frac{83.33}{2.8935} = 28.80\text{ s} = 0.008\text{ h}$.</p>
+  </div>
+
+</body>
+</html>

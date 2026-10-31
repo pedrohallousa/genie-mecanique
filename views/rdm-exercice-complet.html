@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرين نموذجي شامل في مقاومة المواد: قوة مائلة وحمولة موزعة ومخططات | المنصة الأكاديمية Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: { matchFontHeight: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      font-size: clamp(14.5px, 0.92rem + 0.35vw, 16.8px);
+    }
+    body, h1, h2, h3, h4, p, span, button, a, nav, footer, div:not(.mjx-chtml):not(.MathJax) {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0c1210;
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+    }
+    .math-block, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      color: #34d399 !important;
+    }
+    .bento-card, .card, .section-card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .problem-box, .highlight-box, .rule-box {
+      background-color: #0d1612 !important;
+      border-right: 4px solid #10b981 !important;
+      border-left: none !important;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    h2, .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      border-bottom: 1px solid #23382f;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #34d399;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: #101814;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th {
+      background-color: #172820 !important;
+      color: #34d399 !important;
+      font-weight: 700;
+      padding: 12px;
+      text-align: right;
+      border-bottom: 1px solid #23382f;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #1c2c24;
+      color: #cbd5e1;
+    }
+    tr:nth-child(even) {
+      background-color: #0b1410;
+    }
+    .diagram-container, .diagram-box {
+      background: #0a110e !important;
+      border: 1px solid #23382f !important;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    /* إصلاح محاذاة الرياضيات ومنع انكسار السطور نهائياً */
+    mjx-container[jax="SVG"] {
+      direction: ltr !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) {
+      display: inline-block !important;
+      line-height: normal !important;
+      margin: 0 0.25em !important;
+      vertical-align: -0.15em !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) > svg {
+      display: inline !important;
+      margin: 0 !important;
+      vertical-align: baseline !important;
+      max-width: none !important;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1em auto !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+    }
+    mjx-container svg {
+      display: inline !important;
+    }
+
+    /* ضمان مظهر البطاقات الموحد الفخم لجميع الأقسام */
+    section, article, .bento-card, .card, .section-card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    .math-block, .math-box, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      color: #34d399 !important;
+    }
+
+  </style>
+</head>
+<body class="selection:bg-[#10b981] selection:text-black">
+
+  <!-- شريط التحكم العلوي -->
+  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-[#23382f]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <a href="../modules/rdm.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emeraldTag hover:text-white transition-colors bg-emeraldPrimary/15 border border-emeraldPrimary/30 px-3 py-1.5 rounded-lg">
+          <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+          <span>العودة إلى (مقاومة المواد)</span>
+        </a>
+        <a href="../index.html" class="hidden sm:inline-block text-xs text-textMuted hover:text-white transition-colors" title="المنصة الرئيسية">
+          الرئيسية
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-2 text-xs text-[#cbd5e1]">
+        <span class="px-2.5 py-0.5 rounded bg-[#10b981]/15 text-[#34d399] font-bold">Résistance des Matériaux</span>
+        <span>Département de Génie Mécanique • L3 CM</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-[#131b17] hover:bg-[#23382f] text-xs sm:text-sm font-semibold text-[#f8fafc] border border-[#23382f] transition-colors flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span class="hidden sm:inline">طباعة</span>
+        </button>
+
+        <a href="../lessons/rdm-exercice-complet.pdf" download class="px-4 py-1.5 rounded-lg bg-[#10b981] hover:bg-[#059669] text-black text-xs sm:text-sm font-bold transition-colors flex items-center gap-1.5 shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>تحميل PDF</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+
+    <!-- بطاقة الترويسة الأكاديمية التفاعلية -->
+    <header class="bento-card rounded-2xl p-6 sm:p-10 relative overflow-hidden mb-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#23382f] pb-6 mb-6">
+        <div>
+          <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Université Batna 2 • Mostapha Benboulaid</div>
+          <div class="text-xs sm:text-sm text-[#cbd5e1] font-semibold">كلية التكنولوجيا • قسم الهندسة الميكانيكية • Licence 3 CM</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#10b981]/15 text-[#34d399] border border-[#10b981]/30">Résistance des Matériaux</span>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-3">
+          تمرين نموذجي شامل في مقاومة المواد: قوة مائلة وحمولة موزعة ومخططات
+        </h1>
+        <h2 class="text-sm sm:text-base text-[#cbd5e1] font-medium leading-relaxed" dir="ltr" style="text-align: right;">
+          Exercice Complet RDM : Charge inclinée, charge répartie & dimensionnement
+        </h2>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-[#23382f] flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-[#cbd5e1]">
+        <div class="flex items-center gap-3">
+          <span><strong class="text-white">الإشراف:</strong> Département de Génie Mécanique • L3 CM</span>
+        </div>
+        <div class="flex items-center gap-2 text-[#34d399] font-semibold text-xs sm:text-sm">
+          <span>✓ محتوى تدريسي معتمد</span>
+          <span>•</span>
+          <span>✓ صياغة رياضية متجهة SVG كاملة</span>
+        </div>
+      </div>
+    </header>
+
+<!-- SECTION 1: ÉNONCÉ -->
+    <div class="card">
+        <h2>نص المسألة (Énoncé de l'exercice)</h2>
+        <p>نعتبر عارضة مستقيمة ذات مقطع ثابت بطول إجمالي \( L = 6\text{ m} \)، ترتكز على مسندين:</p>
+        <ul style="margin: 10px 25px;">
+            <li><strong>المسند \( A \) (في \( x = 0\text{ m} \)):</strong> مسند مضاعف / مفصل أملس (Appui double / Articulation).</li>
+            <li><strong>المسند \( B \) (في \( x = 6\text{ m} \)):</strong> مسند بسيط / أسطوانة ارتكاز (Appui simple / Rouleau).</li>
+        </ul>
+        <p>تخضع العارضة لمنظومة الأحمال التالية:</p>
+        <ol style="margin: 10px 25px;">
+            <li><strong>قوة مركزة مائلة \( F = 25\text{ kN} \)</strong> مطبقة في النقطة \( C \) (\( x = 2\text{ m} \)) تميل عن الأفق بزاوية \( \alpha \) بحيث:
+                \( \cos\alpha = 0.6 \) و \( \sin\alpha = 0.8 \) (موجهة نحو الأسفل واليمين).
+            </li>
+            <li><strong>حمولة موزعة بانتظام \( q = 10\text{ kN/m} \)</strong> على المجال \( [C, D] \) من \( x = 2\text{ m} \) إلى \( x = 4\text{ m} \).</li>
+            <li><strong>عزم مركز \( M_0 = 20\text{ kN}\cdot\text{m} \)</strong> مطبق عند المقطع \( D \) (\( x = 4\text{ m} \)) في اتجاه عقارب الساعة.</li>
+        </ol>
+
+        <div class="diagram-container">
+            <!-- SVG: SCHÉMA MÉCANIQUE DE LA POUTRE -->
+            <svg viewBox="0 0 750 210" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grille et cote générale -->
+                <line x1="75" y1="180" x2="675" y2="180" stroke="#64748b" stroke-width="1.5" marker-start="url(#dot)" marker-end="url(#dot)"/>
+                <text x="375" y="195" font-size="12" fill="#334155" text-anchor="middle">L = 6.0 m</text>
+                
+                <!-- Cotes partielles -->
+                <line x1="75" y1="30" x2="275" y2="30" stroke="#94a3b8" stroke-width="1"/>
+                <text x="175" y="25" font-size="11" fill="#475569" text-anchor="middle">2.0 m</text>
+                <line x1="275" y1="30" x2="475" y2="30" stroke="#94a3b8" stroke-width="1"/>
+                <text x="375" y="25" font-size="11" fill="#475569" text-anchor="middle">2.0 m</text>
+                <line x1="475" y1="30" x2="675" y2="30" stroke="#94a3b8" stroke-width="1"/>
+                <text x="575" y="25" font-size="11" fill="#475569" text-anchor="middle">2.0 m</text>
+
+                <!-- Poutre physique -->
+                <rect x="75" y="90" width="600" height="14" fill="#334155" rx="2"/>
+
+                <!-- Appui Double A (x = 75) -->
+                <polygon points="75,104 60,132 90,132" fill="#2563eb"/>
+                <line x1="52" y1="132" x2="98" y2="132" stroke="#1e293b" stroke-width="3"/>
+                <text x="75" y="148" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">A</text>
+
+                <!-- Appui Simple B (x = 675) -->
+                <polygon points="675,104 660,126 690,126" fill="#0284c7"/>
+                <circle cx="667" cy="130" r="3.5" fill="#0284c7"/>
+                <circle cx="683" cy="130" r="3.5" fill="#0284c7"/>
+                <line x1="652" y1="135" x2="698" y2="135" stroke="#1e293b" stroke-width="3"/>
+                <text x="675" y="152" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">B</text>
+
+                <!-- Charge inclinée F en C (x = 275) -->
+                <line x1="225" y1="45" x2="275" y2="90" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+                <text x="235" y="42" font-size="12" font-weight="bold" fill="#dc2626">F = 25 kN (α)</text>
+                <text x="275" y="125" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">C</text>
+
+                <!-- Charge répartie q sur [C, D] (x=275 à 475) -->
+                <rect x="275" y="65" width="200" height="25" fill="rgba(245, 158, 11, 0.25)" stroke="#d97706" stroke-dasharray="3,3"/>
+                <!-- Flèches de charge répartie -->
+                <line x1="300" y1="65" x2="300" y2="88" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+                <line x1="340" y1="65" x2="340" y2="88" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+                <line x1="375" y1="65" x2="375" y2="88" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+                <line x1="410" y1="65" x2="410" y2="88" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+                <line x1="450" y1="65" x2="450" y2="88" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+                <text x="375" y="60" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">q = 10 kN/m</text>
+
+                <!-- Moment concentré M0 en D (x = 475) -->
+                <path d="M 455,80 A 25 25 0 1 1 490,95" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#arrow-purple)"/>
+                <text x="505" y="75" font-size="12" font-weight="bold" fill="#7c3aed">M₀ = 20 kN·m</text>
+                <text x="475" y="125" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">D</text>
+
+                <!-- Marqueurs -->
+                <defs>
+                    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+                        <polygon points="0 0, 6 3, 0 6" fill="#dc2626"/>
+                    </marker>
+                    <marker id="arrow-orange" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                        <polygon points="0 0, 6 3, 0 6" fill="#d97706"/>
+                    </marker>
+                    <marker id="arrow-purple" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto">
+                        <polygon points="0 0, 6 3, 0 6" fill="#7c3aed"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+
+        <p><strong>المطلوب:</strong></p>
+        <ol style="margin-right: 25px;">
+            <li>تحليل القوة المائلة وحساب ردود أفعال المساند في \( A \) و \( B \).</li>
+            <li>كتابة المعادلات التحليلية للجهود الداخلية: الجهد الناظمي \( N(x) \)، الجهد القاطع \( T(x) \)، وعزم الانحناء \( M_f(x) \).</li>
+            <li>رسم المخططات البيانية للجهود الداخلية مع تحديد القيم الحدية بدقة.</li>
+            <li><strong>التحقق والمقاومة:</strong> بافتراض إجهاد مسموح به \( \sigma_{adm} = 160\text{ MPa} \)، احسب أبعاد مقطع مستطيل \( (b \times h) \) مع \( h = 2b \)، وحدد البروفايل المناسب من نوع IPE.</li>
+        </ol>
+    </div>
+
+    <!-- SECTION 2: RÉACTIONS D'APPUIS -->
+    <div class="card">
+        <h2>1. حساب ردود الأفعال عند المساند (Réactions d'appuis)</h2>
+        
+        <h3>أ) تحليل القوة المائلة \( F \) إلى مركبتين متعامدتين:</h3>
+        <p>القوة \( F \) موجهة نحو اليمين والأسفل بزاوية \( \alpha \):</p>
+        \[
+        \begin{cases}
+        F_x = F \cdot \cos\alpha = 25 \times 0.6 = 15\text{ kN} \quad (\rightarrow) \\
+        F_y = F \cdot \sin\alpha = 25 \times 0.8 = 20\text{ kN} \quad (\downarrow)
+        \end{cases}
+        \]
+
+        <h3>ب) استبدال الحمولة الموزعة بقوة نقطية مكافئة:</h3>
+        <p>الحمولة \( q \) موزعة على طول \( l = 4 - 2 = 2\text{ m} \):</p>
+        \[
+        Q = q \times 2 = 10 \times 2 = 20\text{ kN}
+        \]
+        تؤثر هذه الحمولة في مركز ثقل المجال، أي عند:
+        \[
+        x_Q = 2 + \frac{2}{2} = 3\text{ m}
+        \]
+
+        <h3>ج) تطبيق معادلات التوازن الاستاتيكي الثلاث:</h3>
+        <p>نفرض الاتجاهات الموجبة: \( (\rightarrow) \) للأفقي، \( (\uparrow) \) للشاقولي، و \( (\circlearrowleft) \) للعزوم عكس عقارب الساعة.</p>
+
+        <div class="highlight-box">
+            <strong>1. التوازن الأفقي:</strong>
+            \[
+            \sum F_x = 0 \implies R_{Ax} + F_x = 0 \implies R_{Ax} + 15 = 0 \implies R_{Ax} = -15\text{ kN}
+            \]
+            <em>(الإشارة السالبة تعني أن الاتجاه الحقيقي لـ \( R_{Ax} \) نحو اليسار \( \leftarrow \)).</em>
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. معادلة العزوم حول النقطة \( A \):</strong>
+            \[
+            \sum M_{/A} = 0 \implies -(F_y \times 2) - (Q \times 3) - M_0 + (R_{By} \times 6) = 0
+            \]
+            \[
+            -(20 \times 2) - (20 \times 3) - 20 + 6 R_{By} = 0
+            \]
+            \[
+            -40 - 60 - 20 + 6 R_{By} = 0 \implies 6 R_{By} = 120 \implies R_{By} = 20\text{ kN} \quad (\uparrow)
+            \]
+        </div>
+
+        <div class="highlight-box">
+            <strong>3. التوازن الشاقولي:</strong>
+            \[
+            \sum F_y = 0 \implies R_{Ay} - F_y - Q + R_{By} = 0
+            \]
+            \[
+            R_{Ay} - 20 - 20 + 20 = 0 \implies R_{Ay} = 20\text{ kN} \quad (\uparrow)
+            \]
+        </div>
+
+        <div class="result-box">
+            R_Ax = 15 kN (←) , \quad R_Ay = 20 kN (↑) , \quad R_By = 20 kN (↑)
+        </div>
+    </div>
+
+    <!-- SECTION 3: EFFORTS INTÉRIEURS -->
+    <div class="card">
+        <h2>2. حساب الجهود الداخلية حسب المقاطع (Efforts intérieurs)</h2>
+        <p>تنقسم العارضة بحسب نقاط تطبيق الأحمال إلى ثلاثة مجالات دراسة (\( x \) يقاس دوماً من المبدأ \( A \) نحو اليمين، ونعتمد الاتفاقية الاصطلاحية لعزل الجزء الأيسر):</p>
+
+        <!-- Tronçon 1 -->
+        <h3>المجال الأول: \( 0 \le x < 2\text{ m} \) (المقطع بين \( A \) و \( C \))</h3>
+        <p>نعزل الجزء الأيسر \( [0, x] \)، القوى المؤثرة هي فقط ردود أفعال المسند \( A \):</p>
+        \[
+        \begin{cases}
+        \sum F_x = 0 \implies -R_{Ax,\text{val}} + N(x) = 0 \implies -15 + N(x) = 0 \implies \mathbf{N(x) = +15\text{ kN}} \quad \text{(جهد شد)} \\
+        \sum F_y = 0 \implies R_{Ay} - T(x) = 0 \implies 20 - T(x) = 0 \implies \mathbf{T(x) = +20\text{ kN}} \\
+        \sum M_{/G} = 0 \implies -R_{Ay} \cdot x + M_f(x) = 0 \implies \mathbf{M_f(x) = 20 x}
+        \end{cases}
+        \]
+        <ul style="margin-right: 25px;">
+            <li>عند \( x = 0\text{ m} \): \( N = +15\text{ kN} \)، \( T = +20\text{ kN} \)، \( M_f = 0\text{ kN}\cdot\text{m} \).</li>
+            <li>عند \( x = 2^-\text{ m} \): \( N = +15\text{ kN} \)، \( T = +20\text{ kN} \)، \( M_f = 20(2) = 40\text{ kN}\cdot\text{m} \).</li>
+        </ul>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed var(--border);">
+
+        <!-- Tronçon 2 -->
+        <h3>المجال الثاني: \( 2\text{ m} < x < 4\text{ m} \) (المقطع بين \( C \) و \( D \))</h3>
+        <p>يظهر في هذا الجزء تأثير القوة \( F \) وجزء من الحمولة الموزعة على مسافة \( (x - 2) \):</p>
+        \[
+        \begin{cases}
+        \sum F_x = 0 \implies -15 + 15 + N(x) = 0 \implies \mathbf{N(x) = 0\text{ kN}} \\
+        \sum F_y = 0 \implies R_{Ay} - F_y - q(x - 2) - T(x) = 0 \implies 20 - 20 - 10(x - 2) - T(x) = 0 \\
+        \mathbf{T(x) = -10(x - 2) = -10x + 20\text{ kN}}
+        \end{cases}
+        \]
+        معادلة عزم الانحناء بأخذ العزم حول مقطع القطع \( G \):
+        \[
+        \sum M_{/G} = 0 \implies -R_{Ay}\cdot x + F_y(x - 2) + q(x - 2)\cdot\frac{x - 2}{2} + M_f(x) = 0
+        \]
+        \[
+        M_f(x) = 20x - 20(x - 2) - 5(x - 2)^2 = 40 - 5(x - 2)^2
+        \]
+        \[
+        \mathbf{M_f(x) = -5x^2 + 20x + 20}
+        \]
+        <em>ملاحظة تفاضلية:</em> \( \frac{dM_f}{dx} = -10x + 20 = T(x) \).
+        <ul style="margin-right: 25px;">
+            <li>عند \( x = 2^+\text{ m} \): \( T = 0\text{ kN} \) (انقطاع مفاجئ في \( T \) مقداره \( \Delta T = -20\text{ kN} = -F_y \))، و \( M_f = 40\text{ kN}\cdot\text{m} \).</li>
+            <li>عند \( x = 4^-\text{ m} \): \( T = -10(2) = -20\text{ kN} \)، و \( M_f = 40 - 5(2)^2 = 20\text{ kN}\cdot\text{m} \).</li>
+        </ul>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed var(--border);">
+
+        <!-- Tronçon 3 -->
+        <h3>المجال الثالث: \( 4\text{ m} < x \le 6\text{ m} \) (المقطع بين \( D \) و \( B \))</h3>
+        <p>باستعمال الجزء الأيسر وإدراج العزم المطبق \( M_0 = 20\text{ kN}\cdot\text{m} \):</p>
+        \[
+        \begin{cases}
+        \mathbf{N(x) = 0\text{ kN}} \\
+        \sum F_y = 0 \implies R_{Ay} - F_y - Q - T(x) = 0 \implies 20 - 20 - 20 - T(x) = 0 \implies \mathbf{T(x) = -20\text{ kN}}
+        \end{cases}
+        \]
+        معادلة عزم الانحناء:
+        \[
+        M_f(x) = R_{Ay}\cdot x - F_y(x - 2) - Q(x - 3) + M_0
+        \]
+        \[
+        M_f(x) = 20x - 20(x - 2) - 20(x - 3) + 20 = -20x + 120 = \mathbf{20(6 - x)}
+        \]
+        <ul style="margin-right: 25px;">
+            <li>عند \( x = 4^+\text{ m} \): \( T = -20\text{ kN} \)، و \( M_f = 20(6 - 4) = 40\text{ kN}\cdot\text{m} \).<br>
+                <em>نلاحظ قفزة موجبة في مخطط العزم عند \( D \) بمقدار \( \Delta M_f = 40 - 20 = +20\text{ kN}\cdot\text{m} = +M_0 \).</em>
+            </li>
+            <li>عند \( x = 6\text{ m} \) (المسند \( B \)): \( M_f(6) = 0\text{ kN}\cdot\text{m} \).</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 4: TABLEAU ET DIAGRAMMES -->
+    <div class="card">
+        <h2>3. جدول القيم والمخططات البيانية (Diagrammes N, T, Mf)</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>المقطع \( x \)</th>
+                    <th>\( x = 0 \)</th>
+                    <th>\( x = 2^- \)</th>
+                    <th>\( x = 2^+ \)</th>
+                    <th>\( x = 4^- \)</th>
+                    <th>\( x = 4^+ \)</th>
+                    <th>\( x = 6 \)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>\( N(x) \) [kN]</strong></td>
+                    <td style="color:var(--success)">+15</td>
+                    <td style="color:var(--success)">+15</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>\( T(x) \) [kN]</strong></td>
+                    <td style="color:var(--primary-light)">+20</td>
+                    <td style="color:var(--primary-light)">+20</td>
+                    <td>0</td>
+                    <td style="color:var(--danger)">-20</td>
+                    <td style="color:var(--danger)">-20</td>
+                    <td style="color:var(--danger)">-20</td>
+                </tr>
+                <tr>
+                    <td><strong>\( M_f(x) \) [kN·m]</strong></td>
+                    <td>0</td>
+                    <td style="font-weight:bold; color:var(--primary);">+40 (Max)</td>
+                    <td style="font-weight:bold; color:var(--primary);">+40 (Max)</td>
+                    <td>+20</td>
+                    <td style="font-weight:bold; color:var(--primary);">+40 (Max)</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- DIAGRAMMES SVG -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 750 480" xmlns="http://www.w3.org/2000/svg">
+                <!-- ================= DIAGRAMME N ================= -->
+                <text x="35" y="45" font-size="13" font-weight="bold" fill="#15803d">N [kN]</text>
+                <line x1="75" y1="45" x2="675" y2="45" stroke="#475569" stroke-width="1.5"/>
+                <!-- Aire positive N -->
+                <rect x="75" y="15" width="200" height="30" fill="rgba(21, 128, 61, 0.2)" stroke="#15803d" stroke-width="1.5"/>
+                <text x="175" y="34" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">+15 kN</text>
+                <text x="75" y="60" font-size="10" fill="#64748b" text-anchor="middle">0</text>
+                <text x="275" y="60" font-size="10" fill="#64748b" text-anchor="middle">x=2m</text>
+                <text x="675" y="60" font-size="10" fill="#64748b" text-anchor="middle">x=6m</text>
+
+                <!-- ================= DIAGRAMME T ================= -->
+                <text x="35" y="195" font-size="13" font-weight="bold" fill="#2563eb">T [kN]</text>
+                <line x1="75" y1="195" x2="675" y2="195" stroke="#475569" stroke-width="1.5"/>
+                <!-- T positif [0, 2] -->
+                <polygon points="75,195 75,145 275,145 275,195" fill="rgba(37, 99, 235, 0.2)" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="175" y="172" font-size="12" font-weight="bold" fill="#2563eb" text-anchor="middle">+20 kN</text>
+                <!-- T négatif linéaire [2, 4] -->
+                <polygon points="275,195 475,245 475,195" fill="rgba(220, 38, 38, 0.2)" stroke="#dc2626" stroke-width="1.5"/>
+                <!-- T négatif constant [4, 6] -->
+                <polygon points="475,195 475,245 675,245 675,195" fill="rgba(220, 38, 38, 0.2)" stroke="#dc2626" stroke-width="1.5"/>
+                <text x="575" y="225" font-size="12" font-weight="bold" fill="#dc2626" text-anchor="middle">-20 kN</text>
+
+                <!-- ================= DIAGRAMME Mf ================= -->
+                <text x="30" y="375" font-size="13" font-weight="bold" fill="#7c3aed">Mf [kN·m]</text>
+                <!-- Convention des fibres inférieures tendues : Mf tracé vers le haut ou vers le bas. Ici axe standard avec valeurs positives dessinées clairement -->
+                <line x1="75" y1="440" x2="675" y2="440" stroke="#475569" stroke-width="1.5"/>
+                <!-- Forme du Mf : 0 -> 40 (droite), puis parabole de 40 à 20, saut de 20 à 40, puis droite de 40 à 0 -->
+                <path d="M 75,440 L 275,340 Q 375,340 475,390 L 475,340 L 675,440 Z" fill="rgba(124, 58, 237, 0.18)" stroke="#7c3aed" stroke-width="2"/>
+                <!-- Ligne de discontinuité à x=4 (saut) -->
+                <line x1="475" y1="390" x2="475" y2="340" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="2,2"/>
+                <text x="275" y="328" font-size="12" font-weight="bold" fill="#7c3aed" text-anchor="middle">Mf = +40</text>
+                <text x="445" y="405" font-size="11" font-weight="bold" fill="#7c3aed">+20</text>
+                <text x="495" y="335" font-size="11" font-weight="bold" fill="#7c3aed">+40</text>
+                <circle cx="275" cy="340" r="3.5" fill="#7c3aed"/>
+                <circle cx="475" cy="390" r="3.5" fill="#7c3aed"/>
+                <circle cx="475" cy="340" r="3.5" fill="#7c3aed"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- SECTION 5: DIMENSIONNEMENT -->
+    <div class="card">
+        <h2>4. حساب المقاومة واختيار المقطع (Vérification et Dimensionnement)</h2>
+        <p>العزم الأقصى الحرج على طول العارضة هو: \( M_{f\max} = 40\text{ kN}\cdot\text{m} = 40 \times 10^6\text{ N}\cdot\text{mm} \).</p>
+        <p>الإجهاد المسموح به للمادة (Acier S235 / S275 مع معامل أمان): \( \sigma_{adm} = 160\text{ MPa} = 160\text{ N/mm}^2 \).</p>
+
+        <h3>أ) تحديد المقطع الأصغري لمقاومة الانحناء (Condition de résistance):</h3>
+        \[
+        \sigma_{\max} = \frac{M_{f\max}}{W_{el,z}} \le \sigma_{adm} \implies W_{el,z} \ge \frac{M_{f\max}}{\sigma_{adm}}
+        \]
+        \[
+        W_{el,z} \ge \frac{40 \times 10^6\text{ N}\cdot\text{mm}}{160\text{ N/mm}^2} = 250\,000\text{ mm}^3 = \mathbf{250\text{ cm}^3}
+        \]
+
+        <h3>ب) الحالة 1: اختيار مقطع مجنّف موحد IPE (Profilé standard):</h3>
+        <p>بالرجوع إلى جدول مقاطع IPE القياسية:</p>
+        <ul style="margin-right: 25px;">
+            <li><strong>IPE 200:</strong> \( W_{el,z} = 194.3\text{ cm}^3 < 250\text{ cm}^3 \) <em>(غير كافٍ مرفوض)</em>.</li>
+            <li><strong>IPE 220:</strong> \( W_{el,z} = 252.0\text{ cm}^3 \ge 250\text{ cm}^3 \) <em>(يحقق الشرط بنسبة استغلال 99%)</em>.</li>
+            <li><strong>IPE 240:</strong> \( W_{el,z} = 324.3\text{ cm}^3 \) <em>(أكثر أماناً إذا أخذنا الجهد الناظمي \( N \) بعين الاعتبار)</em>.</li>
+        </ul>
+        <div class="highlight-box">
+            <strong>تحقيق إضافي للمهندس:</strong> عند المقطع \( x = 2^-\text{ m} \)، يوجد جهد شد \( N = 15\text{ kN} \) مع عزم \( M_f = 40\text{ kN}\cdot\text{m} \):<br>
+            بالنسبة لـ IPE 220 (\( A = 33.37\text{ cm}^2 \)):<br>
+            \[
+            \sigma_{total} = \frac{N}{A} + \frac{M_{f\max}}{W} = \frac{15 \times 10^3}{3337} + \frac{40 \times 10^6}{252 \times 10^3} = 4.5 + 158.7 = 163.2\text{ MPa}
+            \]
+            بما أن \( 163.2\text{ MPa} \) تتجاوز قليلاً \( 160\text{ MPa} \) بنسبة \( 2\% \)، فإن الاختيار الهندسي الأكثر رصانة للأمان هو <strong>IPE 240</strong>.
+        </div>
+
+        <h3>ج) الحالة 2: مقطع مستطيل مصمت \( (b \times h) \) مع \( h = 2b \):</h3>
+        \[
+        W_{el} = \frac{b \cdot h^2}{6} = \frac{b \cdot (2b)^2}{6} = \frac{4 b^3}{6} = \frac{2}{3} b^3
+        \]
+        بتطبيق شرط المقاومة:
+        \[
+        \frac{2}{3} b^3 \ge 250\,000\text{ mm}^3 \implies b^3 \ge 375\,000\text{ mm}^3 \implies b \ge \sqrt[3]{375\,000} \approx 72.11\text{ mm}
+        \]
+        نختار أبعاداً قياسية مصنّعة تقريبية:
+        <div class="result-box">
+            b = 75\text{ mm} \quad \text{و} \quad h = 150\text{ mm}
+        </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace) | المنصة الأكاديمية Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: { matchFontHeight: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      font-size: clamp(14.5px, 0.92rem + 0.35vw, 16.8px);
+    }
+    body, h1, h2, h3, h4, p, span, button, a, nav, footer, div:not(.mjx-chtml):not(.MathJax) {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0c1210;
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+    }
+    .math-block, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      color: #34d399 !important;
+    }
+    .bento-card, .card, .section-card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .problem-box, .highlight-box, .rule-box {
+      background-color: #0d1612 !important;
+      border-right: 4px solid #10b981 !important;
+      border-left: none !important;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    h2, .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      border-bottom: 1px solid #23382f;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #34d399;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: #101814;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th {
+      background-color: #172820 !important;
+      color: #34d399 !important;
+      font-weight: 700;
+      padding: 12px;
+      text-align: right;
+      border-bottom: 1px solid #23382f;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #1c2c24;
+      color: #cbd5e1;
+    }
+    tr:nth-child(even) {
+      background-color: #0b1410;
+    }
+    .diagram-container, .diagram-box {
+      background: #0a110e !important;
+      border: 1px solid #23382f !important;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    /* إصلاح محاذاة الرياضيات ومنع انكسار السطور نهائياً */
+    mjx-container[jax="SVG"] {
+      direction: ltr !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) {
+      display: inline-block !important;
+      line-height: normal !important;
+      margin: 0 0.25em !important;
+      vertical-align: -0.15em !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) > svg {
+      display: inline !important;
+      margin: 0 !important;
+      vertical-align: baseline !important;
+      max-width: none !important;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1em auto !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+    }
+    mjx-container svg {
+      display: inline !important;
+    }
+
+    /* ضمان مظهر البطاقات الموحد الفخم لجميع الأقسام */
+    section, article, .bento-card, .card, .section-card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    .math-block, .math-box, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      color: #34d399 !important;
+    }
+
+  </style>
+</head>
+<body class="selection:bg-[#10b981] selection:text-black">
+
+  <!-- شريط التحكم العلوي -->
+  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-[#23382f]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <a href="../modules/asservissement.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emeraldTag hover:text-white transition-colors bg-emeraldPrimary/15 border border-emeraldPrimary/30 px-3 py-1.5 rounded-lg">
+          <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+          <span>العودة إلى (التحكم والضبط الآلي)</span>
+        </a>
+        <a href="../index.html" class="hidden sm:inline-block text-xs text-textMuted hover:text-white transition-colors" title="المنصة الرئيسية">
+          الرئيسية
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-2 text-xs text-[#cbd5e1]">
+        <span class="px-2.5 py-0.5 rounded bg-[#10b981]/15 text-[#34d399] font-bold">Asservissement et Régulation</span>
+        <span>Dr. Trad Mostefa • Automatique & Génie Mécanique</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-[#131b17] hover:bg-[#23382f] text-xs sm:text-sm font-semibold text-[#f8fafc] border border-[#23382f] transition-colors flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span class="hidden sm:inline">طباعة</span>
+        </button>
+
+        <a href="../lessons/asservissement-laplace.pdf" download class="px-4 py-1.5 rounded-lg bg-[#10b981] hover:bg-[#059669] text-black text-xs sm:text-sm font-bold transition-colors flex items-center gap-1.5 shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>تحميل PDF</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+
+    <!-- بطاقة الترويسة الأكاديمية التفاعلية -->
+    <header class="bento-card rounded-2xl p-6 sm:p-10 relative overflow-hidden mb-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#23382f] pb-6 mb-6">
+        <div>
+          <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Université Batna 2 • Mostapha Benboulaid</div>
+          <div class="text-xs sm:text-sm text-[#cbd5e1] font-semibold">كلية التكنولوجيا • قسم الهندسة الميكانيكية • Licence 3 CM</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#10b981]/15 text-[#34d399] border border-[#10b981]/30">Asservissement et Régulation</span>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-3">
+          ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace)
+        </h1>
+        <h2 class="text-sm sm:text-base text-[#cbd5e1] font-medium leading-relaxed" dir="ltr" style="text-align: right;">
+          Résumé de cours et applications : Transformation de Laplace
+        </h2>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-[#23382f] flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-[#cbd5e1]">
+        <div class="flex items-center gap-3">
+          <span><strong class="text-white">الإشراف:</strong> Dr. Trad Mostefa • Automatique & Génie Mécanique</span>
+        </div>
+        <div class="flex items-center gap-2 text-[#34d399] font-semibold text-xs sm:text-sm">
+          <span>✓ محتوى تدريسي معتمد</span>
+          <span>•</span>
+          <span>✓ صياغة رياضية متجهة SVG كاملة</span>
+        </div>
+      </div>
+    </header>
+
+<!-- الترويسة والمعلومات العامة -->
+    
+
+    <!-- الجزء الأول: عموميات -->
+    <div class="section-card">
+        <h2 class="section-title">I. عموميات (Généralités)</h2>
+        
+        <h3 class="sub-title">1. التعريف (Définition)</h3>
+        <p>يُرمز لتحويل لابلاس بالرمز \(\mathcal{L}\)، ويُعرّف بأنه تحويل ينقل الدالة من المجال الزمني الحقيقي إلى المجال العقدي:</p>
+        <div class="math-block">
+            \[ f(t) \xrightarrow{\mathcal{L}} F(p), \quad \mathbb{R} \xrightarrow{\mathcal{L}} \mathbb{C} \]
+            \[ \mathcal{L}[f(t)] = F(p) = \int_{0^+}^{+\infty} f(t) e^{-pt} \, dt \]
+            \[ p \in \mathbb{C}, \quad p = \sigma + j\omega \]
+        </div>
+        
+        <div class="example-box">
+            <strong>مثال (Exemple):</strong> لتكن الدالة \( f(t) = e^{-t} \):
+            <div class="math-block">
+                \[ \mathcal{L}[e^{-t}] = \int_{0^+}^{+\infty} e^{-t} e^{-pt} \, dt = \left[ -\frac{1}{p+1} e^{-(p+1)t} \right]_{0^+}^{+\infty} = \frac{1}{p+1} \quad (\text{pour } \mathrm{Re}(p) > -1) \]
+            </div>
+        </div>
+
+        <h3 class="sub-title">2. التحويل العكسي (Transformation Inverse)</h3>
+        <p>يُرمز للتحويل العكسي للابلاس بالرمز \(\mathcal{L}^{-1}\) ويُعرّف بـ:</p>
+        <div class="math-block">
+            \[ F(p) \xrightarrow{\mathcal{L}^{-1}} f(t) \quad \text{ou} \quad \mathcal{L}^{-1}[F(p)] = f(t) \]
+        </div>
+    </div>
+
+    <!-- الجزء الثاني: الخواص -->
+    <div class="section-card">
+        <h2 class="section-title">II. خواص تحويل لابلاس (Propriétés)</h2>
+
+        <!-- الخاصية 1 و 2 -->
+        <h3 class="sub-title">1 & 2. خاصية الخطية (Linéarité)</h3>
+        <p>التحويل المباشر والعكسي كلاهما خطي:</p>
+        <div class="math-block">
+            \[ \mathcal{L}[a_1 f_1(t) + a_2 f_2(t)] = a_1 \mathcal{L}[f_1(t)] + a_2 \mathcal{L}[f_2(t)] = a_1 F_1(p) + a_2 F_2(p) \quad (a_1, a_2 \in \mathbb{R}) \]
+            \[ \mathcal{L}^{-1}[b_1 F_1(p) + b_2 F_2(p)] = b_1 \mathcal{L}^{-1}[F_1(p)] + b_2 \mathcal{L}^{-1}[F_2(p)] = b_1 f_1(t) + b_2 f_2(t) \]
+        </div>
+        <div class="example-box">
+            <strong>أمثلة:</strong>
+            <div class="math-block">
+                \[ \mathcal{L}[3e^{-t} - e^{-2t}] = 3\mathcal{L}[e^{-t}] - \mathcal{L}[e^{-2t}] = \frac{3}{p+1} - \frac{1}{p+2} \]
+                \[ \mathcal{L}^{-1}\left[ \frac{2}{p+1} - \frac{4}{p+3} \right] = 2\mathcal{L}^{-1}\left[\frac{1}{p+1}\right] - 4\mathcal{L}^{-1}\left[\frac{1}{p+3}\right] = 2e^{-t} - 4e^{-3t} \]
+            </div>
+        </div>
+
+        <!-- الخاصية 3 -->
+        <h3 class="sub-title">3. تحويل المشتقة (Transformée de la dérivée)</h3>
+        <div class="math-block">
+            \[ \mathcal{L}\left[ \frac{df}{dt} \right] = p F(p) - f(0^+) \quad \text{avec } f(0^+) = \lim_{t \to 0^+} f(t) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> \( \mathcal{L}\left[\frac{d}{dt}(e^{-t})\right] \) حيث \( \mathcal{L}[e^{-t}] = \frac{1}{p+1} \) و \( \lim_{t \to 0^+} e^{-t} = 1 \):
+            <div class="math-block">
+                \[ \mathcal{L}\left[\frac{d}{dt}(e^{-t})\right] = p \cdot \frac{1}{p+1} - 1 = \frac{p - (p+1)}{p+1} = \frac{-1}{p+1} \]
+            </div>
+        </div>
+
+        <!-- الخاصية 4 -->
+        <h3 class="sub-title">4. تحويل التكامل (Transformée de l'intégrale)</h3>
+        <div class="math-block">
+            \[ \mathcal{L}\left[ \int_0^t f(\tau) \, d\tau \right] = \frac{F(p)}{p} \quad (0 \le \tau \le t) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> \( \mathcal{L}\left[\int_0^t e^{-\tau} d\tau\right] = \frac{1}{p} \cdot \mathcal{L}[e^{-t}] = \frac{1}{p(p+1)} \)
+        </div>
+
+        <!-- الخاصية 5 -->
+        <h3 class="sub-title">5. نظرية القيمة الابتدائية (Valeur initiale)</h3>
+        <div class="math-block">
+            \[ f(0^+) = \lim_{t \to 0^+} f(t) = \lim_{p \to +\infty} p F(p) \quad (t > 0) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> للدالة \( e^{-3t} \) حيث \( F(p) = \frac{1}{p+3} \):
+            <div class="math-block">
+                \[ \lim_{t \to 0^+} e^{-3t} = \lim_{p \to +\infty} p \left(\frac{1}{p+3}\right) = 1 \]
+            </div>
+        </div>
+
+        <!-- الخاصية 6 -->
+        <h3 class="sub-title">6. نظرية القيمة النهائية (Valeur finale)</h3>
+        <div class="math-block">
+            \[ f(\infty) = \lim_{t \to +\infty} f(t) = \lim_{p \to 0} p F(p) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> القيمة النهائية لـ \( f(t) = 1 - e^{-t} \) حيث \( F(p) = \frac{1}{p(p+1)} \):
+            <div class="math-block">
+                \[ \lim_{t \to +\infty} (1 - e^{-t}) = \lim_{p \to 0} p \left(\frac{1}{p(p+1)}\right) = \lim_{p \to 0} \frac{1}{p+1} = 1 \]
+            </div>
+        </div>
+
+        <!-- الخاصية 7 و 8 -->
+        <h3 class="sub-title">7 & 8. تغيير وحدة الزمن والتردد (Changement d'échelle)</h3>
+        <div class="math-block">
+            \[ \text{Temps: } \mathcal{L}\left[ f\left(\frac{t}{a}\right) \right] = a F(a p) \]
+            \[ \text{Fréquence: } \mathcal{L}^{-1}\left[ F\left(\frac{p}{a}\right) \right] = a f(at) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال التردد:</strong> \( \mathcal{L}^{-1}\left[\frac{1}{\frac{1}{3}p + 1}\right] = 3 e^{-3t} \)
+        </div>
+
+        <!-- الخاصية 9 -->
+        <h3 class="sub-title">9. انسحاب الزمن (Translation temporelle)</h3>
+        <div class="math-block">
+            \[ \mathcal{L}[f(t-T)] = e^{-pT} F(p) \quad (T > 0 \text{ et } f(t-T) = 0 \text{ pour } t \le T) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> \( f(t) = \begin{cases} e^{-(t-2)} & t > 2 \\ 0 & t \le 2 \end{cases} \implies T = 2 \implies \mathcal{L}[f(t)] = \frac{e^{-2p}}{p+1} \)
+        </div>
+
+        <!-- الخاصية 10 -->
+        <h3 class="sub-title">10. الإزاحة الترددية / الأسية (Translation fréquentielle)</h3>
+        <div class="math-block">
+            \[ \mathcal{L}[e^{-at} f(t)] = F(p+a) \quad (a \in \mathbb{R}) \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> \( \mathcal{L}[e^{-2t} \cos t] \):<br>
+            بما أن \( \mathcal{L}[\cos t] = \frac{p}{p^2+1} \)، إذن:
+            <div class="math-block">
+                \[ \mathcal{L}[e^{-2t} \cos t] = \frac{p+2}{(p+2)^2 + 1} = \frac{p+2}{p^2 + 4p + 5} \]
+            </div>
+        </div>
+
+        <!-- الخاصية 11 -->
+        <h3 class="sub-title">11. جداء الالتفاف (Produit de convolution)</h3>
+        <div class="math-block">
+            \[ \mathcal{L}^{-1}[F_1(p) \cdot F_2(p)] = \int_{0^+}^t f_1(\tau) f_2(t-\tau) \, d\tau = \int_{0^+}^t f_2(\tau) f_1(t-\tau) \, d\tau \]
+        </div>
+        <div class="example-box">
+            <strong>مثال:</strong> \( F(p) = \frac{p}{(p+1)(p^2+1)} = \frac{1}{p+1} \cdot \frac{p}{p^2+1} \):
+            <div class="math-block">
+                \[ f(t) = \int_{0^+}^t e^{-(t-\tau)} \cos \tau \, d\tau = e^{-t} \int_{0^+}^t e^\tau \cos \tau \, d\tau = \frac{1}{2}(\cos t + \sin t - e^{-t}) \]
+            </div>
+            <em>(يتم حساب التكامل بالتجزئة على مرحلتين).</em>
+        </div>
+    </div>
+
+    <!-- جدول التحويلات -->
+    <div class="section-card">
+        <h2 class="section-title">جدول التحويلات الشهيرة (Tableau des transformées)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fonction du temps: \( f(t) \)</th>
+                    <th>Transformée de Laplace: \( \mathcal{L}[f(t)] = F(p) \)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Impulsion unité: \( \delta(t) \)</td>
+                    <td>\( 1 \)</td>
+                </tr>
+                <tr>
+                    <td>Échelon unité: \( u(t) = 1 \)</td>
+                    <td>\( \frac{1}{p} \)</td>
+                </tr>
+                <tr>
+                    <td>Rampe unité: \( t \)</td>
+                    <td>\( \frac{1}{p^2} \)</td>
+                </tr>
+                <tr>
+                    <td>Polynôme: \( t^n \)</td>
+                    <td>\( \frac{n!}{p^{n+1}} \)</td>
+                </tr>
+                <tr>
+                    <td>Exponentielle: \( e^{-at} \)</td>
+                    <td>\( \frac{1}{p+a} \)</td>
+                </tr>
+                <tr>
+                    <td>Sinusoïde: \( \sin(\omega t) \)</td>
+                    <td>\( \frac{\omega}{p^2 + \omega^2} \)</td>
+                </tr>
+                <tr>
+                    <td>Cosinusoïde: \( \cos(\omega t) \)</td>
+                    <td>\( \frac{p}{p^2 + \omega^2} \)</td>
+                </tr>
+                <tr>
+                    <td>Amortie: \( e^{-at} \sin(\omega t) \)</td>
+                    <td>\( \frac{\omega}{(p+a)^2 + \omega^2} \)</td>
+                </tr>
+                <tr>
+                    <td>Amortie: \( e^{-at} \cos(\omega t) \)</td>
+                    <td>\( \frac{p+a}{(p+a)^2 + \omega^2} \)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- سلسلة التمارين والحلول -->
+    <div class="section-card">
+        <h2 class="section-title">سلسلة التمارين (Série d'exercices)</h2>
+
+        <!-- تمرين 1 -->
+        <h3 class="sub-title">Exercice 1: Calcul des transformées directes</h3>
+        
+        <p><strong>a) \( f(t) = e^{-at} \):</strong></p>
+        <div class="math-block">
+            \[ F(p) = \int_{0}^{\infty} e^{-at} e^{-pt} \, dt = \left[ \frac{e^{-(p+a)t}}{-(p+a)} \right]_{0}^{\infty} = \frac{1}{p+a} \]
+        </div>
+
+        <p><strong>b) \( f(t) = 3(1 - e^{-4t}) \):</strong></p>
+        <div class="math-block">
+            \[ F(p) = 3 \left( \mathcal{L}[1] - \mathcal{L}[e^{-4t}] \right) = 3 \left( \frac{1}{p} - \frac{1}{p+4} \right) = \frac{12}{p(p+4)} \]
+        </div>
+
+        <p><strong>c) \( f(t) = t^5 e^{2t} \):</strong></p>
+        <div class="math-block">
+            \[ \mathcal{L}[t^5] = \frac{5!}{p^6} \implies \mathcal{L}[t^5 e^{2t}] = \frac{5!}{(p-2)^6} = \frac{120}{(p-2)^6} \]
+        </div>
+
+        <p><strong>d) \( f(t) = \cos(\omega t) \):</strong></p>
+        <div class="math-block">
+            \[ \mathcal{L}[\cos\omega t] = \mathcal{L}\left[\frac{e^{j\omega t} + e^{-j\omega t}}{2}\right] = \frac{1}{2}\left( \frac{1}{p-j\omega} + \frac{1}{p+j\omega} \right) = \frac{p}{p^2 + \omega^2} \]
+        </div>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed var(--border-color);">
+
+        <!-- تمرين 2 منزلي مع الحل -->
+        <h3 class="sub-title">Exercice 2: À domicile</h3>
+        <p><strong>1. حساب \( \mathcal{L}\left[\sin\left(2t + \frac{\pi}{4}\right)\right] \):</strong></p>
+        <div class="math-block">
+            \[ \sin\left(2t + \frac{\pi}{4}\right) = \frac{\sqrt{2}}{2} \sin(2t) + \frac{\sqrt{2}}{2} \cos(2t) \]
+            \[ F(p) = \frac{\sqrt{2}}{2} \left( \frac{2}{p^2+4} + \frac{p}{p^2+4} \right) = \frac{\sqrt{2}}{2} \cdot \frac{p+2}{p^2+4} \]
+        </div>
+
+        <p><strong>2. حساب \( \mathcal{L}\left[\frac{t^2}{2}\right] \):</strong></p>
+        <div class="math-block">
+            \[ \mathcal{L}\left[\frac{t^2}{2}\right] = \frac{1}{2} \left(\frac{2!}{p^3}\right) = \frac{1}{p^3} \]
+        </div>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed var(--border-color);">
+
+        <!-- تمرين 3 -->
+        <h3 class="sub-title">Exercice 3: Calcul des transformées inverses</h3>
+        <p><strong>الدالة:</strong> \( F(p) = \frac{2}{p(p+1)(p-2)} \)</p>
+        <p>التفكيك إلى عناصر بسيطة (Décomposition en éléments simples):</p>
+        <div class="math-block">
+            \[ F(p) = 2 \left( \frac{A}{p} + \frac{B}{p+1} + \frac{C}{p-2} \right) \]
+            \[ A = \lim_{p \to 0} \frac{1}{(p+1)(p-2)} = -\frac{1}{2} \]
+            \[ B = \lim_{p \to -1} \frac{1}{p(p-2)} = \frac{1}{3} \]
+            \[ C = \lim_{p \to 2} \frac{1}{p(p+1)} = \frac{1}{6} \]
+        </div>
+        <p>بالتعويض:</p>
+        <div class="math-block">
+            \[ F(p) = -\frac{1}{p} + \frac{2}{3} \cdot \frac{1}{p+1} + \frac{1}{3} \cdot \frac{1}{p-2} \]
+            \[ f(t) = \mathcal{L}^{-1}[F(p)] = -1 + \frac{2}{3} e^{-t} + \frac{1}{3} e^{2t} \quad (t \ge 0) \]
+        </div>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px dashed var(--border-color);">
+
+        <!-- تمرين 4 منزلي مع الحل -->
+        <h3 class="sub-title">Exercice 4: À domicile</h3>
+        <p><strong>المطلوب:</strong> حساب التحويل العكسي لـ \( F(p) = \frac{2p^2 + 7p + 8}{p^2 + 3p + 2} \)</p>
+        <div class="note-box">
+            <strong>ملاحظة الأستاذ:</strong> درجة البسط تساوي درجة المقام (\(n = m = 2\))، نقوم أولاً بالقسمة الإقليدية (Division Euclidienne) ثم نطبق التفكيك.
+        </div>
+        <div class="math-block">
+            \[ 2p^2 + 7p + 8 = 2(p^2 + 3p + 2) + (p + 4) \]
+            \[ F(p) = 2 + \frac{p+4}{(p+1)(p+2)} = 2 + \frac{3}{p+1} - \frac{2}{p+2} \]
+        </div>
+        <p>بتطبيق التحويل العكسي المباشر:</p>
+        <div class="math-block">
+            \[ f(t) = \mathcal{L}^{-1}[F(p)] = 2 \delta(t) + 3 e^{-t} - 2 e^{-2t} \quad (t \ge 0) \]
+        </div>
+    </div>
+
+    <div class="footer">
+        ملخص درس وتطبيقات تحويل لابلاس &bull; Asservissement et régulation
+    </div>
+  </main>
+</body>
+</html>

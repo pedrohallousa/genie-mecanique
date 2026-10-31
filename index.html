@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة الهندسة الميكانيكية | بنك الدروس والملخصات</title>
+  
+  <!-- خط Cairo المعتمد حصرياً -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS عبر CDN مع ضبط رموز الألوان المعتمدة في المواصفات -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgMain: '#0c1210',
+            bgCard: '#141d19',
+            bgCardHover: '#1a2722',
+            borderMain: '#23332c',
+            emeraldPrimary: '#10b981',
+            emeraldHover: '#059669',
+            emeraldTag: '#34d399',
+            textMuted: '#9ca3af',
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Cairo', sans-serif;
+    }
+    body {
+      background-color: #0c1210;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0c1210;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #23332c;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+    .bento-card {
+      background-color: #141d19;
+      border: 1px solid #23332c;
+      transition: all 0.25s ease-in-out;
+    }
+    .bento-card:hover {
+      background-color: #1a2722;
+      border-color: #10b981;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="selection:bg-emeraldPrimary selection:text-black">
+
+  <!-- الشريط العلوي (Header) -->
+  <header class="border-b border-borderMain sticky top-0 z-40 bg-[#0c1210]/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- الشعار وهوية الموقع المستوحاة من eddirasa.com -->
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-emeraldPrimary/10 border border-emeraldPrimary/30 flex items-center justify-center text-emeraldPrimary">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl font-extrabold tracking-tight text-white">الهندسة الميكانيكية</h1>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emeraldPrimary/15 text-emeraldTag border border-emeraldPrimary/30">PROTOTYPE</span>
+          </div>
+          <p class="text-xs text-textMuted">بنك الدروس والملخصات الرسمية (Génie Mécanique)</p>
+        </div>
+      </div>
+
+      <!-- إحصائية سريعة وشريط البحث في الرأس -->
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-borderMain bg-bgCard text-xs text-textMuted">
+          <span class="w-2 h-2 rounded-full bg-emeraldPrimary animate-pulse"></span>
+          <span>17 ملفاً جاهزاً للتحميل</span>
+        </div>
+        <a href="#lessons-section" class="px-4 py-2 text-sm font-bold rounded-lg bg-emeraldPrimary hover:bg-emeraldHover text-black transition-colors flex items-center gap-2">
+          <span>تصفح الدروس</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- القسم التعريفي (Editorial Neo-Minimalist Bento Grid Hero) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+      
+      <!-- بطاقة رئيسية كبيرة (Bento Big Card) -->
+      <div class="md:col-span-8 p-8 rounded-2xl bento-card relative overflow-hidden flex flex-col justify-between">
+        <div class="absolute -left-10 -bottom-10 w-60 h-60 bg-emeraldPrimary/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emeraldPrimary/10 text-emeraldTag border border-emeraldPrimary/20 mb-4">
+            <span>مكتبة جامعية ثابتة • سريعة ومجانية</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-4">
+            دروس وملخصات <span class="text-emeraldTag">الهندسة الميكانيكية</span> بصيغة PDF
+          </h2>
+          <p class="text-textMuted text-base leading-relaxed max-w-2xl">
+            منصة تخصصية تحريرية لعرض، معاينة، وتحميل مقررات الهندسة الميكانيكية الرسمية (RDM, Mécanique Analytique, Élasticité, Construction Mécanique) بجودة عالية ومباشرة بدون إعلانات مزعجة.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <div class="flex items-center gap-2 text-xs text-textMuted bg-[#0c1210] px-3.5 py-2 rounded-lg border border-borderMain">
+            <span class="text-emeraldTag font-bold">✓</span> ملفات PDF أصلية
+          </div>
+          <div class="flex items-center gap-2 text-xs text-textMuted bg-[#0c1210] px-3.5 py-2 rounded-lg border border-borderMain">
+            <span class="text-emeraldTag font-bold">✓</span> معاينة فورية داخل الموقع
+          </div>
+          <div class="flex items-center gap-2 text-xs text-textMuted bg-[#0c1210] px-3.5 py-2 rounded-lg border border-borderMain">
+            <span class="text-emeraldTag font-bold">✓</span> تحميل مباشر وسريع
+          </div>
+        </div>
+      </div>
+
+      <!-- بطاقة التخصصات المعتمدة (Bento Side Card) -->
+      <div class="md:col-span-4 p-6 rounded-2xl bento-card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-white text-base">المواد الرسمية (Modules)</h3>
+            <span class="text-xs text-emeraldTag font-mono">5 مواد</span>
+          </div>
+          <div class="space-y-2.5">
+            <a href="modules/rdm.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emeraldTag">RDM</div>
+                <div class="text-[11px] text-textMuted">Résistance des Matériaux</div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">4 ملفات ←</span>
+            </a>
+            <a href="modules/mecanique-analytique.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emeraldTag">Mécanique Analytique</div>
+                <div class="text-[11px] text-textMuted">Cinématique & Lagrange</div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">7 ملفات ←</span>
+            </a>
+            <a href="modules/elasticite.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emeraldTag">Élasticité</div>
+                <div class="text-[11px] text-textMuted">Théorie de l'Élasticité</div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">3 ملفات ←</span>
+            </a>
+            <a href="modules/construction-mecanique.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emeraldTag">Construction Mécanique</div>
+                <div class="text-[11px] text-textMuted">Conception & Guidage</div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">ملفان ←</span>
+            </a>
+            <a href="modules/asservissement.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emeraldTag">Asservissement & Régulation</div>
+                <div class="text-[11px] text-textMuted">Automatique & Laplace</div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">ملف معتمد ←</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- شريط التحكم والفرز والبحث (Filters & Search) -->
+  <section id="lessons-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+        <div class="bg-bgCard border border-borderMain rounded-2xl p-5 mb-8">
+      <!-- أزرار تصفية المواد والأنواع بدون مربع البحث -->
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        
+        <!-- أزرار المواد -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-semibold text-textMuted ml-1">المادة:</span>
+          <button onclick="setSubjectFilter('ALL')" id="sub-ALL" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-emeraldPrimary text-black border-emeraldPrimary">الكل</button>
+          <button onclick="setSubjectFilter('RDM')" id="sub-RDM" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">RDM</button>
+          <button onclick="setSubjectFilter('Mécanique Analytique')" id="sub-Mécanique Analytique" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Mécanique Analytique</button>
+          <button onclick="setSubjectFilter('Élasticité')" id="sub-Élasticité" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Élasticité</button>
+          <button onclick="setSubjectFilter('Construction Mécanique')" id="sub-Construction Mécanique" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Construction Mécanique</button>
+          <button onclick="setSubjectFilter('Asservissement et Régulation')" id="sub-Asservissement et Régulation" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Asservissement & Régulation</button>
+        </div>
+
+        <!-- أزرار نوع الملف (Types: COURS / TD / EXAMEN) -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-semibold text-textMuted ml-1">النوع:</span>
+          <button onclick="setTypeFilter('ALL')" id="type-ALL" class="filter-btn-type px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-emeraldPrimary text-black border-emeraldPrimary">الكل</button>
+          <button onclick="setTypeFilter('COURS')" id="type-COURS" class="filter-btn-type px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">COURS</button>
+          <button onclick="setTypeFilter('TD')" id="type-TD" class="filter-btn-type px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">TD</button>
+          <button onclick="setTypeFilter('EXAMEN')" id="type-EXAMEN" class="filter-btn-type px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">EXAMEN</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- عداد النتائج -->
+    <div class="flex items-center justify-between mb-6 px-1">
+      <div class="text-sm font-semibold text-white">
+        الدروس المتاحة <span id="resultsCount" class="text-emeraldTag font-mono text-base">(10)</span>
+      </div>
+      <div class="text-xs text-textMuted flex items-center gap-1.5">
+        <span>ترتيب: حسب الأحدث إضافة</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- شبكة البطاقات (Bento Grid of Lessons) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div id="lessonsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- يتم توليد البطاقات ديناميكياً عبر الجافاسكريبت -->
+    </div>
+
+    <!-- رسالة عند عدم وجود نتائج -->
+    <div id="noResults" class="hidden text-center py-20 bg-bgCard rounded-2xl border border-borderMain">
+      <svg class="w-12 h-12 mx-auto text-textMuted mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p class="text-white font-bold text-lg">لم يتم العثور على أي ملفات مطابقة</p>
+      <p class="text-textMuted text-sm mt-1">جرب تغيير كلمات البحث أو إعادة ضبط الفلاتر</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-emeraldPrimary/10 border border-emeraldPrimary/30 text-emeraldTag rounded-lg text-xs font-bold hover:bg-emeraldPrimary hover:text-black transition-colors">
+        إعادة تعيين الفلاتر
+      </button>
+    </div>
+  </main>
+
+  <!-- تذييل الصفحة (Footer) -->
+  <footer class="border-t border-borderMain bg-[#0c1210] py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-textMuted">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emeraldPrimary"></span>
+        <span>منصة الهندسة الميكانيكية الرسمية • تتبع معايير eddirasa.com</span>
+      </div>
+      <div>
+        تصميم شبكي عصري (Editorial Neo-Minimalist Bento Grid) • خط Cairo
+      </div>
+    </div>
+  </footer>
+
+  <!-- نافذة المعاينة السريعة (PDF Preview Modal) -->
+  <div id="previewModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-bgCard border border-borderMain rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+      
+      <!-- ترويسة المودال -->
+      <div class="p-4 border-b border-borderMain flex items-center justify-between bg-[#0c1210]">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-lg bg-emeraldPrimary/10 text-emeraldTag border border-emeraldPrimary/20">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <h4 id="modalTitle" class="text-sm font-bold text-white line-clamp-1">معاينة الملف</h4>
+            <div class="flex items-center gap-2 text-[11px] text-textMuted">
+              <span id="modalSubject" class="text-emeraldTag font-semibold"></span>
+              <span>•</span>
+              <span id="modalType" class="font-mono"></span>
+              <span>•</span>
+              <span id="modalSize" class="font-mono"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a id="modalHtmlViewBtn" href="#" class="hidden px-3 py-1.5 rounded-lg bg-emeraldPrimary/15 border border-emeraldPrimary/30 text-emeraldTag text-xs font-bold hover:bg-emeraldPrimary/25 transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            <span>تصفح تفاعلي</span>
+          </a>
+          <a id="modalDownloadBtn" href="#" download class="px-3 py-1.5 rounded-lg bg-emeraldPrimary text-black text-xs font-bold hover:bg-emeraldHover transition-colors flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>تحميل PDF</span>
+          </a>
+          <button onclick="closeModal()" class="p-1.5 rounded-lg text-textMuted hover:text-white hover:bg-borderMain transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- عارض الـ PDF -->
+      <div class="flex-1 bg-[#0c1210] relative flex items-center justify-center p-2">
+        <iframe id="modalPdfFrame" src="" class="w-full h-full rounded-lg border border-borderMain" frameborder="0"></iframe>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- توست الإشعار (Toast) -->
+  <div id="toast" class="fixed bottom-6 left-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-bgCard border border-emeraldPrimary/50 px-4 py-3 rounded-xl shadow-xl flex items-center gap-3">
+      <span class="w-2 h-2 rounded-full bg-emeraldPrimary"></span>
+      <span id="toastMsg" class="text-xs font-semibold text-white"></span>
+    </div>
+  </div>
+
+  <!-- جافاسكريبت التحكم والبيانات -->
+  <script>
+    // بيانات الدروس المتوافقة مع مواصفات data/lessons.json
+    const defaultLessons = [
+      {
+            "id": 1,
+            "title": "محاضرات نظرية المرونة - الفصل 1: الحساب الشعاعي والموتري (Licence 3 CM)",
+            "subject": "Élasticité",
+            "type": "COURS",
+            "size": "863 KB",
+            "file": "lessons/elasticite-ch1.pdf",
+            "date": "2026-10-12"
+      },
+      {
+            "id": 2,
+            "title": "حل سلسلة الأعمال الموجهة 01: الحساب الشعاعي والموتري (9 تمارين كاملة)",
+            "subject": "Élasticité",
+            "type": "TD",
+            "size": "1.15 MB",
+            "file": "lessons/elasticite-td1-solution.pdf",
+            "htmlView": "views/elasticite-td1-solution.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 3,
+            "title": "نص السلسلة 01 (Sujet): الحساب الشعاعي والموتري - نظرية المرونة",
+            "subject": "Élasticité",
+            "type": "TD",
+            "size": "388 KB",
+            "file": "lessons/elasticite-td1-sujet.pdf",
+            "date": "2026-10-20"
+      },
+      {
+            "id": 4,
+            "title": "حل الواجب المنزلي: حركية الجسم الصلب والحركة المستوية (16 تمريناً مفصلاً)",
+            "subject": "Mécanique Analytique",
+            "type": "TD",
+            "size": "1.59 MB",
+            "file": "lessons/cinematique-devoir-solution.pdf",
+            "htmlView": "views/cinematique-devoir-solution.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 5,
+            "title": "نص الواجب المنزلي الرسمي (Sujet): تذكير بحركية الجسم الصلب (16 تمريناً)",
+            "subject": "Mécanique Analytique",
+            "type": "TD",
+            "size": "557 KB",
+            "file": "lessons/cinematique-devoir-sujet.pdf",
+            "date": "2026-09-28"
+      },
+      {
+            "id": 6,
+            "title": "حل شامل ومفصل: تمرين 4 - هبوط الطائرة وحساب التباطؤ (MRUA)",
+            "subject": "Mécanique Analytique",
+            "type": "TD",
+            "size": "901 KB",
+            "file": "lessons/mecanique-analytique-exo4.pdf",
+            "htmlView": "views/mecanique-analytique-exo4.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 7,
+            "title": "حركية الجسم الصلب (TD 2 Exo 1): الحركة المستوية وطريقة CIV والإسقاط المتساوي",
+            "subject": "Mécanique Analytique",
+            "type": "TD",
+            "size": "584 KB",
+            "file": "lessons/mecanique-analytique-mouvement-plan.pdf",
+            "htmlView": "views/mecanique-analytique-mouvement-plan.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 8,
+            "title": "محاضرات الميكانيك التحليلي - الفصل الأول: حركية الجسم الصلب والحركة المستوية",
+            "subject": "Mécanique Analytique",
+            "type": "COURS",
+            "size": "2.97 MB",
+            "file": "lessons/mecanique-analytique-ch1.pdf",
+            "date": "2026-09-25"
+      },
+      {
+            "id": 9,
+            "title": "محاضرات الميكانيك التحليلي - الفصل الثاني: مركز الثقل ومركز الكتلة (Centre de masse)",
+            "subject": "Mécanique Analytique",
+            "type": "COURS",
+            "size": "555 KB",
+            "file": "lessons/mecanique-analytique-ch2.pdf",
+            "date": "2026-10-02"
+      },
+      {
+            "id": 10,
+            "title": "محاضرات الميكانيك التحليلي - الفصل الثاني (تتمة): مبادئ الطاقة والعمل والاستطاعة (Énergétique)",
+            "subject": "Mécanique Analytique",
+            "type": "COURS",
+            "size": "557 KB",
+            "file": "lessons/mecanique-analytique-ch2-suite.pdf",
+            "date": "2026-10-10"
+      },
+      {
+            "id": 11,
+            "title": "درس مقاومة المواد: استنتاج إجهاد القص المماسي (صيغة جورافسكي - Formule de Jourawski)",
+            "subject": "RDM",
+            "type": "COURS",
+            "size": "852 KB",
+            "file": "lessons/rdm-jourawski.pdf",
+            "htmlView": "views/rdm-jourawski.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 12,
+            "title": "دليل مقاومة المواد: المخططات البيانية والانحناء المستوي (Flexion 4 points)",
+            "subject": "RDM",
+            "type": "COURS",
+            "size": "781 KB",
+            "file": "lessons/rdm-guide-poutres.pdf",
+            "htmlView": "views/rdm-guide-poutres.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 13,
+            "title": "حل التمرين الرابع (EX IV): دراسة عارضة مستندة وحساب الجهود والمخططات",
+            "subject": "RDM",
+            "type": "TD",
+            "size": "523 KB",
+            "file": "lessons/rdm-ex4-poutre.pdf",
+            "htmlView": "views/rdm-ex4-poutre.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 14,
+            "title": "تمرين نموذجي شامل في RDM: قوة مائلة وحمولة موزعة ومخططات T(x) و Mf(x)",
+            "subject": "RDM",
+            "type": "TD",
+            "size": "1.08 MB",
+            "file": "lessons/rdm-exercice-complet.pdf",
+            "htmlView": "views/rdm-exercice-complet.html",
+            "date": "2026-10-31"
+      },
+      {
+            "id": 15,
+            "title": "محاضرات التصميم الميكانيكي 1 - الفصل 2: الوصلات اللولبية والتثبيت (Assemblages filetés)",
+            "subject": "Construction Mécanique",
+            "type": "COURS",
+            "size": "7.10 MB",
+            "file": "lessons/construction-assemblages-filetes.pdf",
+            "date": "2026-10-19"
+      },
+      {
+            "id": 16,
+            "title": "جدول التوقيت الأسبوعي الرسمي - السنة الثالثة ليسانس هندسة ميكانيكية (Emploi du temps)",
+            "subject": "Construction Mécanique",
+            "type": "COURS",
+            "size": "65 KB",
+            "file": "lessons/l3-cm-emploi-du-temps.pdf",
+            "date": "2026-10-25"
+      },
+      {
+            "id": 17,
+            "title": "ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace) - Dr. Trad Mostefa",
+            "subject": "Asservissement et Régulation",
+            "type": "COURS",
+            "size": "813 KB",
+            "file": "lessons/asservissement-laplace.pdf",
+            "htmlView": "views/asservissement-laplace.html",
+            "date": "2026-10-31"
+      }
+];
+
+    let currentLessons = [...defaultLessons];
+    let selectedSubject = 'ALL';
+    let selectedType = 'ALL';
+    
+
+    // محاولة جلب data/lessons.json إن وُجد خادم محلي
+    fetch('data/lessons.json')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          currentLessons = data;
+          renderLessons();
+        }
+      })
+      .catch(() => {
+        renderLessons();
+      });
+
+    // دالة تحديد ألوان ووسوم أنواع الملفات
+    function getTypeBadge(type) {
+      if (type === 'COURS') {
+        return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emeraldPrimary/15 text-emeraldTag border border-emeraldPrimary/30">COURS</span>';
+      } else if (type === 'TD') {
+        return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">TD</span>';
+      } else {
+        return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">EXAMEN</span>';
+      }
+    }
+
+    // دالة رسم البطاقات
+    function renderLessons() {
+      const grid = document.getElementById('lessonsGrid');
+      const noResults = document.getElementById('noResults');
+      const resultsCount = document.getElementById('resultsCount');
+
+      const filtered = currentLessons.filter(item => {
+        const matchSub = (selectedSubject === 'ALL') || (item.subject === selectedSubject);
+        const matchType = (selectedType === 'ALL') || (item.type === selectedType);
+        
+
+        return matchSub && matchType;
+      });
+
+      resultsCount.textContent = `(${filtered.length})`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="bento-card rounded-2xl p-5 flex flex-col justify-between group">
+          
+          <div>
+            <!-- الترويسة العلوية للبطاقة -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                ${getTypeBadge(item.type)}
+                <span class="text-xs font-semibold text-textMuted bg-[#0c1210] px-2.5 py-0.5 rounded-md border border-borderMain">
+                  ${item.subject}
+                </span>
+              </div>
+              <span class="text-[11px] font-mono text-textMuted bg-[#0c1210] px-2 py-0.5 rounded border border-borderMain">
+                ${item.size}
+              </span>
+            </div>
+
+            <!-- عنوان الملف -->
+            <h3 class="text-white font-bold text-base leading-snug group-hover:text-emeraldTag transition-colors mt-2 mb-4 line-clamp-2" dir="ltr" style="text-align: right;">
+              ${item.title}
+            </h3>
+          </div>
+
+          <!-- الجزء السفلي: البيانات والإجراءات بدون تحميلات وهمية -->
+          <div class="pt-4 border-t border-borderMain/70 flex items-center justify-between gap-2 mt-2">
+            <div class="flex items-center gap-1.5 text-xs text-textMuted font-mono">
+              <svg class="w-3.5 h-3.5 text-emeraldPrimary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <span>${item.date || '2026'}</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              ${item.htmlView ? `
+                <!-- زر تصفح مباشر فقط للملفات التي لها واجهة تفاعلية دون زر معاينة -->
+                <a 
+                  href="${item.htmlView}" 
+                  class="px-3 py-1.5 rounded-lg bg-emeraldPrimary/15 hover:bg-emeraldPrimary/25 text-emeraldTag border border-emeraldPrimary/30 text-xs font-bold transition-colors flex items-center gap-1.5"
+                  title="تصفح العرض التفاعلي"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                  <span>تصفح</span>
+                </a>
+              ` : `
+                <!-- زر معاينة سريع للملفات التي هي PDF فقط -->
+                <button 
+                  onclick='openPreview(${JSON.stringify(item)})'
+                  class="px-2.5 py-1.5 rounded-lg bg-[#0c1210] hover:bg-borderMain text-xs font-semibold text-white border border-borderMain transition-colors flex items-center gap-1"
+                  title="معاينة الملف"
+                >
+                  <svg class="w-3.5 h-3.5 text-emeraldTag" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                  <span>معاينة</span>
+                </button>
+              `}
+
+              <!-- زر التحميل المباشر -->
+              <a 
+                href="${item.file}" 
+                download 
+                onclick="showToast('جارٍ تحميل ${item.title.substring(0, 25)}...')"
+                class="px-3 py-1.5 rounded-lg bg-emeraldPrimary hover:bg-emeraldHover text-black text-xs font-bold transition-colors flex items-center gap-1 shadow-sm"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                <span>تحميل</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // دوال الفلترة
+    function setSubjectFilter(sub) {
+      selectedSubject = sub;
+      document.querySelectorAll('.filter-btn-sub').forEach(btn => {
+        btn.className = 'filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors';
+      });
+      const activeBtn = document.getElementById('sub-' + sub);
+      if (activeBtn) {
+        activeBtn.className = 'filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-emeraldPrimary text-black border-emeraldPrimary';
+      }
+      renderLessons();
+    }
+
+    function setTypeFilter(t) {
+      selectedType = t;
+      document.querySelectorAll('.filter-btn-type').forEach(btn => {
+        btn.className = 'filter-btn-type px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors';
+      });
+      const activeBtn = document.getElementById('type-' + t);
+      if (activeBtn) {
+        activeBtn.className = 'filter-btn-type px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors bg-emeraldPrimary text-black border-emeraldPrimary';
+      }
+      renderLessons();
+    }
+
+    
+
+    function resetFilters() {
+      selectedSubject = 'ALL';
+      selectedType = 'ALL';
+      
+      setSubjectFilter('ALL');
+      setTypeFilter('ALL');
+    }
+
+    // دوال المعاينة (Modal)
+    function openPreview(item) {
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalSubject').textContent = item.subject;
+      document.getElementById('modalType').textContent = item.type;
+      document.getElementById('modalSize').textContent = item.size;
+      document.getElementById('modalPdfFrame').src = item.file;
+      document.getElementById('modalDownloadBtn').href = item.file;
+      
+      const htmlBtn = document.getElementById('modalHtmlViewBtn');
+      if (item.htmlView) {
+        htmlBtn.href = item.htmlView;
+        htmlBtn.classList.remove('hidden');
+      } else {
+        htmlBtn.classList.add('hidden');
+      }
+
+      document.getElementById('previewModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('previewModal').classList.add('hidden');
+      document.getElementById('modalPdfFrame').src = '';
+    }
+
+    // إشعار Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // إغلاق المودال بزر ESC
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // التشغيل الأولي
+    renderLessons();
+  </script>
+</body>
+</html>

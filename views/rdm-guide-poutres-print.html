@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>دليل مقاومة المواد: المخططات البيانية والانحناء المستوي - Université Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: { matchFontHeight: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #ffffff !important;
+      color: #111827 !important;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 12.5px;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+      color: #000000 !important;
+    }
+    .univ-header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .univ-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+    .univ-header-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+    .main-title {
+      text-align: center;
+      margin: 14px 0 20px;
+    }
+    .main-title h1 {
+      font-size: 16.5px;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: #111827;
+    }
+    .main-title h2 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
+      margin: 0;
+      direction: ltr;
+    }
+    .card, .section-card, .ex-block {
+      margin-bottom: 20px;
+      page-break-inside: auto;
+    }
+    h2, .card-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111827;
+      border-bottom: 1.5px solid #1f2937;
+      padding-bottom: 4px;
+      margin: 16px 0 8px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #065f46;
+      margin: 12px 0 6px;
+      page-break-after: avoid;
+    }
+    .problem-box, .highlight-box, .rule-box {
+      background-color: #f8fafc !important;
+      border-right: 3.5px solid #334155 !important;
+      border-left: none !important;
+      padding: 8px 12px;
+      margin: 8px 0 12px;
+      font-size: 12px;
+      color: #1e293b;
+      page-break-inside: avoid;
+    }
+    .math-block, .formula-box, .math-display {
+      direction: ltr !important;
+      text-align: center;
+      background: #fbfcfe !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 12px;
+      color: #000000 !important;
+      page-break-inside: avoid;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      background: #ffffff;
+      font-size: 11.5px;
+      page-break-inside: avoid;
+    }
+    th {
+      background-color: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-weight: 700;
+      padding: 8px 10px;
+      text-align: right;
+      border: 1px solid #cbd5e1;
+    }
+    td {
+      padding: 7px 10px;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .diagram-container, .diagram-box {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 10px auto;
+      text-align: center;
+      max-width: 550px;
+      page-break-inside: avoid;
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ترويسة أكاديمية رسمية نظيفة -->
+  <header class="univ-header">
+    <div class="univ-header-top">
+      <span>RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE</span>
+      <span>جامعة باتنة 2 - مصطفى بن بولعيد</span>
+    </div>
+    <div class="univ-header-sub">
+      <span>Faculté de Technologie • Département de Génie Mécanique</span>
+      <span>كلية التكنولوجيا • قسم الهندسة الميكانيكية</span>
+    </div>
+    <div class="univ-header-sub">
+      <span>Résistance des Matériaux</span>
+      <span>Département de Génie Mécanique • L3 CM</span>
+    </div>
+  </header>
+
+  <div class="main-title">
+    <h1>دليل مقاومة المواد: المخططات البيانية والانحناء المستوي</h1>
+    <h2>Guide RDM : Diagrammes des sollicitations T(x) et Mf(x) & Flexion 4 points</h2>
+  </div>
+
+  <main class="solution-content">
+<!-- LESSON 1 -->
+    <section class="section-card">
+        <div class="section-header">
+            <span class="badge">الدرس 01</span>
+            <h2>علم السكون وحساب ردود الأفعال (Statique & Réactions d'Appuis)</h2>
+        </div>
+
+        <div class="box-concept">
+            <strong>المبدأ الأساسي للسكون (PFS):</strong>
+            لحساب ردود الأفعال الخارجية، نطبق معادلات التوازن العام للجسم الصلب[cite: 2]:
+            $$\sum F_x = 0, \quad \sum F_y = 0, \quad \sum M_{/\text{Point}} = 0$$
+        </div>
+
+        <div class="box-exercise">
+            <strong>تمرين تطبيقي:</strong> عارضة \(AB\) بطول \(L = 6\text{ m}\) مستندة على مسند مزدوج عند \(A\) ومسند بسيط عند \(B\)، تخضع لقوة شاقولية \(F = 30\text{ kN}\) على مسافة \(2\text{ m}\) من \(A\). احسب ردود الأفعال.
+        </div>
+
+        <div class="box-solution">
+            <strong>الحل:</strong>
+            $$\sum F_x = 0 \implies X_A = 0\text{ kN}$$
+            $$\sum M_{/A} = 0 \implies -(30 \times 2) + (Y_B \times 6) = 0 \implies Y_B = 10\text{ kN} \ (\uparrow)$$
+            $$\sum F_y = 0 \implies Y_A + Y_B - 30 = 0 \implies Y_A = 20\text{ kN} \ (\uparrow)$$
+        </div>
+    </section>
+
+    <!-- LESSON 2 -->
+    <section class="section-card">
+        <div class="section-header">
+            <span class="badge">الدرس 02</span>
+            <h2>الجهود الداخلية وطريقة المقاطع (Forces Internes & Coupures)</h2>
+        </div>
+
+        <div class="box-concept">
+            <strong>طريقة المقاطع (Méthode des sections):</strong>
+            لقطع العارضة عند مسافة متغيرة \(x\)، نعزل الطرف الأيسر ونكتب معادلات التوازن الداخلي لحساب الجهد القاطع \(T(x)\) وعزم الانحناء \(M_f(x)\)[cite: 1, 2].
+        </div>
+
+        <div class="box-exercise">
+            <strong>تمرين تطبيقي:</strong> عارضة بطول \(L = 4\text{ m}\) محملة بحمولة منتظمة \(q = 2\text{ kN/m}\). (\(Y_A = Y_B = 4\text{ kN}\)). أوجد معادلات \(T(x)\) و \(M_f(x)\).
+        </div>
+
+        <div class="box-solution">
+            <strong>الحل:</strong>
+            عزل الجزء الأيسر الواقع في المجال \(x \in [0, 4]\):
+            $$T(x) = Y_A - q \cdot x = 4 - 2x \quad (\text{kN})$$
+            $$M_f(x) = Y_A \cdot x - q \cdot \frac{x^2}{2} = 4x - x^2 \quad (\text{kN}\cdot\text{m})$$
+        </div>
+    </section>
+
+    <!-- HOW TO DRAW SECTION -->
+    <section class="section-card" style="border: 2px solid var(--secondary);">
+        <div class="section-header">
+            <span class="badge" style="background: var(--secondary);">الدرس 03</span>
+            <h2>القواعد المنهجية لرسم المنحنيات خطوة بخطوة (Comment Tracer les Diagrammes)</h2>
+        </div>
+
+        <p>لرسم المخططات بسرعة وبدون أخطاء، نعتمد على ثلاثة مبادئ ميكانيكية ورياضية ثابتة:</p>
+
+        <h3>أولاً: قواعد رسم مخطط الجهد القاطع \(T(x)\) (طريقة القفزات)</h3>
+        <ol>
+            <li><span class="step-pill">نقطة البداية</span> نبدأ دائماً من النقطة \((x = 0, T = 0)\) في أقصى اليسار.</li>
+            <li><span class="step-pill">تأثير القوى المركزة</span> عند أي نقطة تؤثر فيها قوة مركزية شاقولية، يحدث **قفز شاقولي فوري (Saut vertical)** في المنحنى:
+                <ul>
+                    <li>إذا كانت القوة نحو <strong>الأعلى</strong> (مثل رد الفعل \(R_A\)) \(\implies\) نقفز نحو <strong>الأعلى</strong> بمقدار القوة.</li>
+                    <li>إذا كانت القوة نحو <strong>الأسفل</strong> (مثل الحمل \(P\)) \(\implies\) نقفز نحو <strong>الأسفل</strong> بمقدار القوة.</li>
+                </ul>
+            </li>
+            <li><span class="step-pill">المناطق الخالية من الأحمال</span> بين نقطتي تأثير القوى (حيث \(q=0\))، يكون المنحنى **خطاً أفقياً ثابتاً تماماً** لأن \(\frac{dT}{dx} = -q = 0\).</li>
+            <li><span class="step-pill">الإغلاق التلقائي</span> عند الوصول للطرف الأيمن للعارضة، يجب أن يعيد رد الفعل الأخير المنحنى بدقة إلى الصفر (\(T = 0\)). إذا لم يُغلق المنحنى، فهذا يعني وجود خطأ في حساب ردود الأفعال.</li>
+        </ol>
+
+        <h3>ثانياً: قواعد رسم مخطط عزم الانحناء \(M_f(x)\) (طريقة المساحات والمماسات)</h3>
+        <ol>
+            <li><span class="step-pill">الشروط الحدية</span> ينعدم عزم الانحناء دائماً عند المساند الطرفية البسيطة والمفصلية الحرة (\(M_f(0) = 0\) و \(M_f(L) = 0\)) لعدم وجود عزم مثبت يمنع الدوران.</li>
+            <li><span class="step-pill">العلاقة التفاضلية والميل</span> مشتقة عزم الانحناء تمثل ميل مماس المنحنى وتساوي الجهد القاطع (\(\frac{dM_f}{dx} = T(x)\) أو \(-T(x)\)):
+                <ul>
+                    <li>إذا كان \(T(x) > 0\) وثابت \(\implies\) يكون منحنى \(M_f(x)\) **خطاً مستقيماً صاعداً** بميل موجب.</li>
+                    <li>إذا كان \(T(x) = 0\) \(\implies\) يكون منحنى \(M_f(x)\) **خطاً أفقياً ثابتاً** (ميله معدوم)، وتكون القيمة عظمى.</li>
+                    <li>إذا كان \(T(x) < 0\) وثابت \(\implies\) يكون منحنى \(M_f(x)\) **خطاً مستقيماً نازلاً** بميل سالب.</li>
+                </ul>
+            </li>
+            <li><span class="step-pill">طريقة المساحات (Méthode des aires)</span> التغير في عزم الانحناء بين نقطتين يساوي جبرياً المساحة المحصورة تحت منحنى الجهد القاطع بينهما:
+                $$\Delta M_f = M_f(x_2) - M_f(x_1) = \int_{x_1}^{x_2} T(x) \, dx$$
+                <em>مثال:</em> إذا كان \(M_f(0) = 0\)، فإن قيمة العزم عند المقطع \(a\) هي ببساطة مساحة مستطيل الجهد القاطع في المجال الأول: \(M_f(a) = \text{مساحة المستطيل} = P \times a\).
+            </li>
+        </ol>
+    </section>
+
+    <!-- LESSON 4: DETAILED EXPLANATION OF THE BOARD'S DIAGRAM -->
+    <section class="section-card" style="border: 2px solid var(--primary-light);">
+        <div class="section-header">
+            <span class="badge" style="background: #dc2626;">الدرس 04</span>
+            <h2>الشرح الكامل لتمرين السبورة مع المخططات التفاعلية (Flexion 4 Points)</h2>
+        </div>
+
+        <p>يمثل هذا القسم الشرح الميداني الدقيق لما ورد على السبورة[cite: 1, 2]. لدينا عارضة متناظرة ترتكز على مسندين عند الطرفين، خاضعة لقوتين عموديتين متماثلتين \(P\) تبعدان بمسافة \(a\) عن كل مسند.</p>
+
+        <!-- SVG DRAWINGS CONTAINER -->
+        <div class="diagram-wrapper">
+            <svg viewBox="0 0 850 680" width="100%" height="auto" style="font-family: inherit; direction: ltr;">
+                <defs>
+                    <!-- Marker for arrows -->
+                    <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+                    </marker>
+                    <marker id="arrow-up" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+                    </marker>
+                    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+                    </marker>
+                    <!-- Patterns for hatching -->
+                    <pattern id="hatch-simple" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                        <line x1="0" y1="0" x2="0" y2="8" stroke="#3b82f6" stroke-width="1.5" />
+                    </pattern>
+                    <pattern id="hatch-pure" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                        <line x1="0" y1="0" x2="0" y2="8" stroke="#10b981" stroke-width="1.5" />
+                    </pattern>
+                </defs>
+
+                <!-- ================= 1. BEAM LOADING SYSTEM ================= -->
+                <text x="60" y="35" font-size="16" font-weight="bold" fill="#1e3a8a">1. نظام التحميل والمساند (Schéma mécanique)</text>
+                
+                <!-- Projection guidelines -->
+                <line x1="120" y1="50" x2="120" y2="620" stroke="#cbd5e1" stroke-dasharray="4,4" stroke-width="1.5"/>
+                <line x1="280" y1="50" x2="280" y2="620" stroke="#cbd5e1" stroke-dasharray="4,4" stroke-width="1.5"/>
+                <line x1="560" y1="50" x2="560" y2="620" stroke="#cbd5e1" stroke-dasharray="4,4" stroke-width="1.5"/>
+                <line x1="720" y1="50" x2="720" y2="620" stroke="#cbd5e1" stroke-dasharray="4,4" stroke-width="1.5"/>
+
+                <!-- Beam Body -->
+                <rect x="120" y="90" width="600" height="12" fill="#94a3b8" rx="2"/>
+
+                <!-- Supports -->
+                <!-- Left support A -->
+                <polygon points="120,102 110,122 130,122" fill="#475569"/>
+                <line x1="105" y1="122" x2="135" y2="122" stroke="#334155" stroke-width="2"/>
+                <line x1="105" y1="126" x2="135" y2="126" stroke="#334155" stroke-width="2"/>
+                <text x="90" y="115" font-weight="bold" fill="#334155">A</text>
+
+                <!-- Right support B -->
+                <polygon points="720,102 710,122 730,122" fill="#475569"/>
+                <circle cx="715" cy="126" r="3" fill="#64748b"/>
+                <circle cx="725" cy="126" r="3" fill="#64748b"/>
+                <line x1="705" y1="131" x2="735" y2="131" stroke="#334155" stroke-width="2"/>
+                <text x="745" y="115" font-weight="bold" fill="#334155">B</text>
+
+                <!-- Reaction Forces -->
+                <line x1="120" y1="160" x2="120" y2="108" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrow-up)"/>
+                <text x="130" y="150" font-weight="bold" fill="#16a34a">R_A = P</text>
+
+                <line x1="720" y1="160" x2="720" y2="108" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrow-up)"/>
+                <text x="645" y="150" font-weight="bold" fill="#16a34a">R_B = P</text>
+
+                <!-- Applied Forces P -->
+                <line x1="280" y1="40" x2="280" y2="88" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-down)"/>
+                <text x="285" y="55" font-weight="bold" fill="#dc2626">P</text>
+
+                <line x1="560" y1="40" x2="560" y2="88" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-down)"/>
+                <text x="565" y="55" font-weight="bold" fill="#dc2626">P</text>
+
+                <!-- Dimensions -->
+                <line x1="120" y1="75" x2="280" y2="75" stroke="#475569" stroke-width="1"/>
+                <text x="195" y="70" text-anchor="middle" font-size="13" font-weight="bold">a</text>
+
+                <line x1="280" y1="75" x2="560" y2="75" stroke="#475569" stroke-width="1"/>
+                <text x="420" y="70" text-anchor="middle" font-size="13" font-weight="bold">l - 2a</text>
+
+                <line x1="560" y1="75" x2="720" y2="75" stroke="#475569" stroke-width="1"/>
+                <text x="640" y="70" text-anchor="middle" font-size="13" font-weight="bold">a</text>
+
+
+                <!-- ================= 2. SHEAR FORCE T(x) ================= -->
+                <text x="60" y="220" font-size="16" font-weight="bold" fill="#1e3a8a">2. مخطط الجهد القاطع (Diagramme de l'Effort Tranchant T)</text>
+                
+                <!-- Axis -->
+                <line x1="80" y1="290" x2="780" y2="290" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow)"/>
+                <line x1="120" y1="360" x2="120" y2="225" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow)"/>
+                <text x="790" y="295" font-size="14" fill="#64748b">x</text>
+                <text x="105" y="235" font-size="14" font-weight="bold" fill="#64748b">T(x)</text>
+
+                <!-- Left Block: +P -->
+                <rect x="120" y="240" width="160" height="50" fill="url(#hatch-simple)" stroke="#2563eb" stroke-width="2"/>
+                <circle cx="200" cy="265" r="12" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="200" y="270" text-anchor="middle" font-weight="bold" fill="#2563eb">+</text>
+                <text x="75" y="245" font-weight="bold" fill="#2563eb">+P</text>
+
+                <!-- Middle line: T = 0 -->
+                <line x1="280" y1="290" x2="560" y2="290" stroke="#10b981" stroke-width="4"/>
+                <text x="420" y="280" text-anchor="middle" font-weight="bold" fill="#059669">T = 0</text>
+
+                <!-- Right Block: -P -->
+                <rect x="560" y="290" width="160" height="50" fill="url(#hatch-simple)" stroke="#2563eb" stroke-width="2"/>
+                <circle cx="640" cy="315" r="12" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="640" y="320" text-anchor="middle" font-weight="bold" fill="#2563eb">-</text>
+                <text x="730" y="345" font-weight="bold" fill="#2563eb">-P</text>
+
+
+                <!-- ================= 3. BENDING MOMENT Mf(x) ================= -->
+                <text x="60" y="420" font-size="16" font-weight="bold" fill="#1e3a8a">3. مخطط عزم الانحناء (Diagramme du Moment Fléchissant Mf)</text>
+
+                <!-- Axis -->
+                <line x1="80" y1="460" x2="780" y2="460" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow)"/>
+                <line x1="120" y1="560" x2="120" y2="430" stroke="#64748b" stroke-width="1.5" marker-end="url(#axis-arrow)"/>
+                <text x="790" y="465" font-size="14" fill="#64748b">x</text>
+                <text x="105" y="440" font-size="14" font-weight="bold" fill="#64748b">Mf(x)</text>
+
+                <!-- Mf Trapezoid Shape (Plotted upwards positive) -->
+                <!-- Left Triangle -->
+                <polygon points="120,460 280,460 280,530" fill="url(#hatch-simple)" stroke="#2563eb" stroke-width="2"/>
+                
+                <!-- Middle Rectangle (Pure Flexion Zone) -->
+                <polygon points="280,460 560,460 560,530 280,530" fill="url(#hatch-pure)" stroke="#10b981" stroke-width="2.5"/>
+
+                <!-- Right Triangle -->
+                <polygon points="560,460 720,460 560,530" fill="url(#hatch-simple)" stroke="#2563eb" stroke-width="2"/>
+
+                <!-- Values and signs -->
+                <circle cx="230" cy="495" r="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="230" y="499" text-anchor="middle" font-weight="bold" fill="#2563eb" font-size="12">+</text>
+
+                <circle cx="420" cy="495" r="12" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+                <text x="420" y="500" text-anchor="middle" font-weight="bold" fill="#10b981" font-size="14">+</text>
+
+                <circle cx="610" cy="495" r="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="610" y="499" text-anchor="middle" font-weight="bold" fill="#2563eb" font-size="12">+</text>
+
+                <text x="420" y="555" text-anchor="middle" font-weight="bold" fill="#059669">Mf = P · a = const ≠ 0</text>
+                <line x1="75" y1="530" x2="280" y2="530" stroke="#94a3b8" stroke-dasharray="3,3"/>
+                <text x="60" y="535" font-weight="bold" fill="#059669">P · a</text>
+
+                <!-- ================= 4. DESCRIPTIVE CALLOUTS (FROM THE BOARD) ================= -->
+                <!-- Callout Flexion Simple -->
+                <path d="M 240,515 Q 180,585 140,610" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="2,2"/>
+                <rect x="70" y="610" width="140" height="32" rx="6" fill="#dbeafe" stroke="#3b82f6"/>
+                <text x="140" y="631" text-anchor="middle" font-weight="bold" fill="#1e40af" font-size="13">Flexion simple</text>
+
+                <!-- Callout Flexion Pure -->
+                <path d="M 420,535 Q 420,590 420,605" fill="none" stroke="#059669" stroke-width="2"/>
+                <rect x="340" y="605" width="160" height="36" rx="6" fill="#d1fae5" stroke="#10b981"/>
+                <text x="420" y="628" text-anchor="middle" font-weight="bold" fill="#065f46" font-size="15">Flexion pure</text>
+
+                <!-- Callout Flexion Simple Right -->
+                <path d="M 620,515 Q 670,585 710,610" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="2,2"/>
+                <rect x="640" y="610" width="140" height="32" rx="6" fill="#dbeafe" stroke="#3b82f6"/>
+                <text x="710" y="631" text-anchor="middle" font-weight="bold" fill="#1e40af" font-size="13">Flexion simple</text>
+            </svg>
+            <div class="diagram-caption">المخطط الهندسي الدقيق للعارضة وتطابق منحنيات \(T(x)\) و \(M_f(x)\) مع تمييز مناطق الانحناء</div>
+        </div>
+
+        <h3>تطبيق الخطوات الحسابية بالتفصيل على المجالات الثلاثة:</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>المجال المدروس</th>
+                    <th>معادلة وقيمة \(T(x)\)</th>
+                    <th>معادلة وقيمة \(M_f(x)\)</th>
+                    <th>تفسير طريقة الرسم</th>
+                    <th>التصنيف الميكانيكي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>المجال الأيسر:</strong><br>\(x \in [0, a]\)</td>
+                    <td>\(T_1(x) = +P\)</td>
+                    <td>\(M_{f1}(x) = P \cdot x\)<br>من \(0\) إلى \(P \cdot a\)</td>
+                    <td>قفزة للأعلى بقيمة \(R_A = P\) عند المسند، ثم استقرار أفقي. يقابله خط مائل صاعد في العزم لأن الميل موجب وثابت (\(T > 0\)).</td>
+                    <td><span class="tag-simple">انحناء بسيط (Flexion simple)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>المجال الأوسط:</strong><br>\(x \in [a, l-a]\)</td>
+                    <td>\(T_2(x) = P - P = 0\)</td>
+                    <td>\(M_{f2}(x) = P \cdot a = \text{cte}\)</td>
+                    <td>قفزة للأسفل بمقدار الحمل \(P\) تجعل \(T = 0\) على المحور. يقابله خط أفقي تماماً في العزم لأن مشتقته معدومة ومساحة القص صفرية.</td>
+                    <td><span class="tag-pure">انحناء خالص (Flexion pure)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>المجال الأيمن:</strong><br>\(x \in [l-a, l]\)</td>
+                    <td>\(T_3(x) = -P\)</td>
+                    <td>\(M_{f3}(x) = P(l - x)\)<br>من \(P \cdot a\) إلى \(0\)</td>
+                    <td>قفزة إضافية للأسفل بقيمة \(P\) ليصبح \(T = -P\). يقابله خط مائل هابط في العزم حتى ينعدم عند المسند \(B\) حيث يعيده رد الفعل \(R_B = P\) للصفر.</td>
+                    <td><span class="tag-simple">انحناء بسيط (Flexion simple)</span>[cite: 1]</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="box-explanation">
+            <strong>خلاصة الصورة والنتيجة النهائية:</strong>
+            <ul>
+                <li><strong>الانحناء البسيط (Flexion simple):</strong> يتحقق في الأطراف الجانبية، حيث يكون \(M_f \neq 0\) و \(T \neq 0\)، مسبباً إجهادات ناظمية \(\sigma\) ناتجة عن العزم وإجهادات قص \(\tau\) ناتجة عن الجهد القاطع[cite: 1, 2].</li>
+                <li><strong>الانحناء الخالص (Flexion pure):</strong> يتحقق حصرياً في الثلث الأوسط بين القوتين، حيث ينعدم الجهد القاطع تماماً (\(T = 0\)) مع بقاء العزم ثابتاً وأعظمياً (\(M_f = \text{cte} \neq 0\))، مما يلغي إجهادات القص تماماً (\(\tau = 0\)) وتخضع العارضة لإجهاد شد وضغط نقي[cite: 1, 2].</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>تم إعداد هذا المرجع لتغطية مفاهيم مقاومة المواد (RDM) ومخططات الانحناء في الهندسة الميكانيكية والمدنية.</p>
+    </footer>
+  </main>
+</body>
+</html>

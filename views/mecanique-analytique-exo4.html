@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>حل شامل: تمرين 4 - هبوط الطائرة (حركية الجسم الصلب) | جامعة باتنة 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0c1210;
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    
+    /* MathJax TeX-SVG fixes for RTL and mobile */
+    mjx-container {
+      direction: ltr !important;
+      color: inherit;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) {
+      display: inline-block !important;
+      vertical-align: -0.22em !important;
+      margin: 0 3px !important;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 0.8rem 0 !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    mjx-container svg {
+      display: inline !important;
+      max-width: 100% !important;
+    }
+
+    /* Card & Section styles */
+    .bento-card, .card, section.card {
+      background-color: #131b17 !important;
+      border: 1px solid #23382f !important;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    @media (min-width: 640px) {
+      .bento-card, .card, section.card {
+        padding: 1.75rem;
+      }
+    }
+
+    /* Math display block */
+    .math-block {
+      direction: ltr !important;
+      text-align: center;
+      background: #080e0c !important;
+      border: 1px solid #20352c !important;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+      font-size: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
+      color: #34d399 !important;
+    }
+    
+    /* Boxed final formula */
+    .boxed-eq {
+      display: inline-block;
+      border: 2px solid #10b981;
+      background: rgba(16, 185, 129, 0.08);
+      padding: 6px 14px;
+      border-radius: 8px;
+      color: #6ee7b7;
+      font-weight: 700;
+    }
+
+    /* Responsive Tables */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.25rem 0;
+      border: 1px solid #23382f;
+      border-radius: 0.75rem;
+      background: #0d1512;
+    }
+    table {
+      min-width: 580px;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th {
+      background: #17241f;
+      color: #34d399;
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: right;
+      border-bottom: 1px solid #23382f;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #1c2b24;
+      color: #e2e8f0;
+      text-align: right;
+      vertical-align: middle;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Methods Grid */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .method-card {
+      background: #0e1612;
+      border: 1px solid #1e3328;
+      border-radius: 0.85rem;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .method-card.board-special {
+      border-color: #10b981;
+      background: #0f1c16;
+    }
+
+    .method-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      white-space: nowrap;
+    }
+    .tag.amber {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .result-highlight {
+      background: rgba(16, 185, 129, 0.12);
+      border-right: 4px solid #10b981;
+      padding: 0.85rem 1rem;
+      border-radius: 0.5rem;
+      margin-top: 0.75rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.5rem;
+      background: #10b981;
+      color: #0c1210;
+      font-weight: 800;
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#10b981] selection:text-black">
+
+  <!-- شريط التحكم العلوي -->
+  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-[#23382f]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-3">
+        <a href="../modules/mecanique-analytique.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#34d399] hover:text-white transition-colors bg-[#131b17] px-3 py-1.5 rounded-lg border border-[#23382f]">
+          <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+          <span>العودة إلى (الميكانيك التحليلي)</span>
+        </a>
+        <a href="../index.html" class="hidden sm:inline-block text-xs text-gray-400 hover:text-white transition-colors">
+          الرئيسية
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-2 text-xs text-[#cbd5e1]">
+        <span class="px-2.5 py-0.5 rounded bg-[#10b981]/15 text-[#34d399] font-bold">Mécanique Analytique</span>
+        <span>Dr. Mohamed Masmoudi • Licence 3 CM</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-[#131b17] hover:bg-[#23382f] border border-[#23382f] text-xs text-white flex items-center gap-1.5 transition-all">
+          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+          </svg>
+          <span class="hidden sm:inline">طباعة</span>
+        </button>
+
+        <a href="../lessons/mecanique-analytique-exo4.pdf" download class="px-4 py-1.5 rounded-lg bg-[#10b981] hover:bg-[#059669] text-xs font-bold text-black flex items-center gap-1.5 transition-all shadow-lg shadow-[#10b981]/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          <span>تحميل (PDF)</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-8">
+
+    <!-- بطاقة الترويسة الأكاديمية -->
+    <header class="bento-card rounded-2xl p-5 sm:p-8 relative overflow-hidden">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#23382f] pb-4 mb-4">
+        <div>
+          <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Université Batna 2 • Faculté de Technologie</div>
+          <div class="text-xs sm:text-sm text-gray-300 font-semibold">قسم الهندسة الميكانيكية • السنة الثالثة لسانس (L3 CM)</div>
+        </div>
+        <div>
+          <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#10b981]/15 text-[#34d399] border border-[#10b981]/30">
+            حل نموذجي مفصل ومحقق 100%
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white leading-tight mb-2">
+          حل مفصل: تمرين 4 - هبوط الطائرة وحركية الجسم الصلب
+        </h1>
+        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+          سلسلة أعمال موجهة في مقياس الميكانيك التحليلي (Cinématique du solide) • معالجة كاملة للطرق الخمس لبرهان العلاقة المستقلة عن الزمن والحساب العددي للتباطؤ والزمن.
+        </p>
+      </div>
+    </header>
+
+    <!-- 1. نص التمرين والمعطيات -->
+    <section class="card">
+      <div class="flex items-center mb-4">
+        <span class="step-num">1</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white">نص التمرين والمعطيات (Énoncé et Données)</h2>
+      </div>
+
+      <div class="bg-[#0b130f] border-r-4 border-[#10b981] p-4 rounded-lg mb-5 text-gray-200">
+        <p class="mb-2 font-semibold text-white">نص التمرين باللغة الفرنسية (النسخة الرسمية):</p>
+        <p class="font-mono text-sm leading-relaxed text-gray-300" dir="ltr">
+          « Un avion atterrit avec une vitesse de $300\text{ km/h}$ sur une piste de longueur $1200\text{ m}$. Le mouvement est supposé rectiligne uniformément décéléré. Déterminer la décélération de l'appareil et la durée totale de l'atterrissage. »
+        </p>
+      </div>
+
+      <p class="text-sm text-gray-300 mb-3">
+        قبل الشروع في الحساب، نقوم بفرز المعطيات وتجهيزها بالنظام الدولي للوحدات ($SI$) وكذلك بوحدات الكيلومتر والساعة:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المقدار الفيزيائي</th>
+              <th>الرمز</th>
+              <th>القيمة في التمرين</th>
+              <th>التحويل للنظام الدولي ($SI$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold text-white">السرعة الابتدائية <span class="text-xs text-gray-400 block">(عند بداية المدرج)</span></td>
+              <td>$V_0$ أو $V_1$</td>
+              <td>$300\text{ km/h}$</td>
+              <td class="font-bold text-[#34d399]">$V_0 = \frac{300}{3.6} = \frac{250}{3} \approx 83.33\text{ m/s}$</td>
+            </tr>
+            <tr>
+              <td class="font-bold text-white">السرعة النهائية <span class="text-xs text-gray-400 block">(عند التوقف التام)</span></td>
+              <td>$V_f$ أو $V_2$ أو $V_B$</td>
+              <td>توقف تام</td>
+              <td class="font-bold text-[#34d399]">$V_f = 0\text{ m/s}$</td>
+            </tr>
+            <tr>
+              <td class="font-bold text-white">مسافة الهبوط المقطوعة</td>
+              <td>$x$ أو $x_B$ أو $d$</td>
+              <td>$1200\text{ m}$</td>
+              <td class="font-bold text-[#34d399]">$x = 1200\text{ m} = 1.2\text{ km}$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. ملخص القوانين من السبورة -->
+    <section class="card">
+      <div class="flex items-center mb-4">
+        <span class="step-num">2</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white">التذكير بالقوانين الأساسية للحركة (جدول السبورة المقارن)</h2>
+      </div>
+
+      <p class="text-sm text-gray-300 mb-3">
+        الجدول المرجعي المكتوب على السبورة والذي يقارن بين الحركة الانسحابية (Translation) والحركة الدورانية (Rotation):
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>نوع الحركة</th>
+              <th>الحركة الانسحابية (Mouvement Rectiligne)</th>
+              <th>الحركة الدورانية (Mouvement Circulaire / Rotation)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold text-[#34d399]">1. الحركة المنتظمة<br><span class="text-xs text-gray-400">(Mouvement Uniforme)</span></td>
+              <td>
+                <ul class="space-y-1 text-sm">
+                  <li>التسارع معدوم: $a = 0$</li>
+                  <li>السرعة ثابتة: $V = \text{cte}$</li>
+                  <li>المعادلة الزمنية: $x(t) = V \cdot t + x_0$</li>
+                </ul>
+              </td>
+              <td>
+                <ul class="space-y-1 text-sm">
+                  <li>التسارع الزاوي معدوم: $\varepsilon = 0$</li>
+                  <li>السرعة الزاوية ثابتة: $\omega = \text{cte}$</li>
+                  <li>المعادلة الزمنية: $\theta(t) = \omega \cdot t + \theta_0$</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-bold text-[#fbbf24]">2. الحركة المتغيرة بانتظام<br><span class="text-xs text-gray-400">(Uniformément Varié)</span></td>
+              <td>
+                <ul class="space-y-1 text-sm">
+                  <li>التسارع ثابت: $a = \text{cte}$</li>
+                  <li>معادلة السرعة: $V(t) = a \cdot t + V_0$</li>
+                  <li>معادلة الفاصلة: $x(t) = \frac{1}{2} a t^2 + V_0 t + x_0$</li>
+                  <li class="text-xs text-amber-300 font-semibold mt-1">العلاقة الخالية من الزمن: $2 a (x - x_0) = V^2 - V_0^2$</li>
+                </ul>
+              </td>
+              <td>
+                <ul class="space-y-1 text-sm">
+                  <li>التسارع الزاوي ثابت: $\varepsilon = \text{cte}$</li>
+                  <li>معادلة السرعة الزاوية: $\omega(t) = \varepsilon \cdot t + \omega_0$</li>
+                  <li>معادلة الفاصلة الزاوية: $\theta(t) = \frac{1}{2} \varepsilon t^2 + \omega_0 t + \theta_0$</li>
+                  <li class="text-xs text-amber-300 font-semibold mt-1">العلاقة الخالية من الزمن: $2 \varepsilon (\theta - \theta_0) = \omega^2 - \omega_0^2$</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. جميع طرق برهان العلاقة المستقلة عن الزمن -->
+    <section class="card">
+      <div class="flex items-center mb-4">
+        <span class="step-num">3</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white">جميع طرق برهان العلاقة المستقلة عن الزمن وإيجاد عبارة التسارع ($a$)</h2>
+      </div>
+
+      <p class="text-sm text-gray-300 mb-4">
+        كما هو مطلوب في منهجية الوظيفة المنزلية، يجب إيجاد <strong>العبارة الحرفية (Expression littérale)</strong> أولاً قبل التعويض العددي. إليك الطرق الخمس الكاملة لبرهان العلاقة:
+      </p>
+
+      <div class="methods-grid">
+        
+        <!-- الطريقة 1 -->
+        <div class="method-card board-special">
+          <div>
+            <div class="method-header">
+              <span>الطريقة 1: استخراج الزمن $t$ عند التوقف (طريقة السبورة 1)</span>
+              <span class="tag amber">الأقرب للقسم</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              نعتبر مبدأ الفواصل عند بداية المدرج ($x_0 = 0$)، وعند التوقف التام في النقطة $B$ تنعدم السرعة ($V_B = 0$):
+            </p>
+            <div class="math-block">
+              $$V_B = a \cdot t + V_0 = 0 \implies t = -\frac{V_0}{a}$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              نعوض عبارة الزمن $t$ في معادلة الفاصلة $x_B = \frac{1}{2} a t^2 + V_0 t$:
+            </p>
+            <div class="math-block">
+              $$x_B = \frac{a}{2} \left(-\frac{V_0}{a}\right)^2 + V_0 \left(-\frac{V_0}{a}\right) = \frac{V_0^2}{2a} - \frac{V_0^2}{a}$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              بتوحيد المقامات $\left(\frac{1}{2} - 1 = -\frac{1}{2}\right)$ نجد:
+            </p>
+            <div class="math-block">
+              $$x_B = -\frac{V_0^2}{2a} \implies a = -\frac{V_0^2}{2 x_B}$$
+            </div>
+          </div>
+          <div class="result-highlight text-xs sm:text-sm">
+            العبارة الحرفية للتسارع: $a = -\frac{V_0^2}{2x_B}$
+          </div>
+        </div>
+
+        <!-- الطريقة 2 -->
+        <div class="method-card">
+          <div>
+            <div class="method-header">
+              <span>الطريقة 2: الفرق بين موضعين $x_2 - x_1$ (طريقة السبورة 2)</span>
+              <span class="tag">طريقة السبورة 2</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              باعتبار حركة متغيرة بانتظام فاصلتها $x = \frac{a}{2} t^2$ وزمنها $t = \frac{V}{a}$، نطبق العلاقة عند الموضع الأول والموضع الثاني:
+            </p>
+            <div class="math-block">
+              $$x_1 = \frac{a}{2} \left(\frac{V_1}{a}\right)^2 = \frac{V_1^2}{2a} \quad ; \quad x_2 = \frac{a}{2} \left(\frac{V_2}{a}\right)^2 = \frac{V_2^2}{2a}$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              بطرح المعادلة الأولى من الثانية ($x_2 - x_1$) وضرب الطرفين في $2a$:
+            </p>
+            <div class="math-block">
+              $$2a (x_2 - x_1) = V_2^2 - V_1^2$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              بوضع المسافة المقطوعة $x = x_2 - x_1$ نحصل على العلاقة المؤطرة:
+            </p>
+            <div class="math-block">
+              <span class="boxed-eq">$$2 \cdot a \cdot x = V_2^2 - V_1^2$$</span>
+            </div>
+          </div>
+          <div class="result-highlight text-xs sm:text-sm">
+            علاقة محققة بين أي سرعتين ومسافة
+          </div>
+        </div>
+
+        <!-- الطريقة 3 -->
+        <div class="method-card">
+          <div>
+            <div class="method-header">
+              <span>الطريقة 3: استخراج السرعة الابتدائية ($V_0 = -a \cdot t$)</span>
+              <span class="tag">مبسطة بدون كسور</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              بما أن السرعة النهائية معدومة ($V_f = 0$):
+            </p>
+            <div class="math-block">
+              $$0 = a \cdot t + V_0 \implies V_0 = -a \cdot t$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              نعوض $V_0$ في معادلة المسافة $x = \frac{1}{2} a t^2 + V_0 t$:
+            </p>
+            <div class="math-block">
+              $$x = \frac{1}{2} a t^2 + (-a \cdot t) \cdot t = -\frac{1}{2} a t^2$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              نضرب الطرفين في $2a$ ونعوض $(a \cdot t)^2 = V_0^2$:
+            </p>
+            <div class="math-block">
+              $$2 \cdot a \cdot x = -(a \cdot t)^2 = -V_0^2 \implies a = -\frac{V_0^2}{2x}$$
+            </div>
+          </div>
+          <div class="result-highlight text-xs sm:text-sm">
+            نتيجة متطابقة: $a = -\frac{V_0^2}{2x}$
+          </div>
+        </div>
+
+        <!-- الطريقة 4 -->
+        <div class="method-card">
+          <div>
+            <div class="method-header">
+              <span>الطريقة 4: باستعمال قانون السرعة المتوسطة</span>
+              <span class="tag">الأقصر جبرياً</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              في الحركة المتغيرة بانتظام، المسافة تساوي جداء السرعة المتوسطة في الزمن:
+            </p>
+            <div class="math-block">
+              $$x = V_{\text{moy}} \times t = \left(\frac{V_2 + V_1}{2}\right) \times t$$
+            </div>
+            <p class="text-xs sm:text-sm text-gray-300 mb-2">
+              نعوض عبارة الزمن $t = \frac{V_2 - V_1}{a}$ فنجد جداء فرق حدين ومجموعهما (متطابقة شهيرة):
+            </p>
+            <div class="math-block">
+              $$x = \left(\frac{V_2 + V_1}{2}\right) \times \left(\frac{V_2 - V_1}{a}\right) = \frac{V_2^2 - V_1^2}{2a}$$
+            </div>
+            <div class="math-block">
+              <span class="boxed-eq">$$2 \cdot a \cdot x = V_2^2 - V_1^2$$</span>
+            </div>
+          </div>
+          <div class="result-highlight text-xs sm:text-sm">
+            برهان هندسي في سطرين
+          </div>
+        </div>
+
+      </div>
+
+      <!-- الطريقة 5: التكامل -->
+      <div class="method-card mt-5">
+        <div>
+          <div class="method-header">
+            <span>الطريقة 5: البرهان التحليلي بالتكامل المباشر (طريقة الميكانيك التحليلي)</span>
+            <span class="tag amber">طريقة التفاضل والتكامل</span>
+          </div>
+          <p class="text-xs sm:text-sm text-gray-300 mb-2">
+            نعلم أن التسارع اللحظي هو $a = \frac{\mathrm{d}V}{\mathrm{d}t}$، وباستخدام قاعدة السلسلة (Chain Rule) مع علمنا أن $V = \frac{\mathrm{d}x}{\mathrm{d}t}$:
+          </p>
+          <div class="math-block">
+            $$a = \frac{\mathrm{d}V}{\mathrm{d}t} = \frac{\mathrm{d}V}{\mathrm{d}x} \cdot \frac{\mathrm{d}x}{\mathrm{d}t} = V \cdot \frac{\mathrm{d}V}{\mathrm{d}x} \implies a \cdot \mathrm{d}x = V \cdot \mathrm{d}V$$
+          </div>
+          <p class="text-xs sm:text-sm text-gray-300 mb-2">
+            بمكاملة الطرفين بين الموضع الابتدائي $(x_1, V_1)$ والموضع النهائي $(x_2, V_2)$ مع ثبات التسارع $a$:
+          </p>
+          <div class="math-block">
+            $$\int_{x_1}^{x_2} a\,\mathrm{d}x = \int_{V_1}^{V_2} V\,\mathrm{d}V \implies a(x_2 - x_1) = \frac{1}{2}\left(V_2^2 - V_1^2\right)$$
+          </div>
+          <div class="math-block">
+            <span class="boxed-eq">$$2 \cdot a \cdot x = V_2^2 - V_1^2$$</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. حساب التسارع عدديًا -->
+    <section class="card">
+      <div class="flex items-center mb-4">
+        <span class="step-num">4</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white">الشطر الأول من السؤال: التطبيق العددي لحساب تباطؤ الطائرة ($a$)</h2>
+      </div>
+
+      <p class="text-sm text-gray-300 mb-3">
+        انطلاقاً من العلاقة المبرهنة $2 \cdot a \cdot x = V_2^2 - V_1^2$، وبما أن الطائرة تتوقف تماماً في نهاية المدرج ($V_2 = 0$)، فإن العبارة الحرفية للتسارع هي:
+      </p>
+
+      <div class="math-block">
+        <span class="boxed-eq">$$a = -\frac{V_0^2}{2x}$$</span>
+      </div>
+
+      <div class="methods-grid mt-4">
+        <!-- بالنظام الدولي -->
+        <div class="method-card">
+          <div class="method-header">
+            <span>أولاً: الحساب بالنظام الدولي للوحدات ($SI$)</span>
+            <span class="tag">الوحدات الأساسية</span>
+          </div>
+          <ul class="text-xs sm:text-sm text-gray-300 space-y-1 mb-3">
+            <li>السرعة الابتدائية: $V_0 = \frac{300}{3.6} = \frac{250}{3} \approx 83.333\text{ m/s}$</li>
+            <li>السرعة النهائية: $V_2 = 0\text{ m/s}$</li>
+            <li>مسافة الهبوط: $x = 1200\text{ m}$</li>
+          </ul>
+          <div class="math-block">
+            $$a = -\frac{(83.333)^2}{2 \times 1200} = -\frac{6944.44}{2400} \approx -2.8935\text{ m/s}^2$$
+          </div>
+          <div class="math-block">
+            $$\text{القيمة الكسرية الدقيقة: } a = -\frac{\left(\frac{250}{3}\right)^2}{2400} = -\frac{62500}{21600} = -\frac{3125}{108} \approx -2.89\text{ m/s}^2$$
+          </div>
+          <div class="result-highlight text-xs sm:text-sm">
+            التسارع الجبري: $a = -2.89\text{ m/s}^2$<br>
+            قيمة التباطؤ (Décélération): $|a| = 2.89\text{ m/s}^2$
+          </div>
+        </div>
+
+        <!-- بوحدات السبورة -->
+        <div class="method-card board-special">
+          <div class="method-header">
+            <span>ثانياً: الحساب بوحدات السبورة ($	ext{km/h}^2$)</span>
+            <span class="tag amber">مطابق لحساب السبورة 1</span>
+          </div>
+          <ul class="text-xs sm:text-sm text-gray-300 space-y-1 mb-3">
+            <li>السرعة الابتدائية: $V_1 = 300\text{ km/h}$</li>
+            <li>السرعة النهائية: $V_2 = 0\text{ km/h}$</li>
+            <li>مسافة الهبوط بالكيلومتر: $x_B = 1200\text{ m} = 1.2\text{ km}$</li>
+          </ul>
+          <div class="math-block">
+            $$a = -\frac{300^2}{2 \times 1.2} = -\frac{90000}{2.4} = -37500\text{ km/h}^2$$
+          </div>
+          <div class="result-highlight text-xs sm:text-sm">
+            التسارع بوحدة الكيلومتر والساعة: $a = -37500\text{ km/h}^2$<br>
+            <span class="text-xs text-gray-400">وللتحويل إلى $\text{m/s}^2$: نضرب في $1000$ ونقسم على $3600^2$ فنحصل على $-2.8935\text{ m/s}^2$</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. حساب الزمن -->
+    <section class="card">
+      <div class="flex items-center mb-4">
+        <span class="step-num">5</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white">الشطر الثاني من السؤال: حساب المدة الزمنية الكلية للهبوط ($t$)</h2>
+      </div>
+
+      <p class="text-sm text-gray-300 mb-3">
+        من معادلة السرعة اللحظية $V(t) = a \cdot t + V_0$، وعند التوقف التام ($V = 0$):
+      </p>
+
+      <div class="math-block">
+        $$0 = a \cdot t + V_0 \implies t = -\frac{V_0}{a} \quad \text{أو بدلالة المسافة: } t = \frac{2x}{V_0}$$
+      </div>
+
+      <p class="text-sm text-gray-300 mb-3">
+        حساب الزمن بجميع الوحدات الزمنية الممكنة:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>الوحدة الزمنية</th>
+              <th>القانون وطريقة الحساب</th>
+              <th>النتيجة العددية</th>
+              <th>المطابقة مع السبورة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold text-[#34d399]">1. بالثواني ($s$)<br><span class="text-xs text-gray-400">(النظام الدولي)</span></td>
+              <td>$t = \frac{V_0}{|a|} = \frac{83.333}{2.8935} = \frac{2 \times 1200}{250 / 3}$</td>
+              <td class="font-bold text-white text-base">$t = 28.80\text{ s}$</td>
+              <td><span class="tag">النتيجة المعيارية</span></td>
+            </tr>
+            <tr>
+              <td class="font-bold text-[#fbbf24]">2. بالساعات ($h$)<br><span class="text-xs text-gray-400">(حساب السبورة)</span></td>
+              <td>$t = \frac{V_0}{|a|} = \frac{300}{37500} = \frac{2 \times 1.2}{300}$</td>
+              <td class="font-bold text-white text-base">$t = 0.008\text{ h}$</td>
+              <td><span class="tag amber">مطابق تماماً لحساب السبورة</span></td>
+            </tr>
+            <tr>
+              <td class="font-bold text-gray-300">3. بالدقائق ($min$)</td>
+              <td>$t = 0.008 \times 60 = \frac{28.8}{60}$</td>
+              <td class="font-bold text-white text-base">$t = 0.48\text{ min}$</td>
+              <td><span class="tag">توضيح إضافي</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. الصياغة النموذجية الجاهزة بالفرنسية -->
+    <section class="card border border-[#10b981]/50">
+      <div class="flex items-center mb-4">
+        <span class="step-num">6</span>
+        <h2 class="text-lg sm:text-xl font-bold text-white">الصياغة النموذجية باللغة الفرنسية (جاهزة للتقرير والوظيفة)</h2>
+      </div>
+
+      <div class="bg-[#0b130f] border border-[#23382f] p-5 rounded-xl font-sans text-gray-200 space-y-4" dir="ltr">
+        <h3 class="text-base font-bold text-[#34d399] border-b border-[#23382f] pb-2">
+          Solution de l'exercice 4 : Atterrissage de l'avion
+        </h3>
+
+        <div>
+          <p class="font-bold text-white mb-1">1. Données et conversion aux unités SI :</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
+            <li>Vitesse initiale : $V_0 = 300\text{ km/h} = \frac{300}{3.6} = \frac{250}{3} \approx 83.33\text{ m/s}$</li>
+            <li>Vitesse finale (à l'arrêt complet) : $V_f = 0\text{ m/s}$</li>
+            <li>Distance d'atterrissage : $x = 1200\text{ m} = 1.2\text{ km}$</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-bold text-white mb-1">2. Détermination de la décélération ($a$) :</p>
+          <p class="text-sm text-gray-300 mb-2">
+            Le mouvement étant rectiligne uniformément décéléré ($a = \text{cte} < 0$), on applique la relation indépendante du temps :
+          </p>
+          <div class="bg-[#080e0c] p-3 rounded text-center border border-[#1c2e25] text-[#34d399]">
+            $$V_f^2 - V_0^2 = 2 \cdot a \cdot x$$
+          </div>
+          <p class="text-sm text-gray-300 mt-2">
+            Comme $V_f = 0$, l'expression littérale de l'accélération s'écrit :
+          </p>
+          <div class="bg-[#080e0c] p-3 rounded text-center border border-[#1c2e25] text-[#34d399]">
+            $$a = -\frac{V_0^2}{2x}$$
+          </div>
+          <p class="text-sm text-gray-300 mt-2 font-semibold">Application numérique :</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
+            <li>En unités SI : $a = -\frac{(83.333)^2}{2 \times 1200} \approx -2.89\text{ m/s}^2$ (décélération de $2.89\text{ m/s}^2$).</li>
+            <li>En unités usuelles : $a = -\frac{300^2}{2 \times 1.2} = -37500\text{ km/h}^2$.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-bold text-white mb-1">3. Durée totale de l'atterrissage ($t$) :</p>
+          <p class="text-sm text-gray-300 mb-2">
+            À partir de l'équation horaire de la vitesse $V(t) = a \cdot t + V_0 = 0$, on obtient :
+          </p>
+          <div class="bg-[#080e0c] p-3 rounded text-center border border-[#1c2e25] text-[#34d399]">
+            $$t = -\frac{V_0}{a} = \frac{2x}{V_0}$$
+          </div>
+          <p class="text-sm text-gray-300 mt-2 font-semibold">Application numérique :</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
+            <li>$t = \frac{83.333}{2.8935} = 28.80\text{ s}$</li>
+            <li>En heures : $t = \frac{300}{37500} = 0.008\text{ h} = 28.8\text{ s}$</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-[#23382f] py-6 text-center text-xs text-gray-500">
+    منصة الهندسة الميكانيكية • جامعة باتنة 2 • مراجعة أكاديمية شاملة ومطابقة 100%
+  </footer>
+
+</body>
+</html>

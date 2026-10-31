@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Corrigé TD 1 Elasticité - L3 CM</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm 15mm 15mm 15mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ffffff !important;
+      color: #111827 !important;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* عزل تام لمحرك الرياضيات */
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+      color: #000000 !important;
+    }
+
+    /* ترويسة الورقة الأكاديمية */
+    .univ-header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+    .univ-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .univ-header-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+
+    .main-title {
+      text-align: center;
+      margin: 16px 0 22px;
+    }
+    .main-title h1 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: #111827;
+    }
+    .main-title h2 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .ex-block {
+      margin-bottom: 20px;
+      page-break-inside: auto;
+    }
+
+    .ex-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111827;
+      border-bottom: 1px solid #d1d5db;
+      padding-bottom: 4px;
+      margin: 16px 0 8px;
+      page-break-after: avoid;
+    }
+
+    .problem-text {
+      direction: ltr;
+      text-align: left;
+      background-color: #f9fafb;
+      border-left: 3px solid #4b5563;
+      padding: 8px 12px;
+      margin: 8px 0 12px;
+      font-size: 12px;
+      color: #1f2937;
+      page-break-inside: avoid;
+    }
+
+    .solution-content {
+      padding-right: 4px;
+    }
+
+    .sub-item {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .sub-item-title {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .math-eq {
+      direction: ltr !important;
+      text-align: center;
+      margin: 8px 0;
+      padding: 6px;
+      font-size: 13.5px;
+      page-break-inside: avoid;
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 11.5px;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .status-correct {
+      background-color: #e6f4ea;
+      color: #137333;
+      border: 1px solid #ceead6;
+    }
+    .status-incorrect {
+      background-color: #fce8e6;
+      color: #c5221f;
+      border: 1px solid #fad2cf;
+    }
+
+    .box-result {
+      border: 1px solid #9ca3af;
+      background-color: #f9fafb;
+      padding: 6px 12px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 6px 0;
+      font-weight: bold;
+      page-break-inside: avoid;
+    }
+
+    p {
+      margin: 4px 0 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الترويسة الأكاديمية الرسمية المتطابقة مع أوراق الامتحانات والـ TD -->
+  <div class="univ-header">
+    <div class="univ-header-top">
+      <div>جامعة باتنة 2 • كلية التكنولوجيا • قسم الهندسة الميكانيكية</div>
+      <div dir="ltr">Licence 3 CM — Théorie de l'Élasticité</div>
+    </div>
+    <div class="univ-header-sub">
+      <div>حلول نموذجية مفصلة لسلسلة الأعمال الموجهة رقم 01</div>
+      <div dir="ltr">Enseignant : B. Mohammedi</div>
+    </div>
+  </div>
+
+  <div class="main-title">
+    <h1>حل سلسلة الأعمال الموجهة TD N° 01</h1>
+    <h2 dir="ltr">Chapitre 1 : Calcul vectoriel et tensoriel</h2>
+  </div>
+
+  <!-- EXERCICE 1 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 1. فحص صحة العبارات الإنديسية (Validation des expressions indicielles)</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Indiquer si les expressions indicielles suivantes sont correctes ou incorrectes en justifiant :
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 6px; font-weight: 600;">
+        <div>a) $w_i = e_{nm} w_{mni}$</div>
+        <div>b) $e_{ij} = \frac{\partial f_p}{\partial T_{km}} \frac{\partial f_p}{\partial T_{ij}}$</div>
+        <div>c) $T_{km} + a_i b_j T_{ij}$</div>
+        <div>d) $\alpha_i + b_i c_j$</div>
+        <div>e) $a_i + \alpha_i b_i = c_j$</div>
+        <div>f) $x_i y_j = x_i \delta_{ij} y_j$</div>
+        <div>g) $b_{mn} w_n = A e_{kmn} b_{rk} b_{rm} u_n$</div>
+        <div>h) $\epsilon_{ijk} \epsilon_{mkn} = \delta_{im} \delta_{jk} - \delta_{ik} \delta_{jm}$</div>
+      </div>
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (a) : $w_i = e_{nm} w_{mni}$ &nbsp;
+          <span class="status-badge status-correct">صحيحة (Correcte)</span>
+        </div>
+        <p><strong>التعليل :</strong> في الطرف الأيسر لدينا مؤشر حر وحيد $i$ (شعاع، رتبة 1). في الطرف الأيمن : المؤشر $n$ مكرر مرتين والمؤشر $m$ مكرر مرتين فهما مؤشران مضمومان (muets)، والمؤشر $i$ يظهر مرة واحدة فهو مؤشر حر. طرفا المعادلة كلاهما موتر من الرتبة الأولى يحمل نفس المؤشر الحر.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (b) : $e_{ij} = \frac{\partial f_p}{\partial T_{km}} \frac{\partial f_p}{\partial T_{ij}}$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte)</span>
+        </div>
+        <p><strong>التعليل :</strong> المؤشر $p$ مجموع في البسط. لكن المؤشرات $k, m$ تظهر مرة واحدة في الطرف الأيمن، فهي مؤشرات حرة غير موجودة في الطرف الأيسر. الطرف الأيسر رتبته 2 بمؤشرات $\{i, j\}$ والطرف الأيمن رتبته 4 بمؤشرات $\{k, m, i, j\}$. عدم تطابق الرتبة والمؤشرات الحرة يجعل المعادلة خاطئة.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (c) : $T_{km} + a_i b_j T_{ij}$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte)</span>
+        </div>
+        <p><strong>التعليل :</strong> الحد الأول $T_{km}$ موتر من الرتبة الثانية (مؤشرات حرة $k, m$). الحد الثاني $a_i b_j T_{ij}$ انكمش بالكامل لأن $i$ و $j$ مكرران مرتين، فهو مقدار سلمي (رتبة 0). لا يجوز جمع موتر رتبته 2 مع مقدار سلمي.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (d) : $\alpha_i + b_i c_j$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte)</span>
+        </div>
+        <p><strong>التعليل :</strong> الحد الأول $\alpha_i$ شعاع (رتبة 1، مؤشر حر $i$). الحد الثاني $b_i c_j$ موتر من الرتبة 2 (مؤشران حران $i, j$). لا يمكن جمع شعاع مع موتر ثنائي لعدم تجانس الرتبة الموترية.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (e) : $a_i + \alpha_i b_i = c_j$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte)</span>
+        </div>
+        <p><strong>التعليل :</strong> خاطئة لسببين : في الطرف الأيسر تم جمع شعاع $a_i$ مع جداء سلمي مضموم $\alpha_i b_i$. بالإضافة إلى أن المؤشر الحر في اليسار هو $i$ بينما في اليمين هو $j$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (f) : $x_i y_j = x_i \delta_{ij} y_j$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte)</span>
+        </div>
+        <p><strong>التعليل :</strong> الطرف الأيسر موتر من الرتبة 2 (مصفوفة بمؤشرين حرين $i, j$). الطرف الأيمن انكمش بوجود دلتا كرونيكر : $x_i \delta_{ij} y_j = x_i y_i = \vec{x}\cdot\vec{y}$ وهو مقدار سلمي. لا يمكن لمصفوفة أن تساوي جداءً سلمياً.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (g) : $b_{mn} w_n = A e_{kmn} b_{rk} b_{rm} u_n$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte)</span>
+        </div>
+        <p><strong>التعليل :</strong> الطرف الأيسر شعاع بمؤشر حر $m$ (المؤشر $n$ مجموع). الطرف الأيمن جميع مؤشراته $k, m, n, r$ تظهر مرتين، فهو مقدار سلمي خالص خالي من أي مؤشر حر.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">
+          العبارة (h) : $\epsilon_{ijk} \epsilon_{mkn} = \delta_{im} \delta_{jk} - \delta_{ik} \delta_{jm}$ &nbsp;
+          <span class="status-badge status-incorrect">خاطئة (Incorrecte للصيغة المكتوبة)</span>
+        </div>
+        <p><strong>التعليل :</strong> في الطرف الأيسر المؤشر $k$ مجموع، والمؤشرات الحرة هي $\{i, j, m, n\}$. في الطرف الأيمن المكتوب يظهر المؤشر $k$ من جديد ويغيب المؤشر $n$ تماماً، وهذا تناقض لقواعد المؤشرات. المتطابقة الصحيحة المعيارية هي : $\epsilon_{ijk} \epsilon_{mnk} = \delta_{im} \delta_{jn} - \delta_{in} \delta_{jm}$.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 2 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 2. الحسابات الموترية وتمثيلاتها المصفوفية</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> On donne :
+      $$a = \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 0 \\ 2 \\ -6 \end{pmatrix}, \quad D_{ij} = \begin{pmatrix} 3 & 0 & 2 \\ 0 & -4 & 0 \\ 0 & -5 & 0 \end{pmatrix}$$
+      Calculer et donner la forme matricielle de : a) $a_m b_m$, b) $a_i b_j$, c) $D_{ij} b_j$, d) $D_{ij} a_i$, e) $D_{ij} a_i b_j$.
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ) حساب $a_m b_m$ (الجداء السلمي) :</div>
+        <p>جمع على المؤشر $m$ من 1 إلى 3 :</p>
+        <div class="math-eq">
+          $$a_m b_m = a_1 b_1 + a_2 b_2 + a_3 b_3 = (3)(0) + (0)(2) + (4)(-6) = -24$$
+        </div>
+        <p>الشكل المصفوفي : $a^T \cdot b = \begin{pmatrix} 3 & 0 & 4 \end{pmatrix} \begin{pmatrix} 0 \\ 2 \\ -6 \end{pmatrix} = [-24]$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ب) حساب $a_i b_j$ (الجداء التنسوري / Dyadique) :</div>
+        <p>يعطي مصفوفة $3 \times 3$ حيث العنصر في السطر $i$ والعمود $j$ هو $a_i b_j$ :</p>
+        <div class="math-eq">
+          $$a_i b_j = \begin{pmatrix} 3(0) & 3(2) & 3(-6) \\[2pt] 0(0) & 0(2) & 0(-6) \\[2pt] 4(0) & 4(2) & 4(-6) \end{pmatrix} = \begin{pmatrix} 0 & 6 & -18 \\[2pt] 0 & 0 & 0 \\[2pt] 0 & 8 & -24 \end{pmatrix}$$
+        </div>
+        <p>الشكل المصفوفي : $a \cdot b^T = \begin{pmatrix} 0 & 6 & -18 \\ 0 & 0 & 0 \\ 0 & 8 & -24 \end{pmatrix}$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ج) حساب $D_{ij} b_j$ (جداء مصفوفة في شعاع عمودي) :</div>
+        <p>المؤشر $j$ مجموع ويبقى المؤشر $i$ حراً (شعاع عمودي) :</p>
+        <div class="math-eq">
+          $$(D b)_i = \begin{pmatrix} 3 & 0 & 2 \\[2pt] 0 & -4 & 0 \\[2pt] 0 & -5 & 0 \end{pmatrix} \begin{pmatrix} 0 \\[2pt] 2 \\[2pt] -6 \end{pmatrix} = \begin{pmatrix} 3(0) + 0(2) + 2(-6) \\[2pt] 0(0) - 4(2) + 0(-6) \\[2pt] 0(0) - 5(2) + 0(-6) \end{pmatrix} = \begin{pmatrix} -12 \\[2pt] -8 \\[2pt] -10 \end{pmatrix}$$
+        </div>
+        <p>الشكل المصفوفي : $D \cdot b = \begin{pmatrix} -12 \\ -8 \\ -10 \end{pmatrix} = -12\vec{e}_1 - 8\vec{e}_2 - 10\vec{e}_3$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">د) حساب $D_{ij} a_i$ (جداء شعاع سطري في مصفوفة) :</div>
+        <p>المؤشر $i$ هو المجموع ويبقى $j$ حراً. يمثل مصفوفياً $a^T D$ (أو منقوله $D^T a$) :</p>
+        <div class="math-eq">
+          $$(a^T D)_j = \begin{pmatrix} 3 & 0 & 4 \end{pmatrix} \begin{pmatrix} 3 & 0 & 2 \\[2pt] 0 & -4 & 0 \\[2pt] 0 & -5 & 0 \end{pmatrix} = \begin{pmatrix} 9 & -20 & 6 \end{pmatrix}$$
+        </div>
+        <p>شعاع سطري : $a^T D = \begin{pmatrix} 9 & -20 & 6 \end{pmatrix}$ ، أو شعاع عمودي : $D^T a = \begin{pmatrix} 9 \\ -20 \\ 6 \end{pmatrix}$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">هـ) حساب $D_{ij} a_i b_j$ (الشكل التربيعي / Bilinéaire) :</div>
+        <p>المؤشران $i, j$ مضمومان، فالناتج مقدار سلمي :</p>
+        <div class="math-eq">
+          $$D_{ij} a_i b_j = (a^T D)_j b_j = \begin{pmatrix} 9 & -20 & 6 \end{pmatrix} \begin{pmatrix} 0 \\[2pt] 2 \\[2pt] -6 \end{pmatrix} = 9(0) + (-20)(2) + 6(-6) = -76$$
+        </div>
+        <p>الشكل المصفوفي : $a^T \cdot D \cdot b = -76$.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 3 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 3. إثبات المتطابقات وتغيير وسائط التنسيق</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong><br>
+      a) Démontrer l'égalité suivante : $a_{jih} x_j x_i = a_{ijh} x_i x_j$<br>
+      b) On donne $x_i = a_{ij} y_j$ avec $y_i = b_{ij} z_j$. Éliminer les $y$ pour avoir les $x$ en fonction des $z$.
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ) برهان المساواة $a_{jih} x_j x_i = a_{ijh} x_i x_j$ :</div>
+        <p>1. في الطرف الأيسر $E = a_{jih} x_j x_i$، المؤشران $i, j$ مؤشران مضمومان (sommés)، بينما $h$ مؤشر حر.</p>
+        <p>2. جداء الأعداد الحقيقية تبديلي، إذن $x_j x_i = x_i x_j$ :</p>
+        <div class="math-eq">
+          $$E = a_{jih} x_i x_j$$
+        </div>
+        <p>3. بما أن $i$ و $j$ مؤشران مضمومان، يمكن إعادة تسميتهما بحرية تامة دون تغيير قيمة المجموع (renommage $j \leftrightarrow i$) :</p>
+        <div class="math-eq">
+          $$a_{jih} x_j x_i \xrightarrow{j \leftrightarrow i} a_{ijh} x_i x_j$$
+        </div>
+        <p>وهذا يثبت المساواة مباشرة لأي موتر $a$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ب) التعبير عن $x$ بدلالة $z$ :</div>
+        <p>لدينا $x_i = a_{ij} y_j$. من المعادلة الثانية $y_i = b_{ij} z_j$، نغير مؤشر الجمع إلى $k$ لتجنب تكرار المؤشر $j$ :</p>
+        <div class="math-eq">
+          $$y_j = b_{jk} z_k$$
+        </div>
+        <p>نعوض $y_j$ في معادلة $x_i$ :</p>
+        <div class="math-eq">
+          $$x_i = a_{ij} (b_{jk} z_k) = (a_{ij} b_{jk}) z_k = C_{ik} z_k \quad \text{avec} \quad C_{ik} = a_{ij} b_{jk}$$
+        </div>
+        <p>الشكل المصفوفي : $X = A \cdot Y = A (B \cdot Z) = (A B) \cdot Z$.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 4 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 4. تعيين أشعة الوحدة (Vecteurs unitaires)</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Déterminer en coordonnées cartésiennes le vecteur unitaire $\vec{n}$ :<br>
+      a) Parallèle au vecteur $\vec{v} = 2\vec{e}_1 + 3\vec{e}_2 - 6\vec{e}_3$<br>
+      b) Le long de la ligne joignant les points $P(1, 0, 3)$ et $Q(0, 2, 1)$
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ) شعاع الوحدة الموازي لـ $\vec{v}$ :</div>
+        <p>حساب معيار الشعاع $\vec{v}$ :</p>
+        <div class="math-eq">
+          $$\|\vec{v}\| = \sqrt{2^2 + 3^2 + (-6)^2} = \sqrt{4 + 9 + 36} = \sqrt{49} = 7$$
+        </div>
+        <p>شعاع الوحدة $\vec{n} = \frac{\vec{v}}{\|\vec{v}\|}$ :</p>
+        <div class="math-eq">
+          $$\vec{n} = \frac{2}{7}\vec{e}_1 + \frac{3}{7}\vec{e}_2 - \frac{6}{7}\vec{e}_3 = \begin{pmatrix} 2/7 \\ 3/7 \\ -6/7 \end{pmatrix} \quad (\text{ou } \pm\vec{n})$$
+        </div>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ب) شعاع الوحدة على طول الخط الواصل بين $P$ و $Q$ :</div>
+        <p>مركبات الشعاع $\vec{PQ}$ :</p>
+        <div class="math-eq">
+          $$\vec{PQ} = (0 - 1)\vec{e}_1 + (2 - 0)\vec{e}_2 + (1 - 3)\vec{e}_3 = -\vec{e}_1 + 2\vec{e}_2 - 2\vec{e}_3$$
+        </div>
+        <p>حساب المعيار : $\|\vec{PQ}\| = \sqrt{(-1)^2 + 2^2 + (-2)^2} = \sqrt{1 + 4 + 4} = \sqrt{9} = 3$.</p>
+        <p>شعاع الوحدة :</p>
+        <div class="math-eq">
+          $$\vec{n}_{PQ} = \frac{\vec{PQ}}{\|\vec{PQ}\|} = -\frac{1}{3}\vec{e}_1 + \frac{2}{3}\vec{e}_2 - \frac{2}{3}\vec{e}_3 = \begin{pmatrix} -1/3 \\ 2/3 \\ -2/3 \end{pmatrix}$$
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 5 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 5. إثبات تعامد الشعاع على المستوي (Vecteur normal au plan)</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Démontrer que le vecteur $\vec{v} = a\vec{e}_1 + b\vec{e}_2 + c\vec{e}_3$ est normal au plan d'équation $a x_1 + b x_2 + c x_3 = \lambda$.
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">الطريقة 1 : البرهان الهندسي بالجداء السلمي</div>
+        <p>لتكن النقطتان $M(x_1, x_2, x_3)$ و $M'(x'_1, x'_2, x'_3)$ نقطتين اختياريتين تنتميان للمستوي :</p>
+        <div class="math-eq">
+          $$a x_1 + b x_2 + c x_3 = \lambda \quad \text{و} \quad a x'_1 + b x'_2 + c x'_3 = \lambda$$
+        </div>
+        <p>بطرح المعادلتين طرفاً لطرف :</p>
+        <div class="math-eq">
+          $$a(x_1 - x'_1) + b(x_2 - x'_2) + c(x_3 - x'_3) = 0$$
+        </div>
+        <p>الشعاع $\vec{M'M} = (x_1 - x'_1)\vec{e}_1 + (x_2 - x'_2)\vec{e}_2 + (x_3 - x'_3)\vec{e}_3$ شعاع موازٍ للمستوي ومحتوى فيه بالكامل. نلاحظ أن :</p>
+        <div class="math-eq">
+          $$\vec{v} \cdot \vec{M'M} = a(x_1 - x'_1) + b(x_2 - x'_2) + c(x_3 - x'_3) = 0$$
+        </div>
+        <p>بما أن الجداء السلمي منعدم مع أي شعاع مماس للمستوي، فإن $\vec{v}$ عمودي تماماً على المستوي ($\vec{v} \perp \mathcal{P}$).</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">الطريقة 2 : طريقة التدرج الموتري (Gradient)</div>
+        <p>المستوي سطح تساوي كمون لحقل سلمي $\Phi(x_1, x_2, x_3) = a x_1 + b x_2 + c x_3 - \lambda = 0$.</p>
+        <div class="math-eq">
+          $$\vec{\nabla}\Phi = \frac{\partial \Phi}{\partial x_1}\vec{e}_1 + \frac{\partial \Phi}{\partial x_2}\vec{e}_2 + \frac{\partial \Phi}{\partial x_3}\vec{e}_3 = a\vec{e}_1 + b\vec{e}_2 + c\vec{e}_3 = \vec{v}$$
+        </div>
+        <p>شعاع التدرج لأي سطح كمون يكون دائماً عمودياً على السطح المماسي له عند كل نقطة منه، إذن $\vec{v}$ ناظمي على المستوي.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 6 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 6. تفكيك المصفوفات إلى أجزاء متناظرة ومتخالفة المناظرة</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Soit $A$ une matrice. Montrer en utilisant la notation indicielle que :<br>
+      a) $B = \frac{1}{2}(A + A^T)$ est une matrice symétrique.<br>
+      b) $C = \frac{1}{2}(A - A^T)$ est une matrice antisymétrique.
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ) إثبات تناظر المصفوفة $B$ :</div>
+        <p>عناصر المصفوفة $B$ بالترميز الإنديسي هي $B_{ij} = \frac{1}{2}(A_{ij} + A_{ji})$ حيث $(A^T)_{ij} = A_{ji}$.</p>
+        <p>نبدل المؤشرات لحساب $B_{ji}$ :</p>
+        <div class="math-eq">
+          $$B_{ji} = \frac{1}{2}(A_{ji} + A_{ij}) = \frac{1}{2}(A_{ij} + A_{ji}) = B_{ij}$$
+        </div>
+        <p>بما أن $B_{ji} = B_{ij}$ لجميع $i, j$، فإن $B$ مصفوفة متناظرة ($B = B^T$).</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ب) إثبات تخالف تناظر المصفوفة $C$ :</div>
+        <p>عناصر المصفوفة $C$ هي $C_{ij} = \frac{1}{2}(A_{ij} - A_{ji})$.</p>
+        <p>نبدل المؤشرات لحساب $C_{ji}$ :</p>
+        <div class="math-eq">
+          $$C_{ji} = \frac{1}{2}(A_{ji} - A_{ij}) = -\frac{1}{2}(A_{ij} - A_{ji}) = -C_{ij}$$
+        </div>
+        <p>بما أن $C_{ji} = -C_{ij}$ لجميع المؤشرات، فإن $C$ مصفوفة متخالفة المناظرة ($C = -C^T$) وعناصر قطرها الرئيسي معدومة ($C_{ii} = 0$).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 7 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 7. خصائص الموترات من الرتبة الثانية ورمز ليفي-تشيفيتا</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Soit $S_{ij}$ un tenseur d'ordre deux symétrique ($S_{ij} = S_{ji}$) et $T_{ij}$ un tenseur quelconque. Montrer que :<br>
+      a) $T_{ij} S_{ij} = T_{(ij)} S_{ij}$ où $T_{(ij)}$ représente la partie symétrique de $T_{ij}$.<br>
+      b) $S_{ij} R_{ij} = 0$ où $R_{ij}$ est un tenseur antisymétrique ($R_{ji} = -R_{ij}$).<br>
+      c) $\frac{1}{2}\epsilon_{ijk}\epsilon_{mnk} T_{mn} = T_{[ij]}$ où $T_{[ij]}$ est la partie antisymétrique.
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ و ب) برهان $S_{ij} R_{ij} = 0$ و $T_{ij} S_{ij} = T_{(ij)} S_{ij}$ :</div>
+        <p>1. نضع $X = S_{ij} R_{ij}$. بإعادة تسمية المؤشرات المضمومة $i \leftrightarrow j$ :</p>
+        <div class="math-eq">
+          $$X = S_{ji} R_{ji} = S_{ij} (-R_{ij}) = -S_{ij} R_{ij} = -X \implies 2X = 0 \implies S_{ij} R_{ij} = 0$$
+        </div>
+        <p>2. نعلم أن أي موتر يكتب كمجموع جزئه المتناظر والمتخالف : $T_{ij} = T_{(ij)} + T_{[ij]}$. بالضرب في $S_{ij}$ :</p>
+        <div class="math-eq">
+          $$T_{ij} S_{ij} = (T_{(ij)} + T_{[ij]}) S_{ij} = T_{(ij)} S_{ij} + \underbrace{T_{[ij]} S_{ij}}_{= 0} = T_{(ij)} S_{ij}$$
+        </div>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ج) إثبات استخلاص الجزء المتخالف بواسطة $\epsilon_{ijk}\epsilon_{mnk}$ :</div>
+        <p>نطبق متطابقة ليفي-تشيفيتا للانكماش على المؤشر المشترك $k$ :</p>
+        <div class="math-eq">
+          $$\epsilon_{ijk}\epsilon_{mnk} = \delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}$$
+        </div>
+        <p>نعوض داخل المقدار :</p>
+        <div class="math-eq">
+          $$\frac{1}{2}\epsilon_{ijk}\epsilon_{mnk} T_{mn} = \frac{1}{2}(\delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}) T_{mn} = \frac{1}{2}(\delta_{im}\delta_{jn} T_{mn} - \delta_{in}\delta_{jm} T_{mn})$$
+        </div>
+        <p>بتطبيق خاصية التصفية لدلتا كرونيكر : $\delta_{im}\delta_{jn} T_{mn} = T_{ij}$ و $\delta_{in}\delta_{jm} T_{mn} = T_{ji}$ :</p>
+        <div class="math-eq">
+          $$\frac{1}{2}\epsilon_{ijk}\epsilon_{mnk} T_{mn} = \frac{1}{2}(T_{ij} - T_{ji}) = T_{[ij]}$$
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 8 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 8. خواص منقول المصفوفات والمصفوفة الأحادية</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Soient $A$ et $B$ deux matrices. Montrer en notation indicielle :<br>
+      a) $(A+B)^T = A^T + B^T$<br>
+      b) $(AB)^T = B^T A^T$<br>
+      c) $I B = B I = B$
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ) منقول المجموع :</div>
+        <p>نضع $S = A + B \implies S_{ij} = A_{ij} + B_{ij}$. المنقول هو :</p>
+        <div class="math-eq">
+          $$(S^T)_{ij} = S_{ji} = A_{ji} + B_{ji} = (A^T)_{ij} + (B^T)_{ij} = (A^T + B^T)_{ij} \implies (A+B)^T = A^T + B^T$$
+        </div>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ب) منقول الجداء :</div>
+        <p>نضع $P = A B \implies P_{ij} = A_{ik} B_{kj}$. المنقول هو :</p>
+        <div class="math-eq">
+          $$(P^T)_{ij} = P_{ji} = A_{jk} B_{ki} = B_{ki} A_{jk} = (B^T)_{ik} (A^T)_{kj} = (B^T A^T)_{ij} \implies (AB)^T = B^T A^T$$
+        </div>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ج) المصفوفة الأحادية ($I = \delta_{ij}$) :</div>
+        <div class="math-eq">
+          $$(I B)_{ij} = \delta_{ik} B_{kj} = B_{ij} \implies I B = B$$
+          $$(B I)_{ij} = B_{ik} \delta_{kj} = B_{ij} \implies B I = B$$
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXERCICE 9 -->
+  <div class="ex-block">
+    <div class="ex-title">EX 9. المتطابقات الشعاعية الكبرى</div>
+    
+    <div class="problem-text">
+      <strong>Énoncé :</strong> Montrer que :<br>
+      a) $\vec{u} \times (\vec{v} \times \vec{w}) = (\vec{u} \cdot \vec{w})\vec{v} - (\vec{u} \cdot \vec{v})\vec{w}$ (Double produit vectoriel)<br>
+      b) $(\vec{u} \times \vec{v}) \cdot (\vec{w} \times \vec{r}) = (\vec{u} \cdot \vec{w})(\vec{v} \cdot \vec{r}) - (\vec{u} \cdot \vec{r})(\vec{v} \cdot \vec{w})$ (Identité de Lagrange)
+    </div>
+
+    <div class="solution-content">
+      <div class="sub-item">
+        <div class="sub-item-title">أ) الجداء الشعاعي المزدوج (Formule du BAC-CAB) :</div>
+        <p>نضع $\vec{a} = \vec{v} \times \vec{w} \implies a_k = \epsilon_{kmn} v_m w_n$. الشعاع $\vec{b} = \vec{u} \times \vec{a}$ مركبته :</p>
+        <div class="math-eq">
+          $$b_i = \epsilon_{ijk} u_j a_k = \epsilon_{ijk} \epsilon_{kmn} u_j v_m w_n = \epsilon_{kij} \epsilon_{kmn} u_j v_m w_n$$
+        </div>
+        <p>نعوض بمتطابقة الانكماش $\epsilon_{kij}\epsilon_{kmn} = \delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}$ :</p>
+        <div class="math-eq">
+          $$b_i = (\delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}) u_j v_m w_n = (\delta_{im} v_m)(\delta_{jn} u_j w_n) - (\delta_{jm} u_j v_m)(\delta_{in} w_n)$$
+          $$b_i = v_i (u_n w_n) - w_i (u_m v_m) = (\vec{u}\cdot\vec{w}) v_i - (\vec{u}\cdot\vec{v}) w_i$$
+        </div>
+        <p>شعاعياً : $\vec{u} \times (\vec{v} \times \vec{w}) = (\vec{u} \cdot \vec{w})\vec{v} - (\vec{u} \cdot \vec{v})\vec{w}$.</p>
+      </div>
+
+      <div class="sub-item">
+        <div class="sub-item-title">ب) متطابقة لاغرانج :</div>
+        <p>نضع $\vec{p} = \vec{u} \times \vec{v} \implies p_i = \epsilon_{ijk} u_j v_k$ و $\vec{q} = \vec{w} \times \vec{r} \implies q_i = \epsilon_{imn} w_m r_n$. الجداء السلمي :</p>
+        <div class="math-eq">
+          $$\vec{p} \cdot \vec{q} = p_i q_i = \epsilon_{ijk}\epsilon_{imn} u_j v_k w_m r_n$$
+        </div>
+        <p>بالانكماش على المؤشر المشترك $i$ حيث $\epsilon_{ijk}\epsilon_{imn} = \delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km}$ :</p>
+        <div class="math-eq">
+          $$\vec{p} \cdot \vec{q} = (\delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km}) u_j v_k w_m r_n = (\delta_{jm} u_j w_m)(\delta_{kn} v_k r_n) - (\delta_{jn} u_j r_n)(\delta_{km} v_k w_m)$$
+          $$\vec{p} \cdot \vec{q} = (u_m w_m)(v_n r_n) - (u_n r_n)(v_m w_m) = (\vec{u} \cdot \vec{w})(\vec{v} \cdot \vec{r}) - (\vec{u} \cdot \vec{r})(\vec{v} \cdot \vec{w})$$
+        </div>
+        <p>وهو المطلوب إثباته بالدقة الرياضية التامة.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

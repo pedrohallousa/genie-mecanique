@@ -1,0 +1,11 @@
+# System and temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Vercel deployment folder
+.vercel
+
+# Node modules if any
+node_modules/

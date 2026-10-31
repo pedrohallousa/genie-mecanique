@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>درس مقاومة المواد: استنتاج إجهاد القص المماسي - Université Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: { matchFontHeight: false }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #ffffff !important;
+      color: #111827 !important;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 12.5px;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+    mjx-container, mjx-container *, .MathJax, .MathJax * {
+      font-family: MathJax_Main, MathJax_Math, 'Times New Roman', serif !important;
+      direction: ltr !important;
+      color: #000000 !important;
+    }
+    .univ-header {
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .univ-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+    .univ-header-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+    .main-title {
+      text-align: center;
+      margin: 14px 0 20px;
+    }
+    .main-title h1 {
+      font-size: 16.5px;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: #111827;
+    }
+    .main-title h2 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
+      margin: 0;
+      direction: ltr;
+    }
+    article, section, .bento-card {
+      margin-bottom: 20px;
+      page-break-inside: auto;
+    }
+    h2 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111827;
+      border-bottom: 1.5px solid #1f2937;
+      padding-bottom: 4px;
+      margin: 16px 0 8px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #065f46;
+      margin: 12px 0 6px;
+      page-break-after: avoid;
+    }
+    .problem-box {
+      background-color: #f8fafc !important;
+      border-right: 3.5px solid #334155 !important;
+      border-left: none !important;
+      padding: 8px 12px;
+      margin: 8px 0 12px;
+      font-size: 12px;
+      color: #1e293b;
+      page-break-inside: avoid;
+    }
+    .math-block {
+      direction: ltr !important;
+      text-align: center;
+      background: #fbfcfe !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 12px;
+      color: #000000 !important;
+      page-break-inside: avoid;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      background: #ffffff;
+      font-size: 11.5px;
+      page-break-inside: avoid;
+    }
+    th {
+      background-color: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-weight: 700;
+      padding: 8px 10px;
+      text-align: right;
+      border: 1px solid #cbd5e1;
+    }
+    td {
+      padding: 7px 10px;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .diagram-container {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 6px;
+      padding: 10px;
+      margin: 10px auto;
+      text-align: center;
+      max-width: 550px;
+      page-break-inside: avoid;
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="univ-header">
+    <div class="univ-header-top">
+      <span>RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE</span>
+      <span>جامعة باتنة 2 - مصطفى بن بولعيد</span>
+    </div>
+    <div class="univ-header-sub">
+      <span>Faculté de Technologie • Département de Génie Mécanique</span>
+      <span>كلية التكنولوجيا • قسم الهندسة الميكانيكية</span>
+    </div>
+    <div class="univ-header-sub">
+      <span>Résistance des Matériaux (RDM) • Licence 3 CM</span>
+      <span>محاضرة تخصصية: إجهاد القص في الانحناء</span>
+    </div>
+  </header>
+
+  <div class="main-title">
+    <h1>درس مقاومة المواد: استنتاج إجهاد القص المماسي (صيغة جورافسكي)</h1>
+    <h2>Expression de la Contrainte Tangentielle en Flexion Simple — Formule de Jourawski</h2>
+  </div>
+
+  <main class="solution-content">
+
+    <!-- 1. المدخل الفيزيائي والفرضيات الهندسية -->
+    <article class="bento-card rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-white border-b border-[#23382f] pb-3 mb-4 flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-[#10b981]/15 text-[#34d399] flex items-center justify-center font-black text-sm">1</span>
+        <span>المدخل الفيزيائي والفرضيات الهندسية الأساسية (Hypothèses de base)</span>
+      </h2>
+      
+      <p class="leading-relaxed mb-4 text-[#cbd5e1]">
+        في دراسة الانحناء البسيط المستوي <span class="text-[#34d399] font-semibold">(Flexion Simple)</span>، يخضع المقطع العرضي للعارضة في آن واحد إلى كل من <strong>عزم الانحناء</strong> $M_f(x)$ و<strong>جهد القص الداخلي</strong> $T(x)$.
+      </p>
+
+      <div class="problem-box">
+        <strong class="text-white block mb-1">السبب الفيزيائي لنشوء إجهادات القص المماسية:</strong>
+        <p class="text-sm text-[#cbd5e1] leading-relaxed">
+          إن تغير عزم الانحناء على طول المحور الطولي للعارضة وفق المعادلة التفاضلية الأساسية:
+          $$\frac{dM_f(x)}{dx} = T(x)$$
+          يؤدي بالضرورة إلى اختلاف الإجهادات الناظمية $\sigma(y)$ بين مقطعين متتاليين تفصلهما مسافة $dx$. هذا التفاوت في القوى الناظمية يفرض نشوء <strong>إجهادات قص مماسية أفقية $\tau$</strong> بين الألياف المتجاورة لمنع انزلاق الطبقات الداخلية فوق بعضها، وبموجب <em>قانون التبادل لإجهادات القص (Réciprocité des contraintes tangentielles)</em>، تتساوى هذه الإجهادات الأفقية مع إجهادات القص الشاقولية في المقطع العرضي.
+        </p>
+      </div>
+
+      <h3 class="text-base font-bold text-[#34d399] mt-6 mb-3">الفرضيات المعتمدة للنمذجة الرياضية:</h3>
+      <ul class="space-y-2 text-[#cbd5e1] text-sm list-disc list-inside pr-2">
+        <li><strong>شكل المقطع:</strong> عارضة مستقيمة متجانسة ذات مقطع مستطيل عرضه $b$ وارتفاعه الكلي $h$.</li>
+        <li><strong>العرض الصغير:</strong> العارضة رقيقة العرض نسبياً <span class="text-xs text-[#94a3b8]">(Poutre peu large)</span> لضمان تجانس وتماثل إجهاد القص $\tau$ على امتداد عرض المقطع $b$.</li>
+        <li><strong>العنصر التفاضلي:</strong> عزل عنصر حجمي تفاضلي بطول $dx$ بين مقطعين شاقوليين متتاليين.</li>
+        <li><strong>مستوى القطع الأفقي:</strong> دراسة توازن الجزء المعزول الواقع فوق منسوب شاقولي مقداره $y$ مقاساً انطلاقاً من <strong>المحور الحيادي (Axe neutre)</strong>.</li>
+      </ul>
+    </article>
+
+    <!-- 2. الرسم التخطيطي وتحديد الإجهادات -->
+    <article class="bento-card rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-white border-b border-[#23382f] pb-3 mb-4 flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-[#10b981]/15 text-[#34d399] flex items-center justify-center font-black text-sm">2</span>
+        <span>تحديد الإجهادات والقوى على أوجه العنصر الحجمي المعزول</span>
+      </h2>
+
+      <!-- المخطط الهندسي المتجه -->
+      <div class="diagram-container my-6">
+        <svg viewBox="0 0 760 360" width="100%" class="max-w-2xl">
+          <rect width="100%" height="100%" fill="#ffffff" rx="10" stroke="#cbd5e1" stroke-width="1.5"/>
+          
+          <!-- الرسم ثلاثي الأبعاد للعنصر dx -->
+          <g transform="translate(30, 30)">
+            <polygon points="40,80 180,80 180,240 40,240" fill="#f8fafc" stroke="#34d399" stroke-width="1.8"/>
+            <polygon points="40,80 100,30 240,30 180,80" fill="#e2e8f0" stroke="#34d399" stroke-width="1.8"/>
+            <polygon points="180,80 240,30 240,190 180,240" fill="#f1f5f9" stroke="#34d399" stroke-width="1.8"/>
+            
+            <polygon points="40,140 100,90 240,90 180,140" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" stroke-width="2" stroke-dasharray="4,3"/>
+            
+            <line x1="40" y1="260" x2="180" y2="260" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="110" y="278" fill="#94a3b8" font-size="13" font-weight="bold" text-anchor="middle">dx</text>
+            
+            <line x1="180" y1="250" x2="240" y2="200" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="220" y="235" fill="#94a3b8" font-size="13" font-weight="bold">b</text>
+
+            <line x1="20" y1="80" x2="20" y2="240" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="10" y="165" fill="#94a3b8" font-size="13" font-weight="bold" text-anchor="middle">h</text>
+            
+            <g stroke="#f59e0b" stroke-width="2" fill="#f59e0b">
+              <line x1="90" y1="120" x2="140" y2="120" marker-end="url(#arr-amber)"/>
+              <text x="165" y="125" fill="#f59e0b" font-size="13" font-weight="bold">τ(y)</text>
+            </g>
+            
+            <g stroke="#38bdf8" stroke-width="1.5">
+              <line x1="15" y1="110" x2="40" y2="110" marker-end="url(#arr-cyan)"/>
+              <text x="5" y="115" fill="#38bdf8" font-size="12">σ₁</text>
+              <line x1="180" y1="110" x2="215" y2="110" marker-end="url(#arr-cyan)"/>
+              <text x="220" y="115" fill="#38bdf8" font-size="12">σ₂</text>
+            </g>
+            
+            <text x="110" y="65" fill="#34d399" font-size="12" font-weight="bold">A*(y) المساحة المقتطعة</text>
+          </g>
+
+          <!-- المقطع وتوزيع إجهاد القص -->
+          <g transform="translate(420, 30)">
+            <text x="50" y="20" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">المقطع (b × h)</text>
+            <rect x="10" y="40" width="80" height="200" fill="#f8fafc" stroke="#34d399" stroke-width="2"/>
+            
+            <line x1="-10" y1="140" x2="110" y2="140" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <text x="120" y="145" fill="#64748b" font-size="11">y = 0</text>
+
+            <rect x="10" y="40" width="80" height="60" fill="rgba(16, 185, 129, 0.35)"/>
+            <text x="50" y="75" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">A*(y)</text>
+            
+            <g transform="translate(190, 0)">
+              <text x="60" y="20" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">مخطط القص τ(y)</text>
+              <line x1="10" y1="40" x2="10" y2="240" stroke="#94a3b8" stroke-width="1.5"/>
+              <path d="M 10 40 Q 120 140 10 240" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+              <text x="100" y="145" fill="#f59e0b" font-size="11" font-weight="bold">τ_max</text>
+              <text x="15" y="38" fill="#94a3b8" font-size="10">τ = 0</text>
+              <text x="15" y="248" fill="#94a3b8" font-size="10">τ = 0</text>
+            </g>
+          </g>
+
+          <defs>
+            <marker id="arr-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b" />
+            </marker>
+            <marker id="arr-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="overflow-x-auto mt-4">
+        <table class="w-full text-sm">
+          <thead>
+            <tr>
+              <th class="p-3 text-right">الوجه المعزول</th>
+              <th class="p-3 text-right">الموقع والمساحة</th>
+              <th class="p-3 text-right">الإجهاد المؤثر</th>
+              <th class="p-3 text-right">القوة المحصلة الأفقية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 font-bold text-white">الوجه الأيسر (1)</td>
+              <td class="p-3">عند المقطع $x$ بمساحة $A^*$</td>
+              <td class="p-3">$\sigma_1 = \frac{M_f(x) \cdot y}{I_x}$</td>
+              <td class="p-3 font-mono text-[#34d399]">$F_1 = \int_{A^*} \sigma_1 \, dA$</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">الوجه الأيمن (2)</td>
+              <td class="p-3">عند المقطع $x + dx$ بمساحة $A^*$</td>
+              <td class="p-3">$\sigma_2 = \frac{[M_f(x) + dM_f] \cdot y}{I_x}$</td>
+              <td class="p-3 font-mono text-[#34d399]">$F_2 = \int_{A^*} \sigma_2 \, dA$</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">الوجه السفلي الأفقي</td>
+              <td class="p-3">عند المنسوب $y$ بمساحة $b \cdot dx$</td>
+              <td class="p-3">إجهاد قص مماسي $\tau(y)$</td>
+              <td class="p-3 font-mono text-[#f59e0b]">$dF_\tau = \tau(y) \cdot b \cdot dx$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- 3. الاستنتاج الرياضي المفصل -->
+    <article class="bento-card rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-white border-b border-[#23382f] pb-3 mb-4 flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-[#10b981]/15 text-[#34d399] flex items-center justify-center font-black text-sm">3</span>
+        <span>البرهان الرياضي خطوة بخطوة لاستنتاج صيغة جورافسكي</span>
+      </h2>
+
+      <h3 class="text-base font-bold text-[#34d399] mb-2">أ) تطبيق شرط التوازن الاستاتيكي الأفقي:</h3>
+      <p class="text-sm text-[#cbd5e1] mb-2">
+        بإسقاط كافة القوى المؤثرة على المحور الأفقي $(Ox)$ للعنصر المعزول:
+      </p>
+      <div class="math-block">
+        $$\sum F_x = 0 \implies F_2 - F_1 - dF_\tau = 0 \iff dF_\tau = F_2 - F_1$$
+      </div>
+
+      <h3 class="text-base font-bold text-[#34d399] mt-6 mb-2">ب) حساب القوى الناظمية على الوجهين:</h3>
+      <p class="text-sm text-[#cbd5e1] mb-2">
+        بالتعويض بعبارة نافييه <span class="text-xs text-[#94a3b8]">(Formule de Navier)</span> للإجهاد الناظمي:
+      </p>
+      <div class="math-block">
+        $$F_1 = \int_{A^*} \sigma_1 \, dA = \int_{A^*} \frac{M_f(x) \cdot y}{I_x} \, dA = \frac{M_f(x)}{I_x} \int_{A^*} y \, dA$$
+      </div>
+      <div class="math-block">
+        $$F_2 = \int_{A^*} \sigma_2 \, dA = \int_{A^*} \frac{M_f(x) + dM_f}{I_x} y \, dA = \frac{M_f(x) + dM_f}{I_x} \int_{A^*} y \, dA$$
+      </div>
+
+      <h3 class="text-base font-bold text-[#34d399] mt-6 mb-2">ج) إدخال العزم الساكن (Moment Statique):</h3>
+      <p class="text-sm text-[#cbd5e1] mb-2">
+        يُعرَّف <strong>العزم الساكن $S_x(y)$</strong> للمساحة المقتطعة $A^*(y)$ بالنسبة للمحور الحيادي $(Ox)$ بالعلاقة:
+      </p>
+      <div class="math-block">
+        $$S_x(y) = \int_{A^*} y \, dA$$
+      </div>
+      <p class="text-sm text-[#cbd5e1] mb-2">
+        وبالتالي يكون فرق القوتين الناظميتين:
+      </p>
+      <div class="math-block">
+        $$F_2 - F_1 = \frac{dM_f}{I_x} S_x(y)$$
+      </div>
+
+      <h3 class="text-base font-bold text-[#34d399] mt-6 mb-2">د) استنتاج العبارة العامة لإجهاد القص:</h3>
+      <p class="text-sm text-[#cbd5e1] mb-2">
+        بما أن قوة القص المماسية على السطح الأفقي هي $dF_\tau = \tau(y) \cdot b \cdot dx$:
+      </p>
+      <div class="math-block">
+        $$\tau(y) \cdot b \cdot dx = \frac{dM_f}{I_x} S_x(y) \implies \tau(y) = \left(\frac{dM_f}{dx}\right) \frac{S_x(y)}{b \cdot I_x}$$
+      </div>
+      <p class="text-sm text-[#cbd5e1] mb-2">
+        وباستخدام العلاقة التفاضلية الأساسية بين عزم الانحناء والجهد القاطع: $\frac{dM_f}{dx} = T(x)$، نصل إلى <strong>صيغة جورافسكي العامة</strong>:
+      </p>
+      <div class="math-block text-lg py-4 border-2 border-[#10b981] bg-[#0b1612]">
+        $$\bbox[10px, border: 1px solid #10b981]{\tau(y) = \frac{T(x) \cdot S_x(y)}{b(y) \cdot I_x}}$$
+      </div>
+    </article>
+
+    <!-- 4. التطبيق على المقطع المستطيل -->
+    <article class="bento-card rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-white border-b border-[#23382f] pb-3 mb-4 flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-[#10b981]/15 text-[#34d399] flex items-center justify-center font-black text-sm">4</span>
+        <span>التطبيق العددي والتحليلي على المقطع المستطيل (Section Rectangulaire)</span>
+      </h2>
+
+      <p class="text-sm text-[#cbd5e1] mb-4">
+        لمقطع مستطيل بعرض $b$ وارتفاع كلي $h$، تقع المساحة المقتطعة $A^*$ بين المنسوب $y$ والسطح العلوي $h/2$:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl bg-[#0d1612] border border-[#23382f]">
+          <strong class="text-white block mb-2 text-sm">1. العزم الساكن $S_x(y)$:</strong>
+          <p class="text-xs text-[#cbd5e1] mb-2">المساحة $A^* = b \cdot (h/2 - y)$، ومركز ثقلها يقع عند $y_G^* = \frac{1}{2}(h/2 + y)$:</p>
+          <div class="math-block text-xs">
+            $$S_x(y) = A^* \cdot y_G^* = \frac{b}{2} \left(\frac{h^2}{4} - y^2\right)$$
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-[#0d1612] border border-[#23382f]">
+          <strong class="text-white block mb-2 text-sm">2. عزم العطالة التربيعي $I_x$:</strong>
+          <p class="text-xs text-[#cbd5e1] mb-2">بالنسبة للمحور الحيادي المركزي:</p>
+          <div class="math-block text-xs">
+            $$I_x = \frac{b \cdot h^3}{12}$$
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-base font-bold text-[#34d399] mt-6 mb-2">توزيع إجهاد القص على طول الارتفاع:</h3>
+      <div class="math-block">
+        $$\tau(y) = \frac{T \cdot \frac{b}{2} \left(\frac{h^2}{4} - y^2\right)}{b \cdot \frac{b h^3}{12}} = \frac{6 T}{b h^3} \left(\frac{h^2}{4} - y^2\right) = \frac{3}{2} \frac{T}{b h} \left(1 - \frac{4 y^2}{h^2}\right)$$
+      </div>
+
+      <div class="p-4 rounded-xl bg-[#080e0c] border border-[#10b981]/40 mt-4">
+        <h4 class="font-bold text-white text-sm mb-2 text-emeraldTag">النتائج الجوهرية للتوزيع المكافئ:</h4>
+        <ul class="space-y-2 text-xs sm:text-sm text-[#cbd5e1]">
+          <li>• <strong>عند الألياف الخارجية القصوى ($y = \pm h/2$):</strong> ينعدم إجهاد القص تماماً: $\tau(y = \pm h/2) = 0$.</li>
+          <li>• <strong>عند المحور الحيادي ($y = 0$):</strong> يبلغ إجهاد القص قيمته العظمى المطلقة:
+            <div class="math-block my-2 text-sm font-bold text-[#34d399]">
+              $$\tau_{\max} = \frac{3}{2} \frac{T}{b h} = 1.5 \, \tau_{\text{moyen}}$$
+            </div>
+            حيث $\tau_{\text{moyen}} = \frac{T}{A}$ هو متوسط إجهاد القص البسيط.
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 5. مقارنة المقاطع وخلاصة الدرس -->
+    <article class="bento-card rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-white border-b border-[#23382f] pb-3 mb-4 flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-[#10b981]/15 text-[#34d399] flex items-center justify-center font-black text-sm">5</span>
+        <span>مقارنة وتطبيق صيغة جورافسكي على مقاطع هندسية أخرى</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="p-4 rounded-xl bg-[#0d1612] border border-[#23382f]">
+          <h3 class="font-bold text-[#34d399] mb-2 text-sm">المقطع الدائري المصمت (Section circulaire):</h3>
+          <p class="text-xs text-[#cbd5e1] leading-relaxed mb-2">
+            لقضيب دائري بنصف قطر $R$ ومساحة $A = \pi R^2$، يكون إجهاد القص الأعظمي عند المحور الحيادي:
+          </p>
+          <div class="math-block text-xs font-mono">
+            $$\tau_{\max} = \frac{4}{3} \frac{T}{A} \approx 1.33 \, \tau_{\text{moyen}}$$
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-[#0d1612] border border-[#23382f]">
+          <h3 class="font-bold text-[#34d399] mb-2 text-sm">المقطع المجوف على شكل (Profilé en I):</h3>
+          <p class="text-xs text-[#cbd5e1] leading-relaxed mb-2">
+            يتحمل <strong>الجذع الشاقولي (L'âme)</strong> ما بين 90% إلى 95% من كامل جهد القص $T$ نظراً لصغر عرضه $b_w$، بينما تتحمل الأجنحة (Les semelles) عزم الانحناء.
+          </p>
+          <div class="math-block text-xs font-mono">
+            $$\tau_{\text{âme}} \approx \frac{T}{b_w \cdot h_w}$$
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+</body>
+</html>
