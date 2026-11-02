@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مدخل إلى الصيانة الصناعية وتصنيفاتها (Maintenance Industrielle) - Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 12mm 12mm 12mm;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    }
+    body {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      font-size: 11px;
+      line-height: 1.55;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-box {
+      border: 1.5px solid #0f172a;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      background: #f8fafc;
+    }
+    .header-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 3px;
+      text-align: center;
+    }
+    .header-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 600;
+      color: #334155;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 3px;
+      margin-top: 3px;
+    }
+
+    .section-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0f172a;
+      background: #f1f5f9;
+      border-right: 4px solid #0f172a;
+      padding: 3px 6px;
+      margin: 8px 0 4px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+      margin: 5px 0;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 6px;
+      text-align: right;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin: 5px 0;
+      page-break-inside: avoid;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 5px 0;
+      page-break-inside: avoid;
+    }
+    .card-sm {
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 6px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+    .card-sm-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2px;
+      margin-bottom: 4px;
+    }
+
+    p { margin: 2px 0; }
+    ul { margin: 2px 0; padding-right: 16px; }
+    li { margin-bottom: 1px; }
+  </style>
+</head>
+<body>
+
+  <div class="header-box">
+    <div class="header-title">محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Maintenance Industrielle)</div>
+    <div class="header-sub">
+      <span>جامعة باتنة 2 • قسم الهندسة الميكانيكية • السنة الثالثة لسانس (L3 CM)</span>
+      <span>مقياس: الصيانة الصناعية • الفصل الأول</span>
+    </div>
+  </div>
+
+  <!-- 1. التعريف والمفاهيم -->
+  <div class="section-title">1. المفهوم والتعريف الأكاديمي للصيانة (Définition de la maintenance)</div>
+  <p><strong>التعريف القياسي (Norme NF X 60-010) :</strong></p>
+  <p style="direction: ltr; text-align: left; font-size: 10.5px; background: #f8fafc; padding: 4px 8px; border-left: 3px solid #0f172a; border-radius: 4px; margin: 3px 0;">
+    « La maintenance est un ensemble des actions permettant de maintenir ou de rétablir un bien (machine) dans un état spécifié ou en mesure d'assurer un service déterminé. »
+  </p>
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">الحفاظ (Maintenir)</div>
+      <p>المتابعة والمراقبة المستمرة (Suivi et surveillance) لمنع وقوع الأعطال أثناء العمل.</p>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm-title">إعادة التأهيل (Rétablir)</div>
+      <p>تصحيح العيوب وإصلاح الأعطال (Correction de défaut) لإعادة الجهاز لوظيفته.</p>
+    </div>
+  </div>
+  <p><strong>المبدأ الاقتصادي (Bien Maintenir) :</strong> إنجاز كافة عمليات الصيانة بالتكلفة المثالية (Au coût optimal).</p>
+
+  <!-- 2. شجرة أنواع الصيانة -->
+  <div class="section-title">2. الشجرة الهيكلية لأنواع وتصنيفات الصيانة (Typologie de la maintenance)</div>
+  <div class="grid-3">
+    <div class="card-sm">
+      <div class="card-sm-title">1. وقائية (Préventive)</div>
+      <p><strong>قبل وقوع العطل (Avant défaillance):</strong></p>
+      <ul>
+        <li><strong>دورية (Systématique) :</strong> وفق جدول زمني محدد أو ساعات تشغيل.</li>
+        <li><strong>مشروطة (Conditionnelle) :</strong> بناءً على فحص وتشخيص حالة العتاد.</li>
+      </ul>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm-title">2. علاجية (Corrective)</div>
+      <p><strong>بعد وقوع العطل (Après défaillance):</strong></p>
+      <ul>
+        <li><strong>إسعافية (Palliative) :</strong> حل مؤقت ومرحلي (Dépannage).</li>
+        <li><strong>جذرية (Curative) :</strong> إصلاح نهائي وكامل (Réparation).</li>
+      </ul>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm-title">3. تحسينية (Amélioration)</div>
+      <p><strong>تطوير الأداء والجمالية:</strong></p>
+      <ul>
+        <li>تطوير الآلة لزيادة الموثوقية.</li>
+        <li>تحسين بيئة وجمالية العمل (Esthétique).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. أهداف الصيانة -->
+  <div class="section-title">3. الأدوار والأهداف الاستراتيجية للصيانة (Rôle de la maintenance)</div>
+  <p>1. <strong>الجاهزية (Disponibilité) :</strong> تقليل أوقات التوقف وزيادة الإنتاجية.</p>
+  <p>2. <strong>الجودة (Qualité) :</strong> جودة التدخلات وجودة المنتوجات الصناعية.</p>
+  <p>3. <strong>القدرة (Capacité) :</strong> الحفاظ على الطاقة الإنتاجية للآلات.</p>
+  <p>4. <strong>المردودية (Rentabilité) :</strong> كفاءة أفراد ومعدات الصيانة بأقل تكلفة.</p>
+  <p>5. <strong>السلامة (Sécurité) :</strong> حماية العمال وتأمين المنشآت.</p>
+  <p>6. <strong>الديمومة (Durabilité) :</strong> تدخلات لتمديد العمر الافتراضي للمعدات.</p>
+
+  <!-- 4. التطبيق العملي -->
+  <div class="section-title">4. التمرين التطبيقي: تصنيف عمليات صيانة السيارات (Maintenance d'une automobile)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>عملية الصيانة (Opération)</th>
+        <th style="text-align: center;">وقائية (Préventive)</th>
+        <th style="text-align: center;">علاجية (Corrective)</th>
+        <th style="text-align: center;">تحسينية (Amélioration)</th>
+        <th>التعليل الهندسي</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>تغيير أقراص الفرامل (Changer les disques de frein)</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center;">—</td>
+        <td>وقائية دورية لتفادي الحوادث قبل تآكلها التام.</td>
+      </tr>
+      <tr>
+        <td>إصلاح حشية رأس الأسطوانة (Refaire le joint de culasse)</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td>علاجية بعد تلف الحشية واختلاط السوائل.</td>
+      </tr>
+      <tr>
+        <td>تغيير شمعات الإشعال (Changer les bougies)</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td>علاجية عند تعطلها (وتكون وقائية دورياً).</td>
+      </tr>
+      <tr>
+        <td>استبدال عجلة مثقوبة (Échanger une roue crevée)</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td>علاجية إسعافية مؤقتة (Palliative).</td>
+      </tr>
+      <tr>
+        <td>تغيير مصفاة الزيت (Changer le filtre à huile)</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center;">—</td>
+        <td>وقائية دورية مع كل تغيير لزيت المحرك.</td>
+      </tr>
+      <tr>
+        <td>ملء خزان الوقود (Faire le plein d'essence)</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center;">—</td>
+        <td>وقائية استباقية لمنع توقف المحرك عن العمل.</td>
+      </tr>
+      <tr>
+        <td>مراقبة مستوى الزيت (Vérifier le niveau d'huile)</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center;">—</td>
+        <td>وقائية مشروطة بالحالة (Conditionnelle).</td>
+      </tr>
+      <tr>
+        <td>تغيير البطارية (Changer la batterie)</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center;">—</td>
+        <td>علاجية جذرية بعد استنفاد شحنها تماماً.</td>
+      </tr>
+      <tr>
+        <td>تركيب راديو للسيارة (Poser un autoradio)</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center;">—</td>
+        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td>تحسينية (Amélioration) لرفع الرفاهية والراحة.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

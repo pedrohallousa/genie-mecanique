@@ -160,5 +160,25 @@
     "file": "lessons/asservissement-laplace.pdf",
     "htmlView": "views/asservissement-laplace.html",
     "date": "2026-10-31"
+  },
+  {
+    "id": 18,
+    "title": "درس مقاومة المواد: تشوه العوارض في الانحناء المستوي وحساب السهم (Ligne élastique & Flèche)",
+    "subject": "RDM",
+    "type": "COURS",
+    "size": "685 KB",
+    "file": "lessons/rdm-ligne-elastique-fleche.pdf",
+    "htmlView": "views/rdm-ligne-elastique-fleche.html",
+    "date": "2026-11-02"
+  },
+  {
+    "id": 19,
+    "title": "محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Concepts, Typologie & Rôles)",
+    "subject": "Maintenance Industrielle",
+    "type": "COURS",
+    "size": "446 KB",
+    "file": "lessons/maintenance-introduction-cours.pdf",
+    "htmlView": "views/maintenance-introduction-cours.html",
+    "date": "2026-11-02"
   }
 ]

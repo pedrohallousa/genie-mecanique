@@ -95,7 +95,7 @@
       <div class="flex items-center gap-4">
         <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-borderMain bg-bgCard text-xs text-textMuted">
           <span class="w-2 h-2 rounded-full bg-emeraldPrimary animate-pulse"></span>
-          <span>17 ملفاً جاهزاً للتحميل</span>
+          <span>19 ملفاً جاهزاً للتحميل</span>
         </div>
         <a href="#lessons-section" class="px-4 py-2 text-sm font-bold rounded-lg bg-emeraldPrimary hover:bg-emeraldHover text-black transition-colors flex items-center gap-2">
           <span>تصفح الدروس</span>
@@ -145,7 +145,7 @@
         <div>
           <div class="flex items-center justify-between mb-4">
             <h3 class="font-bold text-white text-base">المواد الرسمية (Modules)</h3>
-            <span class="text-xs text-emeraldTag font-mono">5 مواد</span>
+            <span class="text-xs text-emeraldTag font-mono">6 مواد</span>
           </div>
           <div class="space-y-2.5">
             <a href="modules/rdm.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
@@ -153,7 +153,7 @@
                 <div class="font-bold text-sm text-white group-hover:text-emeraldTag">RDM</div>
                 <div class="text-[11px] text-textMuted">Résistance des Matériaux</div>
               </div>
-              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">4 ملفات ←</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">5 ملفات ←</span>
             </a>
             <a href="modules/mecanique-analytique.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
               <div>
@@ -183,6 +183,13 @@
               </div>
               <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">ملف معتمد ←</span>
             </a>
+            <a href="modules/maintenance.html" class="w-full text-right p-3 rounded-xl bg-[#0c1210] border border-borderMain hover:border-emeraldPrimary/50 flex items-center justify-between transition-all group">
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emeraldTag">Maintenance Industrielle</div>
+                <div class="text-[11px] text-textMuted">Concepts & Typologie</div>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-bgCard text-emeraldTag border border-borderMain font-bold">ملف معتمد ←</span>
+            </a>
           </div>
         </div>
       </div>
@@ -205,6 +212,7 @@
           <button onclick="setSubjectFilter('Élasticité')" id="sub-Élasticité" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Élasticité</button>
           <button onclick="setSubjectFilter('Construction Mécanique')" id="sub-Construction Mécanique" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Construction Mécanique</button>
           <button onclick="setSubjectFilter('Asservissement et Régulation')" id="sub-Asservissement et Régulation" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Asservissement & Régulation</button>
+          <button onclick="setSubjectFilter('Maintenance Industrielle')" id="sub-Maintenance Industrielle" class="filter-btn-sub px-3 py-1.5 rounded-lg text-xs font-semibold border border-borderMain text-textMuted hover:border-emeraldPrimary/60 hover:text-white transition-colors">Maintenance</button>
         </div>
 
         <!-- أزرار نوع الملف (Types: COURS / TD / EXAMEN) -->
@@ -488,6 +496,26 @@
             "file": "lessons/asservissement-laplace.pdf",
             "htmlView": "views/asservissement-laplace.html",
             "date": "2026-10-31"
+      },
+      {
+            "id": 18,
+            "title": "درس مقاومة المواد: تشوه العوارض في الانحناء المستوي وحساب السهم (Ligne élastique & Flèche)",
+            "subject": "RDM",
+            "type": "COURS",
+            "size": "685 KB",
+            "file": "lessons/rdm-ligne-elastique-fleche.pdf",
+            "htmlView": "views/rdm-ligne-elastique-fleche.html",
+            "date": "2026-11-02"
+      },
+      {
+            "id": 19,
+            "title": "محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Concepts, Typologie & Rôles)",
+            "subject": "Maintenance Industrielle",
+            "type": "COURS",
+            "size": "446 KB",
+            "file": "lessons/maintenance-introduction-cours.pdf",
+            "htmlView": "views/maintenance-introduction-cours.html",
+            "date": "2026-11-02"
       }
 ];
 

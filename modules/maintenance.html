@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصيانة الصناعية | المنصة الأكاديمية</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgMain: '#0c1210',
+            bgCard: '#131b17',
+            borderMain: '#23382f',
+            emeraldPrimary: '#10b981',
+            emeraldHover: '#059669',
+            emeraldTag: '#34d399',
+            textLight: '#f8fafc',
+            textSub: '#e2e8f0',
+            textDesc: '#cbd5e1',
+            textMuted: '#94a3b8'
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      font-size: clamp(14.5px, 0.92rem + 0.35vw, 16.8px);
+    }
+    body, h1, h2, h3, h4, p, span, button, a, nav, footer, div {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0c1210;
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    .bento-card {
+      background-color: #131b17;
+      border: 1px solid #23382f;
+      transition: all 0.25s ease-in-out;
+    }
+    .bento-card:hover {
+      background-color: #18231e;
+      border-color: #10b981;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="selection:bg-emeraldPrimary selection:text-black">
+
+  <!-- شريط التحكم والتنقل العلوي -->
+  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-borderMain">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      
+      <!-- زر الرجوع للمنصة الرئيسية -->
+      <a href="../index.html" class="flex items-center gap-2 text-sm sm:text-base font-bold text-textDesc hover:text-emeraldTag transition-colors">
+        <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+        <span>المنصة الرئيسية</span>
+      </a>
+
+      <!-- مسار التنقل (Breadcrumbs) -->
+      <div class="flex items-center gap-2 text-xs sm:text-sm text-textMuted">
+        <span class="text-textDesc">الدروس</span>
+        <span>/</span>
+        <span class="text-emeraldTag font-bold">الصيانة الصناعية</span>
+      </div>
+
+      <!-- إحصائية الملفات -->
+      <div class="px-3 py-1 rounded-lg bg-bgCard border border-borderMain text-xs font-semibold text-textDesc">
+        <span>1 ملفات</span>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8">
+
+    <!-- ترويسة المادة الرسمية -->
+    <header class="bento-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div class="text-xs font-bold text-emeraldTag uppercase tracking-wider mb-1">Université Batna 2 • L3 CM</div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+          الصيانة الصناعية
+        </h1>
+        <div class="text-xs sm:text-sm text-textMuted font-medium mt-1" dir="ltr" style="text-align: right;">
+          Maintenance Industrielle
+        </div>
+      </div>
+
+      <!-- تصفية نوع الملفات فقط (COURS / TD / EXAMEN) بدون أي مربع بحث -->
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-textMuted ml-1">النوع:</span>
+        <button onclick="filterType('ALL')" id="type-ALL" class="type-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emeraldPrimary text-black border border-emeraldPrimary transition-colors">الكل</button>
+        <button onclick="filterType('COURS')" id="type-COURS" class="type-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-bgCard text-textMuted border border-borderMain hover:text-white transition-colors">محاضرات</button>
+        <button onclick="filterType('TD')" id="type-TD" class="type-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-bgCard text-textMuted border border-borderMain hover:text-white transition-colors">أعمال موجهة</button>
+        <button onclick="filterType('EXAMEN')" id="type-EXAMEN" class="type-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-bgCard text-textMuted border border-borderMain hover:text-white transition-colors">امتحانات</button>
+      </div>
+    </header>
+
+    <!-- شبكة عرض الملفات والدروس الخاصة بهذه المادة -->
+    <div id="lessonsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- يتم توليد البطاقات عبر جافاسكريبت -->
+    </div>
+
+    <!-- رسالة عند عدم وجود نتائج -->
+    <div id="noResults" class="hidden text-center py-16 text-textMuted">
+      لا توجد ملفات متوفرة لهذا النوع حالياً.
+    </div>
+
+  </main>
+
+  <!-- نافذة المعاينة السريعة (PDF Preview Modal) -->
+  <div id="previewModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-bgCard border border-borderMain rounded-2xl w-full max-w-4xl h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="p-4 border-b border-borderMain flex items-center justify-between bg-[#0c1210]">
+        <div>
+          <h4 id="modalTitle" class="text-sm font-bold text-white line-clamp-1">معاينة الملف</h4>
+          <span id="modalSize" class="text-xs text-textMuted font-mono"></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a id="modalDownloadBtn" href="#" download class="px-3 py-1.5 rounded-lg bg-emeraldPrimary text-black text-xs font-bold hover:bg-emeraldHover transition-colors flex items-center gap-1.5">
+            <span>تحميل PDF</span>
+          </a>
+          <button onclick="closeModal()" class="p-1.5 rounded-lg text-textMuted hover:text-white hover:bg-borderMain transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex-1 bg-[#0c1210] p-2">
+        <iframe id="modalPdfFrame" src="" class="w-full h-full rounded-lg border border-borderMain" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const moduleLessons = [
+      {
+        "id": 19,
+        "title": "محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Concepts, Typologie & Rôles)",
+        "subject": "Maintenance Industrielle",
+        "type": "COURS",
+        "size": "446 KB",
+        "file": "lessons/maintenance-introduction-cours.pdf",
+        "htmlView": "views/maintenance-introduction-cours.html",
+        "date": "2026-11-02"
+      }
+    ];
+    let currentType = 'ALL';
+
+    function getTypeBadge(type) {
+      if (type === 'COURS') {
+        return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emeraldPrimary/15 text-emeraldTag border border-emeraldPrimary/30">محاضرة</span>';
+      } else if (type === 'TD') {
+        return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">عمل موجه</span>';
+      } else {
+        return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">امتحان</span>';
+      }
+    }
+
+    function renderCards() {
+      const grid = document.getElementById('lessonsGrid');
+      const noResults = document.getElementById('noResults');
+
+      const filtered = moduleLessons.filter(item => {
+        return (currentType === 'ALL') || (item.type === currentType);
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="bento-card rounded-2xl p-5 flex flex-col justify-between group">
+          <div>
+            <!-- الترويسة العلوية للبطاقة -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              ${getTypeBadge(item.type)}
+              <span class="text-[11px] font-mono text-textMuted bg-[#0c1210] px-2 py-0.5 rounded border border-borderMain">
+                ${item.size}
+              </span>
+            </div>
+
+            <!-- عنوان الملف -->
+            <h3 class="text-white font-bold text-base leading-snug group-hover:text-emeraldTag transition-colors mt-2 mb-4" dir="ltr" style="text-align: right;">
+              ${item.title}
+            </h3>
+          </div>
+
+          <!-- الجزء السفلي: الإجراءات مباشرة بدون أي تحميلات وهمية -->
+          <div class="pt-4 border-t border-borderMain/70 flex items-center justify-between gap-2 mt-2">
+            <span class="text-xs text-textMuted font-mono">${item.date || '2026'}</span>
+
+            <div class="flex items-center gap-2">
+              ${item.htmlView ? `
+                <!-- زر تصفح فقط للملفات التي لها واجهة تفاعلية -->
+                <a 
+                  href="../${item.htmlView}" 
+                  class="px-3 py-1.5 rounded-lg bg-emeraldPrimary/15 hover:bg-emeraldPrimary/25 text-emeraldTag border border-emeraldPrimary/30 text-xs font-bold transition-colors flex items-center gap-1.5"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                  <span>تصفح</span>
+                </a>
+              ` : `
+                <!-- زر معاينة للملفات التي ليس لها واجهة تفاعلية -->
+                <button 
+                  onclick='openPreview(${JSON.stringify(item)})'
+                  class="px-2.5 py-1.5 rounded-lg bg-[#0c1210] hover:bg-borderMain text-xs font-semibold text-white border border-borderMain transition-colors flex items-center gap-1"
+                >
+                  <svg class="w-3.5 h-3.5 text-emeraldTag" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                  <span>معاينة</span>
+                </button>
+              `}
+
+              <!-- زر التحميل المباشر -->
+              <a 
+                href="../${item.file}" 
+                download 
+                class="px-3 py-1.5 rounded-lg bg-emeraldPrimary hover:bg-emeraldHover text-black text-xs font-bold transition-colors flex items-center gap-1 shadow-sm"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                <span>تحميل</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterType(t) {
+      currentType = t;
+      document.querySelectorAll('.type-btn').forEach(b => {
+        b.className = 'type-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-bgCard text-textMuted border border-borderMain hover:text-white transition-colors';
+      });
+      const active = document.getElementById('type-' + t);
+      if (active) {
+        active.className = 'type-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emeraldPrimary text-black border border-emeraldPrimary transition-colors';
+      }
+      renderCards();
+    }
+
+    function openPreview(item) {
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalSize').textContent = item.size;
+      document.getElementById('modalPdfFrame').src = '../' + item.file;
+      document.getElementById('modalDownloadBtn').href = '../' + item.file;
+      document.getElementById('previewModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('previewModal').classList.add('hidden');
+      document.getElementById('modalPdfFrame').src = '';
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    renderCards();
+  </script>
+
+</body>
+</html>

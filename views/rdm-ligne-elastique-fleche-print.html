@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الفصل الثاني: تشوه العوارض في الانحناء وحساب السهم (Ligne élastique & Flèche) - Batna 2</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 12mm 12mm 12mm;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    }
+    body {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      font-size: 11px;
+      line-height: 1.55;
+      margin: 0;
+      padding: 0;
+    }
+    
+    mjx-container {
+      direction: ltr !important;
+      color: #000000 !important;
+    }
+    mjx-container[jax="SVG"]:not([display="true"]) {
+      display: inline-block !important;
+      vertical-align: -0.2em !important;
+      margin: 0 2px !important;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 0.4rem 0 !important;
+    }
+    mjx-container svg {
+      display: inline !important;
+    }
+
+    .header-box {
+      border: 1.5px solid #0f172a;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      background: #f8fafc;
+    }
+    .header-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 3px;
+      text-align: center;
+    }
+    .header-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 600;
+      color: #334155;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 3px;
+      margin-top: 3px;
+    }
+
+    .section-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0f172a;
+      background: #f1f5f9;
+      border-right: 4px solid #0f172a;
+      padding: 3px 6px;
+      margin: 8px 0 4px 0;
+    }
+
+    .math-box {
+      direction: ltr !important;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 5px 8px;
+      margin: 5px 0;
+      font-size: 11.5px;
+      page-break-inside: avoid;
+    }
+    .boxed {
+      display: inline-block;
+      border: 1.5px solid #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+      margin: 5px 0;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 6px;
+      text-align: right;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 5px 0;
+      page-break-inside: avoid;
+    }
+    .card-sm {
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 6px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+    .card-sm-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2px;
+      margin-bottom: 4px;
+    }
+
+    p { margin: 2px 0; }
+    ul { margin: 2px 0; padding-right: 16px; }
+    li { margin-bottom: 1px; }
+  </style>
+</head>
+<body>
+
+  <div class="header-box">
+    <div class="header-title">محاضرة وتطبيق: تشوه العوارض في الانحناء وحساب السهم (Ligne élastique & Flèche)</div>
+    <div class="header-sub">
+      <span>جامعة باتنة 2 • قسم الهندسة الميكانيكية • السنة الثالثة لسانس (L3 CM)</span>
+      <span>مقياس: مقاومة المواد (RDM) • الفصل الثاني</span>
+    </div>
+  </div>
+
+  <!-- 1. المدخل النظري -->
+  <div class="section-title">1. المدخل النظري: استنتاج معادلة الخط المرن من الصفر</div>
+  <p>من تشابه المثلثات عند الليف الحيادي ذي نصف قطر الانحناء $\rho$: $\varepsilon = \frac{y}{\rho}$. ومن قانون هوك: $\sigma = E \cdot \varepsilon = E \frac{y}{\rho}$.</p>
+  <p>وبما أن إجهاد الانحناء هو $\sigma = \frac{M_f(x) \cdot y}{I_z}$، فإن: $\frac{1}{\rho} = \frac{M_f(x)}{E \cdot I_z}$.</p>
+  <p>رياضياً: تقوس المنحنيات يُعطى بـ $\frac{1}{\rho} = \frac{y''}{(1+y'^2)^{3/2}}$. في التشوهات الصغيرة $y'^2 \ll 1 \implies \frac{1}{\rho} \approx y''(x)$.</p>
+  <div class="math-box"><span class="boxed">$$E \cdot I \cdot y''(x) = M_f(x) \quad \iff \quad y''(x) = \frac{M_f(x)}{E \cdot I}$$</span></div>
+
+  <!-- 2. جدول الشروط الحدية -->
+  <div class="section-title">2. جدول الشروط الحدية للمساند (Conditions Aux Limites - CAL)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>نوع المسند والموضع</th>
+        <th>السهم ($y$)</th>
+        <th>الميل والدوران ($\theta = y'$)</th>
+        <th>التفسير الفيزيائي</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>مسند الإيثاق (Encastrement)</strong></td>
+        <td>$y = 0$</td>
+        <td>$y' = 0$</td>
+        <td>يمنع النزول ويمنع الدوران تماماً (تثبيت صلب).</td>
+      </tr>
+      <tr>
+        <td><strong>المسند البسيط / المفصلي (Appui simple)</strong></td>
+        <td>$y = 0$</td>
+        <td>$y' \ne 0$</td>
+        <td>يمنع الحركة العمودية لكنه يسمح بحرية الدوران.</td>
+      </tr>
+      <tr>
+        <td><strong>محور التناظر (Axe de symétrie عند $x = L/2$)</strong></td>
+        <td>$y = y_{\max}$</td>
+        <td>$y' = 0$</td>
+        <td>المماس أفقي تماماً عند قمة أو قاع التقوس.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 3. المسألة ومعادلات العزم -->
+  <div class="section-title">3. المسألة التطبيقية ومعادلات عزم الانحناء في الشطرين</div>
+  <p>عارضة متناظرة مستندة على مسندين بطول $L$، تؤثر في منتصفها قوة مركزة $F$. ردود الأفعال بالتناظر: $R_A = R_B = \frac{F}{2}$.</p>
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">المقطع الأول ($0 \le x \le L/2$)</div>
+      <p>قطع قبل القوة: $M_{f1}(x) = R_A \cdot x = \frac{F}{2} x$</p>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm-title">المقطع الثاني ($L/2 \le x \le L$)</div>
+      <p>قطع بعد القوة: $M_{f2}(x) = \frac{F}{2} x - F(x - \frac{L}{2}) = \frac{F}{2}(L - x)$</p>
+    </div>
+  </div>
+
+  <!-- 4. الطريقة الأولى: التناظر -->
+  <div class="section-title">4. الطريقة الأولى: طريقة التناظر الذكية (Méthode de la symétrie)</div>
+  <p>بالتناظر حول المنتصف، يكفي دراسة المجال $[0, L/2]$ مع الشرط الحدي لانعدام الميل: $y'_1(L/2) = 0$.</p>
+  <p><strong>التكامل الأول (معادلة زاوية الميل والدوران):</strong></p>
+  <div class="math-box">$$E I y'_1(x) = \int \frac{F}{2} x \,\mathrm{d}x = \frac{F}{4} x^2 + K_1$$</div>
+  <p><strong>التكامل الثاني (معادلة السهم والانتقال):</strong></p>
+  <div class="math-box">$$E I y_1(x) = \int \left(\frac{F}{4} x^2 + K_1\right)\mathrm{d}x = \frac{F}{12} x^3 + K_1 x + K_2$$</div>
+  <p><strong>استخراج الثوابت:</strong></p>
+  <p>&bull; عند $x = L/2 \implies y'_1 = 0 \implies \frac{F}{4}(L/2)^2 + K_1 = 0 \implies K_1 = -\frac{F L^2}{16}$.</p>
+  <p>&bull; عند المسند $x = 0 \implies y_1 = 0 \implies K_2 = 0$.</p>
+  <p><strong>حساب السهم الأعظمي عند $x = L/2$:</strong></p>
+  <div class="math-box">$$E I y_{\max} = \frac{F}{12}\left(\frac{L}{2}\right)^3 - \frac{F L^2}{16}\left(\frac{L}{2}\right) = \frac{F L^3}{96} - \frac{F L^3}{32} = -\frac{F L^3}{48}$$</div>
+  <div class="math-box"><span class="boxed">$$y_{\max} = -\frac{F L^3}{48 E I} \quad \implies \quad f_{\max} = |y_{\max}| = \frac{F L^3}{48 E I}$$</span></div>
+
+  <!-- 5. الطريقة الثانية: الطريقة العامة الشاملة -->
+  <div class="section-title" style="page-break-before: always;">5. الطريقة الثانية: الطريقة العامة الشاملة بشروط الاستمرارية (Méthode générale sans symétrie)</div>
+  <p>تعتمد هذه الطريقة على دراسة ومكاملة مجالي العارضة معاً دون افتراض مسبق للتناظر (وهي الطريقة المعيارية الصالحة لأي توزيع حمولات):</p>
+  
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">المقطع الأول ($0 \le x \le L/2$)</div>
+      <p>معادلة العزم: $M_{f1}(x) = \frac{F}{2} x$</p>
+      <p>معادلة زاوية الميل: $E I y'_1(x) = \frac{F}{4} x^2 + C_1$</p>
+      <p>معادلة السهم: $E I y_1(x) = \frac{F}{12} x^3 + C_1 x + C_2$</p>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm-title">المقطع الثاني ($L/2 \le x \le L$)</div>
+      <p>معادلة العزم: $M_{f2}(x) = \frac{F}{2}(L - x) = \frac{F L}{2} - \frac{F}{2} x$</p>
+      <p>معادلة زاوية الميل: $E I y'_2(x) = \frac{F L}{2} x - \frac{F}{4} x^2 + C_3$</p>
+      <p>معادلة السهم: $E I y_2(x) = \frac{F L}{4} x^2 - \frac{F}{12} x^3 + C_3 x + C_4$</p>
+    </div>
+  </div>
+
+  <p><strong>جملة الشروط الحدية وشروط الاستمرارية الأربعة (4 Conditions) :</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>رقم الشرط</th>
+        <th>المفهوم الفيزيائي</th>
+        <th>المعادلة الرياضية والتطبيق الجبري</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>الشرط 1</strong></td>
+        <td>المسند الأيسر عند $x = 0$</td>
+        <td>$y_1(0) = 0 \implies E I \cdot 0 = \frac{F}{12}(0)^3 + C_1(0) + C_2 \implies \mathbf{C_2 = 0}$</td>
+      </tr>
+      <tr>
+        <td><strong>الشرط 2</strong></td>
+        <td>المسند الأيمن عند $x = L$</td>
+        <td>$y_2(L) = 0 \implies \frac{F L}{4}(L)^2 - \frac{F}{12}(L)^3 + C_3 L + C_4 = 0 \implies \frac{F L^3}{6} + C_3 L + C_4 = 0$</td>
+      </tr>
+      <tr>
+        <td><strong>الشرط 3</strong></td>
+        <td>استمرارية الميل عند نقطة القوة $x = L/2$</td>
+        <td>$y'_1(L/2) = y'_2(L/2) \implies \frac{F L^2}{16} + C_1 = \frac{3 F L^2}{16} + C_3 \implies \mathbf{C_1 - C_3 = \frac{F L^2}{8}}$</td>
+      </tr>
+      <tr>
+        <td><strong>الشرط 4</strong></td>
+        <td>استمرارية السهم عند نقطة القوة $x = L/2$</td>
+        <td>$y_1(L/2) = y_2(L/2) \implies \frac{F L^3}{96} + C_1\frac{L}{2} = \frac{5 F L^3}{96} + C_3\frac{L}{2} + C_4$</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>بحل جملة المعادلات الأربع نصل إلى قيم الثوابت الدقيقة:</p>
+  <div class="math-box">
+    $$C_1 = -\frac{F L^2}{16} \quad , \quad C_2 = 0 \quad , \quad C_3 = -\frac{3 F L^2}{16} \quad , \quad C_4 = \frac{F L^3}{48}$$
+  </div>
+
+  <p>بالتعويض عند $x = L/2$ في معادلة أي من الشطرين، نصل إلى نفس السهم الأعظمي المتطابق تماماً:</p>
+  <div class="math-box">
+    <span class="boxed">$$y_{\max} = -\frac{F L^3}{48 E I} \quad \iff \quad f_{\max} = |y_{\max}| = \frac{F L^3}{48 E I}$$</span>
+  </div>
+
+  <!-- 6. خلاصة المقارنة -->
+  <div class="section-title">6. خلاصة المقارنة وتوجيهات الامتحانات للطلبة</div>
+  <div class="grid-2">
+    <div class="card-sm">
+      <div class="card-sm-title">طريقة التناظر (Méthode de symétrie)</div>
+      <ul>
+        <li><strong>متى تطبق؟</strong> حصراً عند وجود تناظر كامل في الشكل والمساند والحمولات.</li>
+        <li><strong>الميزة:</strong> تختصر نصف التكاملات ونصف الثوابت وتكفي دراسة نصف العارضة بشرط $y'(L/2) = 0$.</li>
+      </ul>
+    </div>
+    <div class="card-sm">
+      <div class="card-sm-title">الطريقة العامة (Méthode générale)</div>
+      <ul>
+        <li><strong>متى تطبق؟</strong> في كافة الحالات العامة، وتكون إجبارية عند غياب التناظر (قوة مزاحة).</li>
+        <li><strong>الميزة:</strong> تعطي الحل الدقيق والشامل لكافة نقاط العارضة عبر شروط الاستمرارية.</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
