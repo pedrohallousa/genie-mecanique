@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>مدخل إلى الصيانة الصناعية وتصنيفاتها (Maintenance Industrielle) - Batna 2</title>
+  <title>Cours de Maintenance Industrielle: Concepts et Typologie - Université Batna 2</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     @page {
       size: A4;
-      margin: 12mm 12mm 12mm 12mm;
+      margin: 10mm 12mm 10mm 12mm;
     }
     * {
       box-sizing: border-box;
-      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+    }
+    .ar-font {
+      font-family: 'Cairo', sans-serif;
+    }
+    .mono-font {
+      font-family: 'JetBrains Mono', monospace;
     }
     body {
       background-color: #ffffff !important;
       color: #0f172a !important;
-      font-size: 11px;
-      line-height: 1.55;
+      font-size: 10.5px;
+      line-height: 1.45;
       margin: 0;
       padding: 0;
     }
@@ -29,49 +35,53 @@
     .header-box {
       border: 1.5px solid #0f172a;
       border-radius: 6px;
-      padding: 8px 12px;
-      margin-bottom: 10px;
+      padding: 6px 10px;
+      margin-bottom: 8px;
       background: #f8fafc;
     }
     .header-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       color: #0f172a;
-      margin-bottom: 3px;
       text-align: center;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
     .header-sub {
       display: flex;
       justify-content: space-between;
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 600;
       color: #334155;
       border-top: 1px solid #cbd5e1;
-      padding-top: 3px;
-      margin-top: 3px;
+      padding-top: 2px;
+      margin-top: 2px;
     }
 
     .section-title {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
       color: #0f172a;
       background: #f1f5f9;
-      border-right: 4px solid #0f172a;
+      border-left: 4px solid #0f172a;
       padding: 3px 6px;
-      margin: 8px 0 4px 0;
+      margin: 7px 0 3px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 10px;
-      margin: 5px 0;
+      font-size: 9.5px;
+      margin: 4px 0;
       page-break-inside: avoid;
     }
     th, td {
       border: 1px solid #cbd5e1;
-      padding: 4px 6px;
-      text-align: right;
+      padding: 3px 5px;
+      text-align: left;
     }
     th {
       background: #f1f5f9;
@@ -82,182 +92,245 @@
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-      margin: 5px 0;
-      page-break-inside: avoid;
+      gap: 5px;
+      margin: 4px 0;
     }
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin: 5px 0;
-      page-break-inside: avoid;
+      gap: 5px;
+      margin: 4px 0;
     }
     .card-sm {
       border: 1px solid #cbd5e1;
-      border-radius: 5px;
-      padding: 6px;
+      border-radius: 4px;
+      padding: 5px;
       background: #ffffff;
-      page-break-inside: avoid;
     }
     .card-sm-title {
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       color: #0f172a;
       border-bottom: 1px solid #e2e8f0;
       padding-bottom: 2px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
+    }
+
+    .tree-pre {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      line-height: 1.25;
+      margin: 4px 0;
+      color: #0f172a;
+    }
+
+    .page-break {
+      page-break-after: always;
     }
 
     p { margin: 2px 0; }
-    ul { margin: 2px 0; padding-right: 16px; }
+    ul { margin: 2px 0; padding-left: 14px; }
     li { margin-bottom: 1px; }
   </style>
 </head>
 <body>
 
+  <!-- ================= PAGE 1 ================= -->
   <div class="header-box">
-    <div class="header-title">محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Maintenance Industrielle)</div>
+    <div class="header-title">COURS: INTRODUCTION AUX CONCEPTS ET TYPOLOGIE DE LA MAINTENANCE INDUSTRIELLE</div>
     <div class="header-sub">
-      <span>جامعة باتنة 2 • قسم الهندسة الميكانيكية • السنة الثالثة لسانس (L3 CM)</span>
-      <span>مقياس: الصيانة الصناعية • الفصل الأول</span>
+      <span>Université Batna 2 • Département de Génie Mécanique • 3ème Année Licence (L3 CM)</span>
+      <span>Matière: Maintenance Industrielle • Semestre 5</span>
     </div>
   </div>
 
-  <!-- 1. التعريف والمفاهيم -->
-  <div class="section-title">1. المفهوم والتعريف الأكاديمي للصيانة (Définition de la maintenance)</div>
-  <p><strong>التعريف القياسي (Norme NF X 60-010) :</strong></p>
-  <p style="direction: ltr; text-align: left; font-size: 10.5px; background: #f8fafc; padding: 4px 8px; border-left: 3px solid #0f172a; border-radius: 4px; margin: 3px 0;">
-    « La maintenance est un ensemble des actions permettant de maintenir ou de rétablir un bien (machine) dans un état spécifié ou en mesure d'assurer un service déterminé. »
+  <!-- 1. Définition et Concepts -->
+  <div class="section-title">1. Définition Normative et Concepts Fondamentaux (Norme AFNOR NF X 60-010 / NF EN 13306)</div>
+  <p style="background: #f8fafc; border-left: 3px solid #0f172a; padding: 4px 8px; border-radius: 3px; font-style: italic; margin: 3px 0;">
+    « Ensemble de toutes les actions techniques, administratives et de gestion durant le cycle de vie d'un bien, destinées à le maintenir ou à le rétablir dans un état dans lequel il peut accomplir la fonction requise. »
   </p>
+  <p style="font-weight: 700; font-size: 9.5px; color: #1e293b;">
+    • Principe économique fondamental : « Bien maintenir, c'est assurer l'ensemble de ces interventions au coût global optimal. »
+  </p>
+
   <div class="grid-2">
     <div class="card-sm">
-      <div class="card-sm-title">الحفاظ (Maintenir)</div>
-      <p>المتابعة والمراقبة المستمرة (Suivi et surveillance) لمنع وقوع الأعطال أثناء العمل.</p>
+      <div class="card-sm-title">MAINTENIR (Action Préventive - قبل العطل)</div>
+      <p>Implique la notion de <strong>surveillance</strong>, de <strong>suivi régulier</strong> et de visites systématiques pour empêcher l'apparition de toute défaillance en service.</p>
+      <p class="ar-font" dir="rtl" style="font-size: 9px; color: #475569; text-align: right; margin-top: 2px;">• الحفاظ والمتابعة الميدانية الدورية لمنع وقوع الأعطال أثناء العمل.</p>
     </div>
     <div class="card-sm">
-      <div class="card-sm-title">إعادة التأهيل (Rétablir)</div>
-      <p>تصحيح العيوب وإصلاح الأعطال (Correction de défaut) لإعادة الجهاز لوظيفته.</p>
+      <div class="card-sm-title">RÉTABLIR (Action Corrective - بعد العطل)</div>
+      <p>Implique la notion de <strong>correction de défaut</strong>, de dépannage ou de remise en état consécutivement à une panne ou anomalie fonctionnelle.</p>
+      <p class="ar-font" dir="rtl" style="font-size: 9px; color: #475569; text-align: right; margin-top: 2px;">• إعادة التأهيل وتصحيح العيوب لإرجاع الآلة إلى حالتها التشغيلية.</p>
     </div>
   </div>
-  <p><strong>المبدأ الاقتصادي (Bien Maintenir) :</strong> إنجاز كافة عمليات الصيانة بالتكلفة المثالية (Au coût optimal).</p>
 
-  <!-- 2. شجرة أنواع الصيانة -->
-  <div class="section-title">2. الشجرة الهيكلية لأنواع وتصنيفات الصيانة (Typologie de la maintenance)</div>
+  <!-- 2. Typologie de la maintenance -->
+  <div class="section-title">2. Typologie et Classifications de la Maintenance (Points Clés Normatifs)</div>
+  <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 8px; margin: 3px 0; font-size: 9px;">
+    <ul style="margin: 0; padding-left: 14px; line-height: 1.4;">
+      <li>
+        <strong>1. Maintenance Préventive (Intervention AVANT défaillance) :</strong>
+        Destinée à réduire la probabilité de panne d'un équipement.
+        <ul style="margin: 1px 0; padding-left: 12px;">
+          <li>• <strong>Systématique :</strong> Selon un échéancier fixe (temps, km, cycles) <em>sans contrôle préalable</em> (ex: vidange à 10 000 km, courroie à 5 ans).</li>
+          <li>• <strong>Conditionnelle :</strong> Subordonnée au franchissement d'un <em>seuil physique mesuré</em> (ex: analyse vibratoire, niveau d'huile, thermographie).</li>
+        </ul>
+      </li>
+      <li style="margin-top: 2px;">
+        <strong>2. Maintenance Corrective (Intervention APRÈS défaillance) :</strong>
+        Destinée à remettre l'équipement en état de fonctionnement requis.
+        <ul style="margin: 1px 0; padding-left: 12px;">
+          <li>• <strong>Palliative (Dépannage) :</strong> Action <em>provisoire</em> et immédiate pour redémarrer le service (ex: roue de secours galette).</li>
+          <li>• <strong>Curative (Réparation) :</strong> Remise en état <em>durable et définitive</em> selon les spécifications d'origine (ex: joint de culasse, batterie).</li>
+        </ul>
+      </li>
+      <li style="margin-top: 2px;">
+        <strong>3. Maintenance d'Amélioration :</strong>
+        Modifications techniques de conception pour accroître la <strong>fiabilité</strong>, la <strong>maintenabilité</strong>, la <strong>sécurité</strong> ou le <strong>confort/esthétique</strong> (ex: pose d'un autoradio).
+      </li>
+    </ul>
+  </div>
+
+
+
+  <!-- 3. Rôles et Objectifs -->
+  <div class="section-title">3. Rôles et Objectifs Stratégiques de la Maintenance Industrielle</div>
   <div class="grid-3">
     <div class="card-sm">
-      <div class="card-sm-title">1. وقائية (Préventive)</div>
-      <p><strong>قبل وقوع العطل (Avant défaillance):</strong></p>
-      <ul>
-        <li><strong>دورية (Systématique) :</strong> وفق جدول زمني محدد أو ساعات تشغيل.</li>
-        <li><strong>مشروطة (Conditionnelle) :</strong> بناءً على فحص وتشخيص حالة العتاد.</li>
-      </ul>
+      <strong>1. Disponibilité (Disponibilité) :</strong>
+      <p>Maximiser le temps de bon fonctionnement (MTBF) et réduire les arrêts imprévus (MTTR).</p>
     </div>
     <div class="card-sm">
-      <div class="card-sm-title">2. علاجية (Corrective)</div>
-      <p><strong>بعد وقوع العطل (Après défaillance):</strong></p>
-      <ul>
-        <li><strong>إسعافية (Palliative) :</strong> حل مؤقت ومرحلي (Dépannage).</li>
-        <li><strong>جذرية (Curative) :</strong> إصلاح نهائي وكامل (Réparation).</li>
-      </ul>
+      <strong>2. Qualité (Qualité) :</strong>
+      <p>Préserver la capabilité et la précision des machines pour éliminer les non-conformités et rebuts.</p>
     </div>
     <div class="card-sm">
-      <div class="card-sm-title">3. تحسينية (Amélioration)</div>
-      <p><strong>تطوير الأداء والجمالية:</strong></p>
-      <ul>
-        <li>تطوير الآلة لزيادة الموثوقية.</li>
-        <li>تحسين بيئة وجمالية العمل (Esthétique).</li>
-      </ul>
+      <strong>3. Capacité (Capacité) :</strong>
+      <p>Maintenir la cadence et le régime nominal de production sans ralentissement de fabrication.</p>
+    </div>
+    <div class="card-sm">
+      <strong>4. Coûts / Rentabilité (Rentabilité) :</strong>
+      <p>Optimiser le coût global du cycle de vie (Life Cycle Cost - LCC) et réduire les pertes d'exploitation.</p>
+    </div>
+    <div class="card-sm">
+      <strong>5. Sécurité (Sécurité) :</strong>
+      <p>Assurer la protection du personnel contre les risques mécaniques et préserver l'environnement.</p>
+    </div>
+    <div class="card-sm">
+      <strong>6. Durabilité (Durabilité) :</strong>
+      <p>Prolonger la durée de vie utile des investissements industriels par un vieillissement maîtrisé.</p>
     </div>
   </div>
 
-  <!-- 3. أهداف الصيانة -->
-  <div class="section-title">3. الأدوار والأهداف الاستراتيجية للصيانة (Rôle de la maintenance)</div>
-  <p>1. <strong>الجاهزية (Disponibilité) :</strong> تقليل أوقات التوقف وزيادة الإنتاجية.</p>
-  <p>2. <strong>الجودة (Qualité) :</strong> جودة التدخلات وجودة المنتوجات الصناعية.</p>
-  <p>3. <strong>القدرة (Capacité) :</strong> الحفاظ على الطاقة الإنتاجية للآلات.</p>
-  <p>4. <strong>المردودية (Rentabilité) :</strong> كفاءة أفراد ومعدات الصيانة بأقل تكلفة.</p>
-  <p>5. <strong>السلامة (Sécurité) :</strong> حماية العمال وتأمين المنشآت.</p>
-  <p>6. <strong>الديمومة (Durabilité) :</strong> تدخلات لتمديد العمر الافتراضي للمعدات.</p>
+  <div class="page-break"></div>
 
-  <!-- 4. التطبيق العملي -->
-  <div class="section-title">4. التمرين التطبيقي: تصنيف عمليات صيانة السيارات (Maintenance d'une automobile)</div>
+  <!-- ================= PAGE 2 ================= -->
+  <div class="header-box">
+    <div class="header-title">APPLICATION PRATIQUE: CLASSIFICATION DES OPÉRATIONS DE MAINTENANCE AUTOMOBILE</div>
+    <div class="header-sub">
+      <span>Exercice d'application officiel du cours magistral • Analyse et justifications techniques</span>
+      <span>Université Batna 2 • L3 CM</span>
+    </div>
+  </div>
+
+  <div class="section-title">4. Tableau de Classification des Opérations de Maintenance d'une Automobile</div>
   <table>
     <thead>
       <tr>
-        <th>عملية الصيانة (Opération)</th>
-        <th style="text-align: center;">وقائية (Préventive)</th>
-        <th style="text-align: center;">علاجية (Corrective)</th>
-        <th style="text-align: center;">تحسينية (Amélioration)</th>
-        <th>التعليل الهندسي</th>
+        <th style="width: 30%;">Opération de Maintenance</th>
+        <th style="text-align: center; width: 14%;">Préventive</th>
+        <th style="text-align: center; width: 14%;">Corrective</th>
+        <th style="text-align: center; width: 14%;">Amélioration</th>
+        <th style="width: 28%;">Justification Technique & Normative</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>تغيير أقراص الفرامل (Changer les disques de frein)</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td><strong>1. Changer les disques de frein</strong></td>
+        <td style="text-align: center; font-weight: bold; background: #f0fdf4;">✓ (Systématique)</td>
         <td style="text-align: center;">—</td>
         <td style="text-align: center;">—</td>
-        <td>وقائية دورية لتفادي الحوادث قبل تآكلها التام.</td>
+        <td>Remplacement périodique programmé pour éviter l'usure critique et garantir la sécurité de freinage.</td>
       </tr>
       <tr>
-        <td>إصلاح حشية رأس الأسطوانة (Refaire le joint de culasse)</td>
+        <td><strong>2. Refaire le joint de culasse</strong></td>
         <td style="text-align: center;">—</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center; font-weight: bold; background: #fef2f2;">✓ (Curative)</td>
         <td style="text-align: center;">—</td>
-        <td>علاجية بعد تلف الحشية واختلاط السوائل.</td>
+        <td>Intervention définitive consécutive à une rupture d'étanchéité et surchauffe (panne moteur avérée).</td>
       </tr>
       <tr>
-        <td>تغيير شمعات الإشعال (Changer les bougies)</td>
+        <td><strong>3. Changer les bougies d'allumage</strong></td>
+        <td style="text-align: center; font-size: 8.5px;">(Selon km)</td>
+        <td style="text-align: center; font-weight: bold; background: #fef2f2;">✓ (Curative)</td>
         <td style="text-align: center;">—</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
-        <td style="text-align: center;">—</td>
-        <td>علاجية عند تعطلها (وتكون وقائية دورياً).</td>
+        <td>Remplacement après ratés d'allumage constatés (ou préventif systématique selon préconisation constructeur).</td>
       </tr>
       <tr>
-        <td>استبدال عجلة مثقوبة (Échanger une roue crevée)</td>
+        <td><strong>4. Échanger une roue crevée</strong></td>
         <td style="text-align: center;">—</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center; font-weight: bold; background: #fef2f2;">✓ (Palliative)</td>
         <td style="text-align: center;">—</td>
-        <td>علاجية إسعافية مؤقتة (Palliative).</td>
+        <td>Action de dépannage provisoire par roue de secours afin de rejoindre l'atelier pour réparation durable.</td>
       </tr>
       <tr>
-        <td>تغيير مصفاة الزيت (Changer le filtre à huile)</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td><strong>5. Changer le filtre à huile</strong></td>
+        <td style="text-align: center; font-weight: bold; background: #f0fdf4;">✓ (Systématique)</td>
         <td style="text-align: center;">—</td>
         <td style="text-align: center;">—</td>
-        <td>وقائية دورية مع كل تغيير لزيت المحرك.</td>
+        <td>Action systématique exécutée lors de chaque vidange d'huile moteur selon un intervalle kilométrique fixe.</td>
       </tr>
       <tr>
-        <td>ملء خزان الوقود (Faire le plein d'essence)</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td><strong>6. Faire le plein d'essence</strong></td>
+        <td style="text-align: center; font-weight: bold; background: #f0fdf4;">✓ (Préventive)</td>
         <td style="text-align: center;">—</td>
         <td style="text-align: center;">—</td>
-        <td>وقائية استباقية لمنع توقف المحرك عن العمل.</td>
+        <td>Opération d'approvisionnement préventif indispensable pour empêcher la panne sèche du véhicule.</td>
       </tr>
       <tr>
-        <td>مراقبة مستوى الزيت (Vérifier le niveau d'huile)</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td><strong>7. Vérifier le niveau d'huile</strong></td>
+        <td style="text-align: center; font-weight: bold; background: #f0fdf4;">✓ (Conditionnelle)</td>
         <td style="text-align: center;">—</td>
         <td style="text-align: center;">—</td>
-        <td>وقائية مشروطة بالحالة (Conditionnelle).</td>
+        <td>Surveillance de l'état du lubrifiant; la décision d'appoint dépend du niveau mesuré sur la jauge.</td>
       </tr>
       <tr>
-        <td>تغيير البطارية (Changer la batterie)</td>
+        <td><strong>8. Changer la batterie</strong></td>
         <td style="text-align: center;">—</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
+        <td style="text-align: center; font-weight: bold; background: #fef2f2;">✓ (Curative)</td>
         <td style="text-align: center;">—</td>
-        <td>علاجية جذرية بعد استنفاد شحنها تماماً.</td>
+        <td>Remplacement durable consécutif à l'incapacité de stockage de charge électrique (fin de vie ou décharge).</td>
       </tr>
       <tr>
-        <td>تركيب راديو للسيارة (Poser un autoradio)</td>
+        <td><strong>9. Poser un autoradio</strong></td>
         <td style="text-align: center;">—</td>
         <td style="text-align: center;">—</td>
-        <td style="text-align: center; font-weight: bold;">✓</td>
-        <td>تحسينية (Amélioration) لرفع الرفاهية والراحة.</td>
+        <td style="text-align: center; font-weight: bold; background: #eff6ff;">✓ (Amélioration)</td>
+        <td>Ajout d'une fonction de confort et de valorisation esthétique non présente dans la conception initiale.</td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Synthèse pour l'examen -->
+  <div class="section-title">5. Synthèse Technique pour l'Examen (Critères de Décision Rapide)</div>
+  <div class="grid-2">
+    <div class="card-sm">
+      <strong>Comment distinguer Systématique vs Conditionnelle ?</strong>
+      <p>• <strong>Systématique :</strong> Le déclencheur est une grandeur aveugle (date, heures de rotation, kilomètres), indépendamment de l'usure réelle de la pièce.</p>
+      <p>• <strong>Conditionnelle :</strong> Le déclencheur est une grandeur physique mesurée (épaisseur, vibration, niveau de liquide, température).</p>
+    </div>
+    <div class="card-sm">
+      <strong>Comment distinguer Palliative vs Curative ?</strong>
+      <p>• <strong>Palliative (Dépannage) :</strong> Ne supprime pas la cause racine du problème; permet seulement un redémarrage temporaire (mode dégradé).</p>
+      <p>• <strong>Curative (Réparation) :</strong> Élimine définitivement la défaillance et rétablit les performances d'origine.</p>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها | جامعة باتنة 2</title>
+  <title>Cours: Introduction aux Concepts et Typologie de la Maintenance | Université Batna 2</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     * {
       font-family: 'Cairo', sans-serif;
       box-sizing: border-box;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
     }
     body {
       background-color: #0c1210;
@@ -47,7 +53,7 @@
       background: #0d1512;
     }
     table {
-      min-width: 600px;
+      min-width: 720px;
       width: 100%;
       border-collapse: collapse;
       font-size: 0.92rem;
@@ -57,14 +63,12 @@
       color: #34d399;
       font-weight: 700;
       padding: 0.75rem 1rem;
-      text-align: right;
       border-bottom: 1px solid #23382f;
     }
     td {
       padding: 0.75rem 1rem;
       border-bottom: 1px solid #1c2b24;
       color: #e2e8f0;
-      text-align: right;
       vertical-align: middle;
     }
 
@@ -82,92 +86,328 @@
       font-size: 1rem;
     }
 
-    .highlight-box {
-      background: rgba(16, 185, 129, 0.1);
+    /* French Authentic Quotation Box */
+    .french-quote-card {
+      background: #09110d;
+      border: 1px solid #1e3a2d;
       border-right: 4px solid #10b981;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
-      color: #e2e8f0;
-    }
-
-    .tree-card {
-      background: #0e1612;
-      border: 1px solid #1e3328;
       border-radius: 0.75rem;
-      padding: 1rem;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      direction: ltr;
+      text-align: left;
+    }
+    .fr-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #34d399;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .fr-text {
+      color: #f1f5f9;
+      font-size: 0.96rem;
+      font-weight: 600;
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .fr-sub {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      border-top: 1px dashed #1e3a2d;
+      padding-top: 0.5rem;
     }
 
-    .tag-preventive {
-      background: rgba(16, 185, 129, 0.2);
+    .tree-box {
+      background: #080f0c;
+      border: 1px solid #1d3327;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      direction: ltr;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      color: #6ee7b7;
+      overflow-x: auto;
+    }
+
+    .badge-prev {
+      background: rgba(16, 185, 129, 0.18);
       color: #34d399;
-      border: 1px solid #10b981;
-      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 0.25rem 0.65rem;
       border-radius: 9999px;
       font-weight: 700;
       font-size: 0.75rem;
+      display: inline-block;
     }
-    .tag-corrective {
-      background: rgba(239, 68, 68, 0.2);
+    .badge-corr {
+      background: rgba(239, 68, 68, 0.18);
       color: #f87171;
-      border: 1px solid #ef4444;
-      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 0.25rem 0.65rem;
       border-radius: 9999px;
       font-weight: 700;
       font-size: 0.75rem;
+      display: inline-block;
     }
-    .tag-amelioration {
-      background: rgba(59, 130, 246, 0.2);
+    .badge-amel {
+      background: rgba(59, 130, 246, 0.18);
       color: #60a5fa;
-      border: 1px solid #3b82f6;
-      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      padding: 0.25rem 0.65rem;
       border-radius: 9999px;
       font-weight: 700;
       font-size: 0.75rem;
+      display: inline-block;
+    }
+  </style>
+
+  <!-- Google Fonts: Space Grotesk & Space Mono for Neo-Brutalist Tech Feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  
+
+  <style id="neo-brutalist-core">
+    html {
+      font-size: clamp(14px, 0.9rem + 0.35vw, 16.5px);
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    body {
+      background-color: #080a0d !important;
+      color: #f1f5f9 !important;
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
+    * {
+      border-radius: 0px !important;
+      box-sizing: border-box;
+    }
+    
+    .blueprint-grid {
+      background-color: #080a0d;
+      background-image: 
+        linear-gradient(rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+      background-size: 32px 32px, 32px 32px, 8px 8px, 8px 8px !important;
+    }
+
+    .brutal-shadow {
+      box-shadow: 3px 3px 0px #000000 !important;
+    }
+    .brutal-shadow-green {
+      box-shadow: 3px 3px 0px #00f59b !important;
+    }
+    .brutal-shadow-lg {
+      box-shadow: 4px 4px 0px #000000 !important;
+    }
+    .font-mono-tech {
+      font-family: 'Space Mono', monospace !important;
+    }
+    .font-headline {
+      font-family: 'Space Grotesk', 'Cairo', sans-serif !important;
+    }
+
+    bdi, .bidi-isolate, [dir="ltr"] {
+      unicode-bidi: isolate;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* Strict Mobile Responsiveness & Container Safety */
+    main {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+    }
+    @media (min-width: 640px) {
+      main {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+      }
+    }
+
+    /* Cards & Containers */
+    .bento-card, .card, .section-card, section.card, article {
+      background-color: #11151a !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 4px 4px 0px #000000 !important;
+      margin-bottom: 1.75rem !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      padding: 1rem !important;
+    }
+    @media (min-width: 640px) {
+      .bento-card, .card, .section-card, section.card, article {
+        padding: 1.75rem 2rem !important;
+      }
+    }
+    .bento-card:hover, .card:hover, section.card:hover {
+      border-color: #00f59b !important;
+    }
+
+    /* Wrap flex containers that could stretch on mobile */
+    article > div:first-child, .bento-card > div:first-child {
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+    }
+    article > div:first-child > div {
+      flex-wrap: wrap !important;
+      max-width: 100% !important;
+    }
+
+    h1, h2, h3, h4, p, span, div {
+      overflow-wrap: break-word !important;
+      word-break: break-word !important;
+    }
+
+    /* Math Blocks and Formulas */
+    .math-block, .formula-box, .math-display {
+      background-color: #050709 !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      color: #00f59b !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      padding: 0.75rem 1rem !important;
+      margin: 1rem 0 !important;
+      max-width: 100% !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .math-block:hover, .formula-box:hover {
+      border-color: #00f59b !important;
+    }
+
+    /* Highlight & Problem Callout Boxes */
+    .problem-box, .highlight-box, .rule-box, .step-box, .boxed-eq {
+      background-color: #0d1015 !important;
+      border: 2px solid #1f2937 !important;
+      border-right: 4px solid #00f59b !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      padding: 0.85rem 1rem !important;
+      margin: 1rem 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Step Badge Number */
+    .step-num, .step-badge, [class*="step-badge"] {
+      background-color: #00f59b !important;
+      color: #000000 !important;
+      border: 2px solid #000000 !important;
+      box-shadow: 2px 2px 0px #000000 !important;
+      font-weight: 900 !important;
+      font-family: 'Space Mono', monospace !important;
+    }
+
+    /* Badges & Technical Chips */
+    span.rounded-full, div.rounded-full, .badge, [class*="rounded-full"], [class*="rounded-md"], [class*="rounded-lg"] {
+      border-radius: 0 !important;
+    }
+
+    /* Tables */
+    .table-wrap, table {
+      background-color: #0d1015 !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      width: 100% !important;
+      border-collapse: collapse !important;
+    }
+    th {
+      background-color: #19221c !important;
+      color: #00f59b !important;
+      border-bottom: 2px solid #1f2937 !important;
+      font-family: 'Cairo', sans-serif !important;
+      font-weight: 800 !important;
+      padding: 10px 14px !important;
+    }
+    td {
+      border-bottom: 1px solid #1f2937 !important;
+      border-color: #1f2937 !important;
+      padding: 10px 14px !important;
+    }
+
+    /* Technical Diagrams & SVGs */
+    .diagram-container, .diagram-box {
+      background-color: #050709 !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      padding: 0.75rem !important;
+      margin: 1.25rem 0 !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      overflow-x: auto !important;
+      max-width: 100% !important;
+    }
+    svg {
+      max-width: 100% !important;
+      height: auto !important;
     }
   </style>
 </head>
-<body class="selection:bg-[#10b981] selection:text-black">
+<body class="bg-[#080a0d] text-slate-100 antialiased blueprint-grid min-h-screen selection:bg-neon-green selection:text-black">
 
   <!-- شريط التحكم العلوي -->
-  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-[#23382f]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <!-- شريط التحكم العلوي المثبت -->
+  <header class="sticky top-0 z-50 bg-[#0d1015]/95 backdrop-blur-md border-b-2 border-slate-800 brutal-shadow no-print">
+    <div class="max-w-5xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2 overflow-hidden">
       
-      <div class="flex items-center gap-3">
-        <a href="../modules/maintenance.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#34d399] hover:text-white transition-colors bg-[#131b17] px-3 py-1.5 rounded-lg border border-[#23382f]">
-          <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
-          <span>العودة إلى (الصيانة الصناعية)</span>
+      <!-- Right: Module Back Button -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a href="../modules/maintenance.html" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#11151a] hover:bg-slate-800 border-2 border-slate-700 hover:border-neon-green text-neon-green text-xs font-mono-tech font-bold brutal-shadow transition-all active:translate-x-0.5 active:translate-y-0.5">
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          <span class="hidden sm:inline">العودة إلى (الصيانة الصناعية)</span>
+          <span class="sm:hidden font-mono text-[11px]">الصيانة الصناعية</span>
         </a>
-        <a href="../index.html" class="hidden sm:inline-block text-xs text-gray-400 hover:text-white transition-colors">
-          الرئيسية
+        <a href="../index.html" class="hidden md:flex items-center gap-1 px-2 py-1.5 bg-[#11151a] hover:bg-slate-800 border-2 border-slate-800 text-slate-300 text-xs font-mono-tech font-bold brutal-shadow hover:text-white transition-all" title="المنصة الرئيسية">
+          <span class="material-symbols-outlined text-[14px]">home</span>
+          <span>الرئيسية</span>
         </a>
       </div>
 
-      <div class="hidden md:flex items-center gap-2 text-xs text-[#cbd5e1]">
-        <span class="px-2.5 py-0.5 rounded bg-[#10b981]/15 text-[#34d399] font-bold">Maintenance Industrielle</span>
-        <span>Génie Mécanique • Batna 2</span>
+      <!-- Center: Technical Badge (Desktop only) -->
+      <div class="hidden lg:flex items-center gap-2 text-xs font-mono-tech text-slate-300">
+        <span class="px-2 py-0.5 bg-[#003920] border border-neon-green text-neon-green text-[11px] font-bold">COURS // CHAPITRE 1</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-slate-400 font-bold">Dr. M. Cheniti</span>
       </div>
 
-      <div class="flex items-center gap-2">
-        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-[#131b17] hover:bg-[#23382f] border border-[#23382f] text-xs text-white flex items-center gap-1.5 transition-all">
-          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-          </svg>
-          <span class="hidden sm:inline">طباعة</span>
+      <!-- Left: Action Buttons (Print & Download) -->
+      <div class="flex items-center gap-1.5 flex-shrink-0">
+        <button onclick="window.print()" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 bg-[#11151a] hover:bg-slate-800 text-slate-300 text-xs font-mono-tech font-bold border-2 border-slate-700 brutal-shadow active:translate-x-0.5 active:translate-y-0.5 transition-all" title="طباعة">
+          <span class="material-symbols-outlined text-[16px]">print</span>
+          <span>طباعة</span>
         </button>
 
-        <a href="../lessons/maintenance-introduction-cours.pdf" download class="px-4 py-1.5 rounded-lg bg-[#10b981] hover:bg-[#059669] text-xs font-bold text-black flex items-center gap-1.5 transition-all shadow-lg shadow-[#10b981]/20">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-          </svg>
-          <span>تحميل (PDF)</span>
+        <a href="../lessons/maintenance-introduction-cours.pdf" download class="flex items-center gap-1 px-3 py-1.5 bg-neon-green hover:bg-white text-black text-xs font-mono-tech font-black border-2 border-black brutal-shadow active:translate-x-0.5 active:translate-y-0.5 transition-all">
+          <span class="material-symbols-outlined text-[16px]">download</span>
+          <span>تحميل PDF</span>
         </a>
       </div>
 
     </div>
-  </nav>
+  </header>
 
   <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-8">
 
@@ -176,264 +416,393 @@
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#23382f] pb-4 mb-4">
         <div>
           <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Université Batna 2 • Faculté de Technologie</div>
-          <div class="text-xs sm:text-sm text-gray-300 font-semibold">قسم الهندسة الميكانيكية • مقياس الصيانة الصناعية (Maintenance Industrielle)</div>
+          <div class="text-xs sm:text-sm text-gray-300 font-semibold">Département de Génie Mécanique • 3ème Année Licence (L3 CM)</div>
         </div>
         <div>
           <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#10b981]/15 text-[#34d399] border border-[#10b981]/30">
-            محاضرة وتطبيق السبورة الرسمية
+            Cours & TD Officiel de la Faculté
           </span>
         </div>
       </div>
 
       <div>
         <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white leading-tight mb-2">
-          مدخل شامل إلى الصيانة الصناعية: المفاهيم، التصنيفات، وتطبيقات عملية
+          Cours: Introduction aux Concepts Fondamentaux et Typologie de la Maintenance Industrielle
         </h1>
         <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
-          (Introduction aux Concepts et Typologie de la Maintenance) • دراسة مفاهيم الصيانة، الشجرة التصنيفية (وقائية وعلاجية وتحسينية)، الأهداف الاستراتيجية، وحل التمرين التطبيقي لصيانة السيارات المكتوب على السبورة.
+          مدخل شامل ومباشر لمقياس الصيانة الصناعية: التعريف المعياري الأصلي <bdi dir="ltr" class="inline-block font-mono text-neon-green">(Normes NF X 60-010 / NF EN 13306)</bdi>، شجرة تصنيفات الصيانة (Typologie)، الأهداف الاستراتيجية الستة (Rôles & Objectifs)، والحل النموذجي لتمرين صيانة السيارات (Maintenance d'une automobile) كما قُدّم على سبورة المدرج.
         </p>
       </div>
     </header>
 
-    <!-- 1. المفهوم والتعريف -->
+    <!-- 1. Définition et Concepts Fondamentaux -->
     <section class="card">
       <div class="flex items-center mb-4">
         <span class="step-num">1</span>
-        <h2 class="text-lg sm:text-xl font-bold text-white">المفهوم الأكاديمي والتعريف الرسمي للصيانة (Définition)</h2>
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white">Définition et Concepts Fondamentaux de la Maintenance</h2>
+          <span class="text-xs text-gray-400">التعريف الأكاديمي المعياري والمفاهيم الجوهرية للصيانة الحديثة</span>
+        </div>
       </div>
 
-      <div class="bg-[#0b130f] border-r-4 border-[#10b981] p-4 rounded-lg mb-4 text-gray-200">
-        <p class="font-bold text-white mb-1">التعريف المكتوب على السبورة (وفق المعيار الدولي AFNOR NF X 60-010) :</p>
-        <p class="font-sans text-sm text-gray-300 leading-relaxed" dir="ltr">
-          « La maintenance est un ensemble des actions permettant de maintenir ou de rétablir un bien (machine / système) dans un état spécifié ou en mesure d'assurer un service déterminé. »
-        </p>
-      </div>
-
-      <p class="text-sm text-gray-300 leading-relaxed mb-4">
-        <strong>الترجمة والشرح باللغة العربية:</strong>
-        الصيانة هي مجمل الإجراءات والتدخلات التقنية والإدارية التي تهدف إما إلى <strong>الحفاظ (Maintenir)</strong> على عتاد أو آلة صناعية في حالة تشغيل جيدة، أو <strong>إعادة تأهيله (Rétablir)</strong> عند حدوث خلل ليستأنف وظيفته المحددة بكفاءة.
+      <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+        في الهندسة الصناعية الحديثة، لم تعد الصيانة مجرد ورشة للإصلاح عند وقوع العطل، بل أصبحت وظيفة استراتيجية حاسمة تضمن استمرارية الإنتاج وتحقيق التنافسية الاقتصادية للمؤسسة.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-[#0e1612] p-4 rounded-xl border border-[#1e3328]">
-          <h3 class="font-bold text-[#34d399] text-sm mb-1">1. الحفاظ (Maintenir) :</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            يفترض المتابعة والمراقبة الدورية المستمرة (Suivi et surveillance) للآلة أثناء عملها الطبيعي لمنع حدوث التدهور المفاجئ.
-          </p>
+      <!-- French Box 1 -->
+      <div class="french-quote-card">
+        <div class="fr-title">
+          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          <span>Définition Normative Officielle (Norme AFNOR NF X 60-010 / NF EN 13306)</span>
         </div>
-        <div class="bg-[#0e1612] p-4 rounded-xl border border-[#1e3328]">
-          <h3 class="font-bold text-[#fbbf24] text-sm mb-1">2. إعادة التأهيل (Rétablir) :</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            يتضمن فكرة تصحيح العيب وإصلاح العطل (Correction de défaut) واستبدال الأجزاء التالفة لإعادة الجهاز للعمل.
-          </p>
+        <p class="fr-text">
+          « La maintenance est l'ensemble de toutes les actions techniques, administratives et de gestion durant le cycle de vie d'un bien, destinées à le maintenir ou à le rétablir dans un état dans lequel il peut accomplir la fonction requise. »
+        </p>
+        <div class="fr-sub">
+          <strong>Principe économique fondamental :</strong> « Bien maintenir, c'est assurer l'ensemble de ces interventions au coût global optimal. »
         </div>
       </div>
 
-      <div class="highlight-box mt-4">
-        <h3 class="font-bold text-white text-sm mb-1">المبدأ الذهبي للصيانة الحديثة: (Bien Maintenir)</h3>
-        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-          « Bien maintenir : c'est assurer l'ensemble de ces opérations <strong>au coût optimal</strong>. »
-          <br>
-          أي أن الصيانة الناجحة ليست فقط إصلاح الآلات، بل إنجاز كافة العمليات بأقل تكلفة ممكنة وأعلى أمان وجاهزية للإنتاج.
-        </p>
+      <!-- Analysis of keywords -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-[#34d399] tracking-wide" dir="ltr">1. MAINTENIR (Action Préventive)</h3>
+            <span class="badge-prev">Avant Défaillance</span>
+          </div>
+          <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-2" dir="ltr" style="text-align: left;">
+            Contient les notions indispensables de <strong>suivi</strong>, de <strong>surveillance</strong>, de <strong>graissage</strong> et de <strong>visites périodiques</strong> pour empêcher l'apparition de toute défaillance pendant la phase d'exploitation normale.
+          </p>
+          <div class="text-xs text-gray-400 border-t border-[#1c2e25] pt-2">
+            <strong>الشرح بالعربية:</strong> الحفاظ والمتابعة الميدانية الدورية لمنع وقوع الأعطال المفاجئة قبل حدوثها.
+          </div>
+        </div>
+
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-[#f87171] tracking-wide" dir="ltr">2. RÉTABLIR (Action Corrective)</h3>
+            <span class="badge-corr">Après Défaillance</span>
+          </div>
+          <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-2" dir="ltr" style="text-align: left;">
+            Contient les notions de <strong>correction de défaut</strong>, de <strong>dépannage</strong> ou de <strong>remise en état nominale</strong> consécutivement à une panne ou une perte de fonction.
+          </p>
+          <div class="text-xs text-gray-400 border-t border-[#1c2e25] pt-2">
+            <strong>الشرح بالعربية:</strong> إعادة التأهيل والتدخل العلاجي لتصحيح العيوب وإعادة الآلة للخدمة بعد التوقف.
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-[#10b981]/10 border-r-4 border-[#10b981] p-3.5 rounded-lg text-xs sm:text-sm text-gray-300">
+        <strong class="text-white">Le Coût Optimal (التكلفة المثالية):</strong>
+        الهدف ليس إنفاق ميزانيات ضخمة لجعل احتمال التوقف صفراً (لأن التكلفة ستكون فلكية)، ولا إهمال الآلات حتى تنهار (فتضيع تكاليف الإنتاج)، بل الوصول إلى نقطة التوازن الاقتصادي المثلى (*Compromis technico-économique*) بين تكاليف الصيانة وخسائر التوقف.
       </div>
     </section>
 
-    <!-- 2. شجرة أنواع الصيانة -->
+    <!-- 2. Typologie et Formes de Maintenance -->
     <section class="card">
       <div class="flex items-center mb-4">
         <span class="step-num">2</span>
-        <h2 class="text-lg sm:text-xl font-bold text-white">الشجرة الهيكلية لأنواع وتصنيفات الصيانة (Typologie)</h2>
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white">Typologie et Classifications de la Maintenance</h2>
+          <span class="text-xs text-gray-400">التصنيف المعياري المنظم لأشكال الصيانة على شكل نقاط واضحة ومحددة</span>
+        </div>
       </div>
 
-      <p class="text-sm text-gray-300 mb-4">
-        تنقسم الصيانة من حيث زمن التدخل ونوعه إلى ثلاثة فروع رئيسية كما تم تفصيلها في مخطط السبورة:
+      <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+        تُقسّم أنشطة الصيانة في المعايير الصناعية الدولية إلى ثلاثة أقسام رئيسية تتفرع إلى مستويات دقيقة وفق زمن التدخل وطبيعته:
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- 1. الوقائية -->
-        <div class="tree-card border-t-4 border-t-[#10b981]">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="font-bold text-[#34d399] text-sm">1. الصيانة الوقائية</h3>
-            <span class="tag-preventive">Avant défaillance</span>
-          </div>
-          <p class="text-xs text-gray-400 mb-3">تتم استباقياً قبل حدوث العطل أو الانهيار (Maintenance Préventive) وتنقسم إلى:</p>
-          <ul class="text-xs text-gray-300 space-y-2">
-            <li class="bg-[#14231b] p-2 rounded">
-              <strong class="text-white block">أ) دورية في الزمن (Systématique) :</strong>
-              تتم وفق جدول زمني محدد مسبقاً (Échéancier) أو بعدد ساعات تشغيل أو مسافة مقطوعة، دون النظر لحالة العتاد الحالية (مثل تبديل الزيت كل 10,000 كم).
-            </li>
-            <li class="bg-[#14231b] p-2 rounded">
-              <strong class="text-white block">ب) مشروطة بالحالة (Conditionnelle) :</strong>
-              تتم بناءً على فحص وتشخيص حالة الآلة ومراقبة معايير فيزيائية محددة (Etat d'un bien: حرارة، اهتزاز، لزوجة، ضغط) وتتم الصيانة فقط عند بلوغ عتبة التحذير.
-            </li>
-          </ul>
+      <!-- نقاط تصنيف الصيانة بشكل منظم وواضح -->
+      <div class="bg-[#09110d] border border-[#1e3a2d] rounded-xl p-4 sm:p-5 mb-5 space-y-3">
+        <div class="flex items-center gap-2 text-xs font-bold text-[#34d399] uppercase tracking-wide border-b border-[#1e3a2d] pb-2" dir="ltr">
+          <svg class="w-4 h-4 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+          <span>Structure Générale des Classifications (Points Clés)</span>
         </div>
 
-        <!-- 2. العلاجية -->
-        <div class="tree-card border-t-4 border-t-[#ef4444]">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="font-bold text-[#f87171] text-sm">2. الصيانة العلاجية</h3>
-            <span class="tag-corrective">Après défaillance</span>
+        <ul class="space-y-3 text-xs sm:text-sm text-gray-200">
+          <li class="flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#10b981]/20 text-[#34d399] text-xs font-bold mt-0.5 shrink-0">1</span>
+            <div>
+              <strong class="text-white">الصيانة الوقائية (Maintenance Préventive) :</strong>
+              <span class="text-gray-300">تُنفّذ <em>قبل وقوع العطل (Avant défaillance)</em> لتفادي التوقفات الفجائية، وتنقسم إلى:</span>
+              <ul class="mt-1.5 space-y-1 pr-4 list-disc text-gray-300">
+                <li><strong class="text-[#34d399]">صيانة دورية نظامية (Systématique) :</strong> وفق جدول زمني محدد أو عدد ساعات تشغيل أو كيلومترات، دون فحص مسبق لحالة القطعة.</li>
+                <li><strong class="text-[#34d399]">صيانة مشروطة بالحالة (Conditionnelle) :</strong> تُجرى بناءً على تجاوز مؤشرات التآكل لقيم حدية تُقاس بالحساسات وأدوات التشخيص (اهتزازات، حرارة، جودة الزيت).</li>
+                <li><strong class="text-[#34d399]">صيانة تنبؤية (Prévisionnelle / Prédictive) :</strong> استقراء إحصائي لاتجاه التدهور لتوقع الموعد الدقيق للتدخل.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#ef4444]/20 text-[#f87171] text-xs font-bold mt-0.5 shrink-0">2</span>
+            <div>
+              <strong class="text-white">الصيانة العلاجية (Maintenance Corrective) :</strong>
+              <span class="text-gray-300">تُنفّذ <em>بعد حدوث العطل (Après défaillance)</em> لإعادة الآلة لحالتها التشغيلية، وتنقسم إلى:</span>
+              <ul class="mt-1.5 space-y-1 pr-4 list-disc text-gray-300">
+                <li><strong class="text-[#f87171]">صيانة إسعافية مؤقتة (Palliative / Dépannage) :</strong> حل سريع ومؤقت لإعادة تشغيل المعدة بوضع استثنائي ريثما يتم التدخل النهائي.</li>
+                <li><strong class="text-[#f87171]">صيانة جذرية نهائية (Curative / Réparation) :</strong> إصلاح كامل ونهائي يُعيد المعدة إلى مواصفاتها الأصلية المستدامة.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#3b82f6]/20 text-[#60a5fa] text-xs font-bold mt-0.5 shrink-0">3</span>
+            <div>
+              <strong class="text-white">الصيانة التحسينية (Maintenance d'Amélioration) :</strong>
+              <span class="text-gray-300">تعديلات وتطويرات فنية تُجرى على التصميم لزيادة الموثوقية (Fiabilité)، وتسهيل الصيانة، وتحسين السلامة والراحة والجمالية.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-4 my-5">
+        
+        <!-- Préventive -->
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-3 border-b border-[#1c2e25] pb-2">
+            <h3 class="text-sm font-bold text-[#34d399]" dir="ltr">I. MAINTENANCE PRÉVENTIVE (Intervention avant défaillance)</h3>
+            <span class="badge-prev">Prévention</span>
           </div>
-          <p class="text-xs text-gray-400 mb-3">تتم بعد حدوث الخلل أو توقف الآلة (Maintenance Corrective) وتنقسم إلى:</p>
-          <ul class="text-xs text-gray-300 space-y-2">
-            <li class="bg-[#241515] p-2 rounded">
-              <strong class="text-white block">أ) إسعافية مؤقتة (Palliative / Dépannage) :</strong>
-              حل مؤقت ومرحلي (Une solution provisoire) يسمح بتشغيل الآلة جزئياً ريثما يتم الإصلاح الجذري (مثل تركيب عجلة النجدة).
-            </li>
-            <li class="bg-[#241515] p-2 rounded">
-              <strong class="text-white block">ب) جذرية نهائية (Curative / Réparation) :</strong>
-              إصلاح كامل ونهائي يعيد الآلة إلى حالتها القياسية (مثل تغيير المحرك التالف أو لحام كسر نهائي).
-            </li>
-          </ul>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-300" dir="ltr" style="text-align: left;">
+            <div class="bg-[#131d18] p-3 rounded-lg border border-[#20362b]">
+              <strong class="text-white block mb-1">1. Maintenance Systématique :</strong>
+              <p class="text-gray-300 text-xs leading-relaxed mb-2">
+                Exécutée à des intervalles de temps préétablis ou selon une périodicité d'usage (heures de fonctionnement, kilomètres parcourus, nombre de cycles), sans contrôle préalable de l'état de dégradation.
+              </p>
+              <div class="text-[11px] text-gray-400" dir="rtl" style="text-align: right;">
+                • <strong>أمثلة:</strong> استبدال زيت المحرك كل 10,000 كم، أو تغيير حزام التوزيع كل 5 سنوات.
+              </div>
+            </div>
+
+            <div class="bg-[#131d18] p-3 rounded-lg border border-[#20362b]">
+              <strong class="text-white block mb-1">2. Maintenance Conditionnelle :</strong>
+              <p class="text-gray-300 text-xs leading-relaxed mb-2">
+                Subordonnée au franchissement d'un seuil prédéterminé révélant le niveau d'usure ou de dégradation du bien via des mesures régulières ou continues (analyse vibratoire, thermographie, analyse de lubrifiant).
+              </p>
+              <div class="text-[11px] text-gray-400" dir="rtl" style="text-align: right;">
+                • <strong>أمثلة:</strong> فحص مستوى الزيت عبر مقياس القياس، أو قياس سماكة بطانات الفرامل عند الفحص الدوري.
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- 3. التحسينية -->
-        <div class="tree-card border-t-4 border-t-[#3b82f6]">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="font-bold text-[#60a5fa] text-sm">3. الصيانة التحسينية</h3>
-            <span class="tag-amelioration">D'amélioration</span>
+        <!-- Corrective -->
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-3 border-b border-[#1c2e25] pb-2">
+            <h3 class="text-sm font-bold text-[#f87171]" dir="ltr">II. MAINTENANCE CORRECTIVE (Intervention après défaillance)</h3>
+            <span class="badge-corr">Correction</span>
           </div>
-          <p class="text-xs text-gray-400 mb-3">تهدف لتطوير المعدات ورفع كفاءتها (Maintenance d'amélioration):</p>
-          <ul class="text-xs text-gray-300 space-y-2">
-            <li class="bg-[#131e2b] p-2 rounded">
-              <strong class="text-white block">أ) تحسين الأداء والسلامة :</strong>
-              تعديل تصميم الآلة لتقليل استهلاك الطاقة أو زيادة موثوقيتها أو حماية العاملين.
-            </li>
-            <li class="bg-[#131e2b] p-2 rounded">
-              <strong class="text-white block">ب) تطوير الجمالية والراحة (Esthétique) :</strong>
-              إضافة تجهيزات عصرية أو تحسين مظهر وراحة استخدام الآلة (مثل تركيب راديو أو شاشة للسيارة).
-            </li>
-          </ul>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-300" dir="ltr" style="text-align: left;">
+            <div class="bg-[#1d1414] p-3 rounded-lg border border-[#3d2323]">
+              <strong class="text-white block mb-1">1. Maintenance Palliative (Dépannage) :</strong>
+              <p class="text-gray-300 text-xs leading-relaxed mb-2">
+                Action provisoire permettant à l'équipement de redémarrer rapidement en mode dégradé en attendant une intervention définitive ultérieure.
+              </p>
+              <div class="text-[11px] text-gray-400" dir="rtl" style="text-align: right;">
+                • <strong>أمثلة:</strong> تركيب عجلة الاحتياط (Roue de secours) المؤقتة عند ثقب العجلة الأصلية.
+              </div>
+            </div>
+
+            <div class="bg-[#1d1414] p-3 rounded-lg border border-[#3d2323]">
+              <strong class="text-white block mb-1">2. Maintenance Curative (Réparation) :</strong>
+              <p class="text-gray-300 text-xs leading-relaxed mb-2">
+                Remise en état durable et définitive du bien selon ses spécifications de fonctionnement nominales.
+              </p>
+              <div class="text-[11px] text-gray-400" dir="rtl" style="text-align: right;">
+                • <strong>أمثلة:</strong> استبدال حشية رأس الأسطوانة التالفة (Joint de culasse)، أو تغيير بطارية ميتة تماماً.
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Amélioration -->
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-[#60a5fa]" dir="ltr">III. MAINTENANCE D'AMÉLIORATION (Modification & Modernisation)</h3>
+            <span class="badge-amel">Amélioration</span>
+          </div>
+          <p class="text-xs sm:text-sm text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Ensemble des mesures techniques, de conception ou d'organisation destinées à augmenter la <strong>fiabilité</strong>, la <strong>maintenabilité</strong>, la <strong>sécurité</strong> ou <strong>l'esthétique/confort</strong> d'un équipement sans altérer sa fonction fondamentale.
+          </p>
+          <div class="text-xs text-gray-400 border-t border-[#1c2e25] pt-2 mt-2">
+            • <strong>أمثلة:</strong> إضافة نظام إنذار ذكي، ترقية عوازل حرارية، أو تركيب راديو وملحقات ترفيهية داخل مقصورة السيارة.
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- 3. أدوار وأهداف الصيانة -->
+    <!-- 3. Rôles et Objectifs -->
     <section class="card">
       <div class="flex items-center mb-4">
         <span class="step-num">3</span>
-        <h2 class="text-lg sm:text-xl font-bold text-white">الأدوار والأهداف الاستراتيجية للصيانة (Le rôle de la maintenance)</h2>
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white">Rôles et Objectifs Stratégiques de la Maintenance</h2>
+          <span class="text-xs text-gray-400">الأدوار المحورية الستة للوظيفة في المؤسسات والمنشآت الصناعية الكبرى</span>
+        </div>
       </div>
 
-      <p class="text-sm text-gray-300 mb-4">
-        تساهم وظيفة الصيانة في المؤسسة الصناعية في تحقيق 6 أهداف جوهرية تم تحديدها على السبورة:
-      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="text-xs font-mono font-bold text-[#34d399] mb-1" dir="ltr">1. DISPONIBILITÉ</div>
+          <h4 class="text-sm font-bold text-white mb-2">الجاهزية والمردود الزمني</h4>
+          <p class="text-xs text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Maximiser la disponibilité opérationnelle en minimisant le temps d'arrêt non planifié (réduire la MTTR et accroître la MTBF).
+          </p>
+        </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-[#0b130f] p-3 rounded-lg border border-[#23382f]">
-          <div class="text-[#34d399] font-bold text-sm mb-1">1. الجاهزية (Disponibilité)</div>
-          <p class="text-xs text-gray-400 leading-relaxed">تقليل زمن التوقف المفاجئ وضمان جاهزية المعدات للعمل في أي لحظة.</p>
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="text-xs font-mono font-bold text-[#34d399] mb-1" dir="ltr">2. QUALITÉ</div>
+          <h4 class="text-sm font-bold text-white mb-2">جودة المنتوج والتدخلات</h4>
+          <p class="text-xs text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Garantir la précision géométrique et cinématique des machines pour éliminer les non-conformités et rebuts de production.
+          </p>
         </div>
-        <div class="bg-[#0b130f] p-3 rounded-lg border border-[#23382f]">
-          <div class="text-[#34d399] font-bold text-sm mb-1">2. الجودة (Qualité)</div>
-          <p class="text-xs text-gray-400 leading-relaxed">جودة التدخلات التقنية لضمان خلو المنتجات الصناعية من العيوب القياسية.</p>
+
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="text-xs font-mono font-bold text-[#34d399] mb-1" dir="ltr">3. CAPACITÉ</div>
+          <h4 class="text-sm font-bold text-white mb-2">الحفاظ على الطاقة الإنتاجية</h4>
+          <p class="text-xs text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Conserver le régime nominal et la cadence de fabrication prévus par le constructeur sans ralentissement forcé.
+          </p>
         </div>
-        <div class="bg-[#0b130f] p-3 rounded-lg border border-[#23382f]">
-          <div class="text-[#34d399] font-bold text-sm mb-1">3. القدرة الإنتاجية (Capacité)</div>
-          <p class="text-xs text-gray-400 leading-relaxed">الحفاظ على الطاقة الإنتاجية للآلات والمصانع دون تراجع.</p>
+
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="text-xs font-mono font-bold text-[#34d399] mb-1" dir="ltr">4. COÛTS / RENTABILITÉ</div>
+          <h4 class="text-sm font-bold text-white mb-2">المردودية والتحكم بالتكاليف</h4>
+          <p class="text-xs text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Optimiser le coût global du cycle de vie (Life Cycle Cost - LCC) en équilibrant coûts de défaillance et coûts de prévention.
+          </p>
         </div>
-        <div class="bg-[#0b130f] p-3 rounded-lg border border-[#23382f]">
-          <div class="text-[#34d399] font-bold text-sm mb-1">4. المردودية والفاعلية (Rentabilité)</div>
-          <p class="text-xs text-gray-400 leading-relaxed">المردودية العامة من خلال الفاعلية لدى أشخاص ومعدات الصيانة.</p>
+
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="text-xs font-mono font-bold text-[#34d399] mb-1" dir="ltr">5. SÉCURITÉ</div>
+          <h4 class="text-sm font-bold text-white mb-2">أمن العمال والمنشآت</h4>
+          <p class="text-xs text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Assurer l'intégrité physique des opérateurs et respecter les normes environnementales face aux risques mécaniques et thermiques.
+          </p>
         </div>
-        <div class="bg-[#0b130f] p-3 rounded-lg border border-[#23382f]">
-          <div class="text-[#34d399] font-bold text-sm mb-1">5. السلامة المهنية (Sécurité)</div>
-          <p class="text-xs text-gray-400 leading-relaxed">حماية العمال من مخاطر الحوادث والحفاظ على أمان بيئة العمل.</p>
-        </div>
-        <div class="bg-[#0b130f] p-3 rounded-lg border border-[#23382f]">
-          <div class="text-[#34d399] font-bold text-sm mb-1">6. الديمومة (Durabilité)</div>
-          <p class="text-xs text-gray-400 leading-relaxed">تدخلات على المدى المتوسط والطويل لتمديد العمر الافتراضي للآلات.</p>
+
+        <div class="bg-[#0b130f] border border-[#23382f] p-4 rounded-xl">
+          <div class="text-xs font-mono font-bold text-[#34d399] mb-1" dir="ltr">6. DURABILITÉ</div>
+          <h4 class="text-sm font-bold text-white mb-2">ديمومة العتاد والأصول</h4>
+          <p class="text-xs text-gray-300 leading-relaxed" dir="ltr" style="text-align: left;">
+            Prolonger la durée de vie utile des investissements industriels par un vieillissement maîtrisé des composants vitaux.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- 4. التمرين التطبيقي المباشر من السبورة -->
+    <!-- 4. Application / Exercice du Tableau -->
     <section class="card">
       <div class="flex items-center mb-4">
         <span class="step-num">4</span>
-        <h2 class="text-lg sm:text-xl font-bold text-white">التمرين التطبيقي: جدول تصنيف عمليات صيانة السيارات (Maintenance d'une automobile)</h2>
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white">Application Pratique: Maintenance d'une Automobile</h2>
+          <span class="text-xs text-gray-400">الحل النموذجي لجدول تصنيف عمليات الصيانة المكتوب على سبورة المدرج مع التعليل الهندسي</span>
+        </div>
       </div>
-
-      <p class="text-sm text-gray-300 mb-3">
-        حل التمرين المكتوب على السبورة والذي يطلب تصنيف كل عملية صيانة إلى صنفها الدقيق مع توضيح التعليل العلمي:
-      </p>
 
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>عملية الصيانة (Opération)</th>
-              <th class="text-center">صيانة وقائية<br><span class="text-xs text-gray-400">(Préventive)</span></th>
-              <th class="text-center">صيانة علاجية<br><span class="text-xs text-gray-400">(Corrective)</span></th>
-              <th class="text-center">صيانة تحسينية<br><span class="text-xs text-gray-400">(Amélioration)</span></th>
-              <th>التعليل الهندسي</th>
+              <th style="width: 28%; text-align: left;" dir="ltr">Opération de Maintenance</th>
+              <th style="text-align: center; width: 15%;">Préventive</th>
+              <th style="text-align: center; width: 15%;">Corrective</th>
+              <th style="text-align: center; width: 15%;">Amélioration</th>
+              <th style="text-align: left; width: 27%;" dir="ltr">Justification Technique & Normative</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="font-bold text-white">تغيير أقراص الفرامل<br><span class="text-xs text-gray-400">(Changer les disques de frein)</span></td>
-              <td class="text-center text-[#34d399] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">وقائية لتفادي حادث قبل انهيار كفاءة الفرملة.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">1. Changer les disques de frein</td>
+              <td class="text-center font-bold text-[#34d399]"><span class="badge-prev">✓ Systématique</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Remplacement périodique programmé pour éviter l'usure critique et garantir la sécurité du freinage.
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">إصلاح حشية رأس الأسطوانة<br><span class="text-xs text-gray-400">(Refaire le joint de culasse)</span></td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-[#f87171] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">علاجية بعد حدوث عطل وتلف في الحشية وارتفاع الحرارة.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">2. Refaire le joint de culasse</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center font-bold text-[#f87171]"><span class="badge-corr">✓ Curative</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Intervention définitive consécutive à une rupture d'étanchéité (panne moteur avérée).
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">تغيير شمعات الإشعال<br><span class="text-xs text-gray-400">(Changer les bougies)</span></td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-[#f87171] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">علاجية عند تعطلها (وتكون وقائية إن كانت حسب جدول دوري).</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">3. Changer les bougies d'allumage</td>
+              <td class="text-center text-gray-400"><span class="text-[11px]">(Selon préconisation)</span></td>
+              <td class="text-center font-bold text-[#f87171]"><span class="badge-corr">✓ Curative</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Remplacement après défaillance d'allumage constatée (ou préventif selon échéancier constructeur).
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">استبدال عجلة مثقوبة<br><span class="text-xs text-gray-400">(Échanger une roue crevée)</span></td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-[#f87171] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">علاجية إسعافية مؤقتة (Palliative) لمعالجة ثقب العجلة.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">4. Échanger une roue crevée</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center font-bold text-[#f87171]"><span class="badge-corr">✓ Palliative</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Dépannage provisoire par roue de secours afin de rejoindre l'atelier pour réparation définitive.
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">تغيير مصفاة الزيت<br><span class="text-xs text-gray-400">(Changer le filtre à huile)</span></td>
-              <td class="text-center text-[#34d399] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">وقائية دورية تتم بانتظام مع تغيير زيت المحرك.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">5. Changer le filtre à huile</td>
+              <td class="text-center font-bold text-[#34d399]"><span class="badge-prev">✓ Systématique</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Action systématique exécutée à chaque vidange d'huile selon un intervalle kilométrique fixe.
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">ملء خزان الوقود<br><span class="text-xs text-gray-400">(Faire le plein d'essence)</span></td>
-              <td class="text-center text-[#34d399] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">وقائية استباقية لمنع توقف المحرك عن العمل.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">6. Faire le plein d'essence</td>
+              <td class="text-center font-bold text-[#34d399]"><span class="badge-prev">✓ Préventive</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Opération d'approvisionnement préventif indispensable pour empêcher la panne sèche du véhicule.
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">مراقبة وتفقد مستوى الزيت<br><span class="text-xs text-gray-400">(Vérifier le niveau d'huile)</span></td>
-              <td class="text-center text-[#34d399] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">وقائية مشروطة بالحالة (Conditionnelle) بالمراقبة البصرية.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">7. Vérifier le niveau d'huile</td>
+              <td class="text-center font-bold text-[#34d399]"><span class="badge-prev">✓ Conditionnelle</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Surveillance visuelle de l'état du lubrifiant; la décision d'appoint dépend du niveau mesuré.
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">تغيير البطارية<br><span class="text-xs text-gray-400">(Changer la batterie)</span></td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-[#f87171] font-bold text-xl">✓</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-xs text-gray-300">علاجية جذرية (Curative) بعد استنفاد البطارية لطاقتها.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">8. Changer la batterie</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center font-bold text-[#f87171]"><span class="badge-corr">✓ Curative</span></td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Remplacement durable consécutif à l'incapacité de stockage de charge électrique.
+              </td>
             </tr>
+
             <tr>
-              <td class="font-bold text-white">تركيب راديو للسيارة<br><span class="text-xs text-gray-400">(Poser un autoradio)</span></td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-gray-600">—</td>
-              <td class="text-center text-[#60a5fa] font-bold text-xl">✓</td>
-              <td class="text-xs text-gray-300">تحسينية (Amélioration) لرفع الراحة والجمالية.</td>
+              <td class="font-bold text-white" dir="ltr" style="text-align: left;">9. Poser un autoradio</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center text-gray-500">—</td>
+              <td class="text-center font-bold text-[#60a5fa]"><span class="badge-amel">✓ Amélioration</span></td>
+              <td class="text-xs" dir="ltr" style="text-align: left;">
+                Ajout d'une fonction de confort et de valorisation esthétique non présente dans la conception initiale.
+              </td>
             </tr>
           </tbody>
         </table>
@@ -442,8 +811,8 @@
 
   </main>
 
-  <footer class="border-t border-[#23382f] py-6 text-center text-xs text-gray-500">
-    منصة الهندسة الميكانيكية • جامعة باتنة 2 • مراجعة أكاديمية شاملة ومطابقة 100%
+  <footer class="border-t border-[#23382f] py-6 text-center text-xs text-gray-400">
+    جامعة باتنة 2 • قسم الهندسة الميكانيكية • مقياس الصيانة الصناعية (Maintenance Industrielle)
   </footer>
 
 </body>

@@ -8,7 +8,10 @@
   <!-- خط Cairo للعناوين والنصوص -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   
   <!-- إعدادات MathJax 3 مع عزل كامل للخطوط الرياضية -->
   <script>
@@ -285,58 +288,253 @@
     }
 
   </style>
+
+  <!-- Google Fonts: Space Grotesk & Space Mono for Neo-Brutalist Tech Feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  
+
+  <style id="neo-brutalist-core">
+    html {
+      font-size: clamp(14px, 0.9rem + 0.35vw, 16.5px);
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    body {
+      background-color: #080a0d !important;
+      color: #f1f5f9 !important;
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
+    * {
+      border-radius: 0px !important;
+      box-sizing: border-box;
+    }
+    
+    .blueprint-grid {
+      background-color: #080a0d;
+      background-image: 
+        linear-gradient(rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+      background-size: 32px 32px, 32px 32px, 8px 8px, 8px 8px !important;
+    }
+
+    .brutal-shadow {
+      box-shadow: 3px 3px 0px #000000 !important;
+    }
+    .brutal-shadow-green {
+      box-shadow: 3px 3px 0px #00f59b !important;
+    }
+    .brutal-shadow-lg {
+      box-shadow: 4px 4px 0px #000000 !important;
+    }
+    .font-mono-tech {
+      font-family: 'Space Mono', monospace !important;
+    }
+    .font-headline {
+      font-family: 'Space Grotesk', 'Cairo', sans-serif !important;
+    }
+
+    bdi, .bidi-isolate, [dir="ltr"] {
+      unicode-bidi: isolate;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* Strict Mobile Responsiveness & Container Safety */
+    main {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+    }
+    @media (min-width: 640px) {
+      main {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+      }
+    }
+
+    /* Cards & Containers */
+    .bento-card, .card, .section-card, section.card, article {
+      background-color: #11151a !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 4px 4px 0px #000000 !important;
+      margin-bottom: 1.75rem !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      padding: 1rem !important;
+    }
+    @media (min-width: 640px) {
+      .bento-card, .card, .section-card, section.card, article {
+        padding: 1.75rem 2rem !important;
+      }
+    }
+    .bento-card:hover, .card:hover, section.card:hover {
+      border-color: #00f59b !important;
+    }
+
+    /* Wrap flex containers that could stretch on mobile */
+    article > div:first-child, .bento-card > div:first-child {
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+    }
+    article > div:first-child > div {
+      flex-wrap: wrap !important;
+      max-width: 100% !important;
+    }
+
+    h1, h2, h3, h4, p, span, div {
+      overflow-wrap: break-word !important;
+      word-break: break-word !important;
+    }
+
+    /* Math Blocks and Formulas */
+    .math-block, .formula-box, .math-display {
+      background-color: #050709 !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      color: #00f59b !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      padding: 0.75rem 1rem !important;
+      margin: 1rem 0 !important;
+      max-width: 100% !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .math-block:hover, .formula-box:hover {
+      border-color: #00f59b !important;
+    }
+
+    /* Highlight & Problem Callout Boxes */
+    .problem-box, .highlight-box, .rule-box, .step-box, .boxed-eq {
+      background-color: #0d1015 !important;
+      border: 2px solid #1f2937 !important;
+      border-right: 4px solid #00f59b !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      padding: 0.85rem 1rem !important;
+      margin: 1rem 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Step Badge Number */
+    .step-num, .step-badge, [class*="step-badge"] {
+      background-color: #00f59b !important;
+      color: #000000 !important;
+      border: 2px solid #000000 !important;
+      box-shadow: 2px 2px 0px #000000 !important;
+      font-weight: 900 !important;
+      font-family: 'Space Mono', monospace !important;
+    }
+
+    /* Badges & Technical Chips */
+    span.rounded-full, div.rounded-full, .badge, [class*="rounded-full"], [class*="rounded-md"], [class*="rounded-lg"] {
+      border-radius: 0 !important;
+    }
+
+    /* Tables */
+    .table-wrap, table {
+      background-color: #0d1015 !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      width: 100% !important;
+      border-collapse: collapse !important;
+    }
+    th {
+      background-color: #19221c !important;
+      color: #00f59b !important;
+      border-bottom: 2px solid #1f2937 !important;
+      font-family: 'Cairo', sans-serif !important;
+      font-weight: 800 !important;
+      padding: 10px 14px !important;
+    }
+    td {
+      border-bottom: 1px solid #1f2937 !important;
+      border-color: #1f2937 !important;
+      padding: 10px 14px !important;
+    }
+
+    /* Technical Diagrams & SVGs */
+    .diagram-container, .diagram-box {
+      background-color: #050709 !important;
+      border: 2px solid #1f2937 !important;
+      box-shadow: 3px 3px 0px #000000 !important;
+      padding: 0.75rem !important;
+      margin: 1.25rem 0 !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      overflow-x: auto !important;
+      max-width: 100% !important;
+    }
+    svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  </style>
 </head>
-<body class="selection:bg-emeraldPrimary selection:text-black">
+<body class="bg-[#080a0d] text-slate-100 antialiased blueprint-grid min-h-screen selection:bg-neon-green selection:text-black">
 
   <!-- شريط التحكم العلوي المثبت (Sticky Navbar) -->
-  <nav class="sticky top-0 z-50 bg-[#0c1210]/95 backdrop-blur-md border-b border-borderMain no-print">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <!-- شريط التحكم العلوي المثبت -->
+  <header class="sticky top-0 z-50 bg-[#0d1015]/95 backdrop-blur-md border-b-2 border-slate-800 brutal-shadow no-print">
+    <div class="max-w-5xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2 overflow-hidden">
       
-      <!-- زر الرجوع للمنصة -->
-      <div class="flex items-center gap-3">
-        <a href="../modules/elasticite.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emeraldTag hover:text-white transition-colors bg-emeraldPrimary/15 border border-emeraldPrimary/30 px-3 py-1.5 rounded-lg">
-          <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-          <span>العودة إلى (نظرية المرونة)</span>
+      <!-- Right: Module Back Button -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a href="../modules/elasticite.html" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#11151a] hover:bg-slate-800 border-2 border-slate-700 hover:border-neon-green text-neon-green text-xs font-mono-tech font-bold brutal-shadow transition-all active:translate-x-0.5 active:translate-y-0.5">
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          <span class="hidden sm:inline">العودة إلى (نظرية المرونة)</span>
+          <span class="sm:hidden font-mono text-[11px]">نظرية المرونة</span>
         </a>
-        <a href="../index.html" class="hidden sm:inline-block text-xs text-textMuted hover:text-white transition-colors" title="المنصة الرئيسية">
-          الرئيسية
+        <a href="../index.html" class="hidden md:flex items-center gap-1 px-2 py-1.5 bg-[#11151a] hover:bg-slate-800 border-2 border-slate-800 text-slate-300 text-xs font-mono-tech font-bold brutal-shadow hover:text-white transition-all" title="المنصة الرئيسية">
+          <span class="material-symbols-outlined text-[14px]">home</span>
+          <span>الرئيسية</span>
         </a>
       </div>
 
-      <!-- عنوان مصغر -->
-      <div class="hidden md:flex items-center gap-2 text-xs text-textDesc">
-        <span class="px-2.5 py-0.5 rounded bg-emeraldPrimary/15 text-emeraldTag font-bold">TD 01</span>
-        <span>نظرية المرونة • L3 Construction Mécanique</span>
+      <!-- Center: Technical Badge (Desktop only) -->
+      <div class="hidden lg:flex items-center gap-2 text-xs font-mono-tech text-slate-300">
+        <span class="px-2 py-0.5 bg-[#003920] border border-neon-green text-neon-green text-[11px] font-bold">TD 01 // SOLUTION</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-slate-400 font-bold">Dr. B. Rabahi</span>
       </div>
 
-      <!-- أزرار الإجراءات -->
-      <div class="flex items-center gap-2">
-        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-bgCard hover:bg-borderMain text-xs sm:text-sm font-semibold text-textLight border border-borderMain transition-colors flex items-center gap-1.5" title="طباعة سريعة">
-          <svg class="w-4 h-4 text-emeraldTag" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-          </svg>
-          <span class="hidden sm:inline">طباعة</span>
+      <!-- Left: Action Buttons (Print & Download) -->
+      <div class="flex items-center gap-1.5 flex-shrink-0">
+        <button onclick="window.print()" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 bg-[#11151a] hover:bg-slate-800 text-slate-300 text-xs font-mono-tech font-bold border-2 border-slate-700 brutal-shadow active:translate-x-0.5 active:translate-y-0.5 transition-all" title="طباعة">
+          <span class="material-symbols-outlined text-[16px]">print</span>
+          <span>طباعة</span>
         </button>
 
-        <a href="../lessons/elasticite-td1-solution.pdf" download class="px-4 py-1.5 rounded-lg bg-emeraldPrimary hover:bg-emeraldHover text-black text-xs sm:text-sm font-bold transition-colors flex items-center gap-1.5 shadow-sm">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
+        <a href="../lessons/elasticite-td1-solution.pdf" download class="flex items-center gap-1 px-3 py-1.5 bg-neon-green hover:bg-white text-black text-xs font-mono-tech font-black border-2 border-black brutal-shadow active:translate-x-0.5 active:translate-y-0.5 transition-all">
+          <span class="material-symbols-outlined text-[16px]">download</span>
           <span>تحميل PDF</span>
         </a>
       </div>
 
     </div>
-  </nav>
+  </header>
 
   <!-- الحاوية الرئيسية للمحتوى -->
   <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12">
 
     <!-- بطاقة الترويسة الأكاديمية (Header Card) -->
     <header class="bento-card rounded-2xl p-6 sm:p-10 relative overflow-hidden">
-      <div class="absolute -left-12 -top-12 w-48 h-48 bg-emeraldPrimary/5 rounded-full blur-2xl pointer-events-none"></div>
+      
       
       <!-- معلومات الجامعة والكلية -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-borderMain pb-6 mb-6">

@@ -1,126 +1,52 @@
 [
   {
-    "id": 1,
-    "title": "محاضرات نظرية المرونة - الفصل 1: الحساب الشعاعي والموتري (Licence 3 CM)",
-    "subject": "Élasticité",
+    "id": 21,
+    "title": "درس رسم التجميع الميكانيكي ومخططات التركيب (Dessin d'Assemblage - 125 Diapos)",
+    "subject": "Construction Mécanique",
     "type": "COURS",
-    "size": "863 KB",
-    "file": "lessons/elasticite-ch1.pdf",
-    "date": "2026-10-12"
+    "size": "6.71 MB",
+    "file": "lessons/dessin-technique-assemblage.pdf",
+    "htmlView": "views/dessin-technique-assemblage.html",
+    "date": "2026-11-02"
   },
   {
-    "id": 2,
-    "title": "حل سلسلة الأعمال الموجهة 01: الحساب الشعاعي والموتري (9 تمارين كاملة)",
-    "subject": "Élasticité",
-    "type": "TD",
-    "size": "1.15 MB",
-    "file": "lessons/elasticite-td1-solution.pdf",
-    "htmlView": "views/elasticite-td1-solution.html",
-    "date": "2026-10-31"
-  },
-  {
-    "id": 3,
-    "title": "نص السلسلة 01 (Sujet): الحساب الشعاعي والموتري - نظرية المرونة",
-    "subject": "Élasticité",
-    "type": "TD",
-    "size": "388 KB",
-    "file": "lessons/elasticite-td1-sujet.pdf",
-    "date": "2026-10-20"
-  },
-  {
-    "id": 4,
-    "title": "حل الواجب المنزلي: حركية الجسم الصلب والحركة المستوية (16 تمريناً مفصلاً)",
-    "subject": "Mécanique Analytique",
-    "type": "TD",
-    "size": "1.59 MB",
-    "file": "lessons/cinematique-devoir-solution.pdf",
-    "htmlView": "views/cinematique-devoir-solution.html",
-    "date": "2026-10-31"
-  },
-  {
-    "id": 5,
-    "title": "نص الواجب المنزلي الرسمي (Sujet): تذكير بحركية الجسم الصلب (16 تمريناً)",
-    "subject": "Mécanique Analytique",
-    "type": "TD",
-    "size": "557 KB",
-    "file": "lessons/cinematique-devoir-sujet.pdf",
-    "date": "2026-09-28"
-  },
-  {
-    "id": 6,
-    "title": "حل شامل ومفصل: تمرين 4 - هبوط الطائرة وحساب التباطؤ (MRUA)",
-    "subject": "Mécanique Analytique",
-    "type": "TD",
-    "size": "606.1 KB",
-    "file": "lessons/mecanique-analytique-exo4.pdf",
-    "htmlView": "views/mecanique-analytique-exo4.html",
-    "date": "2026-10-31"
-  },
-  {
-    "id": 7,
-    "title": "حركية الجسم الصلب (TD 2 Exo 1): الحركة المستوية وطريقة CIV والإسقاط المتساوي",
-    "subject": "Mécanique Analytique",
-    "type": "TD",
-    "size": "584 KB",
-    "file": "lessons/mecanique-analytique-mouvement-plan.pdf",
-    "htmlView": "views/mecanique-analytique-mouvement-plan.html",
-    "date": "2026-10-31"
-  },
-  {
-    "id": 8,
-    "title": "محاضرات الميكانيك التحليلي - الفصل الأول: حركية الجسم الصلب والحركة المستوية",
-    "subject": "Mécanique Analytique",
+    "id": 20,
+    "title": "درس الرسم الصناعي: القطاعات والمقاطع الهندسية (Les Coupes et les Sections - 125 Diapos)",
+    "subject": "Construction Mécanique",
     "type": "COURS",
-    "size": "2.97 MB",
-    "file": "lessons/mecanique-analytique-ch1.pdf",
-    "date": "2026-09-25"
+    "size": "6.57 MB",
+    "file": "lessons/dessin-industriel-coupes-sections.pdf",
+    "htmlView": "views/dessin-industriel-coupes-sections.html",
+    "date": "2026-11-02"
   },
   {
-    "id": 9,
-    "title": "محاضرات الميكانيك التحليلي - الفصل الثاني: مركز الثقل ومركز الكتلة (Centre de masse)",
-    "subject": "Mécanique Analytique",
+    "id": 19,
+    "title": "محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Concepts, Typologie & Rôles)",
+    "subject": "Maintenance Industrielle",
     "type": "COURS",
-    "size": "555 KB",
-    "file": "lessons/mecanique-analytique-ch2.pdf",
-    "date": "2026-10-02"
+    "size": "446 KB",
+    "file": "lessons/maintenance-introduction-cours.pdf",
+    "htmlView": "views/maintenance-introduction-cours.html",
+    "date": "2026-11-02"
   },
   {
-    "id": 10,
-    "title": "محاضرات الميكانيك التحليلي - الفصل الثاني (تتمة): مبادئ الطاقة والعمل والاستطاعة (Énergétique)",
-    "subject": "Mécanique Analytique",
-    "type": "COURS",
-    "size": "557 KB",
-    "file": "lessons/mecanique-analytique-ch2-suite.pdf",
-    "date": "2026-10-10"
-  },
-  {
-    "id": 11,
-    "title": "درس مقاومة المواد: استنتاج إجهاد القص المماسي (صيغة جورافسكي - Formule de Jourawski)",
+    "id": 18,
+    "title": "درس مقاومة المواد: تشوه العوارض في الانحناء المستوي وحساب السهم (Ligne élastique & Flèche)",
     "subject": "RDM",
     "type": "COURS",
-    "size": "852 KB",
-    "file": "lessons/rdm-jourawski.pdf",
-    "htmlView": "views/rdm-jourawski.html",
-    "date": "2026-10-31"
+    "size": "685 KB",
+    "file": "lessons/rdm-ligne-elastique-fleche.pdf",
+    "htmlView": "views/rdm-ligne-elastique-fleche.html",
+    "date": "2026-11-02"
   },
   {
-    "id": 12,
-    "title": "دليل مقاومة المواد: المخططات البيانية والانحناء المستوي (Flexion 4 points)",
-    "subject": "RDM",
+    "id": 17,
+    "title": "ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace) - Dr. Trad Mostefa",
+    "subject": "Asservissement et Régulation",
     "type": "COURS",
-    "size": "781 KB",
-    "file": "lessons/rdm-guide-poutres.pdf",
-    "htmlView": "views/rdm-guide-poutres.html",
-    "date": "2026-10-31"
-  },
-  {
-    "id": 13,
-    "title": "حل التمرين الرابع (EX IV): دراسة عارضة مستندة وحساب الجهود والمخططات",
-    "subject": "RDM",
-    "type": "TD",
-    "size": "523 KB",
-    "file": "lessons/rdm-ex4-poutre.pdf",
-    "htmlView": "views/rdm-ex4-poutre.html",
+    "size": "813 KB",
+    "file": "lessons/asservissement-laplace.pdf",
+    "htmlView": "views/asservissement-laplace.html",
     "date": "2026-10-31"
   },
   {
@@ -134,13 +60,74 @@
     "date": "2026-10-31"
   },
   {
-    "id": 15,
-    "title": "محاضرات التصميم الميكانيكي 1 - الفصل 2: الوصلات اللولبية والتثبيت (Assemblages filetés)",
-    "subject": "Construction Mécanique",
+    "id": 13,
+    "title": "حل التمرين الرابع (EX IV): دراسة عارضة مستندة وحساب الجهود والمخططات",
+    "subject": "RDM",
+    "type": "TD",
+    "size": "523 KB",
+    "file": "lessons/rdm-ex4-poutre.pdf",
+    "htmlView": "views/rdm-ex4-poutre.html",
+    "date": "2026-10-31"
+  },
+  {
+    "id": 12,
+    "title": "دليل مقاومة المواد: المخططات البيانية والانحناء المستوي (Flexion 4 points)",
+    "subject": "RDM",
     "type": "COURS",
-    "size": "7.10 MB",
-    "file": "lessons/construction-assemblages-filetes.pdf",
-    "date": "2026-10-19"
+    "size": "781 KB",
+    "file": "lessons/rdm-guide-poutres.pdf",
+    "htmlView": "views/rdm-guide-poutres.html",
+    "date": "2026-10-31"
+  },
+  {
+    "id": 11,
+    "title": "درس مقاومة المواد: استنتاج إجهاد القص المماسي (صيغة جورافسكي - Formule de Jourawski)",
+    "subject": "RDM",
+    "type": "COURS",
+    "size": "852 KB",
+    "file": "lessons/rdm-jourawski.pdf",
+    "htmlView": "views/rdm-jourawski.html",
+    "date": "2026-10-31"
+  },
+  {
+    "id": 7,
+    "title": "حركية الجسم الصلب (TD 2 Exo 1): الحركة المستوية وطريقة CIV والإسقاط المتساوي",
+    "subject": "Mécanique Analytique",
+    "type": "TD",
+    "size": "584 KB",
+    "file": "lessons/mecanique-analytique-mouvement-plan.pdf",
+    "htmlView": "views/mecanique-analytique-mouvement-plan.html",
+    "date": "2026-10-31"
+  },
+  {
+    "id": 6,
+    "title": "حل شامل ومفصل: تمرين 4 - هبوط الطائرة وحساب التباطؤ (MRUA)",
+    "subject": "Mécanique Analytique",
+    "type": "TD",
+    "size": "606.1 KB",
+    "file": "lessons/mecanique-analytique-exo4.pdf",
+    "htmlView": "views/mecanique-analytique-exo4.html",
+    "date": "2026-10-31"
+  },
+  {
+    "id": 4,
+    "title": "حل الواجب المنزلي: حركية الجسم الصلب والحركة المستوية (16 تمريناً مفصلاً)",
+    "subject": "Mécanique Analytique",
+    "type": "TD",
+    "size": "1.59 MB",
+    "file": "lessons/cinematique-devoir-solution.pdf",
+    "htmlView": "views/cinematique-devoir-solution.html",
+    "date": "2026-10-31"
+  },
+  {
+    "id": 2,
+    "title": "حل سلسلة الأعمال الموجهة 01: الحساب الشعاعي والموتري (9 تمارين كاملة)",
+    "subject": "Élasticité",
+    "type": "TD",
+    "size": "1.15 MB",
+    "file": "lessons/elasticite-td1-solution.pdf",
+    "htmlView": "views/elasticite-td1-solution.html",
+    "date": "2026-10-31"
   },
   {
     "id": 16,
@@ -152,33 +139,66 @@
     "date": "2026-10-25"
   },
   {
-    "id": 17,
-    "title": "ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace) - Dr. Trad Mostefa",
-    "subject": "Asservissement et Régulation",
-    "type": "COURS",
-    "size": "813 KB",
-    "file": "lessons/asservissement-laplace.pdf",
-    "htmlView": "views/asservissement-laplace.html",
-    "date": "2026-10-31"
+    "id": 3,
+    "title": "نص السلسلة 01 (Sujet): الحساب الشعاعي والموتري - نظرية المرونة",
+    "subject": "Élasticité",
+    "type": "TD",
+    "size": "388 KB",
+    "file": "lessons/elasticite-td1-sujet.pdf",
+    "date": "2026-10-20"
   },
   {
-    "id": 18,
-    "title": "درس مقاومة المواد: تشوه العوارض في الانحناء المستوي وحساب السهم (Ligne élastique & Flèche)",
-    "subject": "RDM",
+    "id": 15,
+    "title": "محاضرات التصميم الميكانيكي 1 - الفصل 2: الوصلات اللولبية والتثبيت (Assemblages filetés)",
+    "subject": "Construction Mécanique",
     "type": "COURS",
-    "size": "685 KB",
-    "file": "lessons/rdm-ligne-elastique-fleche.pdf",
-    "htmlView": "views/rdm-ligne-elastique-fleche.html",
-    "date": "2026-11-02"
+    "size": "7.10 MB",
+    "file": "lessons/construction-assemblages-filetes.pdf",
+    "date": "2026-10-19"
   },
   {
-    "id": 19,
-    "title": "محاضرة شاملة: مدخل إلى الصيانة الصناعية وتصنيفاتها (Concepts, Typologie & Rôles)",
-    "subject": "Maintenance Industrielle",
+    "id": 1,
+    "title": "محاضرات نظرية المرونة - الفصل 1: الحساب الشعاعي والموتري (Licence 3 CM)",
+    "subject": "Élasticité",
     "type": "COURS",
-    "size": "446 KB",
-    "file": "lessons/maintenance-introduction-cours.pdf",
-    "htmlView": "views/maintenance-introduction-cours.html",
-    "date": "2026-11-02"
+    "size": "863 KB",
+    "file": "lessons/elasticite-ch1.pdf",
+    "date": "2026-10-12"
+  },
+  {
+    "id": 10,
+    "title": "محاضرات الميكانيك التحليلي - الفصل الثاني (تتمة): مبادئ الطاقة والعمل والاستطاعة (Énergétique)",
+    "subject": "Mécanique Analytique",
+    "type": "COURS",
+    "size": "557 KB",
+    "file": "lessons/mecanique-analytique-ch2-suite.pdf",
+    "date": "2026-10-10"
+  },
+  {
+    "id": 9,
+    "title": "محاضرات الميكانيك التحليلي - الفصل الثاني: مركز الثقل ومركز الكتلة (Centre de masse)",
+    "subject": "Mécanique Analytique",
+    "type": "COURS",
+    "size": "555 KB",
+    "file": "lessons/mecanique-analytique-ch2.pdf",
+    "date": "2026-10-02"
+  },
+  {
+    "id": 5,
+    "title": "نص الواجب المنزلي الرسمي (Sujet): تذكير بحركية الجسم الصلب (16 تمريناً)",
+    "subject": "Mécanique Analytique",
+    "type": "TD",
+    "size": "557 KB",
+    "file": "lessons/cinematique-devoir-sujet.pdf",
+    "date": "2026-09-28"
+  },
+  {
+    "id": 8,
+    "title": "محاضرات الميكانيك التحليلي - الفصل الأول: حركية الجسم الصلب والحركة المستوية",
+    "subject": "Mécanique Analytique",
+    "type": "COURS",
+    "size": "2.97 MB",
+    "file": "lessons/mecanique-analytique-ch1.pdf",
+    "date": "2026-09-25"
   }
 ]

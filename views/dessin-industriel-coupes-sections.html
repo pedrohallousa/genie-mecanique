@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>درس الرسم الصناعي: القطاعات والمقاطع الهندسية (Les Coupes et les Sections) | Construction Mécanique • Batna 2</title>
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "neon-green": "#00f59b",
+            "industrial-lime": "#c6ff00"
+          },
+          fontFamily: {
+            "headline": ["Cairo", "sans-serif"],
+            "mono-tech": ["Space Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+    .font-mono-tech {
+      font-family: 'Space Mono', monospace !important;
+    }
+
+    /* Blueprint Canvas Pattern */
+    body {
+      background-color: #080a0d !important;
+      background-image: 
+        linear-gradient(rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+      background-size: 32px 32px, 32px 32px, 8px 8px, 8px 8px !important;
+      color: #f1f5f9 !important;
+      min-height: 100vh;
+    }
+
+    .brutal-shadow {
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .brutal-shadow-lg {
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .brutal-shadow-green {
+      box-shadow: 3px 3px 0px #00f59b;
+    }
+
+    .btn-brutal:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000000 !important;
+    }
+
+    /* Thumbnail active border */
+    .thumb-active {
+      border: 2px solid #00f59b !important;
+      box-shadow: 0 0 8px rgba(0, 245, 155, 0.5) !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-neon-green selection:text-black pb-16">
+
+  <!-- ================= TOP APP BAR ================= -->
+  <nav class="sticky top-0 z-50 bg-[#0d1015]/95 backdrop-blur-sm border-b-2 border-slate-800 brutal-shadow">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
+      
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="../index.html" class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-neon-green hover:text-white transition-colors bg-[#11151a] px-3 py-1.5 border-2 border-slate-700 brutal-shadow btn-brutal">
+          <span class="material-symbols-outlined text-[16px] transform rotate-180">arrow_right_alt</span>
+          <span class="hidden sm:inline">العودة إلى (المنصة)</span>
+          <span class="sm:hidden">الرئيسية</span>
+        </a>
+        <div class="hidden md:flex items-center gap-1.5 text-xs text-slate-400 font-mono-tech">
+          <span class="text-white font-bold">Construction Mécanique</span>
+          <span>•</span>
+          <span>Batna 2</span>
+        </div>
+      </div>
+
+      <!-- Slide Counter Ticker -->
+      <div class="flex items-center gap-2 bg-[#050709] border-2 border-slate-700 px-3 py-1 text-xs font-mono-tech brutal-shadow">
+        <span class="text-slate-400">SLIDE:</span>
+        <span id="currentSlideDisplay" class="text-neon-green font-black">1</span>
+        <span class="text-slate-600">/</span>
+        <span class="text-slate-200">125</span>
+      </div>
+
+      <!-- Direct PDF Download & Fullscreen -->
+      <div class="flex items-center gap-2">
+        <button onclick="toggleFullscreen()" title="شاشة كاملة" class="p-1.5 bg-[#11151a] border-2 border-slate-700 text-slate-300 hover:text-neon-green brutal-shadow btn-brutal hidden sm:flex">
+          <span class="material-symbols-outlined text-[18px]">fullscreen</span>
+        </button>
+        <a href="../lessons/dessin-industriel-coupes-sections.pdf" download class="px-3.5 py-1.5 bg-neon-green hover:bg-white text-black text-xs font-black border-2 border-black flex items-center gap-1.5 brutal-shadow btn-brutal transition-all">
+          <span class="material-symbols-outlined text-[16px] font-bold">download</span>
+          <span>تحميل (PDF)</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ================= MAIN SLIDE DECK VIEWER ================= -->
+  <main class="max-w-6xl mx-auto px-3.5 sm:px-6 py-6 sm:py-8 space-y-6">
+
+    <!-- Header Box -->
+    <header class="bg-[#11151a] border-2 border-slate-700 p-4 sm:p-6 brutal-shadow-lg">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-slate-800 pb-3 mb-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="bg-[#003920] border-2 border-neon-green px-2.5 py-0.5 text-[11px] font-black text-neon-green font-mono-tech uppercase">
+            Construction Mécanique • Support de Cours Officiel
+          </span>
+          <span class="bg-[#050709] border border-slate-700 px-2 py-0.5 text-[10px] text-slate-300 font-mono-tech">
+            125 Diapositives Haute Résolution
+          </span>
+        </div>
+        <span class="text-xs font-mono-tech text-slate-400">PowerPoint Original HD</span>
+      </div>
+
+      <h1 class="text-lg sm:text-2xl font-black text-white leading-tight mb-1">
+        درس الرسم الصناعي: القطاعات والمقاطع الهندسية (Les Coupes et les Sections)
+      </h1>
+      <p class="text-xs sm:text-sm text-neon-green font-mono-tech" dir="ltr" style="text-align: right;">
+        Chapitre 02: Dessin Industriel — Les Coupes et les Sections (Normes ISO / AFNOR)
+      </p>
+      <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+        عرض شرائح أصلي عالي الدقة (125 شريحة كاملة) مستخرج مباشرة من ملف الباور بوينت الرسمي للجامعة: شرح شامل لجميع أنواع القطاعات والمقاطع وقواعد التهشير والمطابقة القياسية.
+      </p>
+    </header>
+
+    <!-- Slide Presentation Screen Frame -->
+    <section id="presentationFrame" class="bg-[#050709] border-2 border-slate-700 p-2 sm:p-4 brutal-shadow-lg relative">
+      
+      <!-- Slide Stage Area -->
+      <div class="relative w-full aspect-[16/9] bg-[#000000] border-2 border-slate-800 flex items-center justify-center overflow-hidden">
+        <img 
+          id="mainSlideImg" 
+          src="slides_coupes_sections/Slide1.PNG" 
+          alt="Slide 1" 
+          class="w-full h-full object-contain select-none"
+        />
+
+        <!-- Floating Quick Next / Prev Touch Arrows on Image -->
+        <button onclick="prevSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#0d1015]/85 hover:bg-neon-green text-white hover:text-black border-2 border-slate-700 flex items-center justify-center brutal-shadow transition-all btn-brutal">
+          <span class="material-symbols-outlined text-[24px]">chevron_right</span>
+        </button>
+
+        <button onclick="nextSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#0d1015]/85 hover:bg-neon-green text-white hover:text-black border-2 border-slate-700 flex items-center justify-center brutal-shadow transition-all btn-brutal">
+          <span class="material-symbols-outlined text-[24px]">chevron_left</span>
+        </button>
+      </div>
+
+      <!-- Slide Controls Toolbar -->
+      <div class="mt-3 p-3 bg-[#11151a] border-2 border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        
+        <!-- Navigation Buttons -->
+        <div class="flex items-center gap-2">
+          <button onclick="prevSlide()" class="px-3.5 py-1.5 bg-[#050709] hover:bg-slate-800 text-slate-200 border-2 border-slate-700 flex items-center gap-1 text-xs font-bold brutal-shadow btn-brutal">
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            <span>السابقة</span>
+          </button>
+
+          <button onclick="nextSlide()" class="px-4 py-1.5 bg-neon-green hover:bg-white text-black border-2 border-black flex items-center gap-1 text-xs font-black brutal-shadow btn-brutal">
+            <span>التالية</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+          </button>
+        </div>
+
+        <!-- Jump to slide selector -->
+        <div class="flex items-center gap-2 text-xs font-mono-tech">
+          <span class="text-slate-400">انتقال:</span>
+          <input 
+            type="number" 
+            id="jumpSlideInput" 
+            min="1" 
+            max="125" 
+            value="1" 
+            class="w-16 px-2 py-1 bg-[#050709] border-2 border-slate-700 text-neon-green text-center font-bold focus:border-neon-green outline-none"
+            onchange="jumpToSlide(this.value)"
+          />
+          <span class="text-slate-400">/ 125</span>
+        </div>
+
+        <!-- Hint for keyboard shortcuts -->
+        <div class="hidden lg:flex items-center gap-2 text-[11px] text-slate-400 font-mono-tech">
+          <span class="px-1.5 py-0.5 bg-[#050709] border border-slate-700 text-neon-green">←</span>
+          <span class="px-1.5 py-0.5 bg-[#050709] border border-slate-700 text-neon-green">→</span>
+          <span>التنقل بالأسهم</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Thumbnails Scroller Bar -->
+    <section class="bg-[#11151a] border-2 border-slate-700 p-3 brutal-shadow">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-black text-white flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-neon-green text-[18px]">view_carousel</span>
+          <span>شريط المصغرات للتنقل السريع (Thumbnails)</span>
+        </span>
+        <span class="text-[10px] font-mono-tech text-slate-400">انقر على أي شريحة للانتقال الفوري</span>
+      </div>
+
+      <div id="thumbnailsContainer" class="flex gap-2 overflow-x-auto pb-2 pt-1" style="scrollbar-width: thin;">
+        <!-- Generated via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Technical Curriculum Syllabus & Contents Box -->
+    <section class="bg-[#11151a] border-2 border-slate-700 p-4 sm:p-6 brutal-shadow space-y-3">
+      <div class="flex items-center gap-2 border-b-2 border-slate-800 pb-2">
+        <span class="w-2.5 h-2.5 bg-neon-green"></span>
+        <h3 class="text-sm font-black text-white">المحاور والمفاهيم الهندسية المعالجة في هذا العرض</h3>
+      </div>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs font-bold text-slate-300">
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>التعريف المعياري للقطاعات والمقاطع (Normes ISO / AFNOR sur les coupes)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>قواعد التهشير والخطوط الاصطلاحية للقطع (Hachures et conventions selon les matériaux)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>القطاع البسيط والمستوي (Coupe simple par un plan sécant)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>القطاعات المتكسرة والمتوازية (Coupes brisées à plans parallèles et obliques)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>القطاع النصفي ونصف القطاع (Demi-coupe pour pièces symétriques)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>القطاعات الموضعية والجزئية (Coupes partielles pour détails cachés)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>المقاطع المنزلقة والمقاطع الموضعية المدارة (Sections sorties et sections rabattues)</span></li><li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-neon-green"></span><span>العناصر المستثناة من القطع طويلياً (الأعمدة، البراغي، الكريات، الأضلاع - Pièces pleines non coupées)</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="border-t-2 border-slate-800 py-6 text-center text-xs text-slate-400">
+    جامعة باتنة 2 • قسم الهندسة الميكانيكية • الرسم الصناعي والتصميم الميكانيكي (Dessin Industriel & Assemblage)
+  </footer>
+
+  <!-- Javascript Logic -->
+  <script>
+    const totalSlides = 125;
+    const slideBase = "slides_coupes_sections/Slide";
+    let currentSlide = 1;
+
+    const mainImg = document.getElementById('mainSlideImg');
+    const displayNum = document.getElementById('currentSlideDisplay');
+    const jumpInput = document.getElementById('jumpSlideInput');
+    const thumbsContainer = document.getElementById('thumbnailsContainer');
+
+    function updateSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      mainImg.src = `${slideBase}${currentSlide}.PNG`;
+      displayNum.textContent = currentSlide;
+      jumpInput.value = currentSlide;
+
+      // Update active thumbnail
+      document.querySelectorAll('.thumb-item').forEach((thumb, idx) => {
+        if (idx + 1 === currentSlide) {
+          thumb.classList.add('thumb-active');
+          thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          thumb.classList.remove('thumb-active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) updateSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) updateSlide(currentSlide - 1);
+    }
+
+    function jumpToSlide(val) {
+      const parsed = parseInt(val, 10);
+      if (!isNaN(parsed)) updateSlide(parsed);
+    }
+
+    function toggleFullscreen() {
+      const frame = document.getElementById('presentationFrame');
+      if (!document.fullscreenElement) {
+        frame.requestFullscreen().catch(err => alert(err.message));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        nextSlide(); // RTL direction
+      } else if (e.key === 'ArrowRight') {
+        prevSlide();
+      }
+    });
+
+    // Build thumbnails
+    function initThumbnails() {
+      let html = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        html += `
+          <div 
+            onclick="updateSlide(${i})" 
+            class="thumb-item flex-shrink-0 w-24 sm:w-28 aspect-[16/9] bg-black border border-slate-700 cursor-pointer hover:border-neon-green transition-all relative ${i === 1 ? 'thumb-active' : ''}"
+          >
+            <img src="${slideBase}${i}.PNG" alt="Slide ${i}" class="w-full h-full object-cover" loading="lazy" />
+            <span class="absolute bottom-0 right-0 bg-[#050709]/90 text-[9px] font-mono-tech px-1 text-neon-green font-bold">${i}</span>
+          </div>
+        `;
+      }
+      thumbsContainer.innerHTML = html;
+    }
+
+    initThumbnails();
+  </script>
+
+</body>
+</html>

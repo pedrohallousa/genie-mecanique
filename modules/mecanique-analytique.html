@@ -60,6 +60,94 @@
       transform: translateY(-2px);
     }
   </style>
+
+  <!-- Google Fonts: Space Grotesk & Space Mono for Neo-Brutalist Tech Feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <style id="neo-brutalist-override">
+    /* ================= NEO-BRUTALIST MÉCANIQUE STYLES OVERRIDE ================= */
+    * {
+      border-radius: 0 !important; /* Strict 0px Sharp Geometry */
+    }
+    
+    .font-mono-tech {
+      font-family: 'Space Mono', monospace !important;
+    }
+
+    /* Blueprint Canvas Pattern */
+    body {
+      background-color: #080a0d !important;
+      background-image: 
+        linear-gradient(rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+      background-size: 32px 32px, 32px 32px, 8px 8px, 8px 8px !important;
+      color: #f1f5f9 !important;
+    }
+
+    /* Top Sticky Navigation Bar */
+    nav, nav.sticky {
+      background-color: #0d1015 !important;
+      border-bottom: 2px solid #1f2937 !important;
+      box-shadow: 0 4px 0px #000000 !important;
+    }
+    nav a, nav button {
+      border-radius: 0 !important;
+      box-shadow: 2px 2px 0px #000000 !important;
+    }
+
+    /* Primary Container / Header / Bento Cards */
+    .bento-card, .card, header.bento-card {
+      background-color: #11151a !important;
+      border: 2px solid #1f2937 !important;
+      border-radius: 0 !important;
+      box-shadow: 4px 4px 0px #000000 !important;
+    }
+    .bento-card:hover {
+      border-color: #00f59b !important;
+    }
+
+    /* Type filter buttons */
+    .type-btn {
+      border-radius: 0 !important;
+      box-shadow: 2px 2px 0px #000000 !important;
+      font-family: 'Space Mono', monospace !important;
+    }
+
+    /* Badges & Chips */
+    span.rounded-full, div.rounded-full, .badge, [class*="rounded-full"] {
+      border-radius: 0 !important;
+      font-family: 'Space Mono', monospace !important;
+      letter-spacing: 0.03em !important;
+      border-width: 2px !important;
+    }
+
+    /* Action Buttons (Download PDF & Preview) */
+    a[download], button {
+      border-radius: 0 !important;
+      box-shadow: 2px 2px 0px #000000 !important;
+      transition: all 0.15s ease-in-out !important;
+    }
+    a[download] {
+      background-color: #00f59b !important;
+      color: #000000 !important;
+      border: 2px solid #000000 !important;
+      font-weight: 900 !important;
+    }
+    a[download]:hover {
+      background-color: #ffffff !important;
+    }
+
+    #previewModal .bg-bgCard, #previewModal .rounded-2xl {
+      border-radius: 0 !important;
+      border: 2px solid #00f59b !important;
+      box-shadow: 5px 5px 0px #000000 !important;
+      background-color: #0d1015 !important;
+    }
+  </style>
+
 </head>
 <body class="selection:bg-emeraldPrimary selection:text-black">
 
@@ -154,23 +242,14 @@
   <script>
     const moduleLessons = [
     {
-        "id": 4,
-        "title": "حل الواجب المنزلي: حركية الجسم الصلب والحركة المستوية (16 تمريناً مفصلاً)",
+        "id": 7,
+        "title": "حركية الجسم الصلب (TD 2 Exo 1): الحركة المستوية وطريقة CIV والإسقاط المتساوي",
         "subject": "Mécanique Analytique",
         "type": "TD",
-        "size": "1.59 MB",
-        "file": "lessons/cinematique-devoir-solution.pdf",
-        "htmlView": "views/cinematique-devoir-solution.html",
+        "size": "584 KB",
+        "file": "lessons/mecanique-analytique-mouvement-plan.pdf",
+        "htmlView": "views/mecanique-analytique-mouvement-plan.html",
         "date": "2026-10-31"
-    },
-    {
-        "id": 5,
-        "title": "نص الواجب المنزلي الرسمي (Sujet): تذكير بحركية الجسم الصلب (16 تمريناً)",
-        "subject": "Mécanique Analytique",
-        "type": "TD",
-        "size": "557 KB",
-        "file": "lessons/cinematique-devoir-sujet.pdf",
-        "date": "2026-09-28"
     },
     {
         "id": 6,
@@ -183,23 +262,23 @@
         "date": "2026-10-31"
     },
     {
-        "id": 7,
-        "title": "حركية الجسم الصلب (TD 2 Exo 1): الحركة المستوية وطريقة CIV والإسقاط المتساوي",
+        "id": 4,
+        "title": "حل الواجب المنزلي: حركية الجسم الصلب والحركة المستوية (16 تمريناً مفصلاً)",
         "subject": "Mécanique Analytique",
         "type": "TD",
-        "size": "584 KB",
-        "file": "lessons/mecanique-analytique-mouvement-plan.pdf",
-        "htmlView": "views/mecanique-analytique-mouvement-plan.html",
+        "size": "1.59 MB",
+        "file": "lessons/cinematique-devoir-solution.pdf",
+        "htmlView": "views/cinematique-devoir-solution.html",
         "date": "2026-10-31"
     },
     {
-        "id": 8,
-        "title": "محاضرات الميكانيك التحليلي - الفصل الأول: حركية الجسم الصلب والحركة المستوية",
+        "id": 10,
+        "title": "محاضرات الميكانيك التحليلي - الفصل الثاني (تتمة): مبادئ الطاقة والعمل والاستطاعة (Énergétique)",
         "subject": "Mécanique Analytique",
         "type": "COURS",
-        "size": "2.97 MB",
-        "file": "lessons/mecanique-analytique-ch1.pdf",
-        "date": "2026-09-25"
+        "size": "557 KB",
+        "file": "lessons/mecanique-analytique-ch2-suite.pdf",
+        "date": "2026-10-10"
     },
     {
         "id": 9,
@@ -211,13 +290,22 @@
         "date": "2026-10-02"
     },
     {
-        "id": 10,
-        "title": "محاضرات الميكانيك التحليلي - الفصل الثاني (تتمة): مبادئ الطاقة والعمل والاستطاعة (Énergétique)",
+        "id": 5,
+        "title": "نص الواجب المنزلي الرسمي (Sujet): تذكير بحركية الجسم الصلب (16 تمريناً)",
+        "subject": "Mécanique Analytique",
+        "type": "TD",
+        "size": "557 KB",
+        "file": "lessons/cinematique-devoir-sujet.pdf",
+        "date": "2026-09-28"
+    },
+    {
+        "id": 8,
+        "title": "محاضرات الميكانيك التحليلي - الفصل الأول: حركية الجسم الصلب والحركة المستوية",
         "subject": "Mécanique Analytique",
         "type": "COURS",
-        "size": "557 KB",
-        "file": "lessons/mecanique-analytique-ch2-suite.pdf",
-        "date": "2026-10-10"
+        "size": "2.97 MB",
+        "file": "lessons/mecanique-analytique-ch1.pdf",
+        "date": "2026-09-25"
     }
 ];
     let currentType = 'ALL';
@@ -230,6 +318,12 @@
       } else {
         return '<span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">امتحان</span>';
       }
+    }
+
+    
+    function formatTitle(title) {
+      if (!title) return '';
+      return title.replace(/\(([^)]*[a-zA-Z][^)]*)\)/g, '<bdi dir="ltr" class="inline-block font-mono-tech text-neon-green">($1)</bdi>');
     }
 
     function renderCards() {
@@ -260,8 +354,8 @@
             </div>
 
             <!-- عنوان الملف -->
-            <h3 class="text-white font-bold text-base leading-snug group-hover:text-emeraldTag transition-colors mt-2 mb-4" dir="ltr" style="text-align: right;">
-              ${item.title}
+            <h3 class="text-white font-bold text-base leading-snug group-hover:text-neon-green transition-colors mt-2 mb-4" dir="rtl" style="text-align: right;">
+              ${formatTitle(item.title)}
             </h3>
           </div>
 
