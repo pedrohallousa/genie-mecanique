@@ -2,8 +2,8 @@
 <html class="dark" dir="rtl" lang="ar">
 <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
-  <title>الهندسة الميكانيكية | Génie Mécanique • Batna 2</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport"/>
+  <title>الهندسة الميكانيكية | Génie Mécanique • L3 CM</title>
 
   <!-- Google Fonts & Material Symbols -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -113,11 +113,55 @@
       scrollbar-width: none;
     }
 
+    
+    html, body {
+      overflow-x: hidden !important;
+      position: relative;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #080a0d;
       color: #f1f5f9;
       min-height: 100vh;
-      overflow-x: hidden;
+    }
+
+    /* Mobile GPA inputs styling */
+    .gpa-input::-webkit-outer-spin-button,
+    .gpa-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .gpa-input {
+      -moz-appearance: textfield;
+    }
+  
+    /* Safe area and mobile responsiveness */
+    :root {
+      --sat: env(safe-area-inset-top);
+      --sab: env(safe-area-inset-bottom);
+    }
+    html, body {
+      overflow-x: hidden !important;
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      padding-bottom: calc(5.2rem + env(safe-area-inset-bottom, 12px)) !important;
+    }
+    .safe-area-bottom {
+      padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
+    }
+    .table-responsive-container {
+      width: 100%;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+      margin: 1rem 0;
+      border: 1px solid #21262d;
     }
   </style>
 </head>
@@ -128,23 +172,23 @@
     <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
       
       <!-- Logo & University Title -->
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 bg-neon-green border-2 border-black flex items-center justify-center font-black text-black text-lg brutal-shadow">
+      <div class="flex items-center gap-2.5 min-w-0 flex-1">
+        <div class="w-9 h-9 bg-neon-green border-2 border-black flex items-center justify-center font-black text-black text-lg brutal-shadow shrink-0">
           GM
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-base sm:text-lg font-black text-white tracking-tight leading-none">
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <h1 class="text-sm sm:text-lg font-black text-white tracking-tight leading-none truncate">
               الهندسة الميكانيكية
             </h1>
-            <span class="hidden sm:inline-block px-1.5 py-0.5 bg-[#003920] border border-neon-green text-neon-green text-[10px] font-mono-tech font-bold">
-              Batna 2
+<span class="inline-block px-2 py-0.5 bg-[#003920] border border-neon-green text-neon-green text-[10px] font-mono-tech font-bold shrink-0">
+              L3 CM • S5
             </span>
           </div>
-          <p class="text-[11px] text-slate-400 font-bold mt-0.5 tracking-tight flex items-center gap-1.5">
-            <span class="text-neon-green font-mono-tech">Génie Mécanique • L3 CM</span>
-            <span class="text-slate-600">•</span>
-            <span class="text-slate-300">المنصة الأكاديمية الرسمية</span>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 font-bold mt-0.5 tracking-tight flex items-center gap-1 truncate">
+<span class="text-neon-green font-mono-tech shrink-0">Génie Mécanique</span>
+            <span class="text-slate-600 hidden min-[380px]:inline">•</span>
+            <span class="text-slate-300 hidden min-[380px]:inline truncate">المنصة الأكاديمية</span>
           </p>
         </div>
       </div>
@@ -169,127 +213,62 @@
   <!-- ================= MAIN CONTENT WRAPPER ================= -->
   <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full flex-1 py-4 sm:py-6 space-y-6">
 
-    <!-- ================= TECHNICAL TICKER & HERO BANNER ================= -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-      
-      <!-- Right Main Hero (8 Cols) -->
-      <div class="lg:col-span-8 bg-[#11151a] border-2 border-slate-700 p-4 sm:p-6 relative overflow-hidden brutal-shadow">
-        
-        <!-- CAD Vector Blueprint Graphics -->
-        <div class="absolute inset-0 pointer-events-none opacity-15 flex items-center justify-between overflow-hidden">
-          <svg class="w-64 h-64 -left-10 -bottom-10 absolute text-neon-green stroke-current fill-none stroke-[1.5]" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="42" stroke-dasharray="3 3"></circle>
-            <circle cx="50" cy="50" r="28"></circle>
-            <circle cx="50" cy="50" r="14"></circle>
-            <path d="M50 0 v100 M0 50 h100"></path>
-            <path d="M50 4 L53 12 L47 12 Z M50 96 L53 88 L47 88 Z M4 50 L12 53 L12 47 Z M96 50 L88 53 L88 47 Z"></path>
-            <circle cx="50" cy="50" fill="currentColor" r="4"></circle>
-          </svg>
-          <svg class="w-full h-full absolute right-0 top-0 text-neon-green stroke-current fill-none stroke-1" viewBox="0 0 200 120">
-            <line stroke-dasharray="2 2" x1="20" x2="180" y1="20" y2="20"></line>
-            <line x1="20" x2="20" y1="15" y2="25"></line>
-            <line x1="180" x2="180" y1="15" y2="25"></line>
-            <text fill="currentColor" font-family="Space Mono" font-size="8" text-anchor="middle" x="100" y="16">BATNA 2 • ISO / AFNOR</text>
-            <line stroke-dasharray="2 2" x1="170" x2="170" y1="35" y2="105"></line>
-            <text fill="currentColor" font-family="Space Mono" font-size="7" x="175" y="70">R 45.2</text>
-          </svg>
-        </div>
-
-        <div class="relative z-10 space-y-3">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="inline-block bg-[#003920] border-2 border-neon-green px-2.5 py-0.5 text-[11px] font-black text-neon-green uppercase tracking-wider font-mono-tech">
-              Université Batna 2 • L3 CM
-            </span>
-            <span class="text-slate-300 font-mono-tech text-[10px] bg-[#050709] border border-slate-700 px-2 py-0.5">
-              Norme AFNOR / ISO 9001
-            </span>
-            <span class="text-slate-400 font-mono-tech text-[10px] bg-[#050709] border border-slate-700 px-2 py-0.5">
-              Année 2026-2027
-            </span>
-          </div>
-
-          <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-tight">
-            دروس وملخصات الهندسة الميكانيكية بصيغة PDF
-          </h2>
-          <p class="text-xs sm:text-sm font-bold text-slate-300 leading-relaxed max-w-2xl">
-            المستودع الأكاديمي الرقمي الموحد لطلبة قسم الهندسة الميكانيكية: محاضرات كاملة، سلاسل أعمال موجهة محلولة، وامتحانات رسمية مع المعاينة والتحميل المباشر.
-          </p>
-
-          <!-- Technical Guarantee Pills -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-3 border-t-2 border-slate-800 text-xs font-black">
-            <div class="flex items-center gap-1.5 text-neon-green bg-[#080a0d] p-2 border border-slate-800">
-              <span class="material-symbols-outlined text-[18px]">verified</span>
-              <span>ملفات PDF أصلية</span>
-            </div>
-            <div class="flex items-center gap-1.5 text-neon-green bg-[#080a0d] p-2 border border-slate-800">
-              <span class="material-symbols-outlined text-[18px]">visibility</span>
-              <span>معاينة فورية وسريعة</span>
-            </div>
-            <div class="flex items-center gap-1.5 text-neon-green bg-[#080a0d] p-2 border border-slate-800">
-              <span class="material-symbols-outlined text-[18px]">cloud_download</span>
-              <span>تحميل مباشر دون إعلانات</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Left Telemetry & Quick Bento (4 Cols) -->
-      <div class="lg:col-span-4 bg-[#0d1015] border-2 border-slate-800 p-4 sm:p-5 flex flex-col justify-between brutal-shadow">
+    <!-- ================= COMPACT HERO BANNER (NO SCROLL TO MODULES) ================= -->
+    <div class="bg-[#11151a] border-2 border-slate-700 px-3.5 py-3 flex items-center justify-between flex-wrap gap-2 brutal-shadow">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 bg-neon-green animate-pulse rounded-none"></span>
         <div>
-          <div class="flex items-center justify-between border-b-2 border-slate-800 pb-2 mb-3">
-            <span class="text-xs font-mono-tech font-bold text-neon-green flex items-center gap-1">
-              <span class="w-2 h-2 bg-neon-green animate-pulse"></span>
-              SYS.STATUS: OPERATIONAL
-            </span>
-            <span class="text-[10px] font-mono-tech bg-[#11151a] px-1.5 py-0.5 border border-slate-700 text-slate-300">
-              SEMESTRE 5
-            </span>
-          </div>
-
-          <h3 class="text-sm font-black text-white mb-2">إحصائيات المنصة الأكاديمية</h3>
-          
-          <div class="grid grid-cols-2 gap-2 text-center my-3">
-            <div class="bg-[#11151a] border-2 border-slate-700 p-2.5 brutal-shadow-sm">
-              <div class="text-2xl font-black text-neon-green font-mono-tech" id="stat-lessons-count">21</div>
-              <div class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">درساً وملفاً</div>
-            </div>
-            <div class="bg-[#11151a] border-2 border-slate-700 p-2.5 brutal-shadow-sm">
-              <div class="text-2xl font-black text-industrial-lime font-mono-tech">6</div>
-              <div class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">مواد معتمدة</div>
-            </div>
-          </div>
-
-          <p class="text-[11px] text-slate-400 leading-relaxed">
-            تمت فهرسة المقررات وفق نظام LMD الحديث بما يشمل أحدث دروس مقاومة المواد (RDM) والصيانة الصناعية لسنة 2026.
-          </p>
-        </div>
-
-        <div class="pt-3 border-t-2 border-slate-800 mt-3">
-          <div class="text-[11px] font-mono-tech text-slate-400 flex items-center justify-between">
-            <span>Dernière mise à jour:</span>
-            <span class="text-neon-green font-bold">2026-11-02</span>
-          </div>
+          <h2 class="text-xs sm:text-sm font-black text-white">الهندسة الميكانيكية • السنة الثالثة ليسانس (L3 CM)</h2>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 font-bold">السداسي الخامس (S5) • المحاضرات، الأعمال الموجهة، والامتحانات</p>
         </div>
       </div>
-
-    </section>
+      <a href="calculator.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-black font-black text-xs border-2 border-black brutal-shadow-sm transition-all btn-brutal">
+        <span class="material-symbols-outlined text-[17px]">calculate</span>
+        <span>حاسبة المعدل S5</span>
+      </a>
+    </div>
 
     <!-- ================= SECTION: MODULES SELECTOR ================= -->
     <section>
-      <div class="flex items-center justify-between mb-3">
+      <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 bg-neon-green border border-black shadow-[1px_1px_0px_#000]"></span>
           <h3 class="text-base sm:text-lg font-black text-white">
             المواد الرسمية (Modules)
           </h3>
         </div>
-        <span class="font-mono-tech text-xs bg-[#11151a] px-2.5 py-1 border-2 border-slate-700 text-neon-green font-bold brutal-shadow-sm">
-          6 مواد مقررة
-        </span>
+        <div class="flex items-center gap-2">
+          <a href="calculator.html" class="font-mono-tech text-xs bg-neon-green hover:bg-white text-black px-2.5 py-1 border-2 border-black font-black brutal-shadow-sm btn-brutal transition-colors flex items-center gap-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calculate</span><span>حاسبة المعدل S5</span></a>
+          <span class="font-mono-tech text-xs bg-[#11151a] px-2.5 py-1 border-2 border-slate-700 text-neon-green font-bold brutal-shadow-sm hidden sm:inline-block">
+            6 مواد مقررة
+          </span>
+        </div>
       </div>
 
       <!-- Horizontal on Mobile, Responsive 6-Col Grid on Desktop -->
+      <!-- Dedicated GPA Calculator Card -->
+      <div class="mb-3.5">
+        <a href="calculator.html" class="block p-3 sm:p-4 bg-gradient-to-r from-[#11161f] to-[#16202c] border-2 border-amber-400 hover:border-amber-300 brutal-shadow group transition-all">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-amber-400 text-black flex items-center justify-center font-black border-2 border-black brutal-shadow-sm shrink-0">
+                <span class="material-symbols-outlined text-2xl">calculate</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-xs sm:text-sm font-black text-white group-hover:text-amber-300">حاسبة معدل السداسي الخامس (S5) - LMD</span>
+                  <span class="px-1.5 py-0.2 bg-amber-400/20 text-amber-300 border border-amber-400/50 text-[10px] font-mono-tech font-bold">17 معاملاً • 30 رصيداً</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5">حساب فوري للمعدل الفصلي، الأرصدة المكتسبة، وقرار السداسي بمجرد إدخال علاماتك</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 text-amber-400 font-bold text-xs shrink-0">
+              <span class="hidden sm:inline font-mono-tech font-bold">دخول للحاسبة</span>
+              <span class="material-symbols-outlined text-xl transform group-hover:translate-x-[-4px] transition-transform">arrow_back</span>
+            </div>
+          </div>
+        </a>
+      </div>
       <div class="overflow-x-auto no-scrollbar pb-1">
         <div class="grid grid-flow-col auto-cols-[160px] md:grid-flow-row md:grid-cols-3 lg:grid-cols-6 gap-2.5">
           
@@ -337,10 +316,20 @@
           <button onclick="setSubjectFilter('Construction Mécanique')" id="sub-btn-Construction Mécanique" class="sub-filter-card bg-[#11151a] border-2 border-slate-700 text-right p-3 brutal-shadow hover:border-neon-green transition-all btn-brutal">
             <div class="flex justify-between items-center mb-1">
               <span class="font-mono-tech text-xs font-bold text-slate-300">Construction</span>
-              <span class="text-[10px] bg-slate-800 text-slate-300 font-mono-tech px-1.5 font-bold">4 ملفات</span>
+              <span class="text-[10px] bg-slate-800 text-slate-300 font-mono-tech px-1.5 font-bold">2 ملفات</span>
             </div>
             <p class="font-bold text-xs text-white truncate">تصميم ميكانيكي</p>
             <span class="text-[10px] text-slate-400 block truncate font-mono-tech">Conception & Guidage</span>
+          </button>
+
+          <!-- Module: Dessin Technique -->
+          <button onclick="setSubjectFilter('Dessin Technique')" id="sub-btn-Dessin Technique" class="sub-filter-card bg-[#11151a] border-2 border-slate-700 text-right p-3 brutal-shadow hover:border-neon-green transition-all btn-brutal">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-mono-tech text-xs font-bold text-slate-300">Dessin Tech.</span>
+              <span class="text-[10px] bg-slate-800 text-slate-300 font-mono-tech px-1.5 font-bold">2 ملفات</span>
+            </div>
+            <p class="font-bold text-xs text-white truncate">رسم تقني وصناعي</p>
+            <span class="text-[10px] text-slate-400 block truncate font-mono-tech">Coupes & Assemblage</span>
           </button>
 
           <!-- Module 6: Maintenance Industrielle -->
@@ -353,22 +342,36 @@
             <span class="text-[10px] text-slate-400 block truncate font-mono-tech">NF X 60-010</span>
           </button>
 
+          <!-- Module 7 / Tool: GPA Calculator Launcher Card -->
+          <button onclick="scrollToGpaCalc()" class="sub-filter-card bg-[#003920] border-2 border-neon-green text-right p-3 brutal-shadow hover:bg-neon-green group transition-all btn-brutal">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-mono-tech text-xs font-bold text-neon-green group-hover:text-black">LMD • S5</span>
+              <span class="material-symbols-outlined text-[16px] text-neon-green group-hover:text-black">calculate</span>
+            </div>
+            <p class="font-bold text-xs text-white group-hover:text-black truncate">حاسبة المعدل</p>
+            <span class="text-[10px] text-neon-green group-hover:text-black block truncate font-mono-tech font-bold">17 Coeff • 30 Crédits</span>
+          </button>
+
         </div>
       </div>
     </section>
 
     <!-- ================= FILTER TABS & CONTROL STRIP ================= -->
+    
+    <!-- ================= SECTION: GPA CALCULATOR (حاسبة معدل السداسي الخامس L3 CM) ================= -->
+    
+
     <section id="lessons-feed" class="bg-[#0d1015] border-2 border-slate-800 p-3 sm:p-4 brutal-shadow space-y-3">
       
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <!-- Type Segmented Strip -->
-        <div class="flex items-center gap-2">
-          <span class="font-mono-tech text-xs text-slate-400 font-bold uppercase tracking-wider">النوع (TYPE):</span>
-          <div class="flex items-center gap-1.5 text-xs font-bold">
-            <button onclick="setTypeFilter('ALL')" id="type-btn-ALL" class="type-filter-btn bg-neon-green text-black border-2 border-black px-3.5 py-1 brutal-shadow font-black btn-brutal">الكل</button>
-            <button onclick="setTypeFilter('COURS')" id="type-btn-COURS" class="type-filter-btn bg-[#11151a] border-2 border-slate-700 text-slate-300 px-3 py-1 hover:border-neon-green transition-colors btn-brutal">محاضرات (COURS)</button>
-            <button onclick="setTypeFilter('TD')" id="type-btn-TD" class="type-filter-btn bg-[#11151a] border-2 border-slate-700 text-slate-300 px-3 py-1 hover:border-neon-green transition-colors btn-brutal">أعمال موجهة (TD)</button>
-            <button onclick="setTypeFilter('EXAMEN')" id="type-btn-EXAMEN" class="type-filter-btn bg-[#11151a] border-2 border-slate-700 text-slate-300 px-3 py-1 hover:border-neon-green transition-colors btn-brutal">امتحانات</button>
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="font-mono-tech text-xs text-slate-400 font-bold uppercase tracking-wider shrink-0">النوع:</span>
+          <div class="flex items-center gap-1.5 text-xs font-bold overflow-x-auto no-scrollbar py-0.5 max-w-full">
+            <button onclick="setTypeFilter('ALL')" id="type-btn-ALL" class="type-filter-btn shrink-0 whitespace-nowrap bg-neon-green text-black border-2 border-black px-3 py-1 brutal-shadow font-black btn-brutal">الكل</button>
+            <button onclick="setTypeFilter('COURS')" id="type-btn-COURS" class="type-filter-btn shrink-0 whitespace-nowrap bg-[#11151a] border-2 border-slate-700 text-slate-300 px-2.5 py-1 hover:border-neon-green transition-colors btn-brutal">محاضرات</button>
+            <button onclick="setTypeFilter('TD')" id="type-btn-TD" class="type-filter-btn shrink-0 whitespace-nowrap bg-[#11151a] border-2 border-slate-700 text-slate-300 px-2.5 py-1 hover:border-neon-green transition-colors btn-brutal">أعمال موجهة (TD)</button>
+            <button onclick="setTypeFilter('EXAMEN')" id="type-btn-EXAMEN" class="type-filter-btn shrink-0 whitespace-nowrap bg-[#11151a] border-2 border-slate-700 text-slate-300 px-2.5 py-1 hover:border-neon-green transition-colors btn-brutal">امتحانات</button>
           </div>
         </div>
 
@@ -404,7 +407,7 @@
     <section class="p-4 bg-[#11151a] border-2 border-slate-700 text-center brutal-shadow relative">
       <div class="flex items-center justify-center gap-2 text-neon-green font-bold text-sm mb-1">
         <span class="material-symbols-outlined text-[20px]">verified</span>
-        <span>منصة الهندسة الميكانيكية الرسمية • Université Batna 2</span>
+        <span>منصة الهندسة الميكانيكية الرسمية • قسم الهندسة الميكانيكية</span>
       </div>
       <p class="font-bold text-xs text-slate-400">
         محتوى أكاديمي مطابق لمقررات السداسي الخامس • تصميم Neo-Brutalist فائق التباين مخصص للمهندسين
@@ -415,9 +418,9 @@
 
   <!-- ================= SHARED FOOTER ================= -->
   <footer class="w-full px-4 py-4 bg-[#050709] border-t-2 border-slate-800 text-center mb-16 md:mb-0">
-    <p class="font-bold text-xs text-slate-400">منصة الهندسة الميكانيكية • Département de Génie Mécanique • Batna 2</p>
+    <p class="font-bold text-xs text-slate-400">منصة الهندسة الميكانيكية • Département de Génie Mécanique</p>
     <div class="flex flex-wrap justify-center gap-3 mt-2 text-xs font-black">
-      <a class="text-neon-green hover:underline" href="#">جامعة باتنة 2</a>
+      <span class="text-neon-green">الهندسة الميكانيكية</span>
       <span class="text-slate-700">|</span>
       <a class="text-slate-300 hover:text-white" href="modules/rdm.html">مقاومة المواد</a>
       <span class="text-slate-700">|</span>
@@ -428,37 +431,39 @@
   </footer>
 
     <!-- ================= AGGRESSIVE BRUTALIST BOTTOM NAV BAR (MOBILE ONLY) ================= -->
-  <nav class="fixed bottom-0 left-0 right-0 max-w-[540px] mx-auto bg-[#050709] border-t-2 border-neon-green shadow-[0px_-4px_0px_#000000] z-50 px-1.5 py-1.5 flex items-center justify-around md:hidden">
-    <!-- Tab 1: الكل / الرئيسية -->
-    <button onclick="resetFilters(); updateMobileNav('all')" id="m-nav-all" class="m-nav-item flex flex-col items-center gap-0.5 text-black font-black px-2.5 py-1 bg-neon-green border-2 border-black brutal-shadow btn-brutal">
-      <span class="material-symbols-outlined text-[18px]">home</span>
-      <span class="text-[10px]">الرئيسية</span>
-    </button>
+  <!-- ================= SOLID RECTANGULAR BOTTOM NAV BAR ================= -->
+  <nav id="mobile-bottom-bar" class="fixed bottom-0 left-0 right-0 w-full z-50 bg-[#07090d] border-t-2 border-neon-green shadow-[0px_-4px_25px_rgba(0,0,0,0.95)]" style="padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)); padding-top: 6px;">
+    <div class="max-w-xl mx-auto px-2 flex items-center justify-around text-center">
+      <!-- Tab 1: الرئيسية -->
+      <button onclick="resetFilters(); updateMobileNav('all')" id="m-nav-all" class="m-nav-item flex-1 min-w-0 flex flex-col items-center justify-center py-1 text-black font-black bg-neon-green border-2 border-black brutal-shadow btn-brutal">
+        <span class="material-symbols-outlined text-[20px]">home</span>
+        <span class="text-[10px] font-black truncate">الرئيسية</span>
+      </button>
 
-    <!-- Tab 2: المواد الـ 6 (يفتح قائمة المواد المنبثقة) -->
-    <button onclick="toggleModulesSheet()" id="m-nav-modules" class="m-nav-item flex flex-col items-center gap-0.5 text-slate-400 font-bold px-2 py-1 hover:text-neon-green transition-colors relative">
-      <span class="material-symbols-outlined text-[18px]">category</span>
-      <span class="text-[10px]">المواد (6)</span>
-      <span class="absolute top-0 right-1 w-2 h-2 bg-neon-green border border-black"></span>
-    </button>
+      <!-- Tab 2: المواد -->
+      <button onclick="toggleModulesSheet()" id="m-nav-modules" class="m-nav-item flex-1 min-w-0 flex flex-col items-center justify-center py-1 text-slate-300 font-bold hover:text-neon-green transition-colors">
+        <span class="material-symbols-outlined text-[20px]">category</span>
+        <span class="text-[10px] font-bold truncate">المواد</span>
+      </button>
 
-    <!-- Tab 3: محاضرات COURS -->
-    <button onclick="setTypeFilter('COURS'); updateMobileNav('cours')" id="m-nav-cours" class="m-nav-item flex flex-col items-center gap-0.5 text-slate-400 font-bold px-2 py-1 hover:text-neon-green transition-colors">
-      <span class="material-symbols-outlined text-[18px]">school</span>
-      <span class="text-[10px]">محاضرات</span>
-    </button>
+      <!-- Tab 3: الحاسبة (CALCULATOR) -->
+      <a href="calculator.html" id="m-nav-calc" class="m-nav-item flex-1 min-w-0 flex flex-col items-center justify-center py-1 text-amber-400 font-black hover:text-amber-300 transition-colors">
+        <span class="material-symbols-outlined text-[20px]">calculate</span>
+        <span class="text-[10px] font-black truncate text-amber-400">الحاسبة</span>
+      </a>
 
-    <!-- Tab 4: أعمال موجهة TD -->
-    <button onclick="setTypeFilter('TD'); updateMobileNav('td')" id="m-nav-td" class="m-nav-item flex flex-col items-center gap-0.5 text-slate-400 font-bold px-2 py-1 hover:text-neon-green transition-colors">
-      <span class="material-symbols-outlined text-[18px]">assignment</span>
-      <span class="text-[10px]">تمارين TD</span>
-    </button>
+      <!-- Tab 4: محاضرات -->
+      <button onclick="setTypeFilter('COURS'); updateMobileNav('cours')" id="m-nav-cours" class="m-nav-item flex-1 min-w-0 flex flex-col items-center justify-center py-1 text-slate-300 font-bold hover:text-neon-green transition-colors">
+        <span class="material-symbols-outlined text-[20px]">school</span>
+        <span class="text-[10px] font-bold truncate">محاضرات</span>
+      </button>
 
-    <!-- Tab 5: امتحانات EXAMEN -->
-    <button onclick="setTypeFilter('EXAMEN'); updateMobileNav('exam')" id="m-nav-exam" class="m-nav-item flex flex-col items-center gap-0.5 text-slate-400 font-bold px-2 py-1 hover:text-neon-green transition-colors">
-      <span class="material-symbols-outlined text-[18px]">history_edu</span>
-      <span class="text-[10px]">امتحانات</span>
-    </button>
+      <!-- Tab 5: تمارين TD -->
+      <button onclick="setTypeFilter('TD'); updateMobileNav('td')" id="m-nav-td" class="m-nav-item flex-1 min-w-0 flex flex-col items-center justify-center py-1 text-slate-300 font-bold hover:text-neon-green transition-colors">
+        <span class="material-symbols-outlined text-[20px]">assignment</span>
+        <span class="text-[10px] font-bold truncate">تمارين TD</span>
+      </button>
+    </div>
   </nav>
 
   <!-- ================= NEO-BRUTALIST MOBILE MODULES SHEET (BOTTOM DRAWER) ================= -->
@@ -479,6 +484,15 @@
           <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
+
+      <!-- Quick GPA Calculator Drawer Shortcut -->
+      <button onclick="toggleModulesSheet(); scrollToGpaCalc()" class="w-full bg-[#003920] border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black font-black p-2.5 text-xs flex items-center justify-between brutal-shadow btn-brutal transition-colors">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">calculate</span>
+          <span>فتح حاسبة معدل السداسي الخامس (L3 CM)</span>
+        </div>
+        <span class="font-mono-tech text-[10px] font-bold">17 Coeff</span>
+      </button>
 
       <!-- 6 Modules List Grid -->
       <div class="grid grid-cols-1 gap-2 pt-1">
@@ -525,7 +539,16 @@
             <div class="font-bold text-xs text-white">التصميم الميكانيكي (Construction Mécanique)</div>
             <div class="text-[10px] text-slate-400 font-mono-tech">Conception & Guidage</div>
           </div>
-          <span class="bg-slate-800 text-neon-green border border-slate-700 font-mono-tech font-bold text-xs px-2 py-0.5">4 ملفات</span>
+          <span class="bg-slate-800 text-neon-green border border-slate-700 font-mono-tech font-bold text-xs px-2 py-0.5">2 ملفات</span>
+        </button>
+
+        <!-- Module: Dessin Technique -->
+        <button onclick="setSubjectFilter('Dessin Technique'); toggleModulesSheet()" class="bg-[#11151a] hover:bg-slate-800 border-2 border-slate-700 hover:border-neon-green p-2.5 flex items-center justify-between text-right brutal-shadow btn-brutal">
+          <div>
+            <div class="font-bold text-xs text-white">الرسم التقني والصناعي (Dessin Technique)</div>
+            <div class="text-[10px] text-slate-400 font-mono-tech">Coupes, Sections & Assemblage</div>
+          </div>
+          <span class="bg-slate-800 text-neon-green border border-slate-700 font-mono-tech font-bold text-xs px-2 py-0.5">2 ملفات</span>
         </button>
 
         <!-- Module 5: Asservissement -->
@@ -589,7 +612,7 @@
   {
     "id": 21,
     "title": "درس رسم التجميع الميكانيكي ومخططات التركيب (Dessin d'Assemblage - 125 Diapos)",
-    "subject": "Construction Mécanique",
+    "subject": "Dessin Technique",
     "type": "COURS",
     "size": "6.71 MB",
     "file": "lessons/dessin-technique-assemblage.pdf",
@@ -599,7 +622,7 @@
   {
     "id": 20,
     "title": "درس الرسم الصناعي: القطاعات والمقاطع الهندسية (Les Coupes et les Sections - 125 Diapos)",
-    "subject": "Construction Mécanique",
+    "subject": "Dessin Technique",
     "type": "COURS",
     "size": "6.57 MB",
     "file": "lessons/dessin-industriel-coupes-sections.pdf",
@@ -959,11 +982,11 @@
 
     function updateMobileNav(activeTab) {
       document.querySelectorAll('.m-nav-item').forEach(btn => {
-        btn.className = 'm-nav-item flex flex-col items-center gap-0.5 text-slate-400 font-bold px-2 py-1 hover:text-neon-green transition-colors';
+        btn.className = 'm-nav-item flex-1 min-w-0 flex flex-col items-center justify-center gap-0.5 text-slate-400 font-bold py-1 hover:text-neon-green transition-colors';
       });
       const active = document.getElementById('m-nav-' + activeTab);
       if (active) {
-        active.className = 'm-nav-item flex flex-col items-center gap-0.5 text-black font-black px-2.5 py-1 bg-neon-green border-2 border-black brutal-shadow btn-brutal';
+        active.className = 'm-nav-item flex-1 min-w-0 flex flex-col items-center justify-center gap-0.5 text-black font-black py-1 bg-neon-green border-2 border-black brutal-shadow btn-brutal';
       }
     }
 
@@ -971,8 +994,10 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // Initialize
-    renderLessons();
+    
+    // ==========================================
+    
+    // GPA Engine moved to standalone calculator.html
   </script>
 </body>
 </html>

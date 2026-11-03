@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>حل السلسلة 01: الحساب الشعاعي والموتري | نظرية المرونة L3 CM</title>
   
   <!-- خط Cairo للعناوين والنصوص -->
@@ -287,6 +287,48 @@
       color: #34d399 !important;
     }
 
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
+    }
   </style>
 
   <!-- Google Fonts: Space Grotesk & Space Mono for Neo-Brutalist Tech Feel -->
@@ -540,7 +582,7 @@
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-borderMain pb-6 mb-6">
         <div>
           <div class="text-xs sm:text-sm font-bold text-emeraldTag tracking-wider uppercase mb-1">République Algérienne Démocratique et Populaire</div>
-          <div class="text-xs sm:text-sm text-textDesc font-semibold">جامعة باتنة 2 - مصطفى بن بولعيد • كلية التكنولوجيا • قسم الهندسة الميكانيكية</div>
+          <div class="text-xs sm:text-sm text-textDesc font-semibold">قسم الهندسة الميكانيكية - مصطفى بن بولعيد • كلية التكنولوجيا • قسم الهندسة الميكانيكية</div>
         </div>
         <div class="flex items-center gap-2">
           <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-emeraldPrimary/15 text-emeraldTag border border-emeraldPrimary/30">Licence 3 CM</span>
@@ -948,7 +990,7 @@
           <p class="doc-p leading-relaxed">
             لتكن النقطتان $M(x_1, x_2, x_3)$ و $M'(x'_1, x'_2, x'_3)$ نقطتين اختياريتين تنتميان إلى المستوي.<br>
             بما أنهما تنتميان لنفس المستوي، فهما تحققان معادلته :
-            $$a x_1 + b x_2 + c x_3 = \lambda \quad \text{و} \quad a x'_1 + b x'_2 + c x'_3 = \lambda$$
+            $$a x_1 + b x_2 + c x_3 = \lambda \quad \text{ et } \quad a x'_1 + b x'_2 + c x'_3 = \lambda$$
             بطرح المعادلتين طرفاً لطرف :
             $$a (x_1 - x'_1) + b (x_2 - x'_2) + c (x_3 - x'_3) = \lambda - \lambda = 0$$
             الشعاع $\vec{M'M} = (x_1 - x'_1)\vec{e}_1 + (x_2 - x'_2)\vec{e}_2 + (x_3 - x'_3)\vec{e}_3$ هو شعاع موازٍ للمستوي وموجود بكامله داخله.<br>
@@ -1060,7 +1102,7 @@
             $$\frac{1}{2} \epsilon_{ijk} \epsilon_{mnk} T_{mn} = \frac{1}{2} (\delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}) T_{mn}$$
             $$= \frac{1}{2} \left( \delta_{im}\delta_{jn} T_{mn} - \delta_{in}\delta_{jm} T_{mn} \right)$$
             بتطبيق خاصية التصفية لدلتا كرونيكر (Substitution) :
-            $$\delta_{im}\delta_{jn} T_{mn} = T_{ij} \quad \text{و} \quad \delta_{in}\delta_{jm} T_{mn} = T_{ji}$$
+            $$\delta_{im}\delta_{jn} T_{mn} = T_{ij} \quad \text{ et } \quad \delta_{in}\delta_{jm} T_{mn} = T_{ji}$$
             ينتج مباشرة :
             $$\frac{1}{2} \epsilon_{ijk} \epsilon_{mnk} T_{mn} = \frac{1}{2} (T_{ij} - T_{ji}) = T_{[ij]}$$
             وهذا يُبرهن رياضياً أن المؤثر يستخلص الجزء المتخالف للموتر.
@@ -1194,7 +1236,7 @@
   <!-- تذييل الصفحة -->
   <footer class="border-t border-borderMain bg-[#0c1210] py-8 text-center text-xs sm:text-sm text-textDesc no-print">
     <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div>حلول معتمدة لطلبة L3 Construction Mécanique • جامعة باتنة 2</div>
+      <div>حلول معتمدة لطلبة L3 Construction Mécanique • قسم الهندسة الميكانيكية</div>
       <div>تصميم متجاوب وخفيف • مدعوم بـ MathJax و Cairo</div>
     </div>
   </footer>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>حاسبة معدل السداسي الخامس S5 | L3 Génie Mécanique</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'neon-green': '#00f59b',
+            'industrial-lime': '#bbf7d0',
+            'cyber-gray': '#0a0d12',
+            'surface-dark': '#11151c',
+            'border-brutal': '#222b38'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Cairo', sans-serif;
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+    .font-mono-tech {
+      font-family: 'Space Mono', monospace !important;
+    }
+    .font-space {
+      font-family: 'Space Grotesk', sans-serif !important;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .blueprint-grid {
+      background-color: #080a0d;
+      background-image: 
+        linear-gradient(rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px, 32px 32px, 8px 8px, 8px 8px;
+    }
+    .brutal-shadow {
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .brutal-shadow-sm {
+      box-shadow: 2px 2px 0px #000000;
+    }
+    .brutal-shadow-green {
+      box-shadow: 3px 3px 0px #00f59b;
+    }
+    .btn-brutal:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000000 !important;
+    }
+    html, body {
+      overflow-x: hidden !important;
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
+    }
+    .safe-area-bottom {
+      padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
+    }
+  </style>
+</head>
+
+<body class="bg-[#080a0d] text-slate-100 blueprint-grid min-h-screen flex flex-col antialiased selection:bg-neon-green selection:text-black">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-[#0d1015]/95 backdrop-blur-sm border-b-2 border-slate-800 brutal-shadow">
+    <div class="max-w-4xl mx-auto px-3.5 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+      
+      <div class="flex items-center gap-2.5 min-w-0">
+        <a href="index.html" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#161d27] border-2 border-slate-700 hover:border-neon-green text-neon-green font-bold text-xs brutal-shadow-sm btn-brutal transition-all">
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          <span>الرئيسية</span>
+        </a>
+        <div class="min-w-0">
+          <h1 class="text-xs sm:text-base font-black text-white truncate">
+            Calculateur de Moyenne S5 (L3 CM)
+          </h1>
+          <p class="text-[10px] sm:text-[11px] text-slate-400 font-bold truncate">
+            حاسبة معدل السداسي الخامس • <span class="text-neon-green font-mono-tech">LMD Officiel</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="px-2 py-1 bg-[#003920] border border-neon-green text-neon-green text-[10px] sm:text-xs font-mono-tech font-bold brutal-shadow-sm">
+          17 Coeff • 30 Crédits
+        </span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="max-w-4xl mx-auto px-3.5 sm:px-6 w-full flex-1 py-4 sm:py-6 space-y-5">
+
+    <!-- Notice -->
+    <div class="bg-[#11151c] border-2 border-slate-800 p-3 sm:p-4 brutal-shadow flex items-start gap-3">
+      <span class="material-symbols-outlined text-neon-green text-2xl shrink-0 mt-0.5">info</span>
+      <div class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <span class="font-black text-white">طريقة الاستخدام:</span>
+        أدخل علامات المراقبة المستمرة (CC) والامتحانات لكل مقياس (من 0 إلى 20).
+        يتم حساب معدل كل مادة ومعدل الوحدات تلقائياً.
+        <span class="text-neon-green font-bold">تجد النتيجة النهائية للسداسي (المعدل العام والقرار والأرصدة) في أسفل الصفحة.</span>
+      </div>
+    </div>
+
+    <!-- ================= 1. UEF 3.1: UNITE FONDAMENTALE ================= -->
+    <section class="bg-[#0e131b] border-2 border-slate-700 p-3.5 sm:p-5 brutal-shadow space-y-4">
+      <div class="flex items-center justify-between border-b-2 border-slate-700 pb-2.5 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 bg-neon-green"></span>
+          <div>
+            <h2 class="text-sm sm:text-base font-black text-white font-space tracking-tight">
+              UEF 3.1 : Unité d'Enseignement Fondamentale
+            </h2>
+            <span class="text-[11px] text-slate-400 font-bold block">الوحدة التعليمية الأساسية</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 font-mono-tech text-xs">
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Coeff: 9</span>
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Crédits: 18</span>
+          <span id="ue-badge-uef" class="bg-[#003920] border border-neon-green text-neon-green font-bold px-2 py-0.5">
+            Moy. UE: <span id="ue-avg-uef">0.00</span> / 20
+          </span>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        
+        <!-- Module 1: Mécanique analytique -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Mécanique Analytique</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 3 • Crédit: 6</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">الميكانيك التحليلي</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-meca_analytique">0.00</span>
+              <span id="mod-cred-meca_analytique" class="mr-1 text-[10px] text-slate-400">(0/6)</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">CC (40%) - مراقبة مستمرة</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-meca_analytique" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (60%) - امتحان</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-meca_analytique" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2: Construction Mécanique 1 -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Construction Mécanique 1</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 2 • Crédit: 4</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">الإنشاء والتصميم الميكانيكي 1</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-const_meca">0.00</span>
+              <span id="mod-cred-const_meca" class="mr-1 text-[10px] text-slate-400">(0/4)</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">CC (40%) - مراقبة مستمرة</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-const_meca" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (60%) - امتحان</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-const_meca" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3: Elasticité -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Élasticité</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 2 • Crédit: 4</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">نظرية المرونة</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-elasticite">0.00</span>
+              <span id="mod-cred-elasticite" class="mr-1 text-[10px] text-slate-400">(0/4)</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">CC (40%) - مراقبة مستمرة</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-elasticite" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (60%) - امتحان</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-elasticite" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4: Résistance des matériaux 2 -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Résistance des Matériaux 2 (RDM 2)</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 2 • Crédit: 4</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">مقاومة المواد 2</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-rdm2">0.00</span>
+              <span id="mod-cred-rdm2" class="mr-1 text-[10px] text-slate-400">(0/4)</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">CC (40%) - مراقبة مستمرة</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-rdm2" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (60%) - امتحان</label>
+              <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-rdm2" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 2. UEM 3.1: UNITE METHODOLOGIQUE ================= -->
+    <section class="bg-[#0e131b] border-2 border-slate-700 p-3.5 sm:p-5 brutal-shadow space-y-4">
+      <div class="flex items-center justify-between border-b-2 border-slate-700 pb-2.5 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 bg-industrial-lime"></span>
+          <div>
+            <h2 class="text-sm sm:text-base font-black text-white font-space tracking-tight">
+              UEM 3.1 : Unité d'Enseignement Méthodologique
+            </h2>
+            <span class="text-[11px] text-slate-400 font-bold block">الوحدة التعليمية المنهجية</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 font-mono-tech text-xs">
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Coeff: 5</span>
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Crédits: 9</span>
+          <span id="ue-badge-uem" class="bg-[#003920] border border-neon-green text-neon-green font-bold px-2 py-0.5">
+            Moy. UE: <span id="ue-avg-uem">0.00</span> / 20
+          </span>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        
+        <!-- Module 5: CFAO -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">CFAO (Conception et Fab. Assistée par Ordinateur)</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 2 • Crédit: 4</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">التصميم والتصنيع بمساعدة الحاسوب</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-cfao">0.00</span>
+              <span id="mod-cred-cfao" class="mr-1 text-[10px] text-slate-400">(0/4)</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1 font-bold">TP / CC (100%) - علامة الأعمال التطبيقية</label>
+            <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-cfao" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+          </div>
+        </div>
+
+        <!-- Module 6: Dessin Industriel -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Dessin Industriel / Technique</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 2 • Crédit: 3</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">الرسم الصناعي والتقني</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-dessin_indus">0.00</span>
+              <span id="mod-cred-dessin_indus" class="mr-1 text-[10px] text-slate-400">(0/3)</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1 font-bold">TP / CC (100%) - علامة الأعمال التطبيقية</label>
+            <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-dessin_indus" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+          </div>
+        </div>
+
+        <!-- Module 7: TP Métrologie -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">TP Métrologie</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 1 • Crédit: 2</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">أعمال تطبيقية في القياسات والمترولوجيا</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-tp_metrologie">0.00</span>
+              <span id="mod-cred-tp_metrologie" class="mr-1 text-[10px] text-slate-400">(0/2)</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1 font-bold">TP / CC (100%) - علامة الأعمال التطبيقية</label>
+            <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-cc-tp_metrologie" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. UED 3.1: UNITE DECOUVERTE ================= -->
+    <section class="bg-[#0e131b] border-2 border-slate-700 p-3.5 sm:p-5 brutal-shadow space-y-4">
+      <div class="flex items-center justify-between border-b-2 border-slate-700 pb-2.5 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 bg-amber-400"></span>
+          <div>
+            <h2 class="text-sm sm:text-base font-black text-white font-space tracking-tight">
+              UED 3.1 : Unité d'Enseignement Découverte
+            </h2>
+            <span class="text-[11px] text-slate-400 font-bold block">الوحدة التعليمية الاستكشافية</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 font-mono-tech text-xs">
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Coeff: 2</span>
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Crédits: 2</span>
+          <span id="ue-badge-ued" class="bg-[#003920] border border-neon-green text-neon-green font-bold px-2 py-0.5">
+            Moy. UE: <span id="ue-avg-ued">0.00</span> / 20
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        
+        <!-- Module 8: Maintenance -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Maintenance Industrielle</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 1 • Crédit: 1</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">الصيانة الصناعية</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-maintenance">0.00</span>
+              <span id="mod-cred-maintenance" class="mr-1 text-[10px] text-slate-400">(0/1)</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (100%) - امتحان المقياس</label>
+            <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-maintenance" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+          </div>
+        </div>
+
+        <!-- Module 9: Systèmes Asservis -->
+        <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm">
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-black text-sm text-white font-space">Systèmes Asservis</span>
+                <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 1 • Crédit: 1</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-bold mt-0.5">أنظمة التحكم الآلي والضبط</div>
+            </div>
+            <div class="text-xs font-mono-tech font-bold text-neon-green">
+              Moyenne: <span id="mod-avg-asservissement">0.00</span>
+              <span id="mod-cred-asservissement" class="mr-1 text-[10px] text-slate-400">(0/1)</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (100%) - امتحان المقياس</label>
+            <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-asservissement" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 4. UET 3.1: UNITE TRANSVERSALE ================= -->
+    <section class="bg-[#0e131b] border-2 border-slate-700 p-3.5 sm:p-5 brutal-shadow space-y-4">
+      <div class="flex items-center justify-between border-b-2 border-slate-700 pb-2.5 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 bg-cyan-400"></span>
+          <div>
+            <h2 class="text-sm sm:text-base font-black text-white font-space tracking-tight">
+              UET 3.1 : Unité d'Enseignement Transversale
+            </h2>
+            <span class="text-[11px] text-slate-400 font-bold block">الوحدة التعليمية الأفقية</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 font-mono-tech text-xs">
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Coeff: 1</span>
+          <span class="bg-[#17202c] border border-slate-600 px-2 py-0.5 text-slate-300">Crédits: 1</span>
+          <span id="ue-badge-uet" class="bg-[#003920] border border-neon-green text-neon-green font-bold px-2 py-0.5">
+            Moy. UE: <span id="ue-avg-uet">0.00</span> / 20
+          </span>
+        </div>
+      </div>
+
+      <!-- Module 10: Environnement -->
+      <div class="bg-[#121822] border border-slate-700 p-3 brutal-shadow-sm max-w-lg">
+        <div class="flex items-center justify-between mb-2 flex-wrap gap-1">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-black text-sm text-white font-space">Environnement et Dév. Durable</span>
+              <span class="text-[10px] text-neon-green font-mono-tech bg-[#003920] border border-neon-green/40 px-1.5 py-0.2">Coeff: 1 • Crédit: 1</span>
+            </div>
+            <div class="text-[11px] text-slate-400 font-bold mt-0.5">البيئة والتنمية المستدامة</div>
+          </div>
+          <div class="text-xs font-mono-tech font-bold text-neon-green">
+            Moyenne: <span id="mod-avg-environnement">0.00</span>
+            <span id="mod-cred-environnement" class="mr-1 text-[10px] text-slate-400">(0/1)</span>
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] text-slate-400 mb-1 font-bold">Examen (100%) - امتحان المقياس</label>
+          <input type="number" step="0.25" min="0" max="20" placeholder="0 - 20" id="in-exam-environnement" class="gpa-in w-full bg-[#080a0d] border-2 border-slate-700 focus:border-neon-green text-white font-mono-tech text-center py-1.5 text-sm outline-none transition-colors">
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- ============= 5. FINAL RESULTS SUMMARY (AT THE VERY BOTTOM) ============= -->
+    <!-- ========================================================================= -->
+    <section id="results-summary-bottom" class="bg-[#0c1017] border-2 border-neon-green p-4 sm:p-6 brutal-shadow-green space-y-4">
+      
+      <div class="flex items-center justify-between border-b-2 border-slate-800 pb-3 flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-neon-green text-2xl">verified</span>
+          <h2 class="text-base sm:text-lg font-black text-white">
+            النتيجة النهائية للسداسي الخامس (Résultats du Semestre 5)
+          </h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="resetAllGrades()" class="px-3 py-1.5 bg-[#251417] hover:bg-red-950 border-2 border-red-800 text-red-300 font-bold text-xs brutal-shadow-sm btn-brutal transition-all flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">refresh</span>
+            <span>تصفير كافة النقاط</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Result Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-center">
+        
+        <!-- Box 1: General Average -->
+        <div class="bg-[#121721] border-2 border-slate-700 p-4 brutal-shadow flex flex-col items-center justify-center">
+          <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 font-mono-tech">المعدل العام (MOYENNE GÉNÉRALE)</span>
+          <div class="text-4xl sm:text-5xl font-black text-amber-400 font-mono-tech my-1" id="main-avg-val">0.00</div>
+          <span class="text-xs text-slate-400 font-mono-tech">من 20.00</span>
+        </div>
+
+        <!-- Box 2: Decision Badge -->
+        <div class="bg-[#121721] border-2 border-slate-700 p-4 brutal-shadow flex flex-col items-center justify-center">
+          <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 font-mono-tech">القرار الأكاديمي (DÉCISION)</span>
+          <div id="decision-badge" class="px-3 py-2 border-2 border-slate-600 bg-slate-900/80 text-slate-400 text-sm sm:text-base font-black w-full">
+            سداسي غير محصل (Ajourné)
+          </div>
+          <span class="text-[11px] text-slate-400 mt-2 font-mono-tech" id="decision-subtext">المعدل أقل من 10.00</span>
+        </div>
+
+        <!-- Box 3: Total Credits -->
+        <div class="bg-[#121721] border-2 border-slate-700 p-4 brutal-shadow flex flex-col items-center justify-center">
+          <span class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1 font-mono-tech">الأرصدة المكتسبة (CRÉDITS ACQUIS)</span>
+          <div class="text-3xl sm:text-4xl font-black text-neon-green font-mono-tech my-1" dir="ltr">
+            <span id="credits-acquired-val">0</span> / 30
+          </div>
+          <span class="text-xs text-slate-400 font-mono-tech">مجموع المعاملات: 17</span>
+        </div>
+
+      </div>
+
+      <!-- LMD Rule Notification -->
+      <div class="bg-[#070a0e] border border-slate-800 p-3 text-xs text-slate-300 leading-relaxed font-mono-tech flex items-center gap-2">
+        <span class="material-symbols-outlined text-neon-green text-lg shrink-0">rule</span>
+        <div>
+          <span class="text-neon-green font-bold">قاعدة نظام LMD:</span>
+          عند الحصول على معدل عام فصلي <span class="text-white font-bold">10.00 / 20.00 أو أكثر</span>، يتم استيفاء السداسي بالكامل ويمنح الطالب <span class="text-neon-green font-bold">30 رصيداً تلقائياً</span> عبر مبدأ التعويض الشامل بين الوحدات والمقاييس.
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= SOLID RECTANGULAR BOTTOM NAV BAR ================= -->
+  <nav class="fixed bottom-0 left-0 right-0 w-full z-50 bg-[#07090d] border-t-2 border-neon-green shadow-[0px_-4px_25px_rgba(0,0,0,0.95)] safe-area-bottom" style="padding-top: 6px;">
+    <div class="max-w-xl mx-auto px-2 flex items-center justify-around text-center">
+      <!-- Tab 1: الرئيسية -->
+      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-300 hover:text-neon-green transition-colors group">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">home</span>
+        <span class="text-[10px] font-bold truncate">الرئيسية</span>
+      </a>
+
+      <!-- Tab 2: المواد -->
+      <a href="index.html#modules-grid" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-300 hover:text-neon-green transition-colors group">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">category</span>
+        <span class="text-[10px] font-bold truncate">المواد</span>
+      </a>
+
+      <!-- Tab 3: الحاسبة (ACTIVE) -->
+      <a href="calculator.html" class="flex flex-col items-center justify-center flex-1 py-1 text-black font-black bg-neon-green border-2 border-black brutal-shadow btn-brutal">
+        <span class="material-symbols-outlined text-[20px]">calculate</span>
+        <span class="text-[10px] font-black truncate">الحاسبة</span>
+      </a>
+
+      <!-- Tab 4: محاضرات -->
+      <a href="index.html?type=cours" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-300 hover:text-neon-green transition-colors group">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">school</span>
+        <span class="text-[10px] font-bold truncate">محاضرات</span>
+      </a>
+
+      <!-- Tab 5: تمارين TD -->
+      <a href="index.html?type=td" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-300 hover:text-neon-green transition-colors group">
+        <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">assignment</span>
+        <span class="text-[10px] font-bold truncate">تمارين TD</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ================= CALCULATOR LOGIC SCRIPT ================= -->
+  <script>
+    // Module definitions based on official LMD S5 framework
+    const MODULES = [
+      // UEF 3.1
+      { id: 'meca_analytique', ue: 'uef', coeff: 3, cred: 6, hasCC: true, hasExam: true, wCC: 0.4, wExam: 0.6 },
+      { id: 'const_meca',      ue: 'uef', coeff: 2, cred: 4, hasCC: true, hasExam: true, wCC: 0.4, wExam: 0.6 },
+      { id: 'elasticite',      ue: 'uef', coeff: 2, cred: 4, hasCC: true, hasExam: true, wCC: 0.4, wExam: 0.6 },
+      { id: 'rdm2',            ue: 'uef', coeff: 2, cred: 4, hasCC: true, hasExam: true, wCC: 0.4, wExam: 0.6 },
+      // UEM 3.1
+      { id: 'cfao',            ue: 'uem', coeff: 2, cred: 4, hasCC: true, hasExam: false, wCC: 1.0, wExam: 0.0 },
+      { id: 'dessin_indus',    ue: 'uem', coeff: 2, cred: 3, hasCC: true, hasExam: false, wCC: 1.0, wExam: 0.0 },
+      { id: 'tp_metrologie',   ue: 'uem', coeff: 1, cred: 2, hasCC: true, hasExam: false, wCC: 1.0, wExam: 0.0 },
+      // UED 3.1
+      { id: 'maintenance',     ue: 'ued', coeff: 1, cred: 1, hasCC: false, hasExam: true, wCC: 0.0, wExam: 1.0 },
+      { id: 'asservissement',  ue: 'ued', coeff: 1, cred: 1, hasCC: false, hasExam: true, wCC: 0.0, wExam: 1.0 },
+      // UET 3.1
+      { id: 'environnement',   ue: 'uet', coeff: 1, cred: 1, hasCC: false, hasExam: true, wCC: 0.0, wExam: 1.0 }
+    ];
+
+    const UE_DEFS = {
+      'uef': { coeff: 9, maxCred: 18, name: 'UEF 3.1' },
+      'uem': { coeff: 5, maxCred: 9,  name: 'UEM 3.1' },
+      'ued': { coeff: 2, maxCred: 2,  name: 'UED 3.1' },
+      'uet': { coeff: 1, maxCred: 1,  name: 'UET 3.1' }
+    };
+
+    function sanitizeGrade(val) {
+      if (val === '' || val === null || isNaN(val)) return null;
+      let n = parseFloat(val);
+      if (n < 0) n = 0;
+      if (n > 20) n = 20;
+      return n;
+    }
+
+    function calculate() {
+      let ueTotals = {
+        'uef': { pts: 0, coeff: 9, cred: 0, directCred: 0 },
+        'uem': { pts: 0, coeff: 5, cred: 0, directCred: 0 },
+        'ued': { pts: 0, coeff: 2, cred: 0, directCred: 0 },
+        'uet': { pts: 0, coeff: 1, cred: 0, directCred: 0 }
+      };
+
+      let semesterTotalPts = 0;
+      let semesterTotalCoeff = 17;
+      let gradesStore = {};
+
+      MODULES.forEach(m => {
+        let ccVal = null;
+        let examVal = null;
+
+        if (m.hasCC) {
+          const el = document.getElementById('in-cc-' + m.id);
+          if (el) {
+            ccVal = sanitizeGrade(el.value);
+            if (ccVal !== null) gradesStore['cc_' + m.id] = ccVal;
+          }
+        }
+        if (m.hasExam) {
+          const el = document.getElementById('in-exam-' + m.id);
+          if (el) {
+            examVal = sanitizeGrade(el.value);
+            if (examVal !== null) gradesStore['exam_' + m.id] = examVal;
+          }
+        }
+
+        let modAvg = 0;
+        if (m.hasCC && m.hasExam) {
+          let c = ccVal ?? 0;
+          let e = examVal ?? 0;
+          modAvg = (c * m.wCC) + (e * m.wExam);
+        } else if (m.hasCC) {
+          modAvg = ccVal ?? 0;
+        } else if (m.hasExam) {
+          modAvg = examVal ?? 0;
+        }
+
+        // Module display
+        const avgEl = document.getElementById('mod-avg-' + m.id);
+        const credEl = document.getElementById('mod-cred-' + m.id);
+        if (avgEl) avgEl.textContent = modAvg.toFixed(2);
+
+        let earnedDirectCred = 0;
+        if (modAvg >= 10.0) {
+          earnedDirectCred = m.cred;
+          if (credEl) {
+            credEl.textContent = '(' + m.cred + '/' + m.cred + ') ✓';
+            credEl.className = 'mr-1 text-[10px] text-neon-green font-bold';
+          }
+        } else {
+          if (credEl) {
+            credEl.textContent = '(0/' + m.cred + ')';
+            credEl.className = 'mr-1 text-[10px] text-slate-500';
+          }
+        }
+
+        ueTotals[m.ue].directCred += earnedDirectCred;
+        ueTotals[m.ue].pts += modAvg * m.coeff;
+        semesterTotalPts += modAvg * m.coeff;
+      });
+
+      // UE calculations
+      let totalEarnedCredits = 0;
+      for (const [ueKey, ueData] of Object.entries(ueTotals)) {
+        let ueAvg = ueData.pts / ueData.coeff;
+        const avgEl = document.getElementById('ue-avg-' + ueKey);
+        const badgeEl = document.getElementById('ue-badge-' + ueKey);
+
+        if (avgEl) avgEl.textContent = ueAvg.toFixed(2);
+
+        if (ueAvg >= 10.0) {
+          ueData.cred = UE_DEFS[ueKey].maxCred;
+          if (badgeEl) {
+            badgeEl.className = 'bg-[#003920] border border-neon-green text-neon-green font-bold px-2 py-0.5';
+          }
+        } else {
+          ueData.cred = ueData.directCred;
+          if (badgeEl) {
+            badgeEl.className = 'bg-[#221710] border border-amber-600/70 text-amber-300 font-bold px-2 py-0.5';
+          }
+        }
+        totalEarnedCredits += ueData.cred;
+      }
+
+      // Semester General Average
+      const semesterAvg = semesterTotalPts / semesterTotalCoeff;
+      const mainAvgEl = document.getElementById('main-avg-val');
+      const decisionBadgeEl = document.getElementById('decision-badge');
+      const decisionSubtextEl = document.getElementById('decision-subtext');
+      const creditsAcquiredEl = document.getElementById('credits-acquired-val');
+
+      if (mainAvgEl) {
+        mainAvgEl.textContent = semesterAvg.toFixed(2);
+        if (semesterAvg >= 10.0) {
+          mainAvgEl.className = 'text-4xl sm:text-5xl font-black text-neon-green font-mono-tech my-1';
+        } else {
+          mainAvgEl.className = 'text-4xl sm:text-5xl font-black text-amber-400 font-mono-tech my-1';
+        }
+      }
+
+      // LMD Semester Validation
+      if (semesterAvg >= 10.0) {
+        if (creditsAcquiredEl) creditsAcquiredEl.textContent = '30';
+        if (decisionBadgeEl) {
+          decisionBadgeEl.textContent = 'سداسي محصل (Admis / Validé) 🎉';
+          decisionBadgeEl.className = 'px-3 py-2 border-2 border-neon-green bg-[#003920] text-neon-green text-sm sm:text-base font-black w-full brutal-shadow-sm';
+        }
+        if (decisionSubtextEl) {
+          decisionSubtextEl.textContent = 'ناجح بموجب التعويض الشامل لـ LMD (30/30 رصيداً)';
+          decisionSubtextEl.className = 'text-[11px] text-neon-green mt-2 font-mono-tech';
+        }
+      } else {
+        if (creditsAcquiredEl) creditsAcquiredEl.textContent = totalEarnedCredits;
+        if (decisionBadgeEl) {
+          decisionBadgeEl.textContent = 'سداسي غير محصل (Ajourné / Non Validé)';
+          decisionBadgeEl.className = 'px-3 py-2 border-2 border-amber-600 bg-[#251810] text-amber-300 text-sm sm:text-base font-black w-full brutal-shadow-sm';
+        }
+        if (decisionSubtextEl) {
+          decisionSubtextEl.textContent = 'المعدل أقل من 10.00 (الرصيد المكتسب: ' + totalEarnedCredits + ' من 30)';
+          decisionSubtextEl.className = 'text-[11px] text-amber-400 mt-2 font-mono-tech';
+        }
+      }
+
+      // Auto save to localStorage
+      try {
+        localStorage.setItem('l3_cm_s5_grades_cache', JSON.stringify(gradesStore));
+      } catch (e) {}
+    }
+
+    // Reset grades
+    function resetAllGrades() {
+      document.querySelectorAll('.gpa-in').forEach(input => {
+        input.value = '';
+      });
+      try {
+        localStorage.removeItem('l3_cm_s5_grades_cache');
+      } catch (e) {}
+      calculate();
+    }
+
+    // Restore from localStorage
+    function loadSavedGrades() {
+      try {
+        const raw = localStorage.getItem('l3_cm_s5_grades_cache');
+        if (raw) {
+          const data = JSON.parse(raw);
+          for (const [k, v] of Object.entries(data)) {
+            const id = 'in-' + k.replace('_', '-');
+            const el = document.getElementById(id);
+            if (el) el.value = v;
+          }
+        }
+      } catch (e) {}
+      calculate();
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.gpa-in').forEach(input => {
+        input.addEventListener('input', calculate);
+        input.addEventListener('change', calculate);
+      });
+      loadSavedGrades();
+    });
+  </script>
+</body>
+</html>

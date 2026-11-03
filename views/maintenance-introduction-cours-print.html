@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>Cours de Maintenance Industrielle: Concepts et Typologie - Université Batna 2</title>
+  <title>Cours de Maintenance Industrielle: Concepts et Typologie - Département de Génie Mécanique</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,11 @@
     }
     .mono-font {
       font-family: 'JetBrains Mono', monospace;
+    }
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
     }
     body {
       background-color: #ffffff !important;
@@ -135,6 +140,48 @@
     p { margin: 2px 0; }
     ul { margin: 2px 0; padding-left: 14px; }
     li { margin-bottom: 1px; }
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
+    }
   </style>
 </head>
 <body>
@@ -143,7 +190,7 @@
   <div class="header-box">
     <div class="header-title">COURS: INTRODUCTION AUX CONCEPTS ET TYPOLOGIE DE LA MAINTENANCE INDUSTRIELLE</div>
     <div class="header-sub">
-      <span>Université Batna 2 • Département de Génie Mécanique • 3ème Année Licence (L3 CM)</span>
+      <span>Département de Génie Mécanique • Département de Génie Mécanique • 3ème Année Licence (L3 CM)</span>
       <span>Matière: Maintenance Industrielle • Semestre 5</span>
     </div>
   </div>
@@ -235,7 +282,7 @@
     <div class="header-title">APPLICATION PRATIQUE: CLASSIFICATION DES OPÉRATIONS DE MAINTENANCE AUTOMOBILE</div>
     <div class="header-sub">
       <span>Exercice d'application officiel du cours magistral • Analyse et justifications techniques</span>
-      <span>Université Batna 2 • L3 CM</span>
+      <span>Génie Mécanique • L3 CM</span>
     </div>
   </div>
 

@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>Corrigé Devoir Cinématique du Solide - L3 CM Batna 2</title>
+  <title>Corrigé Devoir Cinématique du Solide - L3 CM L3 CM</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +32,11 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
     body {
       background-color: #ffffff !important;
       color: #111827 !important;
@@ -180,10 +185,57 @@
       gap: 8px;
     }
     @media print {
-      body {
+      html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
+    }
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
     }
   </style>
 </head>
@@ -193,7 +245,7 @@
   <header class="univ-header">
     <div class="univ-header-top">
       <span>RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE</span>
-      <span>جامعة باتنة 2 - مصطفى بن بولعيد</span>
+      <span>قسم الهندسة الميكانيكية - مصطفى بن بولعيد</span>
     </div>
     <div class="univ-header-sub">
       <span>Faculté de Technologie • Département de Génie Mécanique</span>
@@ -435,10 +487,10 @@
         </div>
         <p class="doc-p">الزاوية الكلية وعدد الدورات خلال ثانيتين :</p>
         <div class="math-block">
-          \[ \theta(2) = 12.5\pi(2)^2 = 50\pi\text{ rad} \implies n = \frac{\theta}{2\pi} = \frac{50\pi}{2\pi} = 25\text{ دورة (tours)} \]
+          \[ \theta(2) = 12.5\pi(2)^2 = 50\pi\text{ rad} \implies n = \frac{\theta}{2\pi} = \frac{50\pi}{2\pi} = 25\text{ tours} \]
         </div>
         <div class="result-badge text-center">
-          التسارع الزاوي : $\alpha = 78.54\text{ rad/s}^2$ • عدد الدورات : $n = 25\text{ دورة}$
+          التسارع الزاوي : $\alpha = 78.54\text{ rad/s}^2$ • عدد الدورات : $n = 25\text{ tours}$
         </div>
       </div>
     
@@ -592,7 +644,7 @@
         <div class="math-block">
           \[ \alpha(t) = -5\pi\text{ rad/s}^2, \quad \omega(t) = 40\pi - 5\pi t\text{ (rad/s)}, \quad \theta(t) = 40\pi t - 2.5\pi t^2\text{ (rad)} \]
         </div>
-        <p class="doc-p">زمن التوقف : $\omega(t) = 0 \implies 40\pi - 5\pi t = 0 \implies t_{\text{arrêt}} = 8\text{ ثوانٍ (secondes)}$.</p>
+        <p class="doc-p">زمن التوقف : $\omega(t) = 0 \implies 40\pi - 5\pi t = 0 \implies t_{\text{arrêt}} = 8\text{ s}$.</p>
       </div>
     
 </div>
@@ -704,7 +756,7 @@
           \[ \int_0^x x^{-1/2} dx = \int_0^t \frac{1}{\sqrt{c}} dt \implies 2\sqrt{x} = \frac{t}{\sqrt{c}} \implies \sqrt{x} = \frac{t}{2\sqrt{c}} \]
         </div>
         <div class="result-badge text-center">
-          \[ x(t) = \frac{t^2}{4c} \quad \text{حركة مستقيمة متسارعة بانتظام بتسارع ثابت } a = \frac{1}{2c} \]
+          \[ x(t) = \frac{t^2}{4c} \quad \text{M.R.U.V. : } a = \frac{1}{2c} \]
         </div>
       </div>
     
@@ -735,7 +787,7 @@
           <h4 class="text-accent">ب و ج) زاوية وزمن المطاردة لاعتراض السفينة A :</h4>
           <p class="doc-p">إذا وجهت السفينة B مسارها بزاوية $\theta$ نحو الشرق بالنسبة للشمال : شرط الالتقاء عند الزمن $T$ هو تطابق الإحداثيات :</p>
           <div class="math-block">
-            \[ x_B(T) = x_A(T) \implies V_B \sin\theta \cdot T = V_A T \implies \sin\theta = \frac{V_A}{V_B} \quad (\text{شرط } V_B > V_A) \]
+            \[ x_B(T) = x_A(T) \implies V_B \sin\theta \cdot T = V_A T \implies \sin\theta = \frac{V_A}{V_B} \quad (\text{Condition: } V_B > V_A) \]
             \[ y_B(T) = y_A(T) \implies V_B \cos\theta \cdot T = d_0 \implies T = \frac{d_0}{\sqrt{V_B^2 - V_A^2}} \]
           </div>
         </div>

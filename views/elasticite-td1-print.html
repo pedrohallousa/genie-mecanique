@@ -32,6 +32,11 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
     body {
       background-color: #ffffff !important;
       color: #111827 !important;
@@ -172,6 +177,48 @@
     p {
       margin: 4px 0 6px;
     }
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
+    }
   </style>
 </head>
 <body>
@@ -179,7 +226,7 @@
   <!-- الترويسة الأكاديمية الرسمية المتطابقة مع أوراق الامتحانات والـ TD -->
   <div class="univ-header">
     <div class="univ-header-top">
-      <div>جامعة باتنة 2 • كلية التكنولوجيا • قسم الهندسة الميكانيكية</div>
+      <div>قسم الهندسة الميكانيكية • كلية التكنولوجيا • قسم الهندسة الميكانيكية</div>
       <div dir="ltr">Licence 3 CM — Théorie de l'Élasticité</div>
     </div>
     <div class="univ-header-sub">
@@ -427,7 +474,7 @@
         <div class="sub-item-title">الطريقة 1 : البرهان الهندسي بالجداء السلمي</div>
         <p>لتكن النقطتان $M(x_1, x_2, x_3)$ و $M'(x'_1, x'_2, x'_3)$ نقطتين اختياريتين تنتميان للمستوي :</p>
         <div class="math-eq">
-          $$a x_1 + b x_2 + c x_3 = \lambda \quad \text{و} \quad a x'_1 + b x'_2 + c x'_3 = \lambda$$
+          $$a x_1 + b x_2 + c x_3 = \lambda \quad \text{ et } \quad a x'_1 + b x'_2 + c x'_3 = \lambda$$
         </div>
         <p>بطرح المعادلتين طرفاً لطرف :</p>
         <div class="math-eq">

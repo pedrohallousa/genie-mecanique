@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Cours: Introduction aux Concepts et Typologie de la Maintenance | Université Batna 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+  <title>Cours: Introduction aux Concepts et Typologie de la Maintenance | Département de Génie Mécanique</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -166,6 +166,48 @@
       font-weight: 700;
       font-size: 0.75rem;
       display: inline-block;
+    }
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
     }
   </style>
 
@@ -415,7 +457,7 @@
     <header class="bento-card rounded-2xl p-5 sm:p-8 relative overflow-hidden">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#23382f] pb-4 mb-4">
         <div>
-          <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Université Batna 2 • Faculté de Technologie</div>
+          <div class="text-xs sm:text-sm font-bold text-[#34d399] tracking-wider uppercase mb-1">Département de Génie Mécanique • Faculté de Technologie</div>
           <div class="text-xs sm:text-sm text-gray-300 font-semibold">Département de Génie Mécanique • 3ème Année Licence (L3 CM)</div>
         </div>
         <div>
@@ -812,7 +854,7 @@
   </main>
 
   <footer class="border-t border-[#23382f] py-6 text-center text-xs text-gray-400">
-    جامعة باتنة 2 • قسم الهندسة الميكانيكية • مقياس الصيانة الصناعية (Maintenance Industrielle)
+    قسم الهندسة الميكانيكية • قسم الهندسة الميكانيكية • مقياس الصيانة الصناعية (Maintenance Industrielle)
   </footer>
 
 </body>

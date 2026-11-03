@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>الفصل الثاني: تشوه العوارض في الانحناء وحساب السهم (Ligne élastique & Flèche) - Batna 2</title>
+  <title>الفصل الثاني: تشوه العوارض في الانحناء وحساب السهم (Ligne élastique & Flèche) - L3 CM</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,11 @@
     * {
       box-sizing: border-box;
       font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    }
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
     }
     body {
       background-color: #ffffff !important;
@@ -155,6 +160,48 @@
     p { margin: 2px 0; }
     ul { margin: 2px 0; padding-right: 16px; }
     li { margin-bottom: 1px; }
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
+    }
   </style>
 </head>
 <body>
@@ -162,7 +209,7 @@
   <div class="header-box">
     <div class="header-title">محاضرة وتطبيق: تشوه العوارض في الانحناء وحساب السهم (Ligne élastique & Flèche)</div>
     <div class="header-sub">
-      <span>جامعة باتنة 2 • قسم الهندسة الميكانيكية • السنة الثالثة لسانس (L3 CM)</span>
+      <span>قسم الهندسة الميكانيكية • قسم الهندسة الميكانيكية • السنة الثالثة لسانس (L3 CM)</span>
       <span>مقياس: مقاومة المواد (RDM) • الفصل الثاني</span>
     </div>
   </div>

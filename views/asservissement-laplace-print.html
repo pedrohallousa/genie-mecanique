@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace) - Université Batna 2</title>
+  <title>ملخص الدرس وتطبيقات: تحويل لابلاس (Transformation de Laplace) - Département de Génie Mécanique</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +27,11 @@
     }
     * {
       box-sizing: border-box;
+    }
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
     }
     body {
       background-color: #ffffff !important;
@@ -160,10 +165,57 @@
       height: auto;
     }
     @media print {
-      body {
+      html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
+    }
+  
+    /* Table & Math Responsive Overrides */
+    .table-responsive-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin: 1.25rem 0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.25) !important;
+      border-radius: 6px !important;
+      display: block !important;
+    }
+    .table-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #34d399;
+      font-family: 'Space Mono', monospace;
+      margin: 0.5rem 0 0.25rem 0;
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .table-scroll-hint { display: none !important; }
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      display: block !important;
+      margin: 1.25em 0 !important;
+      text-align: center !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      max-width: 100% !important;
+      padding: 0.5rem 0.25rem !important;
+    }
+    mjx-container[jax="SVG"][display="true"] > svg {
+      min-width: min-content !important;
+      max-width: none !important;
+    }
+    body {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 14px)) !important;
     }
   </style>
 </head>
@@ -172,7 +224,7 @@
   <header class="univ-header">
     <div class="univ-header-top">
       <span>RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE</span>
-      <span>جامعة باتنة 2 - مصطفى بن بولعيد</span>
+      <span>قسم الهندسة الميكانيكية - مصطفى بن بولعيد</span>
     </div>
     <div class="univ-header-sub">
       <span>Faculté de Technologie • Département de Génie Mécanique</span>
