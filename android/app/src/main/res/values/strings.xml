@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">الهندسة الميكانيكية</string>
+    <string name="no_internet_title">لا يوجد اتصال بالإنترنت</string>
+    <string name="no_internet_desc">يرجى التحقق من اتصال الشبكة وإعادة المحاولة لتصفح المقاييس وحاسبة المعدل.</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="download_started">جاري تحميل الملف...</string>
+    <string name="exit_prompt">اضغط مرة أخرى للخروج من التطبيق</string>
+</resources>

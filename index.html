@@ -5,6 +5,16 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport"/>
   <title>الهندسة الميكانيكية | Génie Mécanique • L3 CM</title>
 
+    <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#080a0d"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Génie Mécanique"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png"/>
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+
   <!-- Google Fonts & Material Symbols -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -150,8 +160,10 @@
       margin: 0;
       padding: 0;
     }
-    body {
-      padding-bottom: calc(5.2rem + env(safe-area-inset-bottom, 12px)) !important;
+    @media (max-width: 767px) {
+      body {
+        padding-bottom: calc(5.2rem + env(safe-area-inset-bottom, 12px)) !important;
+      }
     }
     .safe-area-bottom {
       padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
@@ -200,6 +212,11 @@
           <span>21 وثيقة معتمدة</span>
         </div>
 
+        <a href="./GenieMecanique-v1.0.0.apk" class="bg-[#11151a] hover:border-neon-green text-neon-green border-2 border-slate-700 font-bold px-2.5 py-1.5 text-xs flex items-center gap-1.5 brutal-shadow btn-brutal transition-all" title="تحميل تطبيق الأندرويد APK">
+          <span class="material-symbols-outlined text-[16px]">android</span>
+          <span class="hidden sm:inline">تطبيق APK</span>
+          <span class="sm:hidden font-mono-tech">APK</span>
+        </a>
         <a href="#lessons-feed" class="bg-neon-green hover:bg-white text-black border-2 border-black font-black px-3 py-1.5 text-xs flex items-center gap-1 brutal-shadow btn-brutal transition-all">
           <span class="material-symbols-outlined text-[16px] font-bold">folder_open</span>
           <span class="hidden sm:inline">تصفح الدروس</span>
@@ -432,7 +449,7 @@
 
     <!-- ================= AGGRESSIVE BRUTALIST BOTTOM NAV BAR (MOBILE ONLY) ================= -->
   <!-- ================= SOLID RECTANGULAR BOTTOM NAV BAR ================= -->
-  <nav id="mobile-bottom-bar" class="fixed bottom-0 left-0 right-0 w-full z-50 bg-[#07090d] border-t-2 border-neon-green shadow-[0px_-4px_25px_rgba(0,0,0,0.95)]" style="padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)); padding-top: 6px;">
+  <nav id="mobile-bottom-bar" class="md:hidden fixed bottom-0 left-0 right-0 w-full z-50 bg-[#07090d] border-t-2 border-neon-green shadow-[0px_-4px_25px_rgba(0,0,0,0.95)]" style="padding-bottom: max(14px, env(safe-area-inset-bottom, 14px)); padding-top: 6px;">
     <div class="max-w-xl mx-auto px-2 flex items-center justify-around text-center">
       <!-- Tab 1: الرئيسية -->
       <button onclick="resetFilters(); updateMobileNav('all')" id="m-nav-all" class="m-nav-item flex-1 min-w-0 flex flex-col items-center justify-center py-1 text-black font-black bg-neon-green border-2 border-black brutal-shadow btn-brutal">
@@ -484,6 +501,15 @@
           <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
+
+      <!-- APK App Download Drawer Shortcut -->
+      <a href="./GenieMecanique-v1.0.0.apk" class="w-full bg-[#11151a] border-2 border-slate-700 hover:border-neon-green text-slate-200 hover:text-neon-green font-black p-2.5 text-xs flex items-center justify-between brutal-shadow btn-brutal transition-colors">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px] text-neon-green">android</span>
+          <span>تحميل تطبيق الأندرويد (تثبيت ملف APK)</span>
+        </div>
+        <span class="font-mono-tech text-[10px] bg-slate-800 text-neon-green px-2 py-0.5 font-bold">APK v1.0.0</span>
+      </a>
 
       <!-- Quick GPA Calculator Drawer Shortcut -->
       <button onclick="toggleModulesSheet(); scrollToGpaCalc()" class="w-full bg-[#003920] border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black font-black p-2.5 text-xs flex items-center justify-between brutal-shadow btn-brutal transition-colors">
@@ -999,5 +1025,14 @@
     
     // GPA Engine moved to standalone calculator.html
   </script>
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+      });
+    }
+  </script>
+
 </body>
 </html>

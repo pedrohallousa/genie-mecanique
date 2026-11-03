@@ -1,0 +1,9 @@
+<resources>
+    <color name="bg_dark">#080A0D</color>
+    <color name="surface_card">#11151A</color>
+    <color name="neon_green">#00F59B</color>
+    <color name="neon_green_dim">#00D084</color>
+    <color name="text_white">#F1F5F9</color>
+    <color name="text_muted">#94A3B8</color>
+    <color name="border_slate">#262F3D</color>
+</resources>

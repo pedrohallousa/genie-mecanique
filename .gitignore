@@ -12,3 +12,15 @@ node_modules/
 
 .vercel
 .env*
+
+# Explainer videos & audio rendering
+explainer/
+
+# Android build cache & artifacts
+android/.gradle/
+android/app/build/
+android/build/
+.gradle/
+
+# GitHub Actions workflows (excluded to avoid PAT OAuth scope error)
+.github/
